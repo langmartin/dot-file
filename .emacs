@@ -37,8 +37,6 @@
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
 
-  (global-set-key (kbd "H-SPC") 'just-one-space)
-
   (defun switch-to-last-buffer ()
   (interactive)
   (switch-to-buffer nil))
@@ -55,6 +53,8 @@
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
+  (define-key clojure-mode-map (kbd "H-l") 'clojure-insert-lambda)
+  (define-key clojure-mode-map (kbd "H-t") 'clojure-insert-trace)
 
   (setq cider-repl-pop-to-buffer-on-connect nil
         cider-popup-stacktraces t
@@ -65,20 +65,30 @@
 
   (setenv "JVM_OPTS" "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n"))
 
-(defun turn-on-paredit-mode () (interactive) (paredit-mode 1))
+(defun clojure-insert-lambda ()
+  (interactive)
+  (let ((before "(fn []")
+        (after  ")"))
+    (insert before)
+    (insert after)
+    (backward-char (length after))))
+
+(defun clojure-insert-trace ()
+  (interactive)
+  (insert "(use 'clojure.tools.trace)"))
 
 (defun rc-paredit ()
-  (package-require 'paredit-mode)
+  (package-require 'paredit)
 
   (define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
   (define-key paredit-mode-map (kbd "M-]") 'paredit-close-square-and-newline)
   (define-key paredit-mode-map (kbd "M-{") 'paredit-wrap-curly)
   (define-key paredit-mode-map (kbd "M-}") 'paredit-close-curly-and-newline)
 
-  (add-hook 'lisp-mode-hook 'turn-on-paredit-mode)
-  (add-hook 'emacs-lisp-mode-hook 'turn-on-paredit-mode)
-  (add-hook 'clojure-mode-hook 'turn-on-paredit-mode)
-  (add-hook 'scheme-mode-hook 'turn-on-paredit-mode))
+  (add-hook 'lisp-mode-hook 'paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+  (add-hook 'clojure-mode-hook 'paredit-mode)
+  (add-hook 'scheme-mode-hook 'paredit-mode))
 
 
 ;;;; Miscellaneous emacs settings
@@ -91,15 +101,30 @@
 
   (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
   (global-set-key (kbd "C-x x b") 'ibuffer)
-  (require 'smooth-scrolling)
   (blink-cursor-mode -1)
 
   (setq inhibit-trace nil)              ; trace needs this in emacs 24
   (global-auto-revert-mode 1)
   (mouse-avoidance-mode 'jump)
 
-  (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-unix-mode))
-  (add-to-list 'auto-mode-alist '("\\.git/config$" . conf-unix-mode)))
+  (global-set-key (kbd "H-SPC") 'just-one-space)
+  (global-set-key (kbd "H-i") 'imenu)
+  (global-set-key (kbd "H-s") 'shell))
+
+(defun rc-show-paren-expression ()
+  (interactive)
+  (show-paren-mode)
+  (setq show-paren-style 'expression)
+  (set-face-background 'show-paren-match "grey85")
+  (set-face-background 'show-paren-mismatch "MediumPurple2"))
+
+(defun rc-show-paren-parens ()
+  (interactive)
+  (show-paren-mode)
+  (setq show-paren-style 'parenthesis)
+  (set-face-background 'show-paren-match "grey80")
+  (set-face-background 'show-paren-mismatch "purple")
+  (set-face-foreground 'show-paren-mismatch "white"))
 
 (defun rc-ido ()
   (package-require 'find-file-in-repository)
@@ -147,31 +172,100 @@ the working directory"
   (add-hook 'before-save-hook 'backup-buffer-force))
 
 
+;;;; Git
+;;;; Most of the commands in this section are just interactive, so run them with M-x git-...
+
+(defun git-grep (command)
+  "Run git grep like grep"
+  (interactive
+   (list
+    (read-from-minibuffer
+     "Run git grep (like this): "
+     "git grep -n -H -I -e ")))
+  (grep (concat command " .")))
+
+(defun chomp (str)
+  (string-match "^\\(.*?\\)[[:space:]\r\n]*$" str)
+  (match-string 1 str))
+
+(defun backtick (command)
+  (with-temp-buffer
+    (shell-command command (current-buffer))
+    (chomp (buffer-string))))
+
+(defun git-get-current-branch ()
+  (backtick "git rev-parse --abbrev-ref HEAD"))
+
+(defun git-get-current-root ()
+  (backtick "git rev-parse --git-dir"))
+
+(defun git-set-rebase ()
+  (interactive)
+  (let ((branch (git-get-current-branch)))
+    (shell-command (concat "git config branch." branch ".rebase true"))))
+
+(defun git-set-default-push ()
+  (interactive)
+  (shell-command
+   (concat "git config remote.origin.push '+refs/heads/*:refs/remotes/"
+	   (or (getenv "GIT_USER") (getenv "USER"))
+	   "/*'")))
+
+(defun git-edit-config ()
+  (interactive)
+  (find-file (concat (git-get-current-root) "/config")))
+
+(defun git-set-hook-pre-commit ()
+  (interactive)
+  (let ((ppwd default-directory))
+    (unwind-protect
+	(progn
+	  (cd (git-get-current-root))
+	  (cd "hooks")
+	  (when (not (file-exists-p "pre-commit"))
+	    (when (file-exists-p "pre-commit.sample")
+	      (copy-file "pre-commit.sample" "pre-commit"))))
+      (cd ppwd))))
+
+(defun rc-git ()
+  (package-require 'wgrep)
+  (global-set-key (kbd "C-x g g") 'git-grep)
+  (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-unix-mode))
+  (add-to-list 'auto-mode-alist '("\\.git/config$" . conf-unix-mode)))
+
+(defun rc-magit ()
+  (package-require 'magit)
+  (global-set-key (kbd "C-x g s") 'magit-status)
+  (define-key magit-status-mode-map (kbd "P")
+    `(keymap (80 . magit-push-dumber))))
+
+(defun magit-push-dumber (&optional prefix)
+  (interactive "P")
+  (if (not prefix)
+      (magit-run-git-async "push" "-v" "origin")
+    (apply 'magit-run-git-async
+           (split-string
+            (read-from-minibuffer "git " "push -v origin")))))
+
+
 ;;;; Start everything up
 
 (rc-osx)
+(rc-font-lg)
 (rc-backups-and-autosave-directory "~/.emacs.d/backup")
 (rc-emacs-miscellany)
+(rc-show-paren-expression)
 (rc-ido)
 (rc-winner)
-(rc-clojure-mode)
+(rc-magit)
+(rc-git)
 (rc-paredit)
+(rc-clojure-mode)
 
 
-;;;; Customize
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;;;; Customize clones
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "brown3"))))
  '(erc-prompt-face ((t (:weight bold))))
  '(eshell-prompt ((((class color) (background light)) (:foreground "Red4" :weight bold))))
