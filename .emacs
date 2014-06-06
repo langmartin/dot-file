@@ -10,6 +10,8 @@
   (require package))
 
 (setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH") ":" (getenv "HOME") "/bin"))
+(add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path (expand-file-name "~/bin") t)
 
 
 ;;;; Osx
