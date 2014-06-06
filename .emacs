@@ -100,9 +100,17 @@
   (untabify (point-min) (point-max))
   (save-buffer))
 
+(defun cleanup-tabify-save ()
+  (interactive)
+  (delete-trailing-whitespace)
+  (tabify (point-min) (point-max))
+  (save-buffer))
+
 (defun rc-java-mode ()
-  (add-to-list 'java-mode-hook 'set-tab-width-4)
-  (rc-bind-cleanup-tabify-save java-mode-map))
+  (eval-after-load "cc"
+    '(progn
+       (add-to-list 'java-mode-hook 'set-tab-width-4)
+       (define-key java-mode-map (kbd "C-x C-s") 'cleanup-tabify-save))))
 
 
 ;;;; Miscellaneous emacs settings
