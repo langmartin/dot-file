@@ -130,13 +130,21 @@
   (setq inhibit-trace nil)              ; trace needs this in emacs 24
   (global-auto-revert-mode 1)
   (mouse-avoidance-mode 'jump)
+  (require 'uniquify nil t)
 
   (custom-set-variables
-   '(font-lock-maximum-decoration nil))
-
-  (require 'uniquify nil t)
-  (setq uniquify-buffer-name-style 'forward
-        uniquify-strip-common-suffix t)
+   '(font-lock-maximum-decoration nil)
+   '(hippie-expand-try-functions-list
+     '(try-expand-all-abbrevs
+       try-expand-dabbrev
+       try-expand-dabbrev-all-buffers
+       try-expand-dabbrev-from-kill
+       try-complete-file-name-partially
+       try-complete-file-name
+       try-complete-lisp-symbol-partially
+       try-complete-lisp-symbol))
+   '(uniquify-buffer-name-style 'forward)
+   '(uniquify-strip-common-suffix t))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
