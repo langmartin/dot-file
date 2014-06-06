@@ -37,7 +37,6 @@
    '(ns-alternate-modifier (quote hyper))
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
-  (custom-save-all)
 
   (defun switch-to-last-buffer ()
     (interactive)
@@ -130,6 +129,9 @@
   (global-auto-revert-mode 1)
   (mouse-avoidance-mode 'jump)
 
+  (custom-set-variables
+   '(font-lock-maximum-decoration nil))
+
   (require 'uniquify nil t)
   (setq uniquify-buffer-name-style 'forward
         uniquify-strip-common-suffix t)
@@ -137,7 +139,8 @@
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
   (global-set-key (kbd "H-i") 'imenu)
-  (global-set-key (kbd "H-s") 'shell))
+  (global-set-key (kbd "H-s") 'shell)
+  (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun rc-show-paren-expression ()
   (interactive)
@@ -198,6 +201,7 @@ the working directory"
   (add-hook 'before-save-hook 'backup-buffer-force))
 
 (defun rc-look-and-feel ()
+  (rc-font-lg)
   (custom-set-faces
    '(cursor ((t (:background "brown3"))))
    '(erc-prompt-face ((t (:weight bold))))
@@ -220,8 +224,7 @@ the working directory"
    '(show-paren-match ((t (:background "grey85"))))
    '(show-paren-mismatch ((t (:background "MediumPurple2" :foreground "white"))))
    '(whitespace-line ((t (:background "gray90"))))
-   '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick")))))
-  (custom-save-all))
+   '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick"))))))
 
 (defun turn-on-tabs () (interactive) (setq indent-tabs-mode t))
 (defun turn-off-tabs () (interactive) (setq indent-tabs-mode nil))
@@ -312,7 +315,6 @@ the working directory"
 
 (defun rc-init-emacs ()
   (rc-osx)
-  (rc-font-lg)
   (rc-backups-and-autosave-directory "~/.emacs.d/backup")
   (rc-emacs-miscellany)
   (rc-show-paren-expression)
