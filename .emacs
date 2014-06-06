@@ -33,6 +33,7 @@
     (set-frame-font "Monaco-12"))
 
   (custom-set-variables
+   '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote hyper))
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
@@ -85,11 +86,23 @@
   (define-key paredit-mode-map (kbd "M-]") 'paredit-close-square-and-newline)
   (define-key paredit-mode-map (kbd "M-{") 'paredit-wrap-curly)
   (define-key paredit-mode-map (kbd "M-}") 'paredit-close-curly-and-newline)
+  (define-key paredit-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
 
   (add-hook 'lisp-mode-hook 'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+  (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook 'paredit-mode))
+
+(defun cleanup-untabify-save ()
+  (interactive)
+  (delete-trailing-whitespace)
+  (untabify (point-min) (point-max))
+  (save-buffer))
+
+(defun rc-java-mode ()
+  (add-to-list 'java-mode-hook 'set-tab-width-4)
+  (rc-bind-cleanup-tabify-save java-mode-map))
 
 
 ;;;; Miscellaneous emacs settings
@@ -113,6 +126,7 @@
   (setq uniquify-buffer-name-style 'forward
         uniquify-strip-common-suffix t)
 
+  (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
   (global-set-key (kbd "H-i") 'imenu)
   (global-set-key (kbd "H-s") 'shell))
@@ -134,18 +148,16 @@
 
 (defun rc-ido ()
   (package-require 'find-file-in-repository)
-
-  (progn
-    (require 'ido)
-    (custom-set-variables
-     '(ido-enable-flex-matching t)
-     '(ido-everywhere t)
-     '(ido-mode 'both))
-    (custom-set-faces
-     '(ido-incomplete-regexp ((t (:foreground "grey40"))))
-     '(ido-indicator ((t (:foreground "yellow4"))))
-     '(ido-subdir ((t (:foreground "blue3")))))
-    (global-set-key (kbd "C-x f") 'find-file-in-repository)))
+  (require 'ido)
+  (custom-set-variables
+   '(ido-enable-flex-matching t)
+   '(ido-everywhere t)
+   '(ido-mode 'both))
+  (custom-set-faces
+   '(ido-incomplete-regexp ((t (:foreground "grey40"))))
+   '(ido-indicator ((t (:foreground "yellow4"))))
+   '(ido-subdir ((t (:foreground "blue3")))))
+  (global-set-key (kbd "C-x f") 'find-file-in-repository))
 
 (defun rc-winner ()
   (require 'winner)
@@ -203,6 +215,14 @@ the working directory"
    '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick")))))
   (custom-save-all))
 
+(defun turn-on-tabs () (interactive) (setq indent-tabs-mode t))
+(defun turn-off-tabs () (interactive) (setq indent-tabs-mode nil))
+(defun set-tab-width-2 () (interactive) (setq tab-width 2) (setq c-basic-offset 2))
+(defun set-tab-width-4 () (interactive) (setq tab-width 4) (setq c-basic-offset 4))
+(defun set-tab-width-8 () (interactive) (setq tab-width 8) (setq c-basic-offset 8))
+(defun turn-on-auto-fill () (interactive) (auto-fill-mode 1))
+(defun turn-off-auto-fill () (interactive) (auto-fill-mode -1))
+
 
 ;;;; Git
 ;;;; Most of the commands in this section are just interactive, so run them with M-x git-...
@@ -240,8 +260,8 @@ the working directory"
   (interactive)
   (shell-command
    (concat "git config remote.origin.push '+refs/heads/*:refs/remotes/"
-	   (or (getenv "GIT_USER") (getenv "USER"))
-	   "/*'")))
+           (or (getenv "GIT_USER") (getenv "USER"))
+           "/*'")))
 
 (defun git-edit-config ()
   (interactive)
@@ -251,12 +271,12 @@ the working directory"
   (interactive)
   (let ((ppwd default-directory))
     (unwind-protect
-	(progn
-	  (cd (git-get-current-root))
-	  (cd "hooks")
-	  (when (not (file-exists-p "pre-commit"))
-	    (when (file-exists-p "pre-commit.sample")
-	      (copy-file "pre-commit.sample" "pre-commit"))))
+        (progn
+          (cd (git-get-current-root))
+          (cd "hooks")
+          (when (not (file-exists-p "pre-commit"))
+            (when (file-exists-p "pre-commit.sample")
+              (copy-file "pre-commit.sample" "pre-commit"))))
       (cd ppwd))))
 
 (defun rc-git ()
@@ -293,4 +313,23 @@ the working directory"
   (rc-magit)
   (rc-git)
   (rc-paredit)
-  (rc-clojure-mode))
+  (rc-clojure-mode)
+  (rc-java-mode))
+
+(defun rc-init-site-lisp ()
+  (require 'rc-mu4e)
+  (require 'rc-erc)
+  (require 'rc-org-mode)
+
+  (require 'tiling)
+
+  (require 'uuid)
+  (defalias 'uuid 'insert-random-uuid)
+
+  (require 'chop)
+  (global-set-keys
+   '(("<C-up>" . chop-move-up)
+     ("<C-down>" . chop-move-down)))
+
+  (require 'goto-last-change)
+  (global-set-key (kbd "C-x C-/") 'goto-last-change))
