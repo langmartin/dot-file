@@ -36,10 +36,11 @@
    '(ns-alternate-modifier (quote hyper))
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
+  (custom-save-all)
 
   (defun switch-to-last-buffer ()
-  (interactive)
-  (switch-to-buffer nil))
+    (interactive)
+    (switch-to-buffer nil))
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
 
 
@@ -98,6 +99,7 @@
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
   (if (fboundp 'global-subword-mode) (global-subword-mode 1))
+  (fset 'yes-or-no-p 'y-or-n-p)
 
   (global-set-key (kbd "C-x C-b") 'switch-to-buffer)
   (global-set-key (kbd "C-x x b") 'ibuffer)
@@ -106,6 +108,10 @@
   (setq inhibit-trace nil)              ; trace needs this in emacs 24
   (global-auto-revert-mode 1)
   (mouse-avoidance-mode 'jump)
+
+  (require 'uniquify nil t)
+  (setq uniquify-buffer-name-style 'forward
+        uniquify-strip-common-suffix t)
 
   (global-set-key (kbd "H-SPC") 'just-one-space)
   (global-set-key (kbd "H-i") 'imenu)
@@ -170,6 +176,32 @@ the working directory"
          vc-make-backup-files t))
 
   (add-hook 'before-save-hook 'backup-buffer-force))
+
+(defun rc-look-and-feel ()
+  (custom-set-faces
+   '(cursor ((t (:background "brown3"))))
+   '(erc-prompt-face ((t (:weight bold))))
+   '(eshell-prompt ((((class color) (background light)) (:foreground "Red4" :weight bold))))
+   '(font-lock-comment-face ((((class color) (min-colors 88) (background light)) (:foreground "grey50"))))
+   '(font-lock-warning-face ((((class color) (min-colors 88) (background light)) (:foreground "Red3" :weight bold))))
+   '(ido-incomplete-regexp ((t (:foreground "grey40"))))
+   '(ido-indicator ((t (:foreground "yellow4"))))
+   '(ido-subdir ((t (:foreground "blue3"))))
+   '(jabber-chat-prompt-foreign ((t (:foreground "red4"))))
+   '(jabber-chat-prompt-local ((t (:foreground "blue4"))))
+   '(jabber-chat-prompt-system ((t (:foreground "green4" :weight bold))))
+   '(message-cited-text ((t (:foreground "red4"))))
+   '(org-mode-line-clock-overrun ((t (:inherit modeline :background "grey" :foreground "red3"))) t)
+   '(org-todo ((((class color) (min-colors 16) (background light)) (:foreground "Red4" :weight bold))))
+   '(rcirc-server ((t (:foreground "grey"))))
+   '(rcirc-timestamp ((t (:inherit default :foreground "grey"))))
+   '(rcirc-track-nick ((t (:foreground "purple" :inverse-video nil))))
+   '(secondary-selection ((((class color) (min-colors 88) (background light)) (:background "LemonChiffon"))))
+   '(show-paren-match ((t (:background "grey85"))))
+   '(show-paren-mismatch ((t (:background "MediumPurple2" :foreground "white"))))
+   '(whitespace-line ((t (:background "gray90"))))
+   '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick")))))
+  (custom-save-all))
 
 
 ;;;; Git
@@ -250,41 +282,15 @@ the working directory"
 
 ;;;; Start everything up
 
-(rc-osx)
-(rc-font-lg)
-(rc-backups-and-autosave-directory "~/.emacs.d/backup")
-(rc-emacs-miscellany)
-(rc-show-paren-expression)
-(rc-ido)
-(rc-winner)
-(rc-magit)
-(rc-git)
-(rc-paredit)
-(rc-clojure-mode)
-
-
-;;;; Customize clones
-
-(custom-set-faces
- '(cursor ((t (:background "brown3"))))
- '(erc-prompt-face ((t (:weight bold))))
- '(eshell-prompt ((((class color) (background light)) (:foreground "Red4" :weight bold))))
- '(font-lock-comment-face ((((class color) (min-colors 88) (background light)) (:foreground "grey50"))))
- '(font-lock-warning-face ((((class color) (min-colors 88) (background light)) (:foreground "Red3" :weight bold))))
- '(ido-incomplete-regexp ((t (:foreground "grey40"))))
- '(ido-indicator ((t (:foreground "yellow4"))))
- '(ido-subdir ((t (:foreground "blue3"))))
- '(jabber-chat-prompt-foreign ((t (:foreground "red4"))))
- '(jabber-chat-prompt-local ((t (:foreground "blue4"))))
- '(jabber-chat-prompt-system ((t (:foreground "green4" :weight bold))))
- '(message-cited-text ((t (:foreground "red4"))))
- '(org-mode-line-clock-overrun ((t (:inherit modeline :background "grey" :foreground "red3"))) t)
- '(org-todo ((((class color) (min-colors 16) (background light)) (:foreground "Red4" :weight bold))))
- '(rcirc-server ((t (:foreground "grey"))))
- '(rcirc-timestamp ((t (:inherit default :foreground "grey"))))
- '(rcirc-track-nick ((t (:foreground "purple" :inverse-video nil))))
- '(secondary-selection ((((class color) (min-colors 88) (background light)) (:background "LemonChiffon"))))
- '(show-paren-match ((t (:background "grey85"))))
- '(show-paren-mismatch ((t (:background "MediumPurple2" :foreground "white"))))
- '(whitespace-line ((t (:background "gray90"))))
- '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick")))))
+(defun rc-init-emacs ()
+  (rc-osx)
+  (rc-font-lg)
+  (rc-backups-and-autosave-directory "~/.emacs.d/backup")
+  (rc-emacs-miscellany)
+  (rc-show-paren-expression)
+  (rc-ido)
+  (rc-winner)
+  (rc-magit)
+  (rc-git)
+  (rc-paredit)
+  (rc-clojure-mode))
