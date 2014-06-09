@@ -1,0 +1,14 @@
+Expunge		 no
+Delete		 yes
+CopyDeletedTo	 "Deleted Items"
+MaxSize          200000
+MailDir		 ~/Maildir
+Folder		 /
+
+Host		 imaps:outlook.office365.com
+Port		 993
+User		 foo
+Pass		 secret1
+
+OneToOne	 yes
+Inbox		 Inbox
