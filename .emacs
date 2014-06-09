@@ -133,7 +133,9 @@
   (require 'uniquify nil t)
 
   (custom-set-variables
+   '(column-number-mode t)
    '(font-lock-maximum-decoration nil)
+   '(line-number-mode t)
    '(hippie-expand-try-functions-list
      '(try-expand-all-abbrevs
        try-expand-dabbrev
