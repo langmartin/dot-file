@@ -1,0 +1,30 @@
+SyncState *
+
+MaildirStore local
+Path "~/Maildir/"
+Inbox "~/Maildir/INBOX"
+AltMap yes
+
+IMAPAccount lmartin@opentable.com@outlook.office365.com
+Host imaps:outlook.office365.com
+Port 993
+User "foo"
+Pass "secret"
+RequireCRAM no
+RequireSSL yes
+UseSSLv2 yes
+UseSSLv3 yes
+UseTLSv1 yes
+
+IMAPStore office365
+Account lmartin@opentable.com@outlook.office365.com
+Path "/"
+MapInbox "INBOX"
+Trash "Deleted Items"
+
+Channel o2o
+Master :office365:
+Slave :local:
+Patterns "Archive" "Deleted Items" "Drafts" "INBOX"
+MaxSize 200000
+
