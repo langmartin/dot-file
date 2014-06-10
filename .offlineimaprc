@@ -1,0 +1,23 @@
+[general]
+accounts = OT
+ui = basic
+
+[Account OT]
+localrepository = Local
+remoterepository = Remote
+autorefresh = 5
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir
+
+[Repository Remote]
+type = IMAP
+remotehost = outlook.office365.com
+remoteport = 993
+remoteuser = foo
+remotepass = secret
+ssl = yes
+cert_fingerprint = d2b9e196c009ebc7c207188b265081f72bf3e6ef
+maxconnections = 2
+folderfilter = lambda d: d in ['INBOX', 'Archive', 'Drafts', 'Deleted Items', 'FAQ', 'Readme']
