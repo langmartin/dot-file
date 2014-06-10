@@ -37,8 +37,8 @@ layout ot2 ${safari} ${27in}
 layout ot2 ${chrome} ${27in}
 layout ot2 ${terminal} ${27in}
 layout ot2 ${iterm} ${27in}
-# layout ot2 'HipChat' ${right34} ${mbpro}
-layout ot2 'HipChat' ${max} ${mbpro}
+layout ot2 'HipChat' ${right34} ${mbpro}
+# layout ot2 'HipChat' ${max} ${mbpro}
 default ot2 resolutions:${27in};${mbpro}
 
 ## ----------------------------------------
@@ -85,3 +85,7 @@ bind down:ctrl,alt,cmd ${bottom}
 bind c:ctrl,alt,cmd ${center23}
 bind f:ctrl,alt,cmd ${max}
 bind tab:ctrl,alt,cmd throw next
+
+# Local Variables:
+# mode: conf-unix
+# End:
