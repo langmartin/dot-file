@@ -114,6 +114,14 @@
        (add-to-list 'java-mode-hook 'set-tab-width-4)
        (define-key java-mode-map (kbd "C-x C-s") 'cleanup-tabify-save))))
 
+(defun rc-javascript-mode ()
+  (package-require 'js2-mode)
+  (custom-set-variables
+   '(js2-bounce-indent-p t)
+   '(js2-init-hook (quote (set-tab-width-4))))
+  (add-to-auto-mode-alist '(("\\.js\\'" . js2-mode)))
+  (add-to-auto-mode-alist '(("\\.json\\'" . js2-mode))))
+
 
 ;;;; Miscellaneous emacs settings
 
@@ -346,13 +354,13 @@ the working directory"
   (rc-git)
   (rc-paredit)
   (rc-clojure-mode)
-  (rc-java-mode))
+  (rc-java-mode)
+  (rc-javascript-mode))
 
 (defun rc-init-site-lisp ()
   (require 'rc-mu4e)
   (require 'rc-erc)
   (require 'rc-org-mode)
-
   (require 'tiling)
 
   (require 'uuid)
