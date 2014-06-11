@@ -187,7 +187,11 @@
   (require 'winner)
   (define-key winner-mode-map (kbd "C-c <C-right>") 'winner-undo)
   (define-key winner-mode-map (kbd "C-c <C-left>") 'winner-undo)
-  (winner-mode 1))
+  (winner-mode 1)
+  (global-set-key (kbd "H-<left>") 'windmove-left)
+  (global-set-key (kbd "H-<right>") 'windmove-right)
+  (global-set-key (kbd "H-<up>") 'windmove-up)
+  (global-set-key (kbd "H-<down>") 'windmove-down))
 
 (defun backup-buffer-force ()
   (let ((buffer-backed-up nil))
