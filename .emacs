@@ -88,6 +88,7 @@
   (define-key paredit-mode-map (kbd "M-{") 'paredit-wrap-curly)
   (define-key paredit-mode-map (kbd "M-}") 'paredit-close-curly-and-newline)
   (define-key paredit-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
+  (define-key paredit-mode-map (kbd "<return>") 'paredit-newline)
 
   (add-hook 'lisp-mode-hook 'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
