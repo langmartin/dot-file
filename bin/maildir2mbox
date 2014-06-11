@@ -1,0 +1,4 @@
+#!/bin/sh
+find . -type f | while IFS="\n" read file; do
+    formail < "$file"
+done 
