@@ -119,8 +119,8 @@
   (custom-set-variables
    '(js2-bounce-indent-p t)
    '(js2-init-hook (quote (set-tab-width-4))))
-  (add-to-list 'auto-mode-alist '(("\\.js\\'" . js2-mode)))
-  (add-to-list 'auto-mode-alist '(("\\.json\\'" . js2-mode))))
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode)))
 
 
 ;;;; Miscellaneous emacs settings
