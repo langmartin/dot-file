@@ -71,7 +71,7 @@ layout read 'Safari':REPEAT ${right}
 layout read 'Google Chrome':REPEAT ${right}
 layout hack 'Emacs':REPEAT ${max}
 layout hack 'Safari':REPEAT ${max}
-layout hack 'Google Chrome':REPEAT ${max}
+layout hack ${chrome}
 
 bind r:ctrl,alt,cmd layout read
 bind s:ctrl,alt,cmd layout read
