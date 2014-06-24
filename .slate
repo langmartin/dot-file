@@ -20,6 +20,7 @@ alias visibile move screenSizeX+screenOriginY; screenSizeX;screenSizeY
 alias emacs 'Emacs':REPEAT ${max}
 alias safari 'Safari':REPEAT ${max}
 alias chrome 'Google Chrome':REPEAT ${center23}
+alias chromax 'Google Chrome':REPEAT ${max}
 alias terminal 'Terminal':REPEAT ${top}
 alias iterm 'iTerm':REPEAT ${top}
 
@@ -57,7 +58,7 @@ default hm2 count:2
 
 layout one ${emacs} 0
 layout one ${safari} 0
-layout one ${chrome} 0
+layout one ${chromax} 0
 layout one ${terminal} 0
 layout one ${iterm} 0
 layout one 'HipChat' ${max} 0
