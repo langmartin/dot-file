@@ -1,0 +1,26 @@
+## include this from ~/.gitconfig
+# [include]
+# 	path = code/dot-file/.gitconfig
+
+[core]
+	whitespace = trailing-space,space-before-tab
+
+[alias]
+	assume   = update-index --assume-unchanged
+	unassume = update-index --no-assume-unchanged
+	assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+	ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+	pullrequests = "fetch $1 '+refs/pull/*/head:refs/remotes/$1/pull/*'"
+	backups = "fetch $1 '+refs/remotes/langmartin/*:refs/remotes/$1/langmartin/*'"
+	tags = log --tags --simplify-by-decoration --pretty='format:%ai %d'
+
+[diff]
+	algorithm = patience
+	renames = copies
+
+[merge]
+	stat = true
+
+[push]
+	default = current
