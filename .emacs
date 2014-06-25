@@ -163,6 +163,12 @@
   (global-set-key (kbd "H-s") 'shell)
   (global-set-key (kbd "H-r") 'revert-buffer))
 
+(defun rc-emacs-master ()
+  (defalias 'quit-emacs 'save-buffers-kill-terminal)
+  (global-unset-key (kbd "C-x C-c"))
+  (global-unset-key (kbd "C-x C-z"))
+  (global-unset-key (kbd "C-z")))
+
 (defun rc-show-paren-expression ()
   (interactive)
   (show-paren-mode)
@@ -373,3 +379,11 @@ the working directory"
 
   (require 'goto-last-change)
   (global-set-key (kbd "C-x C-/") 'goto-last-change))
+
+;;;; .emacs looks something like this:
+;; (load-file "~/code/dot-file/.emacs")
+;; (rc-init-emacs)
+;; (rc-look-and-feel)
+;; (rc-emacs-master)
+;; (add-to-list 'load-path "~/code/site-lisp")
+;; (rc-init-site-lisp)
