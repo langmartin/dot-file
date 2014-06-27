@@ -1,0 +1,7 @@
+#!/bin/sh
+f=/etc/hosts
+t=/etc/hosts.$$
+
+grep -q www.reddit.com $f || exit 0
+grep -v www.reddit.com $f > $t || exit 1
+mv $t $f

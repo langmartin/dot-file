@@ -1,0 +1,10 @@
+#!/bin/sh
+f=/etc/hosts
+t=/etc/hosts.$$
+
+grep -q www.reddit.com $f && exit 0
+{ cat $f
+  echo 0.0.0.0 www.reddit.com
+} > $t || exit 1
+mv $t $f
+
