@@ -109,10 +109,11 @@
   (save-buffer))
 
 (defun rc-java-mode ()
-  (eval-after-load "cc"
+  (eval-after-load "cc-mode"
     '(progn
        (add-to-list 'java-mode-hook 'set-tab-width-4)
-       (define-key java-mode-map (kbd "C-x C-s") 'cleanup-tabify-save))))
+       (define-key java-mode-map (kbd "C-x C-s") 'cleanup-tabify-save)
+       (define-key java-mode-map (kbd "C-c C-t") 'git-make-tags))))
 
 (defun rc-javascript-mode ()
   (package-require 'js2-mode)
