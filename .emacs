@@ -145,6 +145,7 @@
    '(column-number-mode t)
    '(font-lock-maximum-decoration nil)
    '(line-number-mode t)
+   '(sentence-end-double-space nil)
    '(hippie-expand-try-functions-list
      '(try-expand-all-abbrevs
        try-expand-dabbrev
