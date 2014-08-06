@@ -1,0 +1,21 @@
+#!/bin/sh
+brew install ghostscript
+brew install imagemagick
+brew install emacs --cocoa --srgb --with-imagemagick --with-gnutls
+
+brew install \
+ctags \
+jq \
+gpg \
+gpg2 \
+go \
+msmtp \
+mu --with-emacs \
+ngrep \
+node \
+offline-imap \
+postgresql \
+scheme48 \
+terminal-notifier \
+tmux \
+wget
