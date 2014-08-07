@@ -300,6 +300,9 @@ the working directory"
 (defun git-get-current-root ()
   (backtick "git rev-parse --git-dir"))
 
+(defun git-get-current-directory ()
+  (backtick "git rev-parse --show-toplevel"))
+
 (defun git-set-rebase ()
   (interactive)
   (let ((branch (git-get-current-branch)))
@@ -327,6 +330,12 @@ the working directory"
             (when (file-exists-p "pre-commit.sample")
               (copy-file "pre-commit.sample" "pre-commit"))))
       (cd ppwd))))
+
+(defun git-make-tags ()
+  (interactive)
+  (with-temp-buffer
+    (cd (git-get-current-directory))
+    (start-process "make-tags" nil "make" "TAGS")))
 
 (defun rc-git ()
   (package-require 'wgrep)
