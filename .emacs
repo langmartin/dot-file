@@ -182,6 +182,18 @@
   (global-set-key (kbd "H-s") 'shell)
   (global-set-key (kbd "H-r") 'revert-buffer))
 
+(defun yyyymmdd ()
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d")))
+
+(defun yyyymmdd-pretty ()
+  (interactive)
+  (insert (format-time-string "%a, %b %d %Y")))
+
+(defun hhmmss ()
+  (interactive)
+  (insert (format-time-string "%H:%M:%S")))
+
 (defun rc-emacs-master ()
   (defalias 'quit-emacs 'save-buffers-kill-terminal)
   (global-unset-key (kbd "C-x C-c"))
