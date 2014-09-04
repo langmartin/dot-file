@@ -131,9 +131,11 @@
 
   (define-key js2-mode-map (kbd "H-l") 'javascript-insert-lambda)
   (define-key js2-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
-  (add-to-list 'js2-mode-hook 'turn-off-tabs)
+  (add-hook 'js2-mode-hook 'turn-off-tabs)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
+
+  (add-hook 'js-mode-hook 'set-tab-width-4)
+  (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 
   (eval-after-load "sgml-mode"
     '(progn
