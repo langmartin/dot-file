@@ -303,6 +303,14 @@ the working directory"
 (defun turn-on-auto-fill () (interactive) (auto-fill-mode 1))
 (defun turn-off-auto-fill () (interactive) (auto-fill-mode -1))
 
+(defun rc-ggtags ()
+  "https://github.com/leoliu/ggtags"
+  (package-require 'ggtags)
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode 1)))))
+
 
 ;;;; Git
 ;;;; Most of the commands in this section are just interactive, so run them with M-x git-...
