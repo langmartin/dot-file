@@ -13,7 +13,7 @@ localfolders = ~/Maildir
 
 [Repository Remote]
 type = IMAP
-remotehost = outlook.office365.com
+remotehost = exchange-host.com
 remoteport = 993
 remoteuser = foo
 remotepass = secret
