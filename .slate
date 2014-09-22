@@ -39,6 +39,7 @@ layout ot2 ${chrome} ${27in}
 layout ot2 ${terminal} ${27in}
 layout ot2 ${iterm} ${27in}
 layout ot2 'HipChat' ${right34} ${mbpro}
+layout ot2 'Messages' ${right34} ${mbpro}
 # layout ot2 'HipChat' ${max} ${mbpro}
 default ot2 resolutions:${27in};${mbpro}
 
@@ -86,6 +87,18 @@ bind down:ctrl,alt,cmd ${bottom}
 bind c:ctrl,alt,cmd ${center23}
 bind f:ctrl,alt,cmd ${max}
 bind tab:ctrl,alt,cmd throw next
+
+## ----------------------------------------
+## Quarters, which maybe I don't want?
+
+alias tl move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2
+alias tr move screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
+alias bl move screenOriginX;screenSizeY/2 screenSizeX/2;screenSizeY/2
+alias br move screenSizeX/2;screenSizeY/2 screenSizeX/2;screenSizeY/2
+bind 1:ctrl,alt,cmd ${tl}
+bind 2:ctrl,alt,cmd ${tr}
+bind 3:ctrl,alt,cmd ${bl}
+bind 4:ctrl,alt,cmd ${br}
 
 # Local Variables:
 # mode: conf-unix
