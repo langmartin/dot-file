@@ -46,7 +46,7 @@
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
 
 
-;;;; Clojure
+;;;; Modes
 
 (defun rc-clojure-mode ()
   (package-require 'cider)
@@ -221,9 +221,12 @@
   "if a tag-file is in use, call find-tag. Fall back to idomenu."
   (interactive "P")
   (call-interactively
-   (if (or tags-file-name use-find-tag)
-       'find-tag
-     'idomenu)))
+   (cond ((equal mode-name "Emacs-Lisp")
+          'find-function)
+         ((or tags-file-name use-find-tag)
+          'find-tag)
+         (true
+          'idomenu))))
 
 (defun rc-ido ()
   (require 'ido)
