@@ -345,6 +345,16 @@ the working directory"
      "git grep -n -H -I -e ")))
   (grep (concat command " .")))
 
+(defun git-add-edit ()
+  "Run git add -e"
+  (interactive)
+  (async-shell-command "git add -e"))
+
+(defun git-commit ()
+  "Run git commit"
+  (interactive)
+  (async-shell-command "git commit"))
+
 (defun chomp (str)
   (string-match "^\\(.*?\\)[[:space:]\r\n]*$" str)
   (match-string 1 str))
@@ -400,6 +410,9 @@ the working directory"
 (defun rc-git ()
   (package-require 'wgrep)
   (global-set-key (kbd "C-x g g") 'git-grep)
+  (global-set-key (kbd "C-x g a") 'git-add-edit)
+  (global-set-key (kbd "C-x g e") 'git-add-edit)
+  (global-set-key (kbd "C-x g c") 'git-commit)
   (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-unix-mode))
   (add-to-list 'auto-mode-alist '("\\.git/config$" . conf-unix-mode)))
 
