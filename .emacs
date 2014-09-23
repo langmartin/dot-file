@@ -217,9 +217,19 @@
   (set-face-background 'show-paren-mismatch "purple")
   (set-face-foreground 'show-paren-mismatch "white"))
 
+(defun or-find-tag-imenu (&optional use-find-tag)
+  "if a tag-file is in use, call find-tag. Fall back to idomenu."
+  (interactive "P")
+  (call-interactively
+   (if (or tags-file-name use-find-tag)
+       'find-tag
+     'idomenu)))
+
 (defun rc-ido ()
-  (package-require 'find-file-in-repository)
   (require 'ido)
+  (package-require 'ido-better-flex)
+  (package-require 'ido-load-library)
+  (package-require 'idomenu)
   (custom-set-variables
    '(ido-enable-flex-matching t)
    '(ido-everywhere t)
@@ -228,6 +238,9 @@
    '(ido-incomplete-regexp ((t (:foreground "grey40"))))
    '(ido-indicator ((t (:foreground "yellow4"))))
    '(ido-subdir ((t (:foreground "blue3")))))
+  (global-set-key (kbd "M-.") 'or-find-tag-imenu)
+  (global-set-key (kbd "H-i") 'or-find-tag-imenu)
+  (package-require 'find-file-in-repository)
   (global-set-key (kbd "C-x f") 'find-file-in-repository))
 
 (defun rc-winner ()
