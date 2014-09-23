@@ -217,16 +217,21 @@
   (set-face-background 'show-paren-mismatch "purple")
   (set-face-foreground 'show-paren-mismatch "white"))
 
+(defun find-function-at-point-p ()
+  (let ((symb (function-called-at-point)))
+    (when symb
+      (find-function symb)
+      t)))
+
 (defun or-find-tag-imenu (&optional use-find-tag)
   "if a tag-file is in use, call find-tag. Fall back to idomenu."
   (interactive "P")
-  (call-interactively
-   (cond ((equal mode-name "Emacs-Lisp")
-          'find-function)
-         ((or tags-file-name use-find-tag)
-          'find-tag)
-         (true
-          'idomenu))))
+  (if (or use-find-tag tags-file-name)
+      (call-interactively 'find-tag)
+    (if (equal mode-name "Emacs-Lisp")
+        (or (find-function-at-point-p)
+            (idomenu))
+      (call-interactively 'idomenu))))
 
 (defun rc-ido ()
   (require 'ido)
