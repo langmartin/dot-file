@@ -34,6 +34,10 @@
     (interactive)
     (set-frame-font "Monaco-12"))
 
+  (defun rc-font-xl ()
+    (interactive)
+    (set-frame-font "Monaco-20"))
+
   (custom-set-variables
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote hyper))
@@ -195,6 +199,18 @@
 (defun hhmmss ()
   (interactive)
   (insert (format-time-string "%H:%M:%S")))
+
+(defun rc-emacs-slides ()
+  (defun narrow-to-next-page ()
+    (interactive)
+    (goto-char 0)
+    (narrow-to-page 1))
+  (defun narrow-to-prev-page ()
+    (interactive)
+    (goto-char 0)
+    (narrow-to-page -1))
+  (define-key narrow-map (kbd "]") 'narrow-to-next-page)
+  (define-key narrow-map (kbd "[") 'narrow-to-prev-page))
 
 (defun rc-emacs-master ()
   (defalias 'quit-emacs 'save-buffers-kill-terminal)
@@ -437,6 +453,7 @@ the working directory"
   (rc-osx)
   (rc-backups-and-autosave-directory "~/.emacs.d/backup")
   (rc-emacs-miscellany)
+  (rc-emacs-slides)
   (rc-show-paren-expression)
   (rc-ido)
   (rc-winner)
