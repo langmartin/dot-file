@@ -34,9 +34,11 @@
     (interactive)
     (set-frame-font "Monaco-12"))
 
-  (defun rc-font-xl ()
+  (defun rc-slides ()
     (interactive)
-    (set-frame-font "Monaco-20"))
+    (set-frame-font "Monaco-22")
+    (setq mode-line-format nil)
+    (eldoc-mode -1))
 
   (custom-set-variables
    '(dired-listing-switches "-alh")
