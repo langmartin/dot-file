@@ -258,7 +258,7 @@
 
 (defun rc-ido ()
   (require 'ido)
-  (package-require 'ido-better-flex)
+  ;; (package-require 'ido-better-flex)
   (package-require 'ido-load-library)
   (package-require 'idomenu)
   (custom-set-variables
