@@ -64,6 +64,7 @@
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
   (define-key clojure-mode-map (kbd "H-l") 'clojure-insert-lambda)
   (define-key clojure-mode-map (kbd "H-t") 'clojure-insert-trace)
+  (define-key clojure-mode-map (kbd "H-c") 'clojure-insert-clear-ns)
 
   (setq cider-repl-pop-to-buffer-on-connect nil
         cider-popup-stacktraces t
@@ -85,6 +86,10 @@
 (defun clojure-insert-trace ()
   (interactive)
   (insert "(use 'clojure.tools.trace)"))
+
+(defun insert-clojure-clear-ns ()
+  (interactive)
+  (insert "(doseq [[x _] (ns-map *ns*)] (ns-unmap *ns* x))"))
 
 (defun rc-paredit ()
   (package-require 'paredit)
