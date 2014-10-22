@@ -1,7 +1,7 @@
 #!/bin/sh
 brew install ghostscript
 brew install imagemagick
-brew install emacs --cocoa --srgb --with-imagemagick --with-gnutls
+brew install emacs --cocoa --with-imagemagick --with-gnutls
 
 brew install \
 ctags \
