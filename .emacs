@@ -472,7 +472,6 @@ the working directory"
   (rc-javascript-mode))
 
 (defun rc-init-site-lisp ()
-  (require 'rc-mu4e)
   (require 'rc-erc)
   (require 'rc-org-mode)
   (require 'tiling)
@@ -490,8 +489,8 @@ the working directory"
 
 ;;;; .emacs looks something like this:
 ;; (load-file "~/code/dot-file/.emacs")
+;; (add-to-list 'load-path "~/code/dot-file/site-lisp")
 ;; (rc-init-emacs)
 ;; (rc-look-and-feel)
 ;; (rc-emacs-master)
-;; (add-to-list 'load-path "~/code/site-lisp")
 ;; (rc-init-site-lisp)
