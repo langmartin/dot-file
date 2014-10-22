@@ -472,6 +472,8 @@ the working directory"
   (rc-javascript-mode))
 
 (defun rc-init-site-lisp ()
+  (require 'rc-clojure)
+  (require 'rc-mu4e)
   (require 'rc-erc)
   (require 'rc-org-mode)
   (require 'tiling)

@@ -230,4 +230,7 @@ Valid keywords and arguments are:
   (untabify (point-min) (point-max))
   (save-buffer))
 
+(defmacro prog0 (& rest)
+  nil)
+
 (provide 'utility)
