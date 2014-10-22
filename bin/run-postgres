@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mkdir -p ~/tmp/data/pg
+# initdb -D ~/tmp/data/pg
+
+postgres -D ~/tmp/data/pg \
+    -c log_connections=on \
+    -c log_statement=all
