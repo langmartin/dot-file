@@ -10,7 +10,6 @@ gpg \
 gpg2 \
 go \
 msmtp \
-mu --with-emacs \
 ngrep \
 node \
 offline-imap \
@@ -19,3 +18,5 @@ scheme48 \
 terminal-notifier \
 tmux \
 wget
+
+EMACS=/usr/local/bin/emacs brew install mu --with-emacs
