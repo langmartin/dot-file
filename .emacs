@@ -87,7 +87,7 @@
   (interactive)
   (insert "(use 'clojure.tools.trace)"))
 
-(defun insert-clojure-clear-ns ()
+(defun clojure-insert-clear-ns ()
   (interactive)
   (insert "(doseq [[x _] (ns-map *ns*)] (ns-unmap *ns* x))"))
 
