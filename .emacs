@@ -153,6 +153,13 @@
        (package-require 'zencoding-mode)
        (add-to-list 'html-mode-hook 'zencoding-mode))))
 
+(defun rc-markdown-mode ()
+  (interactive)
+  (package-require 'markdown-mode)
+  (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
+
 
 ;;;; Miscellaneous emacs settings
 
@@ -464,12 +471,13 @@ the working directory"
   (rc-show-paren-expression)
   (rc-ido)
   (rc-winner)
-  (rc-magit)
-  (rc-git)
   (rc-paredit)
   (rc-clojure-mode)
   (rc-java-mode)
-  (rc-javascript-mode))
+  (rc-javascript-mode)
+  (rc-markdown-mode)
+  (rc-magit)
+  (rc-git))
 
 (defun rc-init-site-lisp ()
   (require 'rc-clojure)
