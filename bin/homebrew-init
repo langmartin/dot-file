@@ -1,10 +1,15 @@
 #!/bin/sh
+tmp=/tmp/homebrew-init-$$
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install > $tmp && \
+    ruby $tmp
+
 brew install ghostscript
 brew install imagemagick
-brew install emacs --cocoa --with-imagemagick --with-gnutls
+brew install emacs --cocoa --with-gnutls
 
 brew install \
 aspell \
+awscli \
 ctags \
 jq \
 gpg \
