@@ -3,3 +3,4 @@ defaults delete com.apple.dock
 killall Dock
 defaults delete com.apple.finder NSUserKeyEquivalents
 defaults write com.apple.Safari NSUserKeyEquivalents -dict "Quit Safari" "@^q"
+defaults write com.apple.finder QuitMenuItem -bool false
