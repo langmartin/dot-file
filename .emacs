@@ -131,7 +131,6 @@
 
 (defun rc-javascript-mode ()
   (package-require 'js2-mode)
-  (package-require 'skewer-mode)
   (custom-set-variables
    '(js2-bounce-indent-p t)
    '(js2-init-hook (quote (set-tab-width-4))))
@@ -147,12 +146,14 @@
   (define-key js2-mode-map (kbd "H-l") 'javascript-insert-lambda)
   (define-key js2-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
   (add-hook 'js2-mode-hook 'turn-off-tabs)
-  (add-hook 'js2-mode-hook 'skewer-mode)
   (add-hook 'js2-mode-hook 'turn-off-electric-indent)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
   (add-hook 'js-mode-hook 'set-tab-width-4)
   (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
+
+  (package-require 'skewer-mode)
+  (skewer-setup)
 
   (eval-after-load "sgml-mode"
     '(progn
