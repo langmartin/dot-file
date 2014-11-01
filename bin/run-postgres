@@ -2,6 +2,7 @@
 
 mkdir -p ~/tmp/data/pg
 # initdb -D ~/tmp/data/pg
+# createdb lang
 
 postgres -D ~/tmp/data/pg \
     -c log_connections=on \
