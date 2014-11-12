@@ -36,7 +36,7 @@
 
   (defun rc-slides ()
     (interactive)
-    (set-frame-font "Monaco-22")
+    (set-frame-font "Monaco-24")
     (setq mode-line-format nil)
     (eldoc-mode -1))
 
