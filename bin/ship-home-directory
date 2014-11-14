@@ -1,0 +1,28 @@
+#!/bin/sh
+
+o="-an"
+
+rsync $o \
+"$1"/.aws \
+"$1"/.emacs "$1"/.emacs.d \
+"$1"/.gitconfig \
+"$1"/.gnupg \
+"$1"/.msmtprc \
+"$1"/.offlineimaprc \
+"$1"/.ssh \
+"$1"/.zshenv "$1"/.zshrc \
+"$2"
+
+rsync $o \
+"$1"/Applications \
+"$1"/bin \
+"$1"/code \
+"$1"/tmp \
+"$2"
+
+rsync $o "$1"/Documents/ "$2"/Documents/
+rsync $o "$1"/Downloads/ "$2"/Downloads/
+rsync $o "$1/Music/iTunes/iTunes Media/" "$2/Music/iTunes/iTunes Media/"
+rsync $o "$1"/Pictures/ "$2"/Pictures/
+rsync $o "$1"/Pictures/ "$2"/Pictures/
+rsync $o "$1"/Public/ "$2"/Public/
