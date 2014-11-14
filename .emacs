@@ -34,12 +34,6 @@
     (interactive)
     (set-frame-font "Monaco-12"))
 
-  (defun rc-slides ()
-    (interactive)
-    (set-frame-font "Monaco-24")
-    (setq mode-line-format nil)
-    (eldoc-mode -1))
-
   (custom-set-variables
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote hyper))
@@ -222,6 +216,11 @@
   (insert (format-time-string "%H:%M:%S")))
 
 (defun rc-emacs-slides ()
+  (defun slides-start ()
+    (interactive)
+    (set-frame-font "Monaco-24")
+    (setq mode-line-format nil)
+    (eldoc-mode -1))
   (defun narrow-to-next-page ()
     (interactive)
     (goto-char 0)
