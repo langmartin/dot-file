@@ -231,7 +231,10 @@
     (goto-char 0)
     (narrow-to-page -1))
   (define-key narrow-map (kbd "]") 'narrow-to-next-page)
-  (define-key narrow-map (kbd "[") 'narrow-to-prev-page))
+  (define-key narrow-map (kbd "[") 'narrow-to-prev-page)
+  ;; (global-set-key (kbd "<next>") 'narrow-to-next-page)
+  ;; (global-set-key (kbd "<prior>") 'narrow-to-prev-page)
+  )
 
 (defun rc-emacs-master ()
   (defalias 'quit-emacs 'save-buffers-kill-terminal)
