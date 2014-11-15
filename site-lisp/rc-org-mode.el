@@ -25,7 +25,7 @@
 (define-key org-mode-map (kbd "C-c M-l") 'org-kill-link-as-commit-message)
 
 (progn
-  (add-hook 'org-mode-hook 'comment-char-org)
+  ;; (add-hook 'org-mode-hook 'comment-char-org)
   (add-hook 'org-mode-hook 'turn-off-tabs)
   (add-hook 'org-mode-hook 'turn-on-auto-fill))
 
