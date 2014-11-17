@@ -1,0 +1,5 @@
+#!/bin/sh
+cd ~/Downloads
+wget https://www.hipchat.com/downloads/latest/mac && mv mac hipchat.zip
+wget http://slate.ninjamonkeysoftware.com/Slate.dmg
+wget https://github.com/rs/SafariTabSwitching/releases/download/1.2.7/Safari.Tab.Switching-1.2.7.zip

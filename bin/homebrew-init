@@ -11,9 +11,11 @@ brew install \
 aspell \
 awscli \
 ctags \
-jq \
 gpg \
 gpg2 \
+html2text \
+jq \
+markdown \
 msmtp \
 offline-imap \
 postgresql \
