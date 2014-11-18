@@ -124,6 +124,8 @@
  'mu4e-compose-mode-hook
  (defun rc-mu4e-bcc-myself ()
    (save-excursion (message-add-header (concat "Bcc: " user-mail-address "\n")))))
+(add-hook 'mu4e-compose-mode-hook 'turn-on-visual-line-mode)
+(add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
 
 
 ;;; Custom variables setup
