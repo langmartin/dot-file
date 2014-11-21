@@ -19,6 +19,7 @@ markdown \
 msmtp \
 offline-imap \
 postgresql \
+redis \
 terminal-notifier \
 tmux \
 wget
