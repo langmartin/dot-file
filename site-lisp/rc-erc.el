@@ -14,40 +14,16 @@
   (set-face-foreground 'erc-my-nick-face "brown")
   (set-face-foreground 'erc-input-face nil))
 
-(defun irc-bitlbee ()
-  (interactive)
-  (erc :server "localhost"
-       :port 6667
-       :nick "langmartin"
-       :full-name "Lang Martin"
-       :password bitlbee-password))
-
 (defun erc-hide-notices () "hide all notices in a very busy channel"
   (interactive)
   (make-local-variable 'erc-echo-notice-always-hook)
   (setq erc-echo-notice-always-hook nil))
 
-;; (setq erc-autojoin-channels-alist
-;;        '(("freenode.net" "#emacs" "#scheme" "#medium")))
-
-(defun irc-freenode ()
-  (interactive)
-  (erc-tls :server "irc.freenode.net"
-           :nick "langmartin"
-           :full-name "Lang Martin"
-           ;; :port 8001
-           :port 6697
-           ;; :password freenode-password
-           ))
-
-;; (define-buffer-visitor visit-medium "#medium" 'irc)
-;; (global-set-key (kbd "H-m") 'visit-medium)
-
 (defun irc ()
   (interactive)
   (save-default-directory
       "~"
-    (irc-freenode)
+    (call-interactively 'erc)
     (erc-fix-colors)))
 
 (custom-set-variables
