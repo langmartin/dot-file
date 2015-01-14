@@ -371,6 +371,19 @@ the working directory"
               (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
                 (ggtags-mode 1)))))
 
+(defun rc-vi-mode-minimal ()
+  (symbol-function 'switch-to-buffer)
+  (defalias 'plain-switch-to-buffer 'switch-to-buffer)
+
+  (defun switch-to-insert-mode-buffer (&rest args)
+    (interactive)
+    (apply 'plain-switch-to-buffer args)
+    (when (eqv "VI" mode-name)
+      (vi-goto-insert-state)))
+
+  ;; (defalias 'switch-to-buffer 'switch-to-insert-mode-buffer)
+  (global-set-key (kbd "H-z") 'vi-mode))
+
 
 ;;;; Git
 ;;;; Most of the commands in this section are just interactive, so run them with M-x git-...
