@@ -471,6 +471,8 @@ the working directory"
 (defun rc-magit ()
   (package-require 'magit)
   (global-set-key (kbd "C-x g s") 'magit-status)
+  (custom-set-variables
+   '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only)))
   (define-key magit-status-mode-map (kbd "P")
     `(keymap (80 . magit-push-dumber))))
 
