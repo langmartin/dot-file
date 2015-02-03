@@ -1,9 +1,19 @@
 #!/bin/sh
 
-mkdir -p ~/tmp/data/pg
-# initdb -D ~/tmp/data/pg
-# createdb lang
+# 1. run this script with any parameter
 
-postgres -D ~/tmp/data/pg \
-    -c log_connections=on \
-    -c log_statement=all
+if [ -n "$1" ]; then
+    mkdir -p ~/tmp/data/pg
+    initdb -D ~/tmp/data/pg -E "UTF-8"
+else
+
+# 2. run it without, the server will start (and steal your console)
+
+    postgres -D ~/tmp/data/pg \
+	     -c log_connections=on \
+	     -c log_statement=all
+fi
+
+# 3. in a different terminal run
+# createdb $USER
+# to create your own database (the default for psql)
