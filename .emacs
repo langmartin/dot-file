@@ -67,7 +67,9 @@
         cider-auto-select-error-buffer t
         cider-repl-display-in-current-window t)
 
-  (setenv "JVM_OPTS" "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n"))
+  (setenv "JVM_OPTS" "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n")
+  (custom-set-variables
+   '(clojure-defun-indents (quote (and-let)))))
 
 (defun clojure-insert-lambda ()
   (interactive)
