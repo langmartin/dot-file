@@ -1,0 +1,8 @@
+#!/bin/sh
+since="${1:-1/19/15}"
+today="${2:-`date +%d/%m/%y`}"
+
+set -x
+
+mdfind -onlyin ~/Music/iTunes "date:$since-$today" \
+| grep -v Cache
