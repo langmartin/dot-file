@@ -432,6 +432,11 @@ the working directory"
   (let ((branch (git-get-current-branch)))
     (shell-command (concat "git config branch." branch ".rebase true"))))
 
+(defun git-set-merge ()
+  (interactive)
+  (let ((branch (git-get-current-branch)))
+    (shell-command (concat "git config --unset branch." branch ".rebase"))))
+
 (defun git-set-default-push ()
   (interactive)
   (shell-command
