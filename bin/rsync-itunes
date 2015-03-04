@@ -1,12 +1,14 @@
 #!/bin/sh
 cd
 host=sv.local
-path='Music/iTunes/iTunes\ Media/'
-rsync -n -rltv --delete-after \
+set -x
+
+rsync -rlt "$@" --delete-after \
       --exclude 'Podcasts/' \
       --exclude 'Automatically Add to iTunes**' \
       --exclude 'iTunes Import/' \
-      "$host:$path" "$path"
+      "$host:Music/iTunes/iTunes\ Media/" "Music/iTunes/iTunes Media/"
       
 path='Music/iTunes/iTunes\ Music\ Library.xml'
-rsync -n -t "$host:$path" "$path"
+rsync -t "$host:Music/iTunes/iTunes\ Library.itl" "Music/iTunes/iTunes Library.itl"
+rsync -t "$host:Music/iTunes/iTunes\ Music\ Library.xml" "Music/iTunes/iTunes Music Library.xml"
