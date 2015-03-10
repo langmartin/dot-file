@@ -15,6 +15,7 @@ alias bottom move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSi
 alias max    move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias center move screenOriginX+screenSizeX/4;screenOriginY screenSizeX/2;screenSizeY
 alias center23 move screenOriginX+screenSizeX/6;screenOriginY (screenSizeX/3)*2;screenSizeY
+alias center13 move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
 alias visibile move screenSizeX+screenOriginY; screenSizeX;screenSizeY
 
 alias emacs 'Emacs':REPEAT ${max}
@@ -85,6 +86,7 @@ bind right:ctrl,alt,cmd ${right}
 bind up:ctrl,alt,cmd ${top}
 bind down:ctrl,alt,cmd ${bottom}
 bind c:ctrl,alt,cmd ${center23}
+bind v:ctrl,alt,cmd ${center13}
 bind f:ctrl,alt,cmd ${max}
 bind tab:ctrl,alt,cmd throw next
 
