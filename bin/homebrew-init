@@ -8,6 +8,7 @@ brew install imagemagick
 brew install emacs --cocoa --with-gnutls
 
 brew install \
+ag \
 aspell \
 awscli \
 ctags \
