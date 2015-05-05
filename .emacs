@@ -245,6 +245,20 @@
   (define-key narrow-map (kbd "]") 'narrow-to-next-page)
   (define-key narrow-map (kbd "[") 'narrow-to-prev-page))
 
+(defun rc-dim-parens ()
+  (interactive)
+  (defface paren-face
+    '((((class color) (background dark))
+       (:foreground "grey20"))
+      (((class color) (background light))
+       (:foreground "grey80")))
+    "Face used to dim parentheses.")
+  (defun dim-parens-mode ()
+    (interactive)
+    (font-lock-add-keywords nil '(("(\\|)" . 'paren-face))))
+  (add-hook 'emacs-lisp-mode-hook 'dim-parens-mode)
+  (add-hook 'clojure-mode-hook 'dim-parens-mode))
+
 (defun rc-emacs-master ()
   (defalias 'quit-emacs 'save-buffers-kill-terminal)
   (global-unset-key (kbd "C-x C-c"))
