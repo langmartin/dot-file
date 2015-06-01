@@ -141,6 +141,7 @@
 
   (define-key js2-mode-map (kbd "H-l") 'javascript-insert-lambda)
   (define-key js2-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
+  (define-key js2-mode-map (kbd "C-x `") 'js2-next-error)
   (add-hook 'js2-mode-hook 'turn-off-tabs)
   (add-hook 'js2-mode-hook 'turn-off-electric-indent)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
