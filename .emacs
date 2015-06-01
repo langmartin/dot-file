@@ -69,7 +69,7 @@
 
   (setenv "JVM_OPTS" "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n")
   (custom-set-variables
-   '(clojure-defun-indents (quote (and-let)))))
+   '(clojure-defun-indents (quote (and-let unless-let)))))
 
 (defun clojure-insert-lambda ()
   (interactive)
@@ -118,6 +118,12 @@
 (defun turn-off-electric-indent ()
   (electric-indent-mode -1))
 
+(defalias 'cleanup-buffer 'erase-buffer)
+
+(defun etc-hosts ()
+  (interactive)
+  (find-file "/su:admin@localhost|sudo:root@localhost:/etc/hosts"))
+
 (defun rc-java-mode ()
   (eval-after-load "cc-mode"
     '(progn
@@ -155,7 +161,10 @@
   (eval-after-load "sgml-mode"
     '(progn
        (package-require 'zencoding-mode)
-       (add-to-list 'html-mode-hook 'zencoding-mode))))
+       (add-to-list 'html-mode-hook 'zencoding-mode)))
+
+  (require 'sql)
+  (add-to-list 'sql-mode-hook 'turn-off-tabs))
 
 (defun rc-markdown-mode ()
   (interactive)
