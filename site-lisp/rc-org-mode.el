@@ -54,10 +54,11 @@
 (unless (boundp 'org-export-latex-classes)
   (setq org-export-latex-classes nil))
 
-(update-alist
- 'org-export-latex-classes
- '("langmartin"
-  "\\documentclass[11pt]{article}
+(defun rc-org-old-fashioned-custom-export ()
+  (update-alist
+   'org-export-latex-classes
+   '("langmartin"
+     "\\documentclass[11pt]{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage[T1]{fontenc}
 \\usepackage{graphicx}
@@ -80,12 +81,12 @@
 \\predate{\\begin{center}\\large}
 \\postdate{\\par\\end{center}}
 "
-  ("\\section{%s}" . "\\section*{%s}")
-  ("\\subsection{%s}" . "\\subsection*{%s}")
-  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
- 'equal)
+     ("\\section{%s}" . "\\section*{%s}")
+     ("\\subsection{%s}" . "\\subsection*{%s}")
+     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+     ("\\paragraph{%s}" . "\\paragraph*{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+   'equal))
 
 (custom-set-variables
  '(org-export-latex-default-class "langmartin"))
@@ -98,5 +99,19 @@
     (while (re-search-forward "[[<]" end t)
       (when (org-at-timestamp-p t)
         (org-timestamp-change n 'hour)))))
+
+(defun rc-org-latex-code ()
+ ;; Include the latex-exporter
+  (require 'ox-latex)
+  ;; Add minted to the defaults packages to include when exporting.
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  ;; Tell the latex export to use the minted package for source
+  ;; code coloration.
+  (setq org-latex-listings 'minted)
+  ;; Let the exporter use the -shell-escape option to let latex
+  ;; execute external programs.
+  ;; This obviously and can be dangerous to activate!
+  (setq org-latex-pdf-process
+        '("xelatex -shell-escape -interaction nonstopmode -8bit -output-directory %o %f")))
 
 (provide 'rc-org-mode)

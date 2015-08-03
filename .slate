@@ -41,6 +41,7 @@ layout ot2 ${terminal} ${27in}
 layout ot2 ${iterm} ${27in}
 layout ot2 'HipChat' ${right34} ${mbpro}
 layout ot2 'Messages' ${right34} ${mbpro}
+layout ot2 'Slack' ${right34} ${mbpro}
 # layout ot2 'HipChat' ${max} ${mbpro}
 default ot2 resolutions:${27in};${mbpro}
 
@@ -53,6 +54,7 @@ layout hm2 ${terminal} ${samsung}
 layout hm2 ${iterm} ${samsung}
 layout hm2 'HipChat' ${max} ${air11}
 layout hm2 'Messages' ${max} ${air11}
+layout hm2 'Slack' ${max} ${air11}
 # default hm2 resolutions:${air11};${samsung}
 default hm2 count:2
 
@@ -65,6 +67,7 @@ layout one ${terminal} 0
 layout one ${iterm} 0
 layout one 'HipChat' ${max} 0
 layout one 'Messages' ${max} 0
+layout one 'Slack' ${max} 0
 default one count:1
 
 ## ----------------------------------------
