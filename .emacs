@@ -103,17 +103,20 @@
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook 'paredit-mode))
 
-(defun cleanup-untabify-save ()
+(defun cleanup-save ()
   (interactive)
   (delete-trailing-whitespace)
-  (untabify (point-min) (point-max))
   (save-buffer))
+
+(defun cleanup-untabify-save ()
+  (interactive)
+  (untabify (point-min) (point-max))
+  (cleanup-save))
 
 (defun cleanup-tabify-save ()
   (interactive)
-  (delete-trailing-whitespace)
   (tabify (point-min) (point-max))
-  (save-buffer))
+  (cleanup-save))
 
 (defun turn-off-electric-indent ()
   (electric-indent-mode -1))
@@ -128,7 +131,8 @@
   (eval-after-load "cc-mode"
     '(progn
        (add-to-list 'java-mode-hook 'set-tab-width-4)
-       (define-key java-mode-map (kbd "C-x C-s") 'cleanup-tabify-save)
+       (add-to-list 'java-mode-hook 'turn-on-tabs)
+       (define-key java-mode-map (kbd "C-x C-s") 'cleanup-save)
        (define-key java-mode-map (kbd "C-c C-t") 'git-make-tags))))
 
 (defun rc-javascript-mode ()
