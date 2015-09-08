@@ -13,3 +13,7 @@ alias grunt='grunt --no-color'
 setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
 [ "$TERM" = dumb ] && unsetopt zle
+
+dockerize () {
+    eval `docker-machine env default`
+}
