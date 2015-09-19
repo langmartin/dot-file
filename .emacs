@@ -1,7 +1,21 @@
 ;;;; Bootstrapping
 
+(defmacro -> (x &rest calls)
+  (if (null calls)
+      `(progn ,x)
+    `(-> ,(append (list (caar calls) x)
+                  (cdar calls))
+         ,@(cdr calls))))
+
+(defmacro ->> (x &rest calls)
+  (if (null calls)
+      `(progn ,x)
+    `(->> ,(append (car calls) (list x))
+          ,@(cdr calls))))
+
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
 (defun package-require (package)
@@ -30,6 +44,10 @@
     (interactive)
     (set-frame-font "Monaco-14"))
 
+  (defun rc-font-xl ()
+    (interactive)
+    (set-frame-font "Monaco-24"))
+
   (defun rc-font-sm ()
     (interactive)
     (set-frame-font "Monaco-12"))
@@ -51,6 +69,7 @@
 (defun rc-clojure-mode ()
   (package-require 'cider)
 
+  (add-hook 'clojure-mode-hook 'cider-mode)
   (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
   (add-hook 'cider-repl-mode-hook 'subword-mode)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
@@ -212,6 +231,9 @@
        try-complete-lisp-symbol))
    '(uniquify-buffer-name-style 'forward)
    '(uniquify-strip-common-suffix t))
+
+  (eval-after-load "shell"
+    '(define-key shell-mode-map (kbd "C-c M-o") 'erase-buffer))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
