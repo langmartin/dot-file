@@ -69,9 +69,7 @@
 (defun rc-clojure-mode ()
   (package-require 'cider)
 
-  (add-hook 'clojure-mode-hook 'cider-mode)
   (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-  (add-hook 'cider-repl-mode-hook 'subword-mode)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
@@ -79,16 +77,12 @@
   (define-key clojure-mode-map (kbd "H-t") 'clojure-insert-trace)
   (define-key clojure-mode-map (kbd "H-c") 'clojure-insert-clear-ns)
 
-  (setq cider-repl-pop-to-buffer-on-connect nil
-        cider-popup-stacktraces t
-        cider-repl-popup-stacktraces t
-        cider-repl-result-prefix ";; => "
-        cider-auto-select-error-buffer t
-        cider-repl-display-in-current-window t)
-
-  (setenv "JVM_OPTS" "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n")
   (custom-set-variables
-   '(clojure-defun-indents (quote (and-let unless-let)))))
+   '(cider-repl-pop-to-buffer-on-connect nil)
+   '(cider-prompt-for-symbol nil)
+   '(clojure-defun-indents
+     (quote
+      (and-let testing match wcar unless unless-let prop/for-all)))))
 
 (defun clojure-insert-lambda ()
   (interactive)
