@@ -12,13 +12,11 @@ ag \
 aspell \
 awscli \
 ctags \
-gpg \
-gpg2 \
 html2text \
 jq \
-markdown \
 msmtp \
 offline-imap \
+pandoc \
 postgresql \
 redis \
 terminal-notifier \
