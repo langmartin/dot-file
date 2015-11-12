@@ -92,6 +92,8 @@ bind v:ctrl,alt,cmd ${center13}
 bind b:ctrl,alt,cmd ${center}
 bind f:ctrl,alt,cmd ${max}
 bind tab:ctrl,alt,cmd throw next
+bind .:ctrl,alt,cmd ${right34}
+bind ,:ctrl,alt,cmd ${left34}
 
 ## ----------------------------------------
 ## Quarters, which maybe I don't want?
