@@ -33,14 +33,16 @@ alias samsung 1
 
 ## ----------------------------------------
 
+# alias laptop ${right34}
+alias laptop ${max}
 layout ot2 ${emacs} ${27in}
 layout ot2 ${safari} ${27in}
 layout ot2 ${chrome} ${27in}
 layout ot2 ${terminal} ${27in}
 layout ot2 ${iterm} ${27in}
-layout ot2 'HipChat' ${right34} ${mbpro}
-layout ot2 'Messages' ${right34} ${mbpro}
-layout ot2 'Slack' ${right34} ${mbpro}
+layout ot2 'HipChat' ${laptop} ${mbpro}
+layout ot2 'Messages' ${laptop} ${mbpro}
+layout ot2 'Slack' ${laptop} ${mbpro}
 # layout ot2 'HipChat' ${max} ${mbpro}
 default ot2 resolutions:${27in};${mbpro}
 
