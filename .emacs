@@ -14,7 +14,7 @@
           ,@(cdr calls))))
 
 (require 'package)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
@@ -535,14 +535,15 @@ the working directory"
   (add-to-list 'auto-mode-alist '("\\.git/config$" . conf-unix-mode)))
 
 (defun rc-magit ()
-  (add-to-list 'load-path "site-lisp/git-modes")
-  (add-to-list 'load-path "site-lisp/magit")
+  ;; (add-to-list 'load-path "site-lisp/git-modes")
+  ;; (add-to-list 'load-path "site-lisp/magit")
   (require 'magit)
   (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only)))
-  (define-key magit-status-mode-map (kbd "P")
-    `(keymap (80 . magit-push-dumber))))
+  ;; (define-key magit-status-mode-map (kbd "P")
+  ;;   `(keymap (80 . magit-push-dumber)))
+  )
 
 (defun magit-push-dumber (&optional prefix)
   (interactive "P")
