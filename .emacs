@@ -190,6 +190,12 @@
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
+(defun rc-prolog ()
+  (custom-set-variables
+   '(prolog-system (quote swi)))
+  (add-to-list 'auto-mode-alist
+               '("\\.pl$" . prolog-mode)))
+
 
 ;;;; Miscellaneous emacs settings
 
@@ -562,6 +568,7 @@ the working directory"
   (rc-java-mode)
   (rc-javascript-mode)
   (rc-markdown-mode)
+  (rc-prolog)
   (rc-magit)
   (rc-git))
 
