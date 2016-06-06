@@ -196,6 +196,15 @@
   (add-to-list 'auto-mode-alist
                '("\\.pl$" . prolog-mode)))
 
+(defun rc-haskell ()
+  (eval-after-load "haskell-mode"
+    '(progn
+       (add-hook 'haskell-mode-hook 'haskell-indentation-mode)
+       (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+       (add-hook 'haskell-mode-hook 'haskell-doc-mode)))
+  (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
+  (add-to-list 'auto-mode-alist '("\\.lhs$" . haskell-mode)))
+
 
 ;;;; Miscellaneous emacs settings
 
@@ -570,6 +579,7 @@ the working directory"
   (rc-javascript-mode)
   (rc-markdown-mode)
   (rc-prolog)
+  (rc-haskell)
   (rc-magit)
   (rc-git))
 
