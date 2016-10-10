@@ -69,7 +69,7 @@
 (defun rc-clojure-mode ()
   (package-require 'cider)
 
-  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  ;; (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
 
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
