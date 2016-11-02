@@ -153,7 +153,13 @@
   '(mu4e-headers-skip-duplicates t)
   '(mu4e-drafts-folder "/[Gmail].Drafts")
   '(mu4e-starred-folder "/[Gmail].Starred")
-  '(mu4e-junk-folder "/[Gmail].Trash")))
+  '(mu4e-junk-folder "/[Gmail].Trash"))
+
+ ;; minimal gmail setup, no all mail
+ (custom-set-variables
+  '(mu4e-headers-skip-duplicates t)
+  '(mu4e-drafts-folder "/[Gmail].Drafts")
+  '(mu4e-starred-folder "/[Gmail].Starred")))
 
 (custom-set-variables
  '(mu4e-attachment-dir "~/Downloads")
