@@ -1,23 +1,21 @@
 [general]
-accounts = OT
-ui = basic
+accounts = Gmail
 
-[Account OT]
+[Account Gmail]
 localrepository = Local
 remoterepository = Remote
-autorefresh = 5
+synclabels = yes
+labelsheader = X-Keywords
 
 [Repository Local]
-type = Maildir
+type = GmailMaildir
 localfolders = ~/Maildir
 
 [Repository Remote]
-type = IMAP
-remotehost = exchange-host.com
-remoteport = 993
-remoteuser = foo
-remotepass = secret
-ssl = yes
-cert_fingerprint = d2b9e196c009ebc7c207188b265081f72bf3e6ef
-maxconnections = 2
-folderfilter = lambda d: d in ['INBOX', 'Archive', 'Drafts', 'Deleted Items', 'FAQ', 'Readme']
+type = Gmail
+# brew install openssl
+sslcacertfile = /usr/local/etc/openssl/cert.pem 
+remoteuser =
+remotepass =
+maxconnections = 1
+folderfilter = lambda f: f in ['INBOX', '[Gmail]/Starred', '[Gmail]/Drafts']
