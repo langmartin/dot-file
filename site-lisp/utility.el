@@ -218,7 +218,7 @@ the preceding, RET, <home>, and M-<f4>."
   (untabify (point-min) (point-max))
   (save-buffer))
 
-(defmacro prog0 (& rest)
+(defmacro prog0 (&rest rest)
   nil)
 
 (provide 'utility)
