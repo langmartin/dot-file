@@ -40,7 +40,7 @@
 
 
 ;;;; Flag by moving to a special folder; flags don't sync well to
-;;;; exchange
+;;;; exchange, not used currently
 
 (defcustom mu4e-starred-folder "/Starred"
   "Your folder for flagged messages to work around offlineimap's flagged message support"
@@ -130,17 +130,24 @@
 (eval-after-load "mu4e"
   '(progn
      (rc-mu4e-gmail-shortcuts)
+
      ;; bcc myself
+     ;; (add-hook
+     ;;  'mu4e-compose-mode-hook
+     ;;  (defun rc-mu4e-bcc-myself ()
+     ;;         (save-excursion
+     ;;           (message-add-header
+     ;;            (concat "Bcc: " user-mail-address "\n")))))
+
+     ;; auto pgp sign
      (add-hook
       'mu4e-compose-mode-hook
-      (defun rc-mu4e-bcc-myself ()
-        (save-excursion
-          (message-add-header
-           (concat "Bcc: " user-mail-address "\n")))))))
+      'mml-secure-message-sign)))
 
 (custom-set-variables
  '(mu4e-headers-skip-duplicates t)
  '(mu4e-attachment-dir "~/Downloads")
+ '(mu4e-compose-signature-auto-include nil)
  '(mu4e-date-format-long "%Y-%m-%d")
  '(mu4e-headers-date-format "%y-%m-%d")
  ;; '(mu4e-get-mail-command "isync INBOX Archive Drafts 'Deleted Items'")
