@@ -91,9 +91,9 @@
    '(tag
      :char       "l"
      :prompt     "label"
-     :ask-target (lambda () (read-string "label to add? "))
+     :ask-target (lambda () (read-string "[+-]label "))
      :action     (lambda (docid msg target)
-                   (mu4e-action-retag-message msg (concat "+" target)))))
+                   (mu4e-action-retag-message msg target))))
 
   (add-to-list
    'mu4e-marks
@@ -104,16 +104,15 @@
      :action      (lambda (docid msg target)
                     ;; must come before proc-move since retag runs
                     ;; 'sed' on the file
-                    (mu4e-action-retag-message msg "-\\\\Inbox")
-                    (mu4e-action-retag-message msg "-\\\\Starred")
+                    (mu4e-action-retag-message msg "-\\Inbox -\\Starred")
                     (mu4e~proc-move docid nil "+S-u-N"))))
 
   (mu4e~headers-defun-mark-for tag)
   (mu4e~headers-defun-mark-for archive)
   (define-key mu4e-headers-mode-map (kbd "l") 'mu4e-headers-mark-for-tag)
-  (define-key mu4e-view-mode-map (kbd "l") 'mu4e-headers-mark-for-tag)
+  ;; (define-key mu4e-view-mode-map (kbd "l") 'mu4e-headers-mark-for-tag)
   (define-key mu4e-headers-mode-map (kbd "y") 'mu4e-headers-mark-for-archive)
-  (define-key mu4e-view-mode-map (kbd "y") 'mu4e-view-mark-for-archive)
+  ;; (define-key mu4e-view-mode-map (kbd "y") 'mu4e-view-mark-for-archive)
 
   (setq
    mu4e-bookmarks
