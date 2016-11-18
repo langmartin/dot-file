@@ -1,0 +1,35 @@
+#!/bin/sh
+# see http://wiki.cacert.org/ConvertingPgpKeyToCertificate
+
+usage () {
+    cat <<EOF
+usage: $0 keyid
+
+before you begin,
+% gpg --edit-key <your email>
+passwd
+
+and set the password to nothing. It's required for the export to ssh.
+your secret keys:
+
+dependencies:
+    brew install gpg2 pinentry-mac monkeysphere
+EOF
+    gpg --list-secret-keys
+    exit 1
+}
+
+[ -z "$1" ] && usage
+
+set -x
+
+gpg --export-secret-key "$1" | openpgp2ssh "$1" > id_rsa
+openssl req -new -key id_rsa -out id_rsa.csr
+openssl x509 -in id_rsa.csr -out id_rsa.cert -req -signkey id_rsa
+cat id_rsa id_rsa.cert > id_rsa.pem
+openssl pkcs12 -export -in id_rsa.pem -out id_rsa.pem.pk12
+
+set +x
+
+echo "your key is self-signed"
+echo "make sure you set your gpg password again!"
