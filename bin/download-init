@@ -1,5 +1,6 @@
 #!/bin/sh
 cd ~/Downloads
-wget https://www.hipchat.com/downloads/latest/mac && mv mac hipchat.zip
 wget http://slate.ninjamonkeysoftware.com/Slate.dmg
+wget http://www.ed.com/qp/qp-1.6.dmg
 open http://www.willus.com/k2pdfopt/download
+
