@@ -138,6 +138,8 @@
      ;;           (message-add-header
      ;;            (concat "Bcc: " user-mail-address "\n")))))
 
+     ;; (setq mu4e-compose-mode-hook nil)
+
      ;; auto pgp sign
      (add-hook
       'mu4e-compose-mode-hook

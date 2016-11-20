@@ -23,7 +23,9 @@ EOF
 
 set -x
 
-gpg --export-secret-key "$1" | openpgp2ssh "$1" > id_rsa
+k="$1"; shift
+
+gpg --export-secret-key "$k" | openpgp2ssh "$k" > id_rsa
 openssl req -new -key id_rsa -out id_rsa.csr
 openssl x509 -in id_rsa.csr -out id_rsa.cert -req -signkey id_rsa
 cat id_rsa id_rsa.cert > id_rsa.pem
