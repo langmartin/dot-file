@@ -33,7 +33,7 @@
  '(erc-fool-highlight-type (quote all))
  '(erc-generate-log-file-name-function (quote erc-generate-log-file-name-short))
  '(erc-join-buffer (quote bury))
- '(erc-log-channels-directory "~/Documents/IRC/erc/")
+ '(erc-log-channels-directory "~/data/erc/")
  '(erc-match-mode 1)
  '(erc-modules (quote (autoaway autojoin button completion fill irccontrols list log match menu move-to-prompt netsplit networks noncommands readonly ring stamp track)))
  '(erc-scrolltobottom-mode t)
