@@ -116,15 +116,16 @@
 
   (setq
    mu4e-bookmarks
-   `(("tag:\\\\Inbox" "Inbox" 105)
-     (,"tag:on-monday" "on Monday" 109)
-     (,"tag:on-first" "on The First" 102)
-     (,"tag:\\\\Starred" "Flagged" 115)
-     (,"tag:\\\\Draft" "Drafts" 100)
+   `(("tag:\\\\Inbox" "Inbox" ?i)
+     (,"tag:on-monday" "on Monday" ?m)
+     (,"tag:on-first" "on The First" ?f)
+     (,"tag:on-occasion" "on Occasion" ?o)
+     (,"tag:\\\\Starred" "Flagged" ?s)
+     (,"tag:\\\\Draft" "Drafts" ?d)
      ;; (,(concat "from:" user-mail-address " AND date:30d..now")
      ;;  "Last 30 days sent" 116)
-     ("tag:\\\\Sent AND date:30d..now" "Last 30 days sent" 116)
-     ("date:7d..now" "Last 7 days" 97))))
+     ("tag:\\\\Sent AND date:30d..now" "Last 30 days sent" ?t)
+     ("date:7d..now" "Last 7 days" ?a))))
 
 (eval-after-load "mu4e"
   '(progn
