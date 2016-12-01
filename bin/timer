@@ -1,7 +1,8 @@
 #!/bin/sh
 if [ "$1" == "child" ]; then
     shift
-    sleep "$1" && terminal-notifier -message "$2"
+    sleep "$1"; shift
+    terminal-notifier -message "$*"
 else
     exec nohup "$0" child "$@" < /dev/null > /dev/null 2>&1 &
 fi
