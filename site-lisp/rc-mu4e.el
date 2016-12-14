@@ -104,7 +104,7 @@
      :action      (lambda (docid msg target)
                     ;; must come before proc-move since retag runs
                     ;; 'sed' on the file
-                    (mu4e-action-retag-message msg "-\\Inbox -\\Starred")
+                    (mu4e-action-retag-message msg "-\\Inbox")
                     (mu4e~proc-move docid nil "+S-u-N"))))
 
   (mu4e~headers-defun-mark-for tag)
@@ -155,9 +155,9 @@
  ;; '(mu4e-get-mail-command "isync INBOX Archive Drafts 'Deleted Items'")
  '(mu4e-get-mail-command "offlineimap")
  '(mu4e-headers-fields (quote ((:human-date . 12) (:flags . 6) (:from . 22) (:subject))))
- '(mu4e-headers-leave-behavior (quote apply))
  '(mu4e-html2text-command "textutil -convert txt -stdin -stdout")
  '(mu4e-view-show-addresses t)
+ '(mu4e-headers-include-related t)
  '(mu4e-confirm-quit nil))
 
 ;; (custom-save-all)
