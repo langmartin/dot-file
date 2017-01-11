@@ -1,0 +1,8 @@
+#!/bin/sh
+{
+    sed -n '/^#========== adblock!/q;p' /etc/hosts
+    echo '#========== adblock!'
+    curl http://winhelp2002.mvps.org/hosts.txt \
+	| tr -d '\r' \
+	| grep -v ' localhost'
+} > /etc/hosts-adblock
