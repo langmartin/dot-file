@@ -23,7 +23,7 @@
   (interactive)
   (save-default-directory
       "~"
-    (call-interactively 'erc)
+    (erc-ssl :server "irc.freenode.net" :port 6697)
     (erc-fix-colors)))
 
 (custom-set-variables
