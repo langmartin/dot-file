@@ -357,8 +357,9 @@
    '(ido-subdir ((t (:foreground "blue3")))))
   (global-set-key (kbd "M-.") 'or-find-tag-imenu)
   (global-set-key (kbd "H-i") 'or-find-tag-imenu)
-  (package-require 'find-file-in-repository)
-  (global-set-key (kbd "C-x f") 'find-file-in-repository))
+  ;; (package-require 'find-file-in-repository)
+  ;; (global-set-key (kbd "C-x f") 'find-file-in-repository)
+  )
 
 (defun rc-winner ()
   (require 'winner)
@@ -551,6 +552,8 @@ the working directory"
   (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only)))
+  (package-require 'magit-find-file)
+  (global-set-key (kbd "C-x f") 'magit-find-file-completing-read)
   ;; (define-key magit-status-mode-map (kbd "P")
   ;;   `(keymap (80 . magit-push-dumber)))
   )
