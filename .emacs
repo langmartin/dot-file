@@ -402,7 +402,7 @@ the working directory"
   (add-hook 'before-save-hook 'backup-buffer-force))
 
 (defun rc-look-and-feel ()
-  (rc-font-lg)
+  (rc-font-sm)
 
   (custom-set-variables
    '(vc-annotate-background nil)
