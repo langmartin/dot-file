@@ -86,26 +86,37 @@
   (define-key mu4e-headers-mode-map "r" 'mu4e-compose-reply)
   (define-key mu4e-view-mode-map "r" 'mu4e-compose-reply)
 
-  (add-to-list
-   'mu4e-marks
-   '(tag
-     :char       "l"
-     :prompt     "label"
-     :ask-target (lambda () (read-string "[+-]label "))
-     :action     (lambda (docid msg target)
-                   (mu4e-action-retag-message msg target))))
+  (progn
+    (add-to-list
+     'mu4e-marks
+     '(tag
+       :char       "l"
+       :prompt     "label"
+       :ask-target (lambda () (read-string "[+-]label "))
+       :action     (lambda (docid msg target)
+                     (mu4e-action-retag-message msg target))))
 
-  (add-to-list
-   'mu4e-marks
-   '(archive
-     :char       "y"
-     :prompt     "archive"
-     :show-target (lambda (target) "archive")
-     :action      (lambda (docid msg target)
-                    ;; must come before proc-move since retag runs
-                    ;; 'sed' on the file
-                    (mu4e-action-retag-message msg "-\\Inbox")
-                    (mu4e~proc-move docid nil "+S-u-N"))))
+    (add-to-list
+     'mu4e-marks
+     '(archive
+       :char       "y"
+       :prompt     "archive"
+       :show-target (lambda (target) "archive")
+       :action      (lambda (docid msg target)
+                      ;; must come before proc-move since retag runs
+                      ;; 'sed' on the file
+                      (mu4e-action-retag-message msg "-\\Inbox")
+                      (mu4e~proc-move docid nil "+S-u-N"))))
+
+    (add-to-list
+     'mu4e-marks
+     '(trash
+       :char   ("d" . "▼")
+       :prompt "dtrash"
+       :show-target (lambda (target) "trash")
+       :action (lambda (docid msg target)
+                 (mu4e-action-retag-message msg "-\\Inbox +\\Trash")
+                 (mu4e~proc-move docid nil "+S-u-N")))))
 
   (mu4e~headers-defun-mark-for tag)
   (mu4e~headers-defun-mark-for archive)
