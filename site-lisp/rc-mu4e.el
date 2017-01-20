@@ -86,37 +86,38 @@
   (define-key mu4e-headers-mode-map "r" 'mu4e-compose-reply)
   (define-key mu4e-view-mode-map "r" 'mu4e-compose-reply)
 
-  (progn
-    (add-to-list
-     'mu4e-marks
-     '(tag
-       :char       "l"
-       :prompt     "label"
-       :ask-target (lambda () (read-string "[+-]label "))
-       :action     (lambda (docid msg target)
-                     (mu4e-action-retag-message msg target))))
-
-    (add-to-list
-     'mu4e-marks
-     '(archive
-       :char       "y"
-       :prompt     "archive"
-       :show-target (lambda (target) "archive")
-       :action      (lambda (docid msg target)
-                      ;; must come before proc-move since retag runs
-                      ;; 'sed' on the file
-                      (mu4e-action-retag-message msg "-\\Inbox")
-                      (mu4e~proc-move docid nil "+S-u-N"))))
-
-    (add-to-list
-     'mu4e-marks
-     '(trash
-       :char   ("d" . "▼")
-       :prompt "dtrash"
-       :show-target (lambda (target) "trash")
-       :action (lambda (docid msg target)
-                 (mu4e-action-retag-message msg "-\\Inbox +\\Trash")
-                 (mu4e~proc-move docid nil "+S-u-N")))))
+  (set 'mu4e-marks
+       (append
+        '((tag
+           :char       "l"
+           :prompt     "label"
+           :ask-target (lambda () (read-string "[+-]label "))
+           :action     (lambda (docid msg target)
+                         (mu4e-action-retag-message msg target)))
+          (flag
+           :char        "+"
+           :prompt      "starred"
+           :show-target (lambda (target) "starred")
+           :action      (lambda (docid msg target)
+                          (mu4e-action-retag-message msg "+\\Starred")
+                          (mu4e~proc-move docid nil "+F-u-N")))
+          (archive
+           :char       "y"
+           :prompt     "archive"
+           :show-target (lambda (target) "archive")
+           :action      (lambda (docid msg target)
+                          (mu4e-action-retag-message
+                           msg
+                           "-\\Inbox,-\\Starred,-on-monday,-on-first,-on-occasion")
+                          (mu4e~proc-move docid nil "+S-F-u-N")))
+          (trash
+           :char        "D"
+           :prompt      "trash"
+           :show-target (lambda (target) "trash")
+           :action      (lambda (docid msg target)
+                          (mu4e-action-retag-message msg "+\\Trash")
+                          (mu4e~proc-move docid nil "+T-N"))))
+        mu4e-marks))
 
   (mu4e~headers-defun-mark-for tag)
   (mu4e~headers-defun-mark-for archive)
@@ -127,11 +128,11 @@
 
   (setq
    mu4e-bookmarks
-   `(("tag:\\\\Inbox" "Inbox" ?i)
+   `(("tag:\\\\Inbox OR flag:unread" "Inbox" ?i)
      (,"tag:on-monday" "on Monday" ?m)
      (,"tag:on-first" "on The First" ?f)
      (,"tag:on-occasion" "on Occasion" ?o)
-     (,"tag:\\\\Starred" "Flagged" ?s)
+     (,"tag:\\\\Starred OR flag:flagged" "Flagged" ?s)
      (,"tag:\\\\Draft" "Drafts" ?d)
      ;; (,(concat "from:" user-mail-address " AND date:30d..now")
      ;;  "Last 30 days sent" 116)
