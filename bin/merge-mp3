@@ -1,15 +1,10 @@
 #!/bin/sh
 
 o="$1"; shift
-t=merge-mp3.$$
 
 {
     for f in "$@"; do
 	echo "file '$f'"
     done
-} > "$t"
+} | ffmpeg -f concat -safe 0 -y -i - -c copy "$o" > /dev/null 2>&1
 
-set -ex
-
-ffmpeg -f concat -safe 0 -y -i "$t" -c copy "$o" > /dev/null 2>&1
-rm "$t"
