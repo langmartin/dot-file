@@ -4,8 +4,7 @@
 
 (defun mu4e-and-update ()
   (interactive)
-  (mu4e)
-  (mu4e-update-mail-and-index nil))
+  (mu4e-update-mail-and-index t))
 
 (global-set-key
  (kbd "C-x m")
