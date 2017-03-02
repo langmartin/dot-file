@@ -18,4 +18,9 @@ sslcacertfile = /usr/local/etc/openssl/cert.pem
 remoteuser =
 remotepass =
 maxconnections = 1
-folderfilter = lambda f: f in ['INBOX', '[Gmail]/Starred', '[Gmail]/Drafts']
+folderfilter = lambda f: f in ['[Gmail]/All Mail']
+
+# Local Variables:
+# mode: python
+# End:
+

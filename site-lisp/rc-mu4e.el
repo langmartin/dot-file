@@ -15,7 +15,7 @@
     ("u" . mu4e-and-update))))
 
 ;; brew install --with-emacs mu
-;; brew install isync
+;; brew install offlineimap
 ;; brew install html2text
 
 
@@ -129,11 +129,11 @@
   ;; (set 'mu4e-marks (cdr (cddddr mu4e-marks)))
 
   (mu4e~headers-defun-mark-for tag)
-  (mu4e~headers-defun-mark-for archive)
   (define-key mu4e-headers-mode-map (kbd "l") 'mu4e-headers-mark-for-tag)
-  ;; (define-key mu4e-view-mode-map (kbd "l") 'mu4e-headers-mark-for-tag)
+  (mu4e~headers-defun-mark-for archive)
+  (mu4e~view-defun-mark-for archive)
   (define-key mu4e-headers-mode-map (kbd "y") 'mu4e-headers-mark-for-archive)
-  ;; (define-key mu4e-view-mode-map (kbd "y") 'mu4e-view-mark-for-archive)
+  (define-key mu4e-view-mode-map (kbd "y") 'mu4e-view-mark-for-archive)
 
   (setq
    mu4e-bookmarks
