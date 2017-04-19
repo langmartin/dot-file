@@ -63,6 +63,14 @@
     (switch-to-buffer nil))
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
 
+(defun toggle-transparency (&optional opacity)
+  (interactive "p")
+  (let* ((n (->> (selected-frame) frame-parameters (assoc 'alpha) cdr))
+         (m (if (= 1 opacity)
+                (if (or (not n) (= 100 n)) 90 100)
+              opacity)))
+    (set-frame-parameter (selected-frame) 'alpha m)))
+
 
 ;;;; Modes
 
