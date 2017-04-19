@@ -1,10 +1,24 @@
-#!/bin/sh
+#!/bin/bash
 
 o="$1"; shift
 
 {
     for f in "$@"; do
 	echo "file '$f'"
+	# echo "file '`pwd`/$f'"
+ 	# echo -n "file "
+	# echo "'$f'" | sed 's/ /%20/g'
     done
-} | ffmpeg -f concat -safe 0 -y -i - -c copy "$o" > /dev/null 2>&1
+} | AV_LOG_FORCE_NOCOLOR=1 \
+			ffmpeg -f concat \
+			-safe 0 \
+			-y \
+			-i - -c copy "$o"
+
+			# -protocol_whitelist file,crypto \
+			# -safe 0 \
+
+
+
+# > /dev/null 2>&1
 
