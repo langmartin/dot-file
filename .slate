@@ -11,7 +11,9 @@ alias right	move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenS
 alias left34	move screenOriginX;screenOriginY (screenSizeX/4)*3;screenSizeY
 alias right34	move screenOriginX+screenSizeX/4;screenOriginY (screenSizeX/4)*3;screenSizeY
 alias top	move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
+alias top34	move screenOriginX;screenOriginY screenSizeX;(screenSizeY/4)*3
 alias bottom	move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
+alias bottom14	move screenOriginX;screenOriginY+screenSizeY-(screenSizeY/4) screenSizeX;screenSizeY/4
 alias max	move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias center23	move screenOriginX+screenSizeX/6;screenOriginY (screenSizeX/3)*2;screenSizeY
 alias center13	move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
@@ -76,14 +78,21 @@ default one count:1
 layout read 'Emacs':REPEAT ${left}
 layout read 'Safari':REPEAT ${right}
 layout read 'Google Chrome':REPEAT ${right}
+
 layout hack 'Emacs':REPEAT ${max}
 layout hack 'Safari':REPEAT ${max}
 layout hack ${chrome}
+
+layout make 'Emacs':REPEAT ${bottom14}
+layout make 'Safari':REPEAT ${top34}
+layout make 'Google Chrome':REPEAT ${top34}
 
 bind r:ctrl,alt,cmd layout read
 bind s:ctrl,alt,cmd layout read
 bind h:ctrl,alt,cmd layout hack
 bind u:ctrl,alt,cmd layout hack
+bind b:ctrl,alt,cmd layout make
+bind m:ctrl,alt,cmd layout make
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
