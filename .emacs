@@ -23,13 +23,25 @@
     (package-install package))
   (require package))
 
-(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH") ":" (getenv "HOME") "/bin"))
-(add-to-list 'exec-path "/usr/local/bin")
-(setq exec-path
-      (append (butlast exec-path)
-              (list (expand-file-name "~/bin")
-                    (expand-file-name "~/code/dot-file/bin"))
-              (last exec-path)))
+(defun maybe-add-to-exec-path (filename)
+  (let ((f (expand-file-name filename)))
+    (when (file-exists-p f)
+      (add-to-list 'exec-path f t))))
+
+(package-require 'dash)
+(require 'subr-x)
+
+(defun exec-path-setenv ()
+  (interactive)
+  (let* ((env (split-string (getenv "PATH") ":"))
+         (new (-remove (lambda (x) (member x env)) exec-path)))
+    (setenv "PATH" (string-join (append env new) ":"))))
+
+(maybe-add-to-exec-path "/usr/local/bin")
+(maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
+(maybe-add-to-exec-path "~/code/dot-file/bin")
+(maybe-add-to-exec-path "~/bin")
+(exec-path-setenv)
 
 
 ;;;; Osx
@@ -88,12 +100,12 @@
   (define-key clojure-mode-map (kbd "H-t") 'clojure-insert-trace)
   (define-key clojure-mode-map (kbd "H-c") 'clojure-insert-clear-ns)
 
-  (require 'clj-refactor)
-  (defun clojure-refactor-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1)
-    (cljr-add-keybindings-with-prefix "C-c C-m"))
-  (add-hook 'clojure-mode-hook 'clojure-refactor-mode-hook)
+  ;; (require 'clj-refactor)
+  ;; (defun clojure-refactor-mode-hook ()
+  ;;   (clj-refactor-mode 1)
+  ;;   (yas-minor-mode 1)
+  ;;   (cljr-add-keybindings-with-prefix "C-c C-m"))
+  ;; (add-hook 'clojure-mode-hook 'clojure-refactor-mode-hook)
 
   (custom-set-variables
    '(cider-repl-pop-to-buffer-on-connect nil)
