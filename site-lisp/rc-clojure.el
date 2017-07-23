@@ -24,4 +24,8 @@
             old
           new)))))
 
+(defun clojure-lint-file ()
+  (interactive)
+  (shell-command (concat "joker --lint " buffer-file-truename)))
+
 (provide 'rc-clojure)
