@@ -1,5 +1,9 @@
 #!/bin/sh
-if system_profiler SPDisplaysDataType|grep -q "Connection Type:"; then
+twoDispP () {
+    system_profiler SPDisplaysDataType|grep -c ' Displays:'|grep -v -q 1
+}
+
+if twoDispP; then
 	/usr/local/bin/emacsclient -e '(rc-font-lg)'
 else
 	/usr/local/bin/emacsclient -e '(rc-font-sm)'
