@@ -8,19 +8,22 @@ brew install imagemagick
 brew install emacs --cocoa --with-gnutls
 
 brew install \
-ag \
-aspell \
-awscli \
-ctags \
-html2text \
-jq \
-msmtp \
-offline-imap \
-pandoc \
-postgresql \
-redis \
-terminal-notifier \
-tmux \
-wget
+     ag \
+     aspell \
+     awscli \
+     ctags \
+     html2text \
+     jq \
+     msmtp \
+     npm \
+     offline-imap \
+     pandoc \
+     planck \
+     terminal-notifier \
+     tmux \
+     wget
 
 EMACS=/usr/local/bin/emacs brew install mu --with-emacs
+
+brew cask install anybar
+brew install candid82/brew/joker
