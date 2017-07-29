@@ -1,3 +1,5 @@
+;; obsolete, no longer used
+
 (defun clojure-test-for-style (namespace pathf style)
   "paramaterized version of clojure-test-for from clojure-mode.el"
   (let* ((namespace (clojure-underscores-for-hyphens namespace))

@@ -92,8 +92,9 @@
 
 (defun rc-clojure-mode ()
   (package-require 'cider)
-
+  (package-require 'flycheck-joker)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
+  (add-hook 'clojure-mode-hook 'flycheck-mode)
 
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
   (define-key clojure-mode-map (kbd "H-l") 'clojure-insert-lambda)
@@ -238,6 +239,12 @@
 
 ;;;; Miscellaneous emacs settings
 
+(defun update-anybar-color (color &optional port)
+  (interactive "s")
+  (shell-command
+   (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
+           color (or port 1738))))
+
 (defun rc-emacs-miscellany ()
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -276,6 +283,7 @@
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
+  (global-set-key (kbd "H-e") 'eshell)
   (global-set-key (kbd "H-i") 'imenu)
   (global-set-key (kbd "H-s") 'shell)
   (global-set-key (kbd "H-r") 'revert-buffer))
@@ -618,7 +626,7 @@ the working directory"
   (rc-git))
 
 (defun rc-init-site-lisp ()
-  (require 'rc-clojure)
+  ;; (require 'rc-clojure)
   (require 'rc-mu4e)
   (require 'rc-erc)
   (require 'rc-org-mode)
