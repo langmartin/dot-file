@@ -27,3 +27,7 @@ EMACS=/usr/local/bin/emacs brew install mu --with-emacs
 
 brew cask install anybar
 brew install candid82/brew/joker
+
+brew install \
+     pineentry-mac \
+     gpg2
