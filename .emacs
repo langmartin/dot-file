@@ -94,9 +94,10 @@
      (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
              color (or port 1738))))
 
-  (defun anybar-blue  () (interactive) (update-anybar-color "blue"))
-  (defun anybar-green () (interactive) (update-anybar-color "green"))
-  (defun anybar-none  () (interactive) (update-anybar-color "white")))
+  (defun anybar-blue  () (interactive) (anybar-color "blue"))
+  (defun anybar-cyan  () (interactive) (anybar-color "cyan"))
+  (defun anybar-green () (interactive) (anybar-color "green"))
+  (defun anybar       () (interactive) (anybar-color "white")))
 (rc-anybar)
 
 
@@ -120,7 +121,7 @@
   ;;   (cljr-add-keybindings-with-prefix "C-c C-m"))
   ;; (add-hook 'clojure-mode-hook 'clojure-refactor-mode-hook)
 
-  (add-hook 'cider-connected-hook 'anybar-blue)
+  (add-hook 'cider-connected-hook 'anybar-cyan)
 
   (custom-set-variables
    '(cider-repl-pop-to-buffer-on-connect nil)

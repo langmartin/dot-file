@@ -19,7 +19,8 @@ dockerize () {
 }
 
 anybar () {
-    echo -n "$1" | nc -4u -w0 localhost ${2:-1738}
+    [ -n "$1" ] && c="$1" || c=white
+    echo -n "$c" | nc -4u -w0 localhost ${2:-1738}
 }
 
 make () {
