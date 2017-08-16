@@ -87,11 +87,23 @@
               opacity)))
     (set-frame-parameter (selected-frame) 'alpha m)))
 
+(defun rc-anybar ()
+  (defun anybar-color (color &optional port)
+    (interactive "s")
+    (shell-command
+     (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
+             color (or port 1738))))
+
+  (defun anybar-blue  () (interactive) (update-anybar-color "blue"))
+  (defun anybar-green () (interactive) (update-anybar-color "green"))
+  (defun anybar-none  () (interactive) (update-anybar-color "white")))
+(rc-anybar)
+
 
 ;;;; Modes
 
 (defun rc-clojure-mode ()
-  (package-require 'cider)
+  (require 'cider)
   (package-require 'flycheck-joker)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
@@ -107,6 +119,8 @@
   ;;   (yas-minor-mode 1)
   ;;   (cljr-add-keybindings-with-prefix "C-c C-m"))
   ;; (add-hook 'clojure-mode-hook 'clojure-refactor-mode-hook)
+
+  (add-hook 'cider-connected-hook 'anybar-blue)
 
   (custom-set-variables
    '(cider-repl-pop-to-buffer-on-connect nil)
@@ -239,12 +253,6 @@
 
 ;;;; Miscellaneous emacs settings
 
-(defun update-anybar-color (color &optional port)
-  (interactive "s")
-  (shell-command
-   (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
-           color (or port 1738))))
-
 (defun rc-emacs-miscellany ()
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -286,6 +294,8 @@
   (global-set-key (kbd "H-e") 'eshell)
   (global-set-key (kbd "H-i") 'imenu)
   (global-set-key (kbd "H-s") 'shell)
+  (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*admin*")))
+  (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*deploy*")))
   (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun yyyymmdd ()
