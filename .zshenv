@@ -1,4 +1,6 @@
-PATH="/usr/local/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/share/npm/bin:"~/bin
+PATH="/usr/local/bin:$PATH:/sbin:/usr/sbin"
+PATH="$PATH":~/bin:~/code/dot-file/bin
+PATH="$PATH"~/code/contrib/google-cloud-sdk/bin
 
 if [ "$TERM" = dumb ]; then
 	export PAGER="head -n100"
@@ -7,5 +9,9 @@ if [ "$TERM" = dumb ]; then
 fi
 
 if [ -z "$SSH_CLIENT" ]; then
-	EDITOR="/usr/local/bin/emacsclient"
+	EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 fi
+
+export QPVERBOSE=true
+export QPOPT="-V"
+

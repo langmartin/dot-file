@@ -17,3 +17,13 @@ setopt INC_APPEND_HISTORY
 dockerize () {
     eval `docker-machine env default`
 }
+
+anybar () {
+    echo -n "$1" | nc -4u -w0 localhost ${2:-1738}
+}
+
+make () {
+    env make $@ && anybar green || anybar red
+}
+
+. /Users/lang/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
