@@ -121,7 +121,8 @@
   ;;   (cljr-add-keybindings-with-prefix "C-c C-m"))
   ;; (add-hook 'clojure-mode-hook 'clojure-refactor-mode-hook)
 
-  (add-hook 'cider-connected-hook 'anybar-cyan)
+  (add-hook 'cider-connected-hook 'anybar-blue)
+  (advice-add 'cider-jack-in :before #'anybar)
 
   (custom-set-variables
    '(cider-repl-pop-to-buffer-on-connect nil)

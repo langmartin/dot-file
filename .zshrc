@@ -24,6 +24,7 @@ anybar () {
 }
 
 make () {
+    anybar
     env make $@ && anybar green || anybar red
 }
 
