@@ -10,7 +10,6 @@ brew install emacs --with-cocoa --with-gnutls
 brew install \
      ag \
      aspell \
-     awscli \
      ctags \
      html2text \
      jq \
