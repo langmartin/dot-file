@@ -26,7 +26,7 @@
 (defun maybe-add-to-exec-path (filename)
   (let ((f (expand-file-name filename)))
     (when (file-exists-p f)
-      (add-to-list 'exec-path f t))))
+      (add-to-list 'exec-path f))))
 
 (package-require 'dash)
 (require 'subr-x)
@@ -37,8 +37,8 @@
          (new (-remove (lambda (x) (member x env)) exec-path)))
     (setenv "PATH" (string-join (append env new) ":"))))
 
-(maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
+(maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "~/code/dot-file/bin")
 (maybe-add-to-exec-path "~/bin")
 (exec-path-setenv)
@@ -94,10 +94,10 @@
      (format "echo -n \"%s\" | nc -4u -w0 localhost %s"
              color (or port 1738))))
 
-  (defun anybar-blue  () (interactive) (anybar-color "blue"))
-  (defun anybar-cyan  () (interactive) (anybar-color "cyan"))
-  (defun anybar-green () (interactive) (anybar-color "green"))
-  (defun anybar       () (interactive) (anybar-color "white")))
+  (defun anybar-blue  (&rest _) (interactive) (anybar-color "blue"))
+  (defun anybar-cyan  (&rest _) (interactive) (anybar-color "cyan"))
+  (defun anybar-green (&rest _) (interactive) (anybar-color "green"))
+  (defun anybar       (&rest _) (interactive) (anybar-color "white")))
 (rc-anybar)
 
 
@@ -298,6 +298,7 @@
   (global-set-key (kbd "H-s") 'shell)
   (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*admin*")))
   (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*deploy*")))
+  (global-set-key (kbd "H-m") '(lambda () (interactive) (shell "*music*")))
   (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun yyyymmdd ()
