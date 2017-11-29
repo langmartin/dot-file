@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo dscl . create /Users/"$1" IsHidden 1
