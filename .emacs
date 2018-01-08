@@ -1,18 +1,4 @@
 ;;;; Bootstrapping
-
-(defmacro -> (x &rest calls)
-  (if (null calls)
-      `(progn ,x)
-    `(-> ,(append (list (caar calls) x)
-                  (cdar calls))
-         ,@(cdr calls))))
-
-(defmacro ->> (x &rest calls)
-  (if (null calls)
-      `(progn ,x)
-    `(->> ,(append (car calls) (list x))
-          ,@(cdr calls))))
-
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
@@ -41,6 +27,7 @@
 (maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "~/code/dot-file/bin")
 (maybe-add-to-exec-path "~/bin")
+(maybe-add-to-exec-path "~/.cargo/bin")
 (exec-path-setenv)
 
 
