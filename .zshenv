@@ -1,6 +1,7 @@
 PATH="/usr/local/bin:$PATH:/sbin:/usr/sbin"
 PATH="$PATH":~/bin:~/code/dot-file/bin
 PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
+PATH="$PATH":~/.cargo/bin
 
 if [ "$TERM" = dumb ]; then
 	export PAGER="head -n100"
