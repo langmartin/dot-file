@@ -176,7 +176,8 @@
  ;; '(mu4e-get-mail-command "isync INBOX Archive Drafts 'Deleted Items'")
  '(mu4e-get-mail-command "offlineimap")
  '(mu4e-headers-fields (quote ((:human-date . 12) (:flags . 6) (:from . 22) (:subject))))
- '(mu4e-html2text-command "textutil -convert txt -stdin -stdout")
+ ;; mu4e-shr2text seems to be working, this seems not to be
+ ;; '(mu4e-html2text-command "textutil -convert txt -stdin -stdout")
  '(mu4e-view-show-addresses t)
  '(mu4e-headers-include-related t)
  '(mu4e-confirm-quit nil))
