@@ -586,7 +586,7 @@ the working directory"
 (defun rc-magit ()
   ;; (add-to-list 'load-path "site-lisp/git-modes")
   ;; (add-to-list 'load-path "site-lisp/magit")
-  (require 'magit)
+  (package-require 'magit)
   (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only)))
