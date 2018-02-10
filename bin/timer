@@ -2,7 +2,7 @@
 if [ "$1" == "child" ]; then
     shift
     sleep "$1"; shift
-    terminal-notifier -message "$*"
+    terminal-notifier -message "$*" -sound default
 else
     exec nohup "$0" child "$@" < /dev/null > /dev/null 2>&1 &
 fi

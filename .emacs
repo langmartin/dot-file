@@ -1,6 +1,7 @@
 ;;;; Bootstrapping
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
