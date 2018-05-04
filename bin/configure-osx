@@ -1,8 +1,8 @@
 #!/bin/sh
-defaults write com.apple.Mail NSUserKeyEquivalents -dict-add "Quit Mail" "@^q"
-defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Quit Terminal" "@^q"
+# defaults write com.apple.Mail NSUserKeyEquivalents -dict-add "Quit Mail" "@^q"
+# defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Quit Terminal" "@^q"
 defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Print..." '@$p'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@^q"
+# defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@^q"
 
 # delete goes back a page
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
