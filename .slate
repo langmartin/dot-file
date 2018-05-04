@@ -8,9 +8,13 @@ config checkDefaultsOnLoad true
 
 alias left	move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias right	move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias left13	move screenOriginX;screenOriginY (screenSizeX/3)*1;screenSizeY
+alias left37	move screenOriginX;screenOriginY (screenSizeX/7)*3;screenSizeY
 alias left34	move screenOriginX;screenOriginY (screenSizeX/4)*3;screenSizeY
-alias right34	move screenOriginX+screenSizeX/4;screenOriginY (screenSizeX/4)*3;screenSizeY
 alias right13	move screenOriginX+(screenSizeX/3)*2;screenOriginY screenSizeX/3;screenSizeY
+alias right23	move screenOriginX+(screenSizeX/3)*1;screenOriginY (screenSizeX/3)*2;screenSizeY
+alias right47	move screenOriginX+(screenSizeX/7)*3;screenOriginY (screenSizeX/7)*4;screenSizeY
+alias right34	move screenOriginX+screenSizeX/4;screenOriginY (screenSizeX/4)*3;screenSizeY
 alias top	move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
 alias top34	move screenOriginX;screenOriginY screenSizeX;(screenSizeY/4)*3
 alias bottom	move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
@@ -93,6 +97,11 @@ layout tube 'Emacs':REPEAT ${right13}
 layout tube 'Safari':REPEAT ${max}
 layout tube 'Google Chrome':REPEAT ${max}
 
+layout pape 'Emacs':REPEAT ${left37}
+layout pape 'Safari':REPEAT ${right47}
+layout pape 'Google Chrome':REPEAT ${right47}
+layout pape 'Preview':REPEAT ${right47}
+
 bind r:ctrl,alt,cmd layout read
 bind s:ctrl,alt,cmd layout read
 bind h:ctrl,alt,cmd layout hack
@@ -100,6 +109,7 @@ bind u:ctrl,alt,cmd layout hack
 bind b:ctrl,alt,cmd layout make
 bind m:ctrl,alt,cmd layout make
 bind y:ctrl,alt,cmd layout tube
+bind p:ctrl,alt,cmd layout pape
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
@@ -110,8 +120,8 @@ bind v:ctrl,alt,cmd ${center13}
 bind b:ctrl,alt,cmd ${center}
 bind f:ctrl,alt,cmd ${max}
 bind tab:ctrl,alt,cmd throw next
-bind .:ctrl,alt,cmd ${right13}
-bind ,:ctrl,alt,cmd ${left34}
+bind .:ctrl,alt,cmd ${left37}
+bind ,:ctrl,alt,cmd ${right47}
 
 ## ----------------------------------------
 ## Quarters, which maybe I don't want?
