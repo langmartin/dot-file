@@ -102,11 +102,12 @@
   (define-key clojure-mode-map (kbd "H-t") 'clojure-insert-trace)
   (define-key clojure-mode-map (kbd "H-c") 'clojure-insert-clear-ns)
 
-  ;; (require 'clj-refactor)
-  ;; (defun clojure-refactor-mode-hook ()
-  ;;   (clj-refactor-mode 1)
-  ;;   (yas-minor-mode 1)
-  ;;   (cljr-add-keybindings-with-prefix "C-c C-m"))
+  ;; (package-require 'clj-refactor)
+  (defun clojure-refactor-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1)
+    ;; (cljr-add-keybindings-with-prefix "C-c C-m")
+    )
   ;; (add-hook 'clojure-mode-hook 'clojure-refactor-mode-hook)
 
   (add-hook 'cider-connected-hook 'anybar-blue)
@@ -208,15 +209,20 @@
   (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
 
   (package-require 'skewer-mode)
-  (skewer-setup)
+  (skewer-setup))
 
+(defun rc-html-css-mode ()
   (eval-after-load "sgml-mode"
     '(progn
        (package-require 'zencoding-mode)
        (add-to-list 'html-mode-hook 'zencoding-mode)))
 
   (require 'sql)
-  (add-to-list 'sql-mode-hook 'turn-off-tabs))
+  (add-to-list 'sql-mode-hook 'turn-off-tabs)
+
+  (eval-after-load "css-mode"
+    '(progn
+       (define-key css-mode-map (kbd "C-x C-s") 'cleanup-save))))
 
 (defun rc-markdown-mode ()
   (interactive)
@@ -620,6 +626,7 @@ the working directory"
   (rc-clojure-mode)
   (rc-java-mode)
   (rc-javascript-mode)
+  (rc-html-css-mode)
   (rc-markdown-mode)
   (rc-prolog)
   (rc-haskell)
