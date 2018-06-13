@@ -596,7 +596,8 @@ the working directory"
   (package-require 'magit)
   (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
-   '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only)))
+   '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
+   '(global-magit-file-mode nil))
   ;; (package-require 'magit-find-file)
   ;; (global-set-key (kbd "C-x f") 'magit-find-file-completing-read)
   ;; (define-key magit-status-mode-map (kbd "P")
