@@ -20,7 +20,7 @@ defaults write com.apple.iTunes invertStoreLinks -bool true
 
 # hide the dock with a huge timeout so that it must be keyboard activated
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock autohide-delay -int 10000
+defaults write com.apple.dock autohide-delay -int 2147483647
 
 ## ----------------------------------------------------------------------
 ## From https://github.com/mathiasbynens/dotfiles/blob/master/.osx
