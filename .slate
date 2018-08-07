@@ -89,7 +89,6 @@ layout read 'Preview':REPEAT ${right}
 layout hack 'Emacs':REPEAT ${max}
 layout hack 'Safari':REPEAT ${max}
 layout hack ${chrome}
-layout hack 'Preview':REPEAT ${max}
 
 layout make 'Emacs':REPEAT ${bottom14}
 layout make 'Safari':REPEAT ${top34}
