@@ -292,7 +292,8 @@
   (global-set-key (kbd "H-s") 'shell)
   (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*admin*")))
   (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*deploy*")))
-  (global-set-key (kbd "H-m") '(lambda () (interactive) (shell "*music*")))
+  (global-set-key (kbd "H-f") '(lambda () (interactive) (shell "*eff*")))
+  (global-set-key (kbd "H-g") '(lambda () (interactive) (shell "*gee*")))
   (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun yyyymmdd ()
