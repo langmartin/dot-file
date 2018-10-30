@@ -41,7 +41,25 @@
  '(org-clock-into-drawer "LOGBOOK")
  '(org-adapt-indentation nil)
  '(org-hierarchical-checkbox-statistics nil)
- '(org-hierarchical-todo-statistics nil))
+ '(org-hierarchical-todo-statistics nil)
+ '(org-latex-default-packages-alist
+   (quote
+    (("AUTO" "inputenc" t
+      ("pdflatex"))
+     ("T1" "fontenc" t
+      ("pdflatex"))
+     ("" "graphicx" t nil)
+     ("" "grffile" t nil)
+     ("" "longtable" nil nil)
+     ("" "wrapfig" nil nil)
+     ("" "rotating" nil nil)
+     ("normalem" "ulem" t nil)
+     ("" "amsmath" t nil)
+     ("" "textcomp" t nil)
+     ("" "amssymb" t nil)
+     ("" "capt-of" nil nil)
+     ("colorlinks=true,pdfstartview=FitV,linkcolor=Blue,citecolor=Blue,urlcolor=Blue,filecolor=Blue" "hyperref" nil nil)
+     ("" "parskip" nil nil)))))
 
 ;;;; I've added the endnotes package to this header, it doesn't change
 ;;;; anything by default. In order to use it, you need to add two
@@ -88,8 +106,8 @@
      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
    'equal))
 
-(custom-set-variables
- '(org-export-latex-default-class "langmartin"))
+;; (custom-set-variables
+;;  '(org-export-latex-default-class "langmartin"))
 
 (defun org-shift-timestamps (start end n)
   "Update all timestamps in the region n hours"
