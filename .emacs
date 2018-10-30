@@ -407,6 +407,12 @@
   (global-set-key (kbd "C-x f") 'find-file-in-repository)
   )
 
+(defun rc-recentf ()
+  (require 'recentf)
+  (recentf-mode)
+  (global-set-key (kbd "C-x C-r") 'recentf-open-files)
+  )
+
 (defun rc-winner ()
   (require 'winner)
   (define-key winner-mode-map (kbd "C-c <C-right>") 'winner-undo)
