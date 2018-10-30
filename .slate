@@ -92,6 +92,7 @@ layout hack ${chrome}
 layout hack 'Preview':REPEAT ${max}
 
 layout make 'Emacs':REPEAT ${bottom14}
+layout make 'Terminal':REPEAT ${bottom14}
 layout make 'Safari':REPEAT ${top34}
 layout make 'Google Chrome':REPEAT ${top34}
 layout make 'Preview':REPEAT ${top34}
