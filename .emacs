@@ -29,6 +29,7 @@
 (maybe-add-to-exec-path "~/code/dot-file/bin")
 (maybe-add-to-exec-path "~/bin")
 (maybe-add-to-exec-path "~/.cargo/bin")
+(maybe-add-to-exec-path "~/go/bin")
 (exec-path-setenv)
 
 
@@ -245,6 +246,11 @@
        (add-hook 'haskell-mode-hook 'haskell-doc-mode)))
   (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
   (add-to-list 'auto-mode-alist '("\\.lhs$" . haskell-mode)))
+
+(defun rc-go ()
+  (eval-after-load "go-mode"
+    '(progn
+       (add-hook 'before-save-hook 'gofmt-before-save))))
 
 
 ;;;; Miscellaneous emacs settings
@@ -638,6 +644,7 @@ the working directory"
   (rc-markdown-mode)
   (rc-prolog)
   (rc-haskell)
+  (rc-go)
   (rc-magit)
   (rc-git))
 
