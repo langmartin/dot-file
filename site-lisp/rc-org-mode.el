@@ -39,6 +39,7 @@
  '(org-clock-modeline-total (quote current))
  '(org-cycle-include-plain-lists nil)
  '(org-clock-into-drawer "LOGBOOK")
+ '(org-duration-format (quote h:mm))
  '(org-adapt-indentation nil)
  '(org-hierarchical-checkbox-statistics nil)
  '(org-hierarchical-todo-statistics nil)
