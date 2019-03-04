@@ -10,7 +10,7 @@ if [ "$TERM" = dumb ]; then
 fi
 
 if [ -z "$SSH_CLIENT" ]; then
-	EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+	EDITOR="/usr/local/bin/emacsclient"
 fi
 
 export QPVERBOSE=true
