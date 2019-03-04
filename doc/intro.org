@@ -1,0 +1,5 @@
+I'm a senior engineer with an emphasis in distributed systems and
+architecture. I've lead teams, built novel systems, and been a
+production engineer for 15 years. I have a strong background in lower
+level unix and networking, and experience with a wide variety of
+databases and programming languages.
