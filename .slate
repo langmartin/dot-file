@@ -84,17 +84,21 @@ default one count:1
 layout read 'Emacs':REPEAT ${left}
 layout read 'Safari':REPEAT ${right}
 layout read 'Google Chrome':REPEAT ${right}
+layout read 'Firefox':REPEAT ${right}
 layout read 'Preview':REPEAT ${right}
 
 layout hack 'Emacs':REPEAT ${max}
 layout hack 'Safari':REPEAT ${max}
 layout hack ${chrome}
+layout hack 'Firefox':REPEAT ${right}
 layout hack 'Preview':REPEAT ${max}
+layout hack 'Terminal':REPEAT ${top}
 
 layout make 'Emacs':REPEAT ${bottom14}
 layout make 'Terminal':REPEAT ${bottom14}
 layout make 'Safari':REPEAT ${top34}
 layout make 'Google Chrome':REPEAT ${top34}
+layout make 'Firefox':REPEAT ${top34}
 layout make 'Preview':REPEAT ${top34}
 
 layout tube 'Emacs':REPEAT ${right13}
