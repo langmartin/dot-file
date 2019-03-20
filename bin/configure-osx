@@ -1,8 +1,16 @@
 #!/bin/sh
+# command = @ control = ^ option = ~ shift = $
 # defaults write com.apple.Mail NSUserKeyEquivalents -dict-add "Quit Mail" "@^q"
 # defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Quit Terminal" "@^q"
-defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Print..." '@$p'
 # defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@^q"
+# defaults find NSUserKeyEquivalents
+defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Print..." '@$p'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Unpin Tab' '@^p'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Mute This Tab' '@^m'
+defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Mute Other Tabs' '@^$m'
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Mute Site' '@^m'
 
 # delete goes back a page
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
