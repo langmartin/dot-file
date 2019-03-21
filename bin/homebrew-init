@@ -3,15 +3,12 @@ tmp=/tmp/homebrew-init-$$
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install > $tmp && \
     ruby $tmp
 
-# brew install ghostscript
-# brew install imagemagick
-brew install emacs --with-cocoa --with-gnutls
-
 brew install \
      ag \
      aspell \
      ctags \
      html2text \
+     go \
      jq \
      msmtp \
      npm \
@@ -19,14 +16,15 @@ brew install \
      pandoc \
      planck \
      terminal-notifier \
-     tmux \
-     wget
+     tmux
 
-EMACS=/usr/local/bin/emacs brew install mu --with-emacs
+brew cask install \
+     emacs \
+     anybar
 
-brew cask install anybar
-brew install candid82/brew/joker
+EMACS=/usr/local/bin/emacs brew install mu
 
 brew install \
      pineentry-mac \
-     gpg2
+     gpg2 \
+     candid82/brew/joker
