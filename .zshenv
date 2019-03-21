@@ -1,4 +1,5 @@
 PATH="/usr/local/bin:$PATH:/sbin:/usr/sbin"
+PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
 PATH="$PATH":~/bin:~/code/dot-file/bin
 PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
 PATH="$PATH":~/.cargo/bin

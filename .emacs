@@ -26,6 +26,7 @@
 
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
 (maybe-add-to-exec-path "/usr/local/bin")
+(maybe-add-to-exec-path "/usr/local/texlive/2018/bin/x86_64-darwin")
 (maybe-add-to-exec-path "~/code/dot-file/bin")
 (maybe-add-to-exec-path "~/bin")
 (maybe-add-to-exec-path "~/.cargo/bin")
@@ -213,10 +214,10 @@
   (skewer-setup))
 
 (defun rc-html-css-mode ()
-  (eval-after-load "sgml-mode"
-    '(progn
-       (package-require 'zencoding-mode)
-       (add-to-list 'html-mode-hook 'zencoding-mode)))
+  ;; (eval-after-load "sgml-mode"
+  ;;   '(progn
+  ;;      (package-require 'zencoding-mode)
+  ;;      (add-to-list 'html-mode-hook 'zencoding-mode)))
 
   (require 'sql)
   (add-to-list 'sql-mode-hook 'turn-off-tabs)
