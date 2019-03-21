@@ -1,6 +1,6 @@
 #!/bin/sh
 cd ~/Downloads
-wget http://slate.ninjamonkeysoftware.com/Slate.dmg
-wget http://www.ed.com/qp/qp-1.6.dmg
+curl -O http://slate.ninjamonkeysoftware.com/Slate.dmg
+curl -O http://www.ed.com/qp/qp-1.6.dmg
 open http://www.willus.com/k2pdfopt/download
 
