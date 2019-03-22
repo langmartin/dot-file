@@ -32,39 +32,39 @@ alias chrome 'Google Chrome':REPEAT ${max}
 alias terminal 'Terminal':REPEAT ${top}
 alias iterm 'iTerm':REPEAT ${top}
 
-alias mbpro 1280x800
-alias 27in 2560x1440
+# alias mbpro 1280x800
+# alias 27in 2560x1440
 # alias air11 1366x768
 # alias samsung 1920x1080
-alias air11 0
-alias samsung 1
+alias sm 1
+alias lg 0
 
 ## ----------------------------------------
 
-# alias laptop ${right34}
-alias laptop ${max}
-layout ot2 ${emacs} ${27in}
-layout ot2 ${safari} ${27in}
-layout ot2 ${chrome} ${27in}
-layout ot2 ${terminal} ${27in}
-layout ot2 ${iterm} ${27in}
-layout ot2 'HipChat' ${laptop} ${mbpro}
-layout ot2 'Messages' ${laptop} ${mbpro}
-layout ot2 'Slack' ${laptop} ${mbpro}
-# layout ot2 'HipChat' ${max} ${mbpro}
-default ot2 resolutions:${27in};${mbpro}
+# alias laptop-max ${right34}
+alias laptop-max ${max}
+layout ot2 ${emacs} ${lg}
+layout ot2 ${safari} ${lg}
+layout ot2 ${chrome} ${lg}
+layout ot2 ${terminal} ${lg}
+layout ot2 ${iterm} ${lg}
+layout ot2 'HipChat' ${laptop-max} ${sm}
+layout ot2 'Messages' ${laptop-max} ${sm}
+layout ot2 'Slack' ${laptop-max} ${sm}
+# layout ot2 'HipChat' ${max} ${sm}
+default ot2 resolutions:${lg};${sm}
 
 ## ----------------------------------------
 
-layout hm2 ${emacs} ${samsung}
-layout hm2 ${safari} ${samsung}
-layout hm2 ${chrome} ${samsung}
-layout hm2 ${terminal} ${samsung}
-layout hm2 ${iterm} ${samsung}
-layout hm2 'HipChat' ${max} ${air11}
-layout hm2 'Messages' ${max} ${air11}
-layout hm2 'Slack' ${max} ${air11}
-# default hm2 resolutions:${air11};${samsung}
+layout hm2 ${emacs} ${lg}
+layout hm2 ${safari} ${lg}
+layout hm2 ${chrome} ${lg}
+layout hm2 ${terminal} ${lg}
+layout hm2 ${iterm} ${lg}
+layout hm2 'HipChat' ${max} ${sm}
+layout hm2 'Messages' ${max} ${sm}
+layout hm2 'Slack' ${max} ${sm}
+# default hm2 resolutions:${sm};${lg}
 default hm2 count:2
 
 ## ----------------------------------------
