@@ -14,6 +14,10 @@
 4. sudo configure-sys (maybe not)
 5. copy comment at the bottom of .emacs to ~/.emacs
 
+In emacs:
+
+1. (customize-variable 'user-mail-address)
+
 * Keyboard
 
 Safari doesn't respect defaults write settings anymore in mojave (?),
@@ -24,6 +28,7 @@ so manually add
 3. Disable mission control keys
 4. Disable service keys
 5. Disable screenshot keys
+6. Configure Touch Bar, remove siri button
 
 * Applications
 
