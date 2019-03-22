@@ -25,6 +25,6 @@ brew cask install \
 EMACS=/usr/local/bin/emacs brew install mu
 
 brew install \
-     pineentry-mac \
+     pinentry-mac \
      gpg2 \
      candid82/brew/joker
