@@ -24,3 +24,26 @@ so manually add
 3. Disable mission control keys
 4. Disable service keys
 5. Disable screenshot keys
+
+* Applications
+
+** Restart Slate
+1. automator system shell script past bin/restart-slate export as application
+
+** Emacs Mailto
+1. open applescript/emacs-mailto and export as application
+2. export as an application
+3. edit info.plist to contain
+#+BEGIN_SRC xml
+<key>CFBundleURLTypes</key>
+<array>
+        <dict>
+                <key>CFBundleURLName</key>
+                <string>Email Address URL</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                        <string>mailto</string>
+                </array>
+        </dict>
+</array>
+#+END_SRC
