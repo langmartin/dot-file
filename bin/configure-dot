@@ -1,0 +1,24 @@
+#!/bin/sh
+set -ex
+mkdir -pm700 ~/bin ~/code ~/tmp
+ln -sfn ~/code/dot-file/.{ctags,offlineimaprc,slate,z*,gnupg} ~
+
+cat <<EOF > ~/.gitconfig
+[user]
+	name = Lang Martin
+	email = lang.martin@gmail.com
+[include]
+	path = code/dot-file/.gitconfig
+EOF
+
+cat <<EOF > ~/.emacs
+(load-file "~/code/dot-file/.emacs")
+(add-to-list 'load-path "~/code/dot-file/site-lisp")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+(rc-init-emacs)
+(rc-look-and-feel)
+(rc-emacs-master)
+(rc-init-site-lisp)
+EOF
+
+chmod go-rwx ~/.*

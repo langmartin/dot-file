@@ -1,0 +1,26 @@
+* Install This
+
+1. =ssh-keygen -t rsa; ssh-add=
+2. add new key on github
+4. =mkdir -pm700 ~/code=
+3. =git checkout git@github.com:langmartin/dot-file.git ~/code/dot-file=
+4. =~/code/dot-file/configure-dot=
+
+* Install Software
+
+1. configure-osx
+2. homebrew-init
+3. download-init
+4. sudo configure-sys (maybe not)
+5. copy comment at the bottom of .emacs to ~/.emacs
+
+* Keyboard
+
+Safari doesn't respect defaults write settings anymore in mojave (?),
+so manually add
+
+1. Pin Tab / Unpin Tab ctrl-command-p
+2. Mute This Tab / Unmute This Tab ctrl-command-p
+3. Disable mission control keys
+4. Disable service keys
+5. Disable screenshot keys
