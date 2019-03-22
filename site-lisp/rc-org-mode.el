@@ -1,6 +1,5 @@
 (require 'utility)
 (require 'srfi-1)
-(require 'htmlize)
 (require 'org)
 (require 'org-attach)
 (require 'org-collector)
