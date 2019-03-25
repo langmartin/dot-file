@@ -148,6 +148,10 @@
      ("tag:\\\\Sent AND date:30d..now" "Last 30 days sent" ?t)
      ("date:7d..now" "Last 7 days" ?a))))
 
+(defun rc-mu4e-send-longcuts ()
+  (define-key mu4e-compose-mode-map (kbd "C-c C-s") nil)
+  (define-key mu4e-compose-mode-map (kbd "C-c C-c") nil))
+
 (eval-after-load "mu4e"
   '(progn
      (rc-mu4e-gmail-shortcuts)
@@ -163,9 +167,8 @@
      ;; (setq mu4e-compose-mode-hook nil)
 
      ;; auto pgp sign
-     (add-hook
-      'mu4e-compose-mode-hook
-      'mml-secure-message-sign)))
+     (add-hook 'mu4e-compose-mode-hook 'mml-secure-message-sign)
+     (rc-mu4e-send-longcuts)))
 
 (custom-set-variables
  '(mu4e-headers-skip-duplicates t)
