@@ -12,6 +12,9 @@
 (define (biff-connect imap-server imap-port username password mailbox)
   (let ([c (ssl-make-client-context)])
     (let-values ([(in out) (ssl-connect imap-server imap-port c)])
+      ;; (displayln username)
+      ;; (displayln password)
+      ;; (displayln mailbox)
       (imap-connect* in out username password mailbox))))
 
 (define (default-string string default)
@@ -23,7 +26,7 @@
 
 (define (biff-notify from subject url)
   (let* ((args
-          (list "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
+          (list "/usr/local/bin/terminal-notifier"
                 "-title" (q-notify (default-string from "sender"))
                 ;; "-subtitle" from
                 "-message" (q-notify (default-string subject "subject"))
@@ -94,8 +97,8 @@
                       (lambda ()
                         (apply poll-loop args))))
                    `(("imap.gmail.com" 993
-                      (getenv "MAILUSER")
-                      (getenv "MAILPASS")
+                      ,(getenv "MAILUSER")
+                      ,(getenv "MAILPASS")
                       "INBOX"
                       "https://mail.google.com/"))))))
 
