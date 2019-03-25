@@ -41,31 +41,14 @@ alias lg 0
 
 ## ----------------------------------------
 
-# alias laptop-max ${right34}
-alias laptop-max ${max}
-layout ot2 ${emacs} ${lg}
-layout ot2 ${safari} ${lg}
-layout ot2 ${chrome} ${lg}
-layout ot2 ${terminal} ${lg}
-layout ot2 ${iterm} ${lg}
-layout ot2 'HipChat' ${laptop-max} ${sm}
-layout ot2 'Messages' ${laptop-max} ${sm}
-layout ot2 'Slack' ${laptop-max} ${sm}
-# layout ot2 'HipChat' ${max} ${sm}
-default ot2 resolutions:${lg};${sm}
-
-## ----------------------------------------
-
-layout hm2 ${emacs} ${lg}
-layout hm2 ${safari} ${lg}
-layout hm2 ${chrome} ${lg}
-layout hm2 ${terminal} ${lg}
-layout hm2 ${iterm} ${lg}
-layout hm2 'HipChat' ${max} ${sm}
-layout hm2 'Messages' ${max} ${sm}
-layout hm2 'Slack' ${max} ${sm}
-# default hm2 resolutions:${sm};${lg}
-default hm2 count:2
+layout two ${emacs} ${lg}
+layout two ${safari} ${lg}
+layout two ${chrome} ${lg}
+layout two ${terminal} ${lg}
+layout two ${iterm} ${lg}
+layout two 'Messages' ${top} ${sm}
+layout two 'Slack' ${bottom} ${sm}
+default two count:2
 
 ## ----------------------------------------
 
@@ -74,7 +57,6 @@ layout one ${safari} 0
 layout one ${chrome} 0
 layout one ${terminal} 0
 layout one ${iterm} 0
-layout one 'HipChat' ${max} 0
 layout one 'Messages' ${max} 0
 layout one 'Slack' ${max} 0
 default one count:1
