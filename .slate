@@ -46,7 +46,7 @@ layout two ${safari} ${lg}
 layout two ${chrome} ${lg}
 layout two ${terminal} ${lg}
 layout two ${iterm} ${lg}
-layout two 'Messages' ${top} ${sm}
+layout two 'Messages' ${max} ${sm}
 layout two 'Slack' ${max} ${sm}
 default two count:2
 
