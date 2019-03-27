@@ -22,15 +22,15 @@
   (interactive)
   (let* ((env (split-string (getenv "PATH") ":"))
          (new (-remove (lambda (x) (member x env)) exec-path)))
-    (setenv "PATH" (string-join (append env new) ":"))))
+    (setenv "PATH" (string-join (append new env) ":"))))
 
+;; reverse order, all add to the beginning
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
 (maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "/usr/local/texlive/2018/bin/x86_64-darwin")
-(maybe-add-to-exec-path "~/code/dot-file/bin")
-(maybe-add-to-exec-path "~/bin")
 (maybe-add-to-exec-path "~/.cargo/bin")
 (maybe-add-to-exec-path "~/go/bin")
+(maybe-add-to-exec-path "~/bin")
 (exec-path-setenv)
 
 
@@ -251,6 +251,12 @@
 (defun rc-go ()
   (eval-after-load "go-mode"
     '(progn
+       ;; (package-require 'dumb-jump)
+       ;; (define-key go-mode-map (kbd "M-.") 'dumb-jump-go)
+       ;; (define-key go-mode-map (kbd "M-,") 'dumb-jump-back)
+       (define-key go-mode-map (kbd "M-.") 'godef-jump)
+       (define-key go-mode-map (kbd "M-,") 'pop-global-mark)
+       (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
        (add-hook 'before-save-hook 'gofmt-before-save))))
 
 
