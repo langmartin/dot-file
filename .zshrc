@@ -9,6 +9,8 @@ alias ll='ls -l'
 alias s='git status'
 alias b='git branch -av'
 alias grunt='grunt --no-color'
+alias cn='cd ~/go/src/github.com/hashicorp/nomad'
+alias cc='cd ~/go/src/github.com/hashicorp/consul'
 
 setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
