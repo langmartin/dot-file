@@ -7,7 +7,8 @@ HISTFILE=~/.zhistory
 
 alias ll='ls -l'
 alias s='git status'
-alias b='git branch -av'
+alias b='git branch -v'
+alias ba='git branch -av'
 alias grunt='grunt --no-color'
 alias cn='cd ~/go/src/github.com/hashicorp/nomad'
 alias cc='cd ~/go/src/github.com/hashicorp/consul'
