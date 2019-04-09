@@ -9,6 +9,7 @@ config checkDefaultsOnLoad true
 alias left	move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias right	move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
 alias left13	move screenOriginX;screenOriginY (screenSizeX/3)*1;screenSizeY
+alias left23	move screenOriginX;screenOriginY (screenSizeX/3)*2;screenSizeY
 alias left37	move screenOriginX;screenOriginY (screenSizeX/7)*3;screenSizeY
 alias left34	move screenOriginX;screenOriginY (screenSizeX/4)*3;screenSizeY
 alias right13	move screenOriginX+(screenSizeX/3)*2;screenOriginY screenSizeX/3;screenSizeY
@@ -83,9 +84,9 @@ layout make 'Google Chrome':REPEAT ${top34}
 layout make 'Firefox':REPEAT ${top34}
 layout make 'Preview':REPEAT ${top34}
 
-layout tube 'Emacs':REPEAT ${right13}
-layout tube 'Safari':REPEAT ${max}
-layout tube 'Google Chrome':REPEAT ${max}
+layout zoom 'Emacs':REPEAT ${right13}
+layout zoom 'Safari':REPEAT ${right}
+layout zoom 'zoom.us' ${left23}
 
 layout pape 'Emacs':REPEAT ${left37}
 layout pape 'Safari':REPEAT ${right47}
@@ -98,8 +99,8 @@ bind h:ctrl,alt,cmd layout hack
 bind u:ctrl,alt,cmd layout hack
 bind b:ctrl,alt,cmd layout make
 bind m:ctrl,alt,cmd layout make
-bind y:ctrl,alt,cmd layout tube
 bind p:ctrl,alt,cmd layout pape
+bind z:ctrl,alt,cmd layout zoom
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
