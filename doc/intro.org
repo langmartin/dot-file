@@ -3,3 +3,18 @@ architecture. I've lead teams, built novel systems, and been a
 production engineer for 15 years. I have a strong background in lower
 level unix and networking, and experience with a wide variety of
 databases and programming languages and paradigms.
+
+
+Hi! I'm Lang Martin, and I live in Chattanooga, TN which is right at
+the end of the Appalachians and super beautiful in April. I like
+backend code and distributed systems, and sometimes think about
+interfaces too. Here's a mixed bag of things I like:
+
+1. Lisp (esp. Clojure and scheme)
+2. Motorcycles
+3. Conflict-free replicated data types
+4. Hanging out on Porches
+5. Linguistics (more enthusiasm than expertise)
+
+Also, on pins and needles for http://sigbovik.org/2019/ which is
+streaming live this year! https://www.twitch.tv/sigbovik
