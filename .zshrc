@@ -1,5 +1,5 @@
 set -a
-PROMPT='%T %? %m%# '
+PROMPT='%* %? %m%# '
 WORDCHARS="*?[]~=&;!#$%^(){}<>"
 HISTSIZE=5000
 SAVEHIST=5000
