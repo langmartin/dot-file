@@ -595,6 +595,30 @@ the working directory"
               (copy-file "pre-commit.sample" "pre-commit"))))
       (cd ppwd))))
 
+(defun git-set-hook-pre-push ()
+  (interactive)
+  (let ((ppwd default-directory))
+    (unwind-protect
+        (progn
+          (cd (git-get-current-root))
+          (cd "hooks")
+          (when (not (file-exists-p "pre-push"))
+            (append-to-file
+             "#!/bin/sh
+while read local_ref local_sha remote_ref remote_sha
+do
+    if [ \"$remote_ref\" = \"refs/heads/master\" ]; then
+        echo \"pre-push hook: Can not push to remote master branch.\"
+        exit 1
+    fi
+done
+exit 0
+"
+             nil
+             "pre-push")
+            (set-file-modes "pre-push" #o755)))
+      (cd ppwd))))
+
 (defun git-make-tags ()
   (interactive)
   (with-temp-buffer
