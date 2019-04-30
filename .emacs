@@ -327,7 +327,9 @@
    '(uniquify-strip-common-suffix t))
 
   (eval-after-load "shell"
-    '(define-key shell-mode-map (kbd "C-c M-o") 'erase-buffer))
+    '(progn
+       (define-key shell-mode-map (kbd "C-c M-o") 'erase-buffer)
+       (define-key shell-mode-map (kbd "M-\r") 'shell-resync-dirs)))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
