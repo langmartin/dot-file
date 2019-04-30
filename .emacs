@@ -248,16 +248,46 @@
   (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
   (add-to-list 'auto-mode-alist '("\\.lhs$" . haskell-mode)))
 
+(defun go-insert-lambda ()
+  (interactive)
+  (let ((before "func () {")
+        (after  "}()"))
+    (insert before)
+    (insert after)
+    (backward-char (length after))))
+
+(defun go-insert-err ()
+  (interactive)
+  (let ((before "if err != nil {\n  return fmt.Errorf(\"%e\")")
+        (after  "\n}"))
+    (insert before)
+    (insert after)
+    (backward-char (length after))))
+
+(defun set-fill-column-92 ()
+  (interactive)
+  (setq fill-column 92))
+
+(defun set-go-complete ()
+  (interactive)
+  (subword-mode nil)
+  (add-hook 'completion-at-point-functions 'go-complete-at-point nil t))
+
 (defun rc-go ()
   (eval-after-load "go-mode"
     '(progn
        ;; (package-require 'dumb-jump)
        ;; (define-key go-mode-map (kbd "M-.") 'dumb-jump-go)
        ;; (define-key go-mode-map (kbd "M-,") 'dumb-jump-back)
+       (define-key go-mode-map (kbd "H-l") 'go-insert-lambda)
+       (define-key go-mode-map (kbd "H-e") 'go-insert-err)
        (define-key go-mode-map (kbd "M-.") 'godef-jump)
        (define-key go-mode-map (kbd "M-,") 'pop-global-mark)
        (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
-       (add-hook 'before-save-hook 'gofmt-before-save))))
+       (define-key go-mode-map (kbd "C-M-i") 'completion-at-point)
+       (add-hook 'before-save-hook 'gofmt-before-save)
+       (add-hook 'go-mode-hook 'set-fill-column-92)
+       (add-hook 'go-mode-hook 'set-go-complete))))
 
 
 ;;;; Miscellaneous emacs settings
