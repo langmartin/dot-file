@@ -1,0 +1,2 @@
+#!/bin/sh
+youtube-dl -k --recode-video mp4 "$@"
