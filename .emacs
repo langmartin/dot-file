@@ -269,14 +269,10 @@
   (interactive)
   (setq fill-column 92))
 
-(defun set-go-complete ()
-  (interactive)
-  (subword-mode nil)
-  (add-hook 'completion-at-point-functions 'go-complete-at-point nil t))
-
 (defun rc-go ()
   (eval-after-load "go-mode"
     '(progn
+       (require 'yasnippet)
        ;; (package-require 'dumb-jump)
        ;; (define-key go-mode-map (kbd "M-.") 'dumb-jump-go)
        ;; (define-key go-mode-map (kbd "M-,") 'dumb-jump-back)
@@ -285,10 +281,9 @@
        (define-key go-mode-map (kbd "M-.") 'godef-jump)
        (define-key go-mode-map (kbd "M-,") 'pop-global-mark)
        (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
-       (define-key go-mode-map (kbd "C-M-i") 'completion-at-point)
        (add-hook 'before-save-hook 'gofmt-before-save)
        (add-hook 'go-mode-hook 'set-fill-column-92)
-       (add-hook 'go-mode-hook 'set-go-complete))))
+       (add-hook 'go-mode-hook 'lsp))))
 
 
 ;;;; Miscellaneous emacs settings
@@ -340,6 +335,7 @@
   (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*deploy*")))
   (global-set-key (kbd "H-f") '(lambda () (interactive) (shell "*eff*")))
   (global-set-key (kbd "H-g") '(lambda () (interactive) (shell "*gee*")))
+  (global-set-key (kbd "H-v") '(lambda () (interactive) (shell "*vagrant*")))
   (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun yyyymmdd ()
