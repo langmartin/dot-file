@@ -152,6 +152,22 @@
   (define-key mu4e-compose-mode-map (kbd "C-c C-s") nil)
   (define-key mu4e-compose-mode-map (kbd "C-c C-c") nil))
 
+(defun mail-hashi ()
+  (interactive)
+  (setenv "MAILDIR" "/Users/lang/Maildir/hashi")
+  (setenv "MU_HOME" "/Users/lang/.mu/hashi")
+  (setq mu4e-maildir "/Users/lang/Maildir/hashi")
+  (setq user-mail-address "lang@hashicorp.com")
+  (mu4e-quit))
+
+(defun mail-gmail ()
+  (interactive)
+  (setenv "MAILDIR" "/Users/lang/Maildir/gmail")
+  (setenv "MU_HOME" "/Users/lang/.mu/gmail")
+  (setq mu4e-maildir "/Users/lang/Maildir/gmail")
+  (setq user-mail-address "lang.martin@gmail.com")
+  (mu4e-quit))
+
 (eval-after-load "mu4e"
   '(progn
      (rc-mu4e-gmail-shortcuts)
@@ -164,8 +180,6 @@
      ;;           (message-add-header
      ;;            (concat "Bcc: " user-mail-address "\n")))))
 
-     ;; (setq mu4e-compose-mode-hook nil)
-
      ;; auto pgp sign
      (add-hook 'mu4e-compose-mode-hook 'mml-secure-message-sign)
      (rc-mu4e-send-longcuts)))
@@ -176,6 +190,7 @@
  '(mu4e-compose-signature-auto-include nil)
  '(mu4e-date-format-long "%Y-%m-%d")
  '(mu4e-headers-date-format "%y-%m-%d")
+ '(mu4e-drafts-folder "/[Gmail].Drafts")
  ;; '(mu4e-get-mail-command "isync INBOX Archive Drafts 'Deleted Items'")
  '(mu4e-get-mail-command "offlineimap")
  '(mu4e-headers-fields (quote ((:human-date . 12) (:flags . 6) (:from . 22) (:subject))))
