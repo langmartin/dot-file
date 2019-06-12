@@ -26,11 +26,12 @@
     (setenv "PATH" (string-join (append new env) ":"))))
 
 ;; reverse order, all add to the beginning
-(maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
-(maybe-add-to-exec-path "/usr/local/bin")
-(maybe-add-to-exec-path "/usr/local/texlive/2018/bin/x86_64-darwin")
 (maybe-add-to-exec-path "~/.cargo/bin")
+(maybe-add-to-exec-path "/usr/local/go/bin")
 (maybe-add-to-exec-path "~/go/bin")
+(maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
+(maybe-add-to-exec-path "/usr/local/texlive/2018/bin/x86_64-darwin")
+(maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "~/bin")
 (exec-path-setenv)
 
@@ -283,7 +284,12 @@
        (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
        (add-hook 'before-save-hook 'gofmt-before-save)
        (add-hook 'go-mode-hook 'set-fill-column-92)
-       (add-hook 'go-mode-hook 'lsp))))
+       (add-hook 'go-mode-hook 'lsp)
+       (add-hook 'go-test-mode-hook 'visual-line-mode)))
+
+  (eval-after-load "hcl-mode"
+    '(progn
+       (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode)))))
 
 
 ;;;; Miscellaneous emacs settings
