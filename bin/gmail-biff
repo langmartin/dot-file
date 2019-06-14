@@ -24,18 +24,23 @@
 (define (q-notify string)
   (string-append "\\" string))
 
-(define (biff-notify from subject url)
+(define (notify title message url)
   (let* ((args
           (list "/usr/local/bin/terminal-notifier"
-                "-title" (q-notify (default-string from "sender"))
+                "-title" title
                 ;; "-subtitle" from
-                "-message" (q-notify (default-string subject "subject"))
+                "-message" message
                 "-sender" "com.apple.Mail"))
          (args
           (if url
               (append args (list "-open" url))
               (append args (list "-activate" "org.gnu.Emacs")))))
     (apply system* args)))
+
+(define (biff-notify from subject url)
+  (notify (q-notify (default-string from "sender"))
+          (q-notify (default-string subject "subject"))
+          url))
 
 (define (all-the-headers raw)
   (extract-all-fields (caar raw)))
@@ -77,30 +82,34 @@
                  (map add1 (range n m)))))
 
 (define (poll-loop imap-server imap-port username password mailbox url)
-  (let lp ((seen 0) (notify #f))
+  (let lp ((seen 0) (just-count #t))
     (define-values (imap messages recent)
       (shh (biff-connect imap-server imap-port username password mailbox)))
     (let ((count (- messages seen)))
-      (when (and (> count 0) notify)
-        (shh (biff-fetch url imap seen messages))))
+      (if just-count
+          (notify username
+                  (string-append (number->string count)
+                                 (if (= count 1) " message in " " messages in ")
+                                 mailbox)
+                  #f)
+          (when (> count 0)
+            (shh (biff-fetch url imap seen messages)))))
     (sleep 120)
     (shh (imap-disconnect imap))
-    (lp messages #t)))
+    (lp messages #f)))
 
 (define (main)
-  (let ((i "imap.gmail.com")
-        (p 993))
-    (for-each (lambda (t)
-                (thread-wait t))
-              (map (lambda (args)
-                     (thread
-                      (lambda ()
-                        (apply poll-loop args))))
-                   `(("imap.gmail.com" 993
-                      ,(getenv "MAILUSER")
-                      ,(getenv "MAILPASS")
-                      "INBOX"
-                      "https://mail.google.com/"))))))
+  (for-each (lambda (t)
+              (thread-wait t))
+            (map (lambda (args)
+                   (thread
+                    (lambda ()
+                      (apply poll-loop args))))
+                 `(("imap.gmail.com" 993
+                    ,(getenv "MAILUSER")
+                    ,(getenv "MAILPASS")
+                    "INBOX"
+                    #f)))))
 
 ;; Local Variables:
 ;; mode: scheme
