@@ -152,21 +152,28 @@
   (define-key mu4e-compose-mode-map (kbd "C-c C-s") nil)
   (define-key mu4e-compose-mode-map (kbd "C-c C-c") nil))
 
+(defun mail-select-account (acct addr)
+  ;; 1. add a second account to .offlineimaprc
+  ;; 2. add a second account to .msmtprc
+  ;; 3. make sure that mail-select-account is true, so that msmtp is
+  ;;    flagged to choose the account from the envelope sender
+  (setenv "MAILDIR" (concat "/Users/lang/Maildir/" acct))
+  (setenv "MU_HOME" (concat "/Users/lang/.mu/" acct))
+  (setq mu4e-maildir (concat "/Users/lang/Maildir/" acct))
+  (setq user-mail-address addr)
+  (setq mu4e-get-mail-command (concat "offlineimap -a " acct))
+  (mu4e-quit)
+  ;; (mu4e-and-update)
+  ;; (mu4e)
+  )
+
 (defun mail-hashi ()
   (interactive)
-  (setenv "MAILDIR" "/Users/lang/Maildir/hashi")
-  (setenv "MU_HOME" "/Users/lang/.mu/hashi")
-  (setq mu4e-maildir "/Users/lang/Maildir/hashi")
-  (setq user-mail-address "lang@hashicorp.com")
-  (mu4e-quit))
+  (mail-select-account "hashi" "lang@hashicorp.com"))
 
 (defun mail-gmail ()
   (interactive)
-  (setenv "MAILDIR" "/Users/lang/Maildir/gmail")
-  (setenv "MU_HOME" "/Users/lang/.mu/gmail")
-  (setq mu4e-maildir "/Users/lang/Maildir/gmail")
-  (setq user-mail-address "lang.martin@gmail.com")
-  (mu4e-quit))
+  (mail-select-account "gmail" "lang.martin@gmail.com"))
 
 (eval-after-load "mu4e"
   '(progn
@@ -198,7 +205,8 @@
  ;; '(mu4e-html2text-command "textutil -convert txt -stdin -stdout")
  '(mu4e-view-show-addresses t)
  '(mu4e-headers-include-related t)
- '(mu4e-confirm-quit nil))
+ '(mu4e-confirm-quit nil)
+ '(mail-specify-envelope-from t))
 
 ;; (custom-save-all)
 
