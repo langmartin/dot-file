@@ -60,7 +60,7 @@
                            parts))
           (entity-body (message-entity message))))))
 
-(define-syntax shhhhh
+(define-syntax shh
   (syntax-rules ()
     ((_ body ...)
      (with-handlers ((exn:fail:network? (lambda (e) #f)))
@@ -77,15 +77,15 @@
                  (map add1 (range n m)))))
 
 (define (poll-loop imap-server imap-port username password mailbox url)
-  (let lp ((seen 0))
+  (let lp ((seen 0) (notify #f))
     (define-values (imap messages recent)
-      (biff-connect imap-server imap-port username password mailbox))
+      (shh (biff-connect imap-server imap-port username password mailbox)))
     (let ((count (- messages seen)))
-      (when (> count 0)
-        (shhhhh (biff-fetch url imap seen messages))))
+      (when (and (> count 0) notify)
+        (shh (biff-fetch url imap seen messages))))
     (sleep 120)
-    (shhhhh (imap-disconnect imap))
-    (lp messages)))
+    (shh (imap-disconnect imap))
+    (lp messages #t)))
 
 (define (main)
   (let ((i "imap.gmail.com")
