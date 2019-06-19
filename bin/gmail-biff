@@ -24,21 +24,25 @@
 (define (q-notify string)
   (string-append "\\" string))
 
-(define (notify title message url)
+(define (notify title subtitle message url)
   (let* ((args
           (list "/usr/local/bin/terminal-notifier"
                 "-title" title
-                ;; "-subtitle" from
                 "-message" message
                 "-sender" "com.apple.Mail"))
+         (args
+          (if subtitle
+              (append args (list "-subtitle" subtitle))
+              args))
          (args
           (if url
               (append args (list "-open" url))
               (append args (list "-activate" "org.gnu.Emacs")))))
     (apply system* args)))
 
-(define (biff-notify from subject url)
+(define (biff-notify from to subject url)
   (notify (q-notify (default-string from "sender"))
+          (q-notify to)
           (q-notify (default-string subject "subject"))
           url))
 
@@ -65,16 +69,31 @@
                            parts))
           (entity-body (message-entity message))))))
 
+(define (constantly x)
+  (lambda _ x))
+
+(define (truthy _)
+  #t)
+
 (define-syntax shh
   (syntax-rules ()
     ((_ body ...)
-     (with-handlers ((exn:fail:network? (lambda (e) #f)))
-       body ...))))
+     (with-handlers
+      ((truthy (lambda (e) #f)))
+      body ...))))
 
-(define (biff-fetch url imap n m)
+(define-syntax shh3
+  (syntax-rules ()
+    ((_ body ...)
+     (with-handlers
+      ((truthy (lambda (e) (values #f 0 0))))
+      body ...))))
+
+(define (biff-fetch username url imap n m)
   (for-each (lambda (x)
               ;; (displayln x)
               (biff-notify (dict-ref x 'from)
+                           username
                            (dict-ref x 'subject)
                            url))
             (map (lambda (x)
@@ -83,17 +102,18 @@
 
 (define (poll-loop imap-server imap-port username password mailbox url)
   (let lp ((seen 0) (just-count #t))
-    (define-values (imap messages recent)
-      (shh (biff-connect imap-server imap-port username password mailbox)))
+    (define-values (imap messages _recent)
+      (shh3 (biff-connect imap-server imap-port username password mailbox)))
     (let ((count (- messages seen)))
       (if just-count
-          (notify username
+          (notify "starting"
+                  username
                   (string-append (number->string count)
                                  (if (= count 1) " message in " " messages in ")
                                  mailbox)
                   #f)
           (when (> count 0)
-            (shh (biff-fetch url imap seen messages)))))
+            (shh (biff-fetch username url imap seen messages)))))
     (sleep 120)
     (shh (imap-disconnect imap))
     (lp messages #f)))
