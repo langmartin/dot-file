@@ -121,7 +121,7 @@
            :prompt      "trash"
            :show-target (lambda (target) "trash")
            :action      (lambda (docid msg target)
-                          (mu4e-action-retag-message msg (concat "+trash," gmail-y-tags))
+                          (mu4e-action-retag-message msg (concat "+recycle," gmail-y-tags))
                           (mu4e~proc-move docid nil "+T-N"))))
         mu4e-marks))
 
