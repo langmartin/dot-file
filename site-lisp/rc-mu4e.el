@@ -175,6 +175,12 @@
   (interactive)
   (mail-select-account "gmail" "lang.martin@gmail.com"))
 
+(defun mu-index-rebuild ()
+  (interactive)
+  (shell-command "mu index --rebuild"))
+
+(defalias 'mu-reindex 'mu-index-rebuild)
+
 (eval-after-load "mu4e"
   '(progn
      (rc-mu4e-gmail-shortcuts)
