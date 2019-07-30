@@ -260,7 +260,7 @@
 
 (defun go-insert-err ()
   (interactive)
-  (let ((before "if err != nil {\n  return fmt.Errorf(\"%e\")")
+  (let ((before "if err != nil {\n  return err fmt.Errorf(\"%v\", err)")
         (after  "\n}"))
     (insert before)
     (insert after)
