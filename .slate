@@ -32,6 +32,7 @@ alias chrome23 'Google Chrome':REPEAT ${center23}
 alias chrome 'Google Chrome':REPEAT ${max}
 alias terminal 'Terminal':REPEAT ${top}
 alias iterm 'iTerm':REPEAT ${top}
+alias preview 'Preview':REPEAT ${max}
 
 # alias mbpro 1280x800
 # alias 27in 2560x1440
@@ -45,10 +46,11 @@ alias lg 0
 layout two ${emacs} ${lg}
 layout two ${safari} ${lg}
 layout two ${chrome} ${lg}
-layout two ${terminal} ${lg}
-layout two ${iterm} ${lg}
-layout two 'Messages' ${max} ${sm}
-layout two 'Slack' ${max} ${sm}
+# layout two 'Messages' ${max} ${sm}
+# layout two 'Slack' ${max} ${sm}
+layout two 'Terminal':REPEAT ${max} ${sm}
+# layout two 'Preview':REPEAT ${max} ${sm}
+layout two ${preview} ${sm}
 default two count:2
 
 ## ----------------------------------------
@@ -57,9 +59,9 @@ layout one ${emacs} 0
 layout one ${safari} 0
 layout one ${chrome} 0
 layout one ${terminal} 0
-layout one ${iterm} 0
-layout one 'Messages' ${max} 0
-layout one 'Slack' ${max} 0
+# layout one ${iterm} 0
+# layout one 'Messages' ${max} 0
+# layout one 'Slack' ${max} 0
 default one count:1
 
 ## ----------------------------------------
@@ -98,7 +100,6 @@ bind s:ctrl,alt,cmd layout read
 bind h:ctrl,alt,cmd layout hack
 bind u:ctrl,alt,cmd layout hack
 bind b:ctrl,alt,cmd layout make
-bind m:ctrl,alt,cmd layout make
 bind p:ctrl,alt,cmd layout pape
 bind z:ctrl,alt,cmd layout zoom
 
