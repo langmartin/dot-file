@@ -2,7 +2,9 @@ if [ "$TERM" = dumb ]; then
     export PAGER="head -n100"
     unset GIT_PAGER
     export MANPAGER="cat"
-else
+fi
+
+if [ -z "$INSIDE_EMACS" ]; then
     PATH=~/bin:"/usr/local/bin:$PATH:/sbin:/usr/sbin"
     PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
     PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
