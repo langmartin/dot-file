@@ -137,7 +137,8 @@
 
   (setq
    mu4e-bookmarks
-   `(("tag:\\\\Inbox OR flag:unread" "Inbox" ?i)
+   `(("tag:\\\\Inbox" "Inbox" ?i)
+     (,"tag:hero" "Hero" ?h)
      (,"tag:on-monday" "on Monday" ?m)
      (,"tag:on-first" "on The First" ?f)
      (,"tag:on-occasion" "on Occasion" ?o)
