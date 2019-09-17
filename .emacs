@@ -260,11 +260,7 @@
 
 (defun go-insert-err ()
   (interactive)
-  (let ((before "if err != nil {\n  return err fmt.Errorf(\"%v\", err)")
-        (after  "\n}"))
-    (insert before)
-    (insert after)
-    (backward-char (length after))))
+  (insert "if err != nil {\nreturn err\n}"))
 
 (defun set-fill-column-92 ()
   (interactive)
