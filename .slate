@@ -6,6 +6,7 @@ config resizePercentOf screenSize
 config secondsBetweenRepeat 0.1
 config checkDefaultsOnLoad true
 
+# move topx;topy sizex;sizey
 alias left	move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
 alias right	move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
 alias left13	move screenOriginX;screenOriginY (screenSizeX/3)*1;screenSizeY
@@ -25,6 +26,11 @@ alias center89	move screenOriginX+screenSizeX/36;screenOriginY (screenSizeX/18)*
 alias center23	move screenOriginX+screenSizeX/6;screenOriginY (screenSizeX/3)*2;screenSizeY
 alias center13	move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
 alias center	move screenOriginX+screenSizeX/4;screenOriginY+screenSizeY/4 screenSizeX/2;screenSizeY/2
+# quarters
+alias qtl       move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2
+alias qtr       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
+alias qbl       move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
+alias qbr       move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
 
 alias emacs 'Emacs':REPEAT ${max}
 alias safari 'Safari':REPEAT ${max}
@@ -116,16 +122,12 @@ bind .:ctrl,alt,cmd ${left37}
 bind ,:ctrl,alt,cmd ${right47}
 
 ## ----------------------------------------
-## Quarters, which maybe I don't want?
+## Quarters
 
-alias tl move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2
-alias tr move screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
-alias bl move screenOriginX;screenSizeY/2 screenSizeX/2;screenSizeY/2
-alias br move screenSizeX/2;screenSizeY/2 screenSizeX/2;screenSizeY/2
-bind 1:ctrl,alt,cmd ${tl}
-bind 2:ctrl,alt,cmd ${tr}
-bind 3:ctrl,alt,cmd ${bl}
-bind 4:ctrl,alt,cmd ${br}
+bind 1:ctrl,alt,cmd ${qtl}
+bind 2:ctrl,alt,cmd ${qtr}
+bind 3:ctrl,alt,cmd ${qbl}
+bind 4:ctrl,alt,cmd ${qbr}
 
 # Local Variables:
 # mode: conf-unix
