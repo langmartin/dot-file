@@ -567,7 +567,7 @@ the working directory"
     (read-from-minibuffer
      "Run git grep (like this): "
      "git grep -n -H -I -e ")))
-  (grep (concat command " .")))
+  (grep command))
 
 (defun git-add-edit ()
   "Run git add -e"
