@@ -325,8 +325,12 @@
 
   (eval-after-load "shell"
     '(progn
+       (defun set-shell-dirstack-query-dirs ()
+         (setq shell-dirstack-query "dirs"))
        (define-key shell-mode-map (kbd "C-c M-o") 'erase-buffer)
-       (define-key shell-mode-map (kbd "M-\r") 'shell-resync-dirs)))
+       (define-key shell-mode-map (kbd "M-\r") 'shell-resync-dirs)
+       ;; (add-to-list 'shell-mode-hook 'set-shell-dirstack-query-dirs)
+       ))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "H-SPC") 'just-one-space)
