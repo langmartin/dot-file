@@ -36,7 +36,7 @@ so manually add
 1. automator system shell script past bin/restart-slate export as application
 
 ** Emacs Mailto
-1. open applescript/emacs-mailto and export as application
+1. open applescript/emacs-mailto
 2. export as an application
 3. edit info.plist to contain
 #+BEGIN_SRC xml
