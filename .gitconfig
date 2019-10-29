@@ -18,7 +18,8 @@
 	unadded = ls-files -o --exclude-standard
 
 [diff]
-	renames = copies
+	renames = copies 	# detect copies as renames too
+	noprefix = true		# file names in diffs are real paths
 
 [push]
 	default = simple
