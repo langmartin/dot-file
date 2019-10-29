@@ -93,7 +93,7 @@
   (for-each (lambda (x)
               ;; (displayln x)
               (biff-notify (dict-ref x 'from)
-                           username
+                           (dict-ref x 'to)
                            (dict-ref x 'subject)
                            url))
             (map (lambda (x)
