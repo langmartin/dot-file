@@ -11,6 +11,7 @@ alias b='git branch -v'
 alias ba='git branch -av'
 alias grunt='grunt --no-color'
 alias cn='cd ~/go/src/github.com/hashicorp/nomad'
+alias cu='cd ~/go/src/github.com/hashicorp/nomad/e2e/upgrades'
 alias cc='cd ~/go/src/github.com/hashicorp/consul'
 
 setopt HIST_IGNORE_ALL_DUPS
