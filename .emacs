@@ -266,6 +266,10 @@
   (interactive)
   (setq fill-column 92))
 
+(defun set-lsp-sym-async ()
+  (interactive)
+  (setq lsp--document-symbols-request-async t))
+
 (defun rc-go ()
   (eval-after-load "go-mode"
     '(progn
@@ -281,11 +285,15 @@
        (add-hook 'before-save-hook 'gofmt-before-save)
        (add-hook 'go-mode-hook 'set-fill-column-92)
        (add-hook 'go-mode-hook 'lsp)
+       (add-hook 'go-mode-hook 'set-lsp-sym-async)
        (add-hook 'go-test-mode-hook 'visual-line-mode)))
 
   (eval-after-load "hcl-mode"
     '(progn
-       (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode)))))
+       (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode))))
+
+  (custom-set-variables
+   '(lsp-prefer-flymake :none)))
 
 
 ;;;; Miscellaneous emacs settings
@@ -337,11 +345,11 @@
   (global-set-key (kbd "H-e") 'eshell)
   (global-set-key (kbd "H-i") 'imenu)
   (global-set-key (kbd "H-s") 'shell)
-  (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*admin*")))
-  (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*deploy*")))
-  (global-set-key (kbd "H-f") '(lambda () (interactive) (shell "*eff*")))
-  (global-set-key (kbd "H-g") '(lambda () (interactive) (shell "*gee*")))
-  (global-set-key (kbd "H-v") '(lambda () (interactive) (shell "*vagrant*")))
+  (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*shell admin*")))
+  (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*shell deploy*")))
+  (global-set-key (kbd "H-f") '(lambda () (interactive) (shell "*shell eff*")))
+  (global-set-key (kbd "H-g") '(lambda () (interactive) (shell "*shell gee*")))
+  (global-set-key (kbd "H-v") '(lambda () (interactive) (shell "*shell vagrant*")))
   (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun yyyymmdd ()
