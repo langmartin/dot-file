@@ -1,6 +1,16 @@
 #!/usr/bin/perl
 `mu index`;
-open(FH, "mu find 'flag:unread' -f 't|f|s'|");
+
+$s = $ENV{SINCE};
+$q = 'flag:unread';
+# $q .= qq( date:"$s..") if $s;
+$a = "";
+$a .= "--after=$s" if $s;
+
+$c = "mu find '$q' $a -f 't|f|s'";
+
+print "debug: $c\n";
+open(FH, "$c|");
 while (<FH>) {
     ($to, $from, $subj) = split /\|/, $_;
     `terminal-notifier -sender com.apple.Mail -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"`;
