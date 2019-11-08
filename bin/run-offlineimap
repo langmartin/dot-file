@@ -1,0 +1,8 @@
+#!/bin/sh
+while true; do
+    # mu4e runs mu server while you're looking at mail, which holds an mu lock. Killing it seems fine?
+    pkill -f 'mu server'
+    offlineimap
+    sleep 300
+    date
+done

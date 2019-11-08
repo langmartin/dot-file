@@ -1,11 +1,12 @@
 [general]
-accounts = Gmail
+accounts = gmail
 
-[Account Gmail]
+[Account gmail]
 localrepository = Local
 remoterepository = Remote
 synclabels = yes
 labelsheader = X-Keywords
+postsynchook = ~/bin/biff-gmail
 
 [Repository Local]
 type = GmailMaildir
@@ -15,10 +16,12 @@ localfolders = ~/Maildir
 type = Gmail
 # brew install openssl
 sslcacertfile = /usr/local/etc/openssl/cert.pem 
+ssl = yes
+ssl_version = tls1_2
 remoteuser =
 remotepass =
 maxconnections = 1
-folderfilter = lambda f: f in ['[Gmail]/All Mail']
+folderfilter = lambda f: f in ['[Gmail]/All Mail', '[Gmail]/Drafts']
 
 # Local Variables:
 # mode: python
