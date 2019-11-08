@@ -53,9 +53,10 @@ layout two ${emacs} ${lg}
 layout two ${safari} ${lg}
 layout two ${chrome} ${lg}
 # layout two 'Messages' ${max} ${sm}
-# layout two 'Slack' ${max} ${sm}
-layout two 'Terminal':REPEAT ${max} ${sm}
-# layout two 'Preview':REPEAT ${max} ${sm}
+layout two 'Slack' ${max} ${lg}
+layout two 'Activity Monitor':REPEAT ${top} ${sm}
+layout two 'Terminal':REPEAT ${bottom} ${sm}
+layout two 'Preview':REPEAT ${max} ${sm}
 layout two ${preview} ${sm}
 default two count:2
 
