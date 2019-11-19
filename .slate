@@ -40,12 +40,12 @@ alias terminal 'Terminal':REPEAT ${top}
 alias iterm 'iTerm':REPEAT ${top}
 alias preview 'Preview':REPEAT ${max}
 
-# alias mbpro 1280x800
-# alias 27in 2560x1440
+# alias apple27 2560x1440
 # alias air11 1366x768
-# alias samsung 1920x1080
-alias sm 1
-alias lg 0
+alias lgud68p 1920x1080
+alias lg 1920x1080
+alias mbpro19 2560x1600
+alias sm 2560x1600
 
 ## ----------------------------------------
 
