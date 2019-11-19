@@ -1,15 +1,11 @@
 #!/bin/sh
 # export SINCE=""
-export SINCE=0
+export SINCE=1
 
 while true; do
     # mu4e runs mu server while you're looking at mail, which holds an mu lock. Killing it seems fine?
     pkill -f 'mu server'
     offlineimap
-
-    # SINCE=`date +%Y-%m-%d %H:%M`
     SINCE=`date +%s`
-
-    date
     sleep 300
 done
