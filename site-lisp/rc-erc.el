@@ -28,7 +28,7 @@
 
 (custom-set-variables
  '(erc-autoaway-idle-method (quote user))
- '(erc-autoaway-message "I'm idle, but may be working outside of emacs. Decent odds I'll respond if you say my name.")
+ ;; '(erc-autoaway-message "I'm idle, but may be working outside of emacs. Decent odds I'll respond if you say my name.")
  '(erc-autoaway-mode t)
  '(erc-fool-highlight-type (quote all))
  '(erc-generate-log-file-name-function (quote erc-generate-log-file-name-short))
