@@ -2,7 +2,7 @@
 `mu index`;
 
 $s = $ENV{SINCE};
-$q = 'flag:unread';
+$q = 'flag:unread tag:\\\\Inbox';
 # $q .= qq( date:"$s..") if $s;
 $a = "";
 $a .= "--after=$s" if $s;
