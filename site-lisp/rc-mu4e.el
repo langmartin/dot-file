@@ -114,8 +114,13 @@
            :prompt     "archive"
            :show-target (lambda (target) "archive")
            :action      (lambda (docid msg target)
-                          (mu4e-action-retag-message msg gmail-y-tags)
-                          (mu4e~proc-move docid nil "+S-F")))
+                          (let* ((tags (mu4e-message-field msg :tags))
+                                 (inbox (filter (lambda (x) (string= "\\Inbox" x)) tags))
+                                 (starred (filter (lambda (x) (string= "\\Starred" x)) tags)))
+                            (if (and inbox starred)
+                                (mu4e-action-retag-message msg gmail-y-tags)
+                              (do (mu4e-action-retag-message msg (concat gmail-y-tags ",-\\Starred"))
+                                  (mu4e~proc-move docid nil "+S-F"))))))
           (trash
            :char        "D"
            :prompt      "trash"
