@@ -31,7 +31,6 @@ so manually add
 6. Configure Touch Bar, remove siri button
 
 * Applications
-
 ** Restart Slate
 1. automator system shell script past bin/restart-slate export as application
 
@@ -51,4 +50,21 @@ so manually add
                 </array>
         </dict>
 </array>
+#+END_SRC
+
+** CS:GO
+- [[https://steamcommunity.com/discussions/forum/2/541906348047362781/][macos specific, 2015]]
+- [[https://csgosmurfnation.com/cs-go-set-launch-options/][2019 recommendations]]
+- [[https://csgonoob.net/cl_interp-and-how-it-affects-your-csgo-gameplay-csgo-tips/][cl_interpolation]]
+
+- enable console, bind
+- =net_graph 1= fps overlay
+
+#+BEGIN_SRC sh
+  -console -novid -nod3d9ex high \
+           -threads 4 \
+           +cl_forcepreload 1 \
+           +fps_max 60 \
+           +cl_interp 0 +cl_interp_ratio 1 +cl_interpolation 1 \
+           +cl_cmdrate 128 +cl_updaterate 128
 #+END_SRC
