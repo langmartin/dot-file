@@ -119,8 +119,9 @@
                                  (starred (filter (lambda (x) (string= "\\Starred" x)) tags)))
                             (if (and inbox starred)
                                 (mu4e-action-retag-message msg gmail-y-tags)
-                              (do (mu4e-action-retag-message msg (concat gmail-y-tags ",-\\Starred"))
-                                  (mu4e~proc-move docid nil "+S-F"))))))
+                              (progn
+                                (mu4e-action-retag-message msg (concat gmail-y-tags ",-\\Starred"))
+                                (mu4e~proc-move docid nil "+S-F"))))))
           (trash
            :char        "D"
            :prompt      "trash"
