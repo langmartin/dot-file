@@ -678,18 +678,13 @@ exit 0
   (add-to-list 'auto-mode-alist '("\\.git/config$" . conf-unix-mode)))
 
 (defun rc-magit ()
-  ;; (add-to-list 'load-path "site-lisp/git-modes")
-  ;; (add-to-list 'load-path "site-lisp/magit")
   (package-require 'magit)
   (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
    '(global-magit-file-mode nil))
-  ;; (package-require 'magit-find-file)
-  ;; (global-set-key (kbd "C-x f") 'magit-find-file-completing-read)
-  ;; (define-key magit-status-mode-map (kbd "P")
-  ;;   `(keymap (80 . magit-push-dumber)))
-  )
+  (eval-after-load "magit-files"
+    (define-key magit-blob-mode-map (kbd "<return>") 'magit-blob-visit-file)))
 
 (defun magit-push-dumber (&optional prefix)
   (interactive "P")
