@@ -43,9 +43,9 @@ alias preview 'Preview':REPEAT ${max}
 # alias apple27 2560x1440
 # alias air11 1366x768
 alias lgud68p 1920x1080
-alias lg 1920x1080
 alias mbpro19 2560x1600
-alias sm 2560x1600
+alias lg 1
+alias sm 0
 
 ## ----------------------------------------
 
@@ -65,7 +65,7 @@ default two count:2
 layout one ${emacs} 0
 layout one ${safari} 0
 layout one ${chrome} 0
-layout one ${terminal} 0
+# layout one ${terminal} 0
 # layout one ${iterm} 0
 # layout one 'Messages' ${max} 0
 # layout one 'Slack' ${max} 0
@@ -84,10 +84,8 @@ layout hack 'Safari':REPEAT ${max}
 layout hack ${chrome}
 layout hack 'Firefox':REPEAT ${right}
 layout hack 'Preview':REPEAT ${max}
-layout hack 'Terminal':REPEAT ${top}
 
 layout make 'Emacs':REPEAT ${bottom14}
-layout make 'Terminal':REPEAT ${bottom14}
 layout make 'Safari':REPEAT ${top34}
 layout make 'Google Chrome':REPEAT ${top34}
 layout make 'Firefox':REPEAT ${top34}
@@ -109,6 +107,8 @@ bind u:ctrl,alt,cmd layout hack
 bind b:ctrl,alt,cmd layout make
 bind p:ctrl,alt,cmd layout pape
 bind z:ctrl,alt,cmd layout zoom
+bind o:ctrl,alt,cmd layout one
+bind t:ctrl,alt,cmd layout two
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
