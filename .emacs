@@ -684,7 +684,8 @@ exit 0
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
    '(global-magit-file-mode nil))
   (eval-after-load "magit-files"
-    (define-key magit-blob-mode-map (kbd "<return>") 'magit-blob-visit-file)))
+    '(progn
+       (define-key magit-blob-mode-map (kbd "<return>") 'magit-blob-visit-file))))
 
 (defun magit-push-dumber (&optional prefix)
   (interactive "P")
