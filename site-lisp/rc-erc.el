@@ -59,7 +59,7 @@
 (defun notification-center (title message)
   (start-process "terminal-notifier"
                  "*terminal-notifier*"
-                 "/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
+                 "terminal-notifier"
                  "-title" title
                  "-message" message
                  "-activate" "org.gnu.Emacs"
