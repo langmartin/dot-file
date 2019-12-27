@@ -1,0 +1,6 @@
+#!/bin/sh
+git remote prune backup
+git branch -a | grep '^  remotes/lang' | while IFS="/$IFS" read _ _ BR; do
+    git push origin :refs/remotes/lang/"$BR"
+done
+git remote prune backup
