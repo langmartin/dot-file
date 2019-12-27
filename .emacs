@@ -270,21 +270,21 @@
   (interactive)
   (setq lsp--document-symbols-request-async t))
 
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook 'lsp-format-buffer t t)
+  (add-hook 'before-save-hook 'lsp-organize-imports t t))
+
 (defun rc-go ()
   (eval-after-load "go-mode"
     '(progn
        (require 'yasnippet)
-       ;; (package-require 'dumb-jump)
-       ;; (define-key go-mode-map (kbd "M-.") 'dumb-jump-go)
-       ;; (define-key go-mode-map (kbd "M-,") 'dumb-jump-back)
+       (require 'lsp-mode)
        (define-key go-mode-map (kbd "H-l") 'go-insert-lambda)
        (define-key go-mode-map (kbd "H-e") 'go-insert-err)
-       ;; (define-key go-mode-map (kbd "M-.") 'lsp-find-definition)
-       ;; (define-key go-mode-map (kbd "M-,") 'pop-global-mark)
-       (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
-       (add-hook 'before-save-hook 'gofmt-before-save)
+       (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-file)
+       (add-hook 'go-mode-hook 'lsp-go-install-save-hooks)
        (add-hook 'go-mode-hook 'set-fill-column-92)
-       (add-hook 'go-mode-hook 'lsp)
+       (add-hook 'go-mode-hook 'lsp-deferred)
        (add-hook 'go-mode-hook 'set-lsp-sym-async)
        (add-hook 'go-test-mode-hook 'visual-line-mode)))
 
