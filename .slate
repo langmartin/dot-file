@@ -36,8 +36,8 @@ alias emacs 'Emacs':REPEAT ${max}
 alias safari 'Safari':REPEAT ${max}
 alias chrome23 'Google Chrome':REPEAT ${center23}
 alias chrome 'Google Chrome':REPEAT ${max}
-alias terminal 'Terminal':REPEAT ${top}
-alias iterm 'iTerm':REPEAT ${top}
+# alias terminal 'Terminal':REPEAT ${top}
+# alias iterm 'iTerm':REPEAT ${top}
 alias preview 'Preview':REPEAT ${max}
 
 # alias apple27 2560x1440
@@ -52,12 +52,11 @@ alias sm 0
 layout two ${emacs} ${lg}
 layout two ${safari} ${lg}
 layout two ${chrome} ${lg}
+layout two ${preview} ${lg}
 # layout two 'Messages' ${max} ${sm}
 layout two 'Slack' ${max} ${lg}
 layout two 'Activity Monitor':REPEAT ${top} ${sm}
-layout two 'Terminal':REPEAT ${bottom} ${sm}
-layout two 'Preview':REPEAT ${max} ${sm}
-layout two ${preview} ${sm}
+layout two 'Terminal':REPEAT ${qbl} ${sm}
 default two count:2
 
 ## ----------------------------------------
