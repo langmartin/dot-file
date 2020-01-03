@@ -1,6 +1,11 @@
 #!/bin/sh
+localp () {
+    git show-ref --verify --quiet refs/heads/"$1"
+}
+
 git remote prune backup
 git branch -a | grep '^  remotes/lang' | while IFS="/$IFS" read _ _ BR; do
+    localp "$BR" && continue
     git push origin :refs/remotes/lang/"$BR"
 done
 git remote prune backup
