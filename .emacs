@@ -281,7 +281,7 @@
        (require 'lsp-mode)
        (define-key go-mode-map (kbd "H-l") 'go-insert-lambda)
        (define-key go-mode-map (kbd "H-e") 'go-insert-err)
-       (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-file)
+       (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
        (add-hook 'go-mode-hook 'lsp-go-install-save-hooks)
        (add-hook 'go-mode-hook 'set-fill-column-92)
        (add-hook 'go-mode-hook 'lsp-deferred)
