@@ -11,6 +11,7 @@ alias b='git branch -v'
 alias ba='git branch -av'
 alias grunt='grunt --no-color'
 alias cn='cd ~/go/src/github.com/hashicorp/nomad'
+alias cm='cd ~/go/src/github.com/langmartin/nomad-dev'
 alias cu='cd ~/go/src/github.com/hashicorp/nomad/e2e/upgrades'
 alias cc='cd ~/go/src/github.com/hashicorp/consul'
 
@@ -27,9 +28,11 @@ anybar () {
     echo -n "$c" | nc -4u -w0 localhost ${2:-1738}
 }
 
-make () {
-    anybar
-    env make $@ && anybar green || anybar red
-}
+if [ -e "/Applications/AnyBar.app" ]; then
+    make () {
+	anybar
+	env make $@ && anybar green || anybar red
+    }
+fi
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
