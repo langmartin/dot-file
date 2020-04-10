@@ -2,8 +2,8 @@
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
-;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (defun package-require (package)
@@ -18,6 +18,11 @@
 
 (package-require 'dash)
 (require 'subr-x)
+
+(custom-set-variables
+ '(package-selected-packages
+   (quote
+    (lsp-mode flymake-shellcheck json-mode edit-indirect gnuplot gnuplot-mode yasnippet graphviz-dot-mode flycheck cider magit go-playground gnu-elpa-keyring-update yaml-mode git-link dot-mode polymode wgrep markdown-mode clojure-mode go-gen-test hcl-mode go-guru gotest go-errcheck go-impl go-mode zencoding-mode skewer-mode js2-mode flycheck-joker paredit find-file-in-repository idomenu ido-load-library dash))))
 
 (defun exec-path-setenv ()
   (interactive)
@@ -96,6 +101,10 @@
 
 
 ;;;; Modes
+
+(defun rc-shell-mode ()
+  (require 'flymake-shellcheck)
+  (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 
 (defun rc-clojure-mode ()
   (require 'cider)
@@ -209,10 +218,14 @@
   (define-key js2-mode-map (kbd "C-x `") 'js2-next-error)
   (add-hook 'js2-mode-hook 'turn-off-tabs)
   (add-hook 'js2-mode-hook 'turn-off-electric-indent)
+  (add-hook 'js-mode-hook 'set-tab-width-4)
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-  (add-hook 'js-mode-hook 'set-tab-width-4)
-  (add-to-list 'auto-mode-alist '("\\.json\\'" . js-mode))
+  (eval-after-load "json-mode"
+    '(progn
+       (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
+       (add-hook 'json-mode-hook 'turn-off-tabs)
+       (add-hook 'json-mode-hook 'set-tab-width-2)))
 
   (package-require 'skewer-mode)
   (skewer-setup))
@@ -262,7 +275,7 @@
 
 (defun go-insert-err ()
   (interactive)
-  (insert "if err != nil {\nreturn err\n}"))
+  (insert "if err != nil {\nreturn fmt.Errorf(\"%v\", err)\n}"))
 
 (defun set-fill-column-92 ()
   (interactive)
@@ -288,14 +301,28 @@
        (add-hook 'go-mode-hook 'set-fill-column-92)
        (add-hook 'go-mode-hook 'lsp-deferred)
        (add-hook 'go-mode-hook 'set-lsp-sym-async)
-       (add-hook 'go-test-mode-hook 'visual-line-mode)))
+       (add-hook 'go-test-mode-hook 'visual-line-mode)
+
+       ;; setup gopls for a virtualbox called "linux" in the ssh config
+       (lsp-register-client
+        (make-lsp-client :new-connection (lsp-tramp-connection "/home/vagrant/bin/lsp-gopls")
+                         :major-modes '(go-mode)
+                         :priority 0
+                         :server-id 'gopls-linux
+                         :remote? t
+                         :library-folders-fn
+                         (lambda (_workspace)
+                           '("/usr/local/go" "/home/vagrant/go/pkg/mod"))))))
 
   (eval-after-load "hcl-mode"
     '(progn
        (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode))))
 
   (custom-set-variables
-   '(lsp-prefer-flymake :none)))
+   '(lsp-prefer-flymake :none)
+   '(lsp-file-watch-ignored
+     (quote
+      ("[/\\\\]\\.git$" "[/\\\\]\\.hg$" "[/\\\\]\\.bzr$" "[/\\\\]_darcs$" "[/\\\\]\\.svn$" "[/\\\\]_FOSSIL_$" "[/\\\\]\\.idea$" "[/\\\\]\\.ensime_cache$" "[/\\\\]\\.eunit$" "[/\\\\]node_modules$" "[/\\\\]\\.fslckout$" "[/\\\\]\\.tox$" "[/\\\\]\\.stack-work$" "[/\\\\]\\.bloop$" "[/\\\\]\\.metals$" "[/\\\\]target$" "[/\\\\]\\.deps$" "[/\\\\]build-aux$" "[/\\\\]autom4te.cache$" "[/\\\\]\\.reference$" "[/\\\\]vendor$")))))
 
 
 ;;;; Miscellaneous emacs settings
@@ -346,7 +373,7 @@
   (global-set-key (kbd "H-SPC") 'just-one-space)
   (global-set-key (kbd "H-e") 'eshell)
   (global-set-key (kbd "H-i") 'imenu)
-  (global-set-key (kbd "H-s") 'shell)
+  (global-set-key (kbd "H-s") '(lambda () (interactive) (shell "*shell*")))
   (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*shell admin*")))
   (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*shell deploy*")))
   (global-set-key (kbd "H-f") '(lambda () (interactive) (shell "*shell eff*")))
@@ -537,11 +564,16 @@ the working directory"
    '(whitespace-line ((t (:background "gray90"))))
    '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick"))))))
 
+(defun set-tab-width-vars (n)
+  (setq tab-width n
+        c-basic-offset n
+        js-indent-level n))
+
 (defun turn-on-tabs () (interactive) (setq indent-tabs-mode t))
 (defun turn-off-tabs () (interactive) (setq indent-tabs-mode nil))
-(defun set-tab-width-2 () (interactive) (setq tab-width 2) (setq c-basic-offset 2))
-(defun set-tab-width-4 () (interactive) (setq tab-width 4) (setq c-basic-offset 4))
-(defun set-tab-width-8 () (interactive) (setq tab-width 8) (setq c-basic-offset 8))
+(defun set-tab-width-2 () (interactive) (set-tab-width-vars 2))
+(defun set-tab-width-4 () (interactive) (set-tab-width-vars 4))
+(defun set-tab-width-8 () (interactive) (set-tab-width-vars 8))
 (defun turn-on-auto-fill () (interactive) (auto-fill-mode 1))
 (defun turn-off-auto-fill () (interactive) (auto-fill-mode -1))
 
@@ -709,6 +741,7 @@ exit 0
   (rc-ido)
   (rc-winner)
   (rc-paredit)
+  (rc-shell-mode)
   (rc-clojure-mode)
   (rc-java-mode)
   (rc-javascript-mode)
