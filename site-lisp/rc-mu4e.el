@@ -18,6 +18,9 @@
 ;; brew install offlineimap
 ;; brew install html2text
 
+(defadvice mu4e~main-view (after set-directory ac)
+  (cd "~"))
+
 
 ;;;; Toggle viewing with the other html viewer
 
@@ -201,7 +204,7 @@
      ;;            (concat "Bcc: " user-mail-address "\n")))))
 
      ;; auto pgp sign
-     (add-hook 'mu4e-compose-mode-hook 'mml-secure-message-sign)
+     ;; (add-hook 'mu4e-compose-mode-hook 'mml-secure-message-sign)
      (rc-mu4e-send-longcuts)))
 
 (custom-set-variables
