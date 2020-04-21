@@ -33,11 +33,12 @@
 ;; reverse order, all add to the beginning
 (maybe-add-to-exec-path "/sbin")
 (maybe-add-to-exec-path "/usr/sbin")
+(maybe-add-to-exec-path "/usr/local/sbin")
 (maybe-add-to-exec-path "/usr/local/bin")
+(maybe-add-to-exec-path "/usr/local/go/bin")
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
 (maybe-add-to-exec-path "/usr/local/texlive/2018/bin/x86_64-darwin")
 (maybe-add-to-exec-path "~/.cargo/bin")
-(maybe-add-to-exec-path "/usr/local/go/bin")
 (maybe-add-to-exec-path "~/go/bin")
 (maybe-add-to-exec-path "~/bin")
 (exec-path-setenv)
