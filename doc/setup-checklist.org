@@ -64,6 +64,7 @@ so manually add
   -console -novid -nod3d9ex high \
            -threads 4 \
            +cl_forcepreload 1 \
+           +cl_teamid_overhead_mode 1 \
            +fps_max 60 \
            +cl_interp 0 +cl_interp_ratio 1 +cl_interpolation 1 \
            +cl_cmdrate 128 +cl_updaterate 128
