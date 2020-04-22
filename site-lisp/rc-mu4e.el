@@ -168,8 +168,9 @@
   ;; 3. make sure that mail-select-account is true, so that msmtp is
   ;;    flagged to choose the account from the envelope sender
   (setenv "MAILDIR" (concat "/Users/lang/Maildir/" acct))
-  (setenv "MU_HOME" (concat "/Users/lang/.mu/" acct))
+  (setenv "MU_HOME" (concat "/Users/lang/.cache/mu/" acct))
   (setq mu4e-maildir (concat "/Users/lang/Maildir/" acct))
+  (setq mu4e-mu-home (concat "/Users/lang/.cache/mu/" acct))
   (setq user-mail-address addr)
   (setq mu4e-get-mail-command (concat "offlineimap -a " acct))
   (mu4e-quit)
@@ -185,11 +186,9 @@
   (interactive)
   (mail-select-account "gmail" "lang.martin@gmail.com"))
 
-(defun mu-index-rebuild ()
+(defun mu-reindex ()
   (interactive)
-  (shell-command "mu index --rebuild"))
-
-(defalias 'mu-reindex 'mu-index-rebuild)
+  (shell-command "mu init --muhome $MU_HOME && mu index --muhome $MU_HOME &"))
 
 (eval-after-load "mu4e"
   '(progn

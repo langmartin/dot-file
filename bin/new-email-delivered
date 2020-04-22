@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-`mu index`;
+`mu index --muhome '$ENV{MU_HOME}'`;
 
 $s = $ENV{SINCE};
 $q = 'flag:unread tag:\\\\Inbox';
@@ -7,11 +7,20 @@ $q = 'flag:unread tag:\\\\Inbox';
 $a = "";
 $a .= "--after=$s" if $s;
 
-$c = "mu find '$q' $a -f 't|f|s'";
+$c = "mu find --muhome '$ENV{MU_HOME}' '$q' $a -f 't|f|s'";
 
 print "debug: $c\n";
 open(FH, "$c|");
 while (<FH>) {
     ($to, $from, $subj) = split /\|/, $_;
+
+    for ($to, $from, $subj)  {
+	s/"/\\"/g;
+	s/^\s+//g;
+	s/\s+$//g;
+    }
+
+    # print qq(terminal-notifier -sender com.apple.Mail -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"\n);
+
     `terminal-notifier -sender com.apple.Mail -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"`;
 }
