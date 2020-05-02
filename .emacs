@@ -6,6 +6,19 @@
 ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+(defun rc-melpa-packages ()
+  (when (or (not (package-installed-p 'flycheck))
+            (not (package-installed-p 'flymake-shellcheck)))
+    (let ((old package-archives))
+      (setq package-archives '(("melpa" . "https://melpa.org/packages/")))
+      (package-refresh-contents)
+      (unwind-protect
+          (progn
+            (package-install 'flycheck t)
+            (package-install 'flymake-shellcheck))
+        (setq package-archives old)
+        (package-refresh-contents)))))
+
 (defun package-require (package)
   (unless (package-installed-p package)
     (package-install package))
@@ -16,13 +29,12 @@
     (when (file-exists-p f)
       (add-to-list 'exec-path f))))
 
-(package-require 'dash)
-(require 'subr-x)
+(when (not (package-installed-p 'dash))
+  (package-refresh-contents)
+  (package-install 'dash))
 
-(custom-set-variables
- '(package-selected-packages
-   (quote
-    (lsp-mode flymake-shellcheck json-mode edit-indirect gnuplot gnuplot-mode yasnippet graphviz-dot-mode flycheck cider magit go-playground gnu-elpa-keyring-update yaml-mode git-link dot-mode polymode wgrep markdown-mode clojure-mode go-gen-test hcl-mode go-guru gotest go-errcheck go-impl go-mode zencoding-mode skewer-mode js2-mode flycheck-joker paredit find-file-in-repository idomenu ido-load-library dash))))
+(require 'dash)
+(require 'subr-x)
 
 (defun exec-path-setenv ()
   (interactive)
@@ -98,17 +110,22 @@
   (defun anybar-cyan  (&rest _) (interactive) (anybar-color "cyan"))
   (defun anybar-green (&rest _) (interactive) (anybar-color "green"))
   (defun anybar       (&rest _) (interactive) (anybar-color "white")))
-(rc-anybar)
+
+(defun rc-disable-mouse ()
+  (package-require 'disable-mouse)
+  (custom-set-variables
+   '(global-disable-mouse-mode-lighter ""))
+  (global-disable-mouse-mode))
 
 
 ;;;; Modes
 
 (defun rc-shell-mode ()
-  (require 'flymake-shellcheck)
+  (package-require 'flymake-shellcheck)
   (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 
 (defun rc-clojure-mode ()
-  (require 'cider)
+  (package-require 'cider)
   (package-require 'flycheck-joker)
   (add-hook 'cider-repl-mode-hook 'paredit-mode)
   (add-hook 'clojure-mode-hook 'flycheck-mode)
@@ -291,6 +308,9 @@
   (add-hook 'before-save-hook 'lsp-organize-imports t t))
 
 (defun rc-go ()
+  (package-install 'yasnippet t)
+  (package-install 'lsp-mode t)
+  (package-install 'go-mode)
   (eval-after-load "go-mode"
     '(progn
        (require 'yasnippet)
@@ -315,6 +335,7 @@
                          (lambda (_workspace)
                            '("/usr/local/go" "/home/vagrant/go/pkg/mod"))))))
 
+  (package-install 'hcl-mode)
   (eval-after-load "hcl-mode"
     '(progn
        (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode))))
@@ -734,9 +755,12 @@ exit 0
 ;;;; Start everything up
 
 (defun rc-init-emacs ()
+  (rc-melpa-packages)
   (rc-osx)
   (rc-backups-and-autosave-directory "~/.emacs.d/backup")
   (rc-emacs-miscellany)
+  (rc-anybar)
+  (rc-disable-mouse)
   (rc-emacs-slides)
   (rc-show-paren-expression)
   (rc-ido)
