@@ -49,26 +49,27 @@ alias sm 0
 
 ## ----------------------------------------
 
-layout two ${emacs} ${lg}
-layout two ${safari} ${lg}
-layout two ${chrome} ${lg}
-layout two ${preview} ${lg}
-# layout two 'Messages' ${max} ${sm}
-layout two 'Slack' ${max} ${lg}
-layout two 'Activity Monitor':REPEAT ${top} ${sm}
-layout two 'Terminal':REPEAT ${qbl} ${sm}
-default two count:2
+layout chat2 ${emacs} ${lg}
+layout chat2 ${safari} ${lg}
+layout chat2 ${chrome} ${lg}
+layout chat2 ${preview} ${lg}
+layout chat2 'Messages' ${max} ${sm}
+layout chat2 'Slack' ${max} ${sm}
+layout chat2 'Signal' ${max} ${sm}
+layout chat2 'Activity Monitor':REPEAT throw ${lg}
+layout chat2 'Terminal':REPEAT throw ${lg}
+default chat2 count:2
 
-## ----------------------------------------
-
-layout one ${emacs} 0
-layout one ${safari} 0
-layout one ${chrome} 0
-# layout one ${terminal} 0
-# layout one ${iterm} 0
-# layout one 'Messages' ${max} 0
-# layout one 'Slack' ${max} 0
-default one count:1
+layout term2 ${emacs} ${lg}
+layout term2 ${safari} ${lg}
+layout term2 ${chrome} ${lg}
+layout term2 ${preview} ${lg}
+layout term2 'Messages' throw ${lg}
+layout term2 'Slack' throw ${lg}
+layout term2 'Signal' throw ${lg}
+layout term2 'Activity Monitor':REPEAT ${top} ${sm}
+layout term2 'Terminal':REPEAT ${max} ${sm}
+default term2 count:2
 
 ## ----------------------------------------
 
@@ -100,14 +101,11 @@ layout pape 'Google Chrome':REPEAT ${right47}
 layout pape 'Preview':REPEAT ${right47}
 
 bind r:ctrl,alt,cmd layout read
-bind s:ctrl,alt,cmd layout read
 bind h:ctrl,alt,cmd layout hack
-bind u:ctrl,alt,cmd layout hack
 bind b:ctrl,alt,cmd layout make
 bind p:ctrl,alt,cmd layout pape
-bind z:ctrl,alt,cmd layout zoom
-bind o:ctrl,alt,cmd layout one
-bind t:ctrl,alt,cmd layout two
+bind s:ctrl,alt,cmd layout chat2
+bind t:ctrl,alt,cmd layout term2
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
