@@ -1,23 +1,11 @@
+;;; -*- lexical-binding: t -*-
 ;;;; Bootstrapping
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-
-(defun rc-melpa-packages ()
-  (when (or (not (package-installed-p 'flycheck))
-            (not (package-installed-p 'flymake-shellcheck)))
-    (let ((old package-archives))
-      (setq package-archives '(("melpa" . "https://melpa.org/packages/")))
-      (package-refresh-contents)
-      (unwind-protect
-          (progn
-            (package-install 'flycheck t)
-            (package-install 'flymake-shellcheck))
-        (setq package-archives old)
-        (package-refresh-contents)))))
 
 (defun package-require (package)
   (unless (package-installed-p package)
@@ -35,6 +23,27 @@
 
 (require 'dash)
 (require 'subr-x)
+
+(defun package-install-with-archive (archive-pair &rest packages)
+  "archive-pair: (\"melpa\" . \"https://melpa.org/packages/\")
+packages: 'foo 'bar"
+  (let ((pkgs (-remove 'package-installed-p packages)))
+    (when (consp pkgs)
+      (let ((old package-archives))
+        (setq package-archives (list archive-pair))
+        (package-refresh-contents)
+        (unwind-protect
+            (-each pkgs 'package-install)
+          (setq package-archives old)
+          (package-refresh-contents))))))
+
+(defun package-install-with-melpa (&rest packages)
+  (apply 'package-install-with-archive
+         '("melpa" . "https://melpa.org/packages/")
+         packages))
+
+(defun rc-melpa-packages ()
+  (package-install-with-melpa 'flycheck 'flymake-shellcheck))
 
 (defun exec-path-setenv ()
   (interactive)
@@ -114,11 +123,14 @@
 (defun rc-disable-mouse ()
   (package-require 'disable-mouse)
   (custom-set-variables
-   '(global-disable-mouse-mode-lighter ""))
+   '(disable-mouse-mode-global-lighter ""))
   (global-disable-mouse-mode))
 
 
 ;;;; Modes
+
+(defun rc-r-mode ()
+  (package-require 'ess))
 
 (defun rc-shell-mode ()
   (package-require 'flymake-shellcheck)
@@ -311,6 +323,7 @@
   (package-install 'yasnippet t)
   (package-install 'lsp-mode t)
   (package-install 'go-mode)
+  (package-install 'gotest)
   (eval-after-load "go-mode"
     '(progn
        (require 'yasnippet)
@@ -362,8 +375,9 @@
 
   (setq inhibit-trace nil)              ; trace needs this in emacs 24
   (global-auto-revert-mode 1)
-  (mouse-avoidance-mode 'jump)
   (require 'uniquify nil t)
+  (package-require 'mode-line-bell)
+  (mode-line-bell-mode)
 
   (custom-set-variables
    '(column-number-mode t)
@@ -743,6 +757,12 @@ exit 0
     '(progn
        (define-key magit-blob-mode-map (kbd "<return>") 'magit-blob-visit-file))))
 
+(defun magit-blob-visit-file ()
+  (interactive)
+  (let ((p (point)))
+    (find-file magit-buffer-file-name)
+    (goto-char p)))
+
 (defun magit-push-dumber (&optional prefix)
   (interactive "P")
   (if (not prefix)
@@ -775,6 +795,7 @@ exit 0
   (rc-prolog)
   (rc-haskell)
   (rc-go)
+  (rc-r-mode)
   (rc-magit)
   (rc-git))
 
