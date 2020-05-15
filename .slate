@@ -69,7 +69,6 @@ layout term2 'Slack' throw ${lg}
 layout term2 'Signal' throw ${lg}
 layout term2 'Activity Monitor':REPEAT ${top} ${sm}
 layout term2 'Terminal':REPEAT ${max} ${sm}
-default term2 count:2
 
 ## ----------------------------------------
 
