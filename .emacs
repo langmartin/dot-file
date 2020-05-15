@@ -3,8 +3,8 @@
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
-;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 (defun package-require (package)
@@ -58,7 +58,7 @@ packages: 'foo 'bar"
 (maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "/usr/local/go/bin")
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
-(maybe-add-to-exec-path "/usr/local/texlive/2018/bin/x86_64-darwin")
+(maybe-add-to-exec-path "/usr/local/texlive/2019/bin/x86_64-darwin")
 (maybe-add-to-exec-path "~/.cargo/bin")
 (maybe-add-to-exec-path "~/go/bin")
 (maybe-add-to-exec-path "~/bin")
@@ -385,14 +385,17 @@ packages: 'foo 'bar"
    '(line-number-mode t)
    '(sentence-end-double-space nil)
    '(hippie-expand-try-functions-list
-     '(try-expand-all-abbrevs
+     (quote
+      (try-expand-all-abbrevs
+       try-expand-list
+       try-expand-line
        try-expand-dabbrev
        try-expand-dabbrev-all-buffers
        try-expand-dabbrev-from-kill
        try-complete-file-name-partially
        try-complete-file-name
        try-complete-lisp-symbol-partially
-       try-complete-lisp-symbol))
+       try-complete-lisp-symbol)))
    '(uniquify-buffer-name-style 'forward)
    '(uniquify-strip-common-suffix t))
 
