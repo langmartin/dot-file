@@ -14,13 +14,15 @@ open(FH, "$c|");
 while (<FH>) {
     ($to, $from, $subj) = split /\|/, $_;
 
+    $orig = $from;
+
     for ($to, $from, $subj)  {
-	s/"/\\"/g;
-	s/^\s+//g;
-	s/\s+$//g;
+	s/"//g;
+	s/^\s+//;
+	s/\s+$//;
     }
 
-    # print qq(terminal-notifier -sender com.apple.Mail -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"\n);
-
+    # print qq(debug: $orig => $from\n);
+    # print qq(debug: terminal-notifier ... -title "$from" -subtitle "$to" -message "$subj"\n);
     `terminal-notifier -sender com.apple.Mail -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"`;
 }
