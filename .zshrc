@@ -23,16 +23,16 @@ dockerize () {
     eval `docker-machine env default`
 }
 
+AnyBarHost=localhost
+# AnyBarHost=10.199.0.1
 anybar () {
     [ -n "$1" ] && c="$1" || c=white
-    echo -n "$c" | nc -4u -w0 localhost ${2:-1738}
+    echo -n "$c" | nc -4u -w0 $AnyBarHost ${2:-1738}
 }
 
-if [ -e "/Applications/AnyBar.app" ]; then
-    make () {
-	anybar
-	env make $@ && anybar green || anybar red
-    }
-fi
+make () {
+    anybar
+    env make $@ && anybar green || anybar red
+}
 
 . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
