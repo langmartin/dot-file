@@ -362,6 +362,18 @@ packages: 'foo 'bar"
 
 ;;;; Miscellaneous emacs settings
 
+(defun focus-shell (name)
+  (interactive)
+  (if (file-remote-p default-directory)
+      (let ((default-directory "~"))
+        (shell name))
+    (shell name)))
+
+(defun interactive-partial (f &rest xs)
+  (lambda ()
+    (interactive)
+    (apply f xs)))
+
 (defun rc-emacs-miscellany ()
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -412,12 +424,12 @@ packages: 'foo 'bar"
   (global-set-key (kbd "H-SPC") 'just-one-space)
   (global-set-key (kbd "H-e") 'eshell)
   (global-set-key (kbd "H-i") 'imenu)
-  (global-set-key (kbd "H-s") '(lambda () (interactive) (shell "*shell*")))
-  (global-set-key (kbd "H-a") '(lambda () (interactive) (shell "*shell admin*")))
-  (global-set-key (kbd "H-d") '(lambda () (interactive) (shell "*shell deploy*")))
-  (global-set-key (kbd "H-f") '(lambda () (interactive) (shell "*shell eff*")))
-  (global-set-key (kbd "H-g") '(lambda () (interactive) (shell "*shell gee*")))
-  (global-set-key (kbd "H-v") '(lambda () (interactive) (shell "*shell vagrant*")))
+  (global-set-key (kbd "H-s") (interactive-partial 'focus-shell "*shell*"))
+  (global-set-key (kbd "H-a") (interactive-partial 'focus-shell "*shell admin*"))
+  (global-set-key (kbd "H-d") (interactive-partial 'focus-shell "*shell deploy*"))
+  (global-set-key (kbd "H-f") (interactive-partial 'focus-shell "*shell eff*"))
+  (global-set-key (kbd "H-g") (interactive-partial 'focus-shell "*shell gee*"))
+  (global-set-key (kbd "H-v") (interactive-partial 'focus-shell "*shell vagrant*"))
   (global-set-key (kbd "H-r") 'revert-buffer))
 
 (defun yyyymmdd ()
@@ -572,6 +584,7 @@ the working directory"
   (add-hook 'before-save-hook 'backup-buffer-force))
 
 (defun rc-look-and-feel ()
+  (interactive)
   (rc-font-sm)
 
   (custom-set-variables
@@ -818,11 +831,15 @@ exit 0
      ("<C-down>" . chop-move-down)))
 
   (require 'goto-last-change)
-  (global-set-key (kbd "C-x C-/") 'goto-last-change))
+  (global-set-key (kbd "C-x C-/") 'goto-last-change)
+
+  (package-require 'polymode)
+  (require 'tla-pcal-mode))
 
 ;;;; .emacs looks something like this:
 ;; (load-file "~/code/dot-file/.emacs")
 ;; (add-to-list 'load-path "~/code/dot-file/site-lisp")
+;; (let ((default-directory  "~/code/dot-file/site-lisp")) (normal-top-level-add-subdirs-to-load-path))
 ;; (rc-init-emacs)
 ;; (rc-look-and-feel)
 ;; (rc-emacs-master)
