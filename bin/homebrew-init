@@ -2,17 +2,14 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew install \
-     ag \
      aspell \
      ctags \
      html2text \
-     go \
      jq \
      msmtp \
      npm \
      offline-imap \
      pandoc \
-     planck \
      terminal-notifier \
      tmux
 
@@ -26,3 +23,16 @@ brew install \
      pinentry-mac \
      gpg2 \
      candid82/brew/joker
+
+brew install \
+     djbdns \
+     runit \
+     graphviz \
+     gnuplot \
+     unison \
+     youtube-dl \
+     signify-osx \
+     tarsnap \
+     magic-wormhole \
+     guile \
+     ntfs-3g
