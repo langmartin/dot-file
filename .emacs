@@ -276,7 +276,7 @@ packages: 'foo 'bar"
 (defun rc-markdown-mode ()
   (interactive)
   (package-require 'markdown-mode)
-  (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.mdx\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode)))
 
@@ -318,6 +318,12 @@ packages: 'foo 'bar"
 (defun lsp-go-install-save-hooks ()
   (add-hook 'before-save-hook 'lsp-format-buffer t t)
   (add-hook 'before-save-hook 'lsp-organize-imports t t))
+
+(defun goimports ()
+  (interactive)
+  (save-current-buffer)
+  (shell-command (concat "goimports -w " buffer-file-name))
+  (revert-buffer t t t))
 
 (defun rc-go ()
   (package-install 'yasnippet t)
