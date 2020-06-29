@@ -1,6 +1,6 @@
 #!/bin/sh
 # export SINCE=""
-export SINCE=1
+export SINCE=`date -v-5M +%s`
 
 while true; do
     # mu4e runs mu server while you're looking at mail, which holds an mu lock. Killing it seems fine?
