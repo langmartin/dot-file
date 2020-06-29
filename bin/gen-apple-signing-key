@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# This didn't seem to work, but I'm going to hang onto it in case it
+# can be made to work in the future. Attempting to avoid local
+# security warnings
+
+# https://security.stackexchange.com/questions/17909/how-to-create-an-apple-installer-package-signing-certificate
+
+key=lang-martin-local
+
+cat <<EOF > apple.conf
+[ req ]
+distinguished_name = req_name
+prompt = no
+[ req_name ]
+CN = $key
+[ extensions ]
+basicConstraints=critical,CA:false
+keyUsage=critical,digitalSignature
+extendedKeyUsage=critical,1.2.840.113635.100.4.13
+1.2.840.113635.100.6.1.14=critical,DER:0500
+EOF
+
+openssl genrsa -out apple.key 2048
+openssl req -x509 -new \
+	-config apple.conf \
+	-nodes -key apple.key -extensions extensions -sha256 \
+	-out apple.crt
+openssl pkcs12 -export -inkey apple.key -in apple.crt -out apple.p12
+open apple.p12
