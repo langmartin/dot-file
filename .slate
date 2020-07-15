@@ -28,7 +28,9 @@ alias center13	move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;scre
 alias center	move screenOriginX+screenSizeX/4;screenOriginY+screenSizeY/4 screenSizeX/2;screenSizeY/2
 # quarters
 alias qtl       move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/2
+alias qtlTall   move screenOriginX;screenOriginY screenSizeX/2;screenSizeY/1.2
 alias qtr       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/2
+alias qtrTall   move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY/1.5
 alias qbl       move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
 alias qbr       move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
 
@@ -39,10 +41,10 @@ alias chrome 'Google Chrome':REPEAT ${full}
 alias terminal 'Terminal':REPEAT ${full}
 alias preview 'Preview':REPEAT ${full}
 alias slack 'Slack':REPEAT ${full}
-alias signal 'Signal':REPEAT ${full}
-alias messages 'Messages':REPEAT ${full}
 alias activityMon 'Activity Monitor':REPEAT ${top}
 alias calendar 'Calendar':REPEAT ${full}
+alias signal 'Signal':REPEAT ${qtlTall}
+alias messages 'Messages':REPEAT ${qtrTall}
 
 # alias apple27 2560x1440
 # alias air11 1366x768
@@ -60,9 +62,9 @@ layout chat2 ${preview} ${lg}
 layout chat2 ${activityMon} ${lg}
 layout chat2 ${terminal} ${lg}
 layout chat2 ${calendar} ${lg}
-layout chat2 ${messages} ${sm}
 layout chat2 ${slack} ${sm}
-layout chat2 ${signal} ${sm}
+layout chat2 'Signal':REPEAT ${full} ${sm}
+layout chat2 'Messages':REPEAT ${full} ${sm}
 
 layout term2 ${emacs} ${lg}
 layout term2 ${safari} ${lg}
