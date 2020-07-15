@@ -21,7 +21,7 @@ alias top	move screenOriginX;screenOriginY screenSizeX;screenSizeY/2
 alias top34	move screenOriginX;screenOriginY screenSizeX;(screenSizeY/4)*3
 alias bottom	move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX;screenSizeY/2
 alias bottom14	move screenOriginX;screenOriginY+screenSizeY-(screenSizeY/4) screenSizeX;screenSizeY/4
-alias max	move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias full	move screenOriginX;screenOriginY screenSizeX;screenSizeY
 alias center89	move screenOriginX+screenSizeX/36;screenOriginY (screenSizeX/18)*17;screenSizeY
 alias center23	move screenOriginX+screenSizeX/6;screenOriginY (screenSizeX/3)*2;screenSizeY
 alias center13	move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
@@ -32,13 +32,17 @@ alias qtr       move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;scr
 alias qbl       move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
 alias qbr       move screenOriginX+screenSizeX/2;screenOriginY+screenSizeY/2 screenSizeX/2;screenSizeY/2
 
-alias emacs 'Emacs':REPEAT ${max}
-alias safari 'Safari':REPEAT ${max}
+alias emacs 'Emacs':REPEAT ${full}
+alias safari 'Safari':REPEAT ${full}
 alias chrome23 'Google Chrome':REPEAT ${center23}
-alias chrome 'Google Chrome':REPEAT ${max}
-# alias terminal 'Terminal':REPEAT ${top}
-# alias iterm 'iTerm':REPEAT ${top}
-alias preview 'Preview':REPEAT ${max}
+alias chrome 'Google Chrome':REPEAT ${full}
+alias terminal 'Terminal':REPEAT ${full}
+alias preview 'Preview':REPEAT ${full}
+alias slack 'Slack':REPEAT ${full}
+alias signal 'Signal':REPEAT ${full}
+alias messages 'Messages':REPEAT ${full}
+alias activityMon 'Activity Monitor':REPEAT ${top}
+alias calendar 'Calendar':REPEAT ${full}
 
 # alias apple27 2560x1440
 # alias air11 1366x768
@@ -53,22 +57,36 @@ layout chat2 ${emacs} ${lg}
 layout chat2 ${safari} ${lg}
 layout chat2 ${chrome} ${lg}
 layout chat2 ${preview} ${lg}
-layout chat2 'Messages' ${max} ${sm}
-layout chat2 'Slack' ${max} ${sm}
-layout chat2 'Signal' ${max} ${sm}
-layout chat2 'Activity Monitor':REPEAT throw ${lg}
-layout chat2 'Terminal':REPEAT throw ${lg}
-default chat2 count:2
+layout chat2 ${activityMon} ${lg}
+layout chat2 ${terminal} ${lg}
+layout chat2 ${calendar} ${lg}
+layout chat2 ${messages} ${sm}
+layout chat2 ${slack} ${sm}
+layout chat2 ${signal} ${sm}
 
 layout term2 ${emacs} ${lg}
 layout term2 ${safari} ${lg}
 layout term2 ${chrome} ${lg}
 layout term2 ${preview} ${lg}
-layout term2 'Messages' throw ${lg}
-layout term2 'Slack' throw ${lg}
-layout term2 'Signal' throw ${lg}
-layout term2 'Activity Monitor':REPEAT ${top} ${sm}
-layout term2 'Terminal':REPEAT ${max} ${sm}
+layout term2 ${messages} ${lg}
+layout term2 ${slack} ${lg}
+layout term2 ${signal} ${lg}
+layout term2 ${calendar} ${lg}
+layout term2 ${activityMon} ${sm}
+layout term2 ${terminal} ${sm}
+
+layout deep2 ${emacs} ${lg}
+layout deep2 ${safari} ${lg}
+layout deep2 ${chrome} ${lg}
+layout deep2 ${preview} ${lg}
+layout deep2 ${messages} ${lg}
+layout deep2 ${slack} ${lg}
+layout deep2 ${signal} ${lg}
+layout deep2 ${activityMon} ${lg}
+layout deep2 ${terminal} ${lg}
+layout deep2 ${calendar} ${sm}
+
+default deep2 count:2
 
 ## ----------------------------------------
 
@@ -78,11 +96,11 @@ layout read 'Google Chrome':REPEAT ${right}
 layout read 'Firefox':REPEAT ${right}
 layout read 'Preview':REPEAT ${right}
 
-layout hack 'Emacs':REPEAT ${max}
-layout hack 'Safari':REPEAT ${max}
+layout hack 'Emacs':REPEAT ${full}
+layout hack 'Safari':REPEAT ${full}
 layout hack ${chrome}
 layout hack 'Firefox':REPEAT ${right}
-layout hack 'Preview':REPEAT ${max}
+layout hack 'Preview':REPEAT ${full}
 
 layout make 'Emacs':REPEAT ${bottom14}
 layout make 'Safari':REPEAT ${top34}
@@ -103,20 +121,22 @@ bind r:ctrl,alt,cmd layout read
 bind h:ctrl,alt,cmd layout hack
 bind b:ctrl,alt,cmd layout make
 bind p:ctrl,alt,cmd layout pape
-bind s:ctrl,alt,cmd layout chat2
+
+bind c:ctrl,alt,cmd layout chat2
 bind t:ctrl,alt,cmd layout term2
+bind d:ctrl,alt,cmd layout deep2
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
 bind up:ctrl,alt,cmd ${top}
 bind down:ctrl,alt,cmd ${bottom}
-bind c:ctrl,alt,cmd ${center23}
-bind v:ctrl,alt,cmd ${center13}
-bind b:ctrl,alt,cmd ${center}
-bind f:ctrl,alt,cmd ${max}
+# bind c:ctrl,alt,cmd ${center23}
+# bind v:ctrl,alt,cmd ${center13}
+# bind b:ctrl,alt,cmd ${center}
+bind f:ctrl,alt,cmd ${full}
 bind tab:ctrl,alt,cmd throw next
-bind .:ctrl,alt,cmd ${left37}
-bind ,:ctrl,alt,cmd ${right47}
+# bind .:ctrl,alt,cmd ${left37}
+# bind ,:ctrl,alt,cmd ${right47}
 
 ## ----------------------------------------
 ## Quarters
