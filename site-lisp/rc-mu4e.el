@@ -18,8 +18,12 @@
 ;; brew install offlineimap
 ;; brew install html2text
 
-(defadvice mu4e~main-view (after set-directory ac)
+(defadvice mu4e~main-view (after set-directory activate)
   (cd "~"))
+
+(defadvice mu4e~compose-set-friendly-buffer-name (after always-prefix activate)
+  (let ((str (concat "mu4e " (buffer-name))))
+    (rename-buffer (truncate-string-to-width str mu4e~compose-buffer-max-name-length) t)))
 
 
 ;;;; Toggle viewing with the other html viewer
