@@ -100,7 +100,7 @@ packages: 'foo 'bar"
     (switch-to-buffer nil))
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
 
-(defun toggle-transparency (&optional opacity)
+(defun transparency (&optional opacity)
   (interactive "p")
   (let* ((n (->> (selected-frame) frame-parameters (assoc 'alpha) cdr))
          (m (if (= 1 opacity)
@@ -325,6 +325,12 @@ packages: 'foo 'bar"
   (shell-command (concat "goimports -w " buffer-file-name))
   (revert-buffer t t t))
 
+(defun find-api ()
+    (interactive)
+    (->> (buffer-file-name)
+         (replace-regexp-in-string (regexp-quote "vendor/github.com/hashicorp/nomad/") "")
+         (find-file-existing)))
+
 (defun rc-go ()
   (package-install 'yasnippet t)
   (package-install 'lsp-mode t)
@@ -432,7 +438,7 @@ packages: 'foo 'bar"
   (global-set-key (kbd "H-i") 'imenu)
   (global-set-key (kbd "H-s") (interactive-partial 'focus-shell "*shell*"))
   (global-set-key (kbd "H-a") (interactive-partial 'focus-shell "*shell admin*"))
-  (global-set-key (kbd "H-d") (interactive-partial 'focus-shell "*shell deploy*"))
+  (global-set-key (kbd "H-d") (interactive-partial 'focus-shell "*shell dee*"))
   (global-set-key (kbd "H-f") (interactive-partial 'focus-shell "*shell eff*"))
   (global-set-key (kbd "H-g") (interactive-partial 'focus-shell "*shell gee*"))
   (global-set-key (kbd "H-v") (interactive-partial 'focus-shell "*shell vagrant*"))
