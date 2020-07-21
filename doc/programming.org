@@ -1,0 +1,9 @@
+* Distributed Systems
+
+** Pigpaxos fast paxos implementation
+- http://pigpaxos.charap.co
+
+* Graphing and Visualization
+
+- manim animated 3d graphing library https://github.com/3b1b/manim#using-manim
+- https://matplotlib.org/gallery/index.html#event-handling
