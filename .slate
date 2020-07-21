@@ -55,16 +55,16 @@ alias sm 0
 
 ## ----------------------------------------
 
-layout chat2 ${emacs} ${lg}
-layout chat2 ${safari} ${lg}
-layout chat2 ${chrome} ${lg}
-layout chat2 ${preview} ${lg}
-layout chat2 ${activityMon} ${lg}
-layout chat2 ${terminal} ${lg}
-layout chat2 ${calendar} ${lg}
-layout chat2 ${slack} ${sm}
-layout chat2 'Signal':REPEAT ${full} ${sm}
-layout chat2 'Messages':REPEAT ${full} ${sm}
+layout slack2 ${emacs} ${lg}
+layout slack2 ${safari} ${lg}
+layout slack2 ${chrome} ${lg}
+layout slack2 ${preview} ${lg}
+layout slack2 ${activityMon} ${lg}
+layout slack2 ${terminal} ${lg}
+layout slack2 ${calendar} ${lg}
+layout slack2 ${slack} ${sm}
+layout slack2 'Signal':REPEAT ${full} ${sm}
+layout slack2 'Messages':REPEAT ${full} ${sm}
 
 layout term2 ${emacs} ${lg}
 layout term2 ${safari} ${lg}
@@ -104,11 +104,11 @@ layout hack ${chrome}
 layout hack 'Firefox':REPEAT ${right}
 layout hack 'Preview':REPEAT ${full}
 
-layout make 'Emacs':REPEAT ${bottom14}
-layout make 'Safari':REPEAT ${top34}
-layout make 'Google Chrome':REPEAT ${top34}
-layout make 'Firefox':REPEAT ${top34}
-layout make 'Preview':REPEAT ${top34}
+layout build 'Emacs':REPEAT ${bottom14}
+layout build 'Safari':REPEAT ${top34}
+layout build 'Google Chrome':REPEAT ${top34}
+layout build 'Firefox':REPEAT ${top34}
+layout build 'Preview':REPEAT ${top34}
 
 layout zoom 'Emacs':REPEAT ${right13}
 layout zoom 'Safari':REPEAT ${right}
@@ -121,10 +121,10 @@ layout pape 'Preview':REPEAT ${right47}
 
 bind r:ctrl,alt,cmd layout read
 bind h:ctrl,alt,cmd layout hack
-bind b:ctrl,alt,cmd layout make
+bind b:ctrl,alt,cmd layout build
 bind p:ctrl,alt,cmd layout pape
 
-bind c:ctrl,alt,cmd layout chat2
+bind s:ctrl,alt,cmd layout slack2
 bind t:ctrl,alt,cmd layout term2
 bind d:ctrl,alt,cmd layout deep2
 
@@ -132,13 +132,13 @@ bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
 bind up:ctrl,alt,cmd ${top}
 bind down:ctrl,alt,cmd ${bottom}
-# bind c:ctrl,alt,cmd ${center23}
-# bind v:ctrl,alt,cmd ${center13}
+bind c:ctrl,alt,cmd ${center23}
+bind v:ctrl,alt,cmd ${center13}
 # bind b:ctrl,alt,cmd ${center}
 bind f:ctrl,alt,cmd ${full}
 bind tab:ctrl,alt,cmd throw next
-# bind .:ctrl,alt,cmd ${left37}
-# bind ,:ctrl,alt,cmd ${right47}
+bind ,:ctrl,alt,cmd ${left37}
+bind .:ctrl,alt,cmd ${right47}
 
 ## ----------------------------------------
 ## Quarters
