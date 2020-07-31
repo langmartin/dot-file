@@ -1,9 +1,34 @@
+* Clojure
+
+- [[https://github.com/adambard/failjure][failjure]] :: error values like maybe
+- [[https://github.com/binaryage/cljs-oops][cljs-oops]] :: object access
+- [[https://github.com/uwcpdx/bean-dip][bean-dip]] :: bidirectional reflection-free map <-> java bean macros
+
 * Distributed Systems
 
-** Pigpaxos fast paxos implementation
-- http://pigpaxos.charap.co
+- Pigpaxos fast paxos implementation :: http://pigpaxos.charap.co
+
+* Emacs
+** go
+*** lsp-mode
+
+- =M-x lsp-find-implementation=
+- =M-x lsp-find-references=
+- =M-x lsp-find-type-definition=
+- receiver name with pointer
+- interface name
+
+*** go-gen-test
+
+- =M-x go-gen-test-dwim=
+- =M-x go-gen-test-exported=
 
 * Graphing and Visualization
 
-- manim animated 3d graphing library https://github.com/3b1b/manim#using-manim
-- https://matplotlib.org/gallery/index.html#event-handling
+- manim animated 3d graphing library :: https://github.com/3b1b/manim#using-manim
+- big library :: https://matplotlib.org/gallery/index.html#event-handling
+
+* Languages
+
+- [[https://www.infoq.com/presentations/language-design-process/][Three Things I Wish I Knew When I Started Designing Languages]] ::
+     Peter Alvaro

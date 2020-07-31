@@ -1,4 +1,0 @@
-* Papers (and Talks) I Love
-
-- [[https://www.infoq.com/presentations/language-design-process/][Three Things I Wish I Knew When I Started Designing Languages]] ::
-     Peter Alvaro
