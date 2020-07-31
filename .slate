@@ -110,9 +110,10 @@ layout build 'Google Chrome':REPEAT ${top34}
 layout build 'Firefox':REPEAT ${top34}
 layout build 'Preview':REPEAT ${top34}
 
-layout zoom 'Emacs':REPEAT ${right13}
-layout zoom 'Safari':REPEAT ${right}
-layout zoom 'zoom.us' ${left23}
+# layout zoom2 'Emacs':REPEAT ${right13}
+# layout zoom2 'Safari':REPEAT ${right13}
+# layout zoom2 'Zoom Meeting' ${full} ${sm}
+# layout zoom2 'Zoom':REPEAT ${full} ${lg}
 
 layout pape 'Emacs':REPEAT ${left37}
 layout pape 'Safari':REPEAT ${right47}
@@ -127,6 +128,7 @@ bind p:ctrl,alt,cmd layout pape
 bind s:ctrl,alt,cmd layout slack2
 bind t:ctrl,alt,cmd layout term2
 bind d:ctrl,alt,cmd layout deep2
+# bind z:ctrl,alt,cmd layout zoom2
 
 bind left:ctrl,alt,cmd ${left}
 bind right:ctrl,alt,cmd ${right}
@@ -139,6 +141,9 @@ bind f:ctrl,alt,cmd ${full}
 bind tab:ctrl,alt,cmd throw next
 bind ,:ctrl,alt,cmd ${left37}
 bind .:ctrl,alt,cmd ${right47}
+
+bind 0:ctrl,alt,cmd relaunch
+bind space:ctrl,alt,cmd switch
 
 ## ----------------------------------------
 ## Quarters
