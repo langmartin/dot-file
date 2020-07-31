@@ -173,6 +173,7 @@
   ;;    flagged to choose the account from the envelope sender
   (setenv "MAILDIR" (concat "/Users/lang/Maildir/" acct))
   (setenv "MU_HOME" (concat "/Users/lang/.cache/mu/" acct))
+  (setenv "MU_ADDR" addr)
   (setq mu4e-maildir (concat "/Users/lang/Maildir/" acct))
   (setq mu4e-mu-home (concat "/Users/lang/.cache/mu/" acct))
   (setq user-mail-address addr)
@@ -192,7 +193,7 @@
 
 (defun mu-reindex ()
   (interactive)
-  (shell-command "mu init --muhome $MU_HOME && mu index --muhome $MU_HOME &"))
+  (shell-command "mu init --muhome $MU_HOME --my-address $MU_ADDR && mu index --muhome $MU_HOME &"))
 
 (eval-after-load "mu4e"
   '(progn
