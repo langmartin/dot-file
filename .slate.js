@@ -20,7 +20,7 @@ function zoom2 (win) {
     var aop = {
         "Emacs": right13,
         "Safari": right13,
-    }[win.app.name()];
+    }[win.app().name()];
 
     var op = wop || aop;
     if (op) win.doOperation(op);
