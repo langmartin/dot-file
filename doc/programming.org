@@ -32,3 +32,7 @@
 
 - [[https://www.infoq.com/presentations/language-design-process/][Three Things I Wish I Knew When I Started Designing Languages]] ::
      Peter Alvaro
+
+* Book Wish List
+- signal processing, fourier :: http://www.dspguide.com
+  - https://en.wikipedia.org/wiki/Cepstrum
