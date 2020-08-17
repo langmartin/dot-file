@@ -402,6 +402,7 @@ packages: 'foo 'bar"
   (require 'uniquify nil t)
   (package-require 'mode-line-bell)
   (mode-line-bell-mode)
+  (package-require 'git-link)
 
   (custom-set-variables
    '(column-number-mode t)
