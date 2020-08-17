@@ -853,7 +853,10 @@ exit 0
 ;; (load-file "~/code/dot-file/.emacs")
 ;; (add-to-list 'load-path "~/code/dot-file/site-lisp")
 ;; (let ((default-directory  "~/code/dot-file/site-lisp")) (normal-top-level-add-subdirs-to-load-path))
+;; (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+;; ;; lsp-mode 6.2.1 for gopls 0.4.1
+;; (add-to-list 'load-path "~/code/contrib/lsp-mode")
 ;; (rc-init-emacs)
 ;; (rc-look-and-feel)
-;; (rc-emacs-master)
 ;; (rc-init-site-lisp)
+;; (rc-emacs-master)
