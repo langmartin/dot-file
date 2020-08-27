@@ -4,6 +4,11 @@
 # defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Quit Terminal" "@^q"
 # defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@^q"
 # defaults find NSUserKeyEquivalents
+
+defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.apple.Terminal"
+defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.apple.Safari"
+defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.google.Chrome"
+
 defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Print..." '@$p'
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
 defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Unpin Tab' '@^p'
@@ -70,11 +75,11 @@ defaults write NSGlobalDomain com.apple.springing.delay -float 0
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Disable disk image verification
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+# defaults write com.apple.frameworks.diskimages skip-verify -bool true
+# defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+# defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-defaults write com.apple.finder WarnOnEmptyTrash -bool false
+# defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # airdrop on any interface
 # defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
@@ -82,7 +87,7 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dashboard mcx-disabled -bool true
 defaults write com.apple.dock dashboard-in-overlay -bool true
 # Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+# defaults write com.apple.dock mru-spaces -bool false
 
 # Reset Launchpad
 # find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
