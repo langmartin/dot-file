@@ -1,9 +1,10 @@
 #!/bin/sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ ! -x /usr/local/bin/brew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
 brew install \
      aspell \
-     ctags \
      html2text \
      jq \
      msmtp \
@@ -11,28 +12,42 @@ brew install \
      offline-imap \
      pandoc \
      terminal-notifier \
-     tmux
-
-brew cask install \
-     emacs \
-     anybar
-
-EMACS=/usr/local/bin/emacs brew install mu
-
-brew install \
-     pinentry-mac \
-     gpg2 \
-     candid82/brew/joker
-
-brew install \
+     tmux \
      djbdns \
      runit \
      graphviz \
      gnuplot \
      unison \
      youtube-dl \
+     ntfs-3g
+
+brew cask install \
+     emacs \
+     anybar \
+     mactex \
+     racket
+
+EMACS=/usr/local/bin/emacs brew install mu
+
+# mostly crypto
+brew install \
+     pinentry-mac \
+     gpg2 \
+     age \
      signify-osx \
      tarsnap \
      magic-wormhole \
+
+# programming
+brew install \
+     cloc \
+     clojure \
+     joker \
+     jsonlint \
      guile \
-     ntfs-3g
+     ctags
+
+# ui utils
+brew install \
+     yabai \
+     skhd
