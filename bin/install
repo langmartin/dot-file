@@ -1,0 +1,55 @@
+#!/bin/sh
+set -ex
+
+cd
+
+dir=langmartin/dot-file
+[ -d "$dir" ] || dir=code/dot-file
+[ -d "$dir" ] || { echo "$dir doesn't exist" 1>&2; exit 2; }
+
+ln -sn \
+   "$dir/.ctags" \
+   "$dir/.lein" \
+   "$dir/.lein" \
+   "$dir/.slate" \
+   "$dir/.slate.js" \
+   "$dir/.zshenv" \
+   "$dir/.zshrc" \
+   .
+
+cp \
+    "$dir/.offlineimaprc" \
+    "$dir/.msmtprc" \
+    .
+
+cat <<EOF > .emacs
+(package-initialize)
+(load-file "code/dot-file/.emacs")
+(add-to-list 'load-path "~/code/dot-file/site-lisp")
+(let ((default-directory  "~/code/dot-file/site-lisp"))
+  (normal-top-level-add-subdirs-to-load-path))
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+;; if you've got the elpa version, restart
+(add-to-list 'load-path "~/code/contrib/lsp-mode")
+(rc-init-emacs)
+(rc-look-and-feel)
+(rc-init-site-lisp)
+(rc-emacs-master)
+
+(defun etc-hosts ()
+  (interactive)
+  (find-file "/sudo:root@localhost:/etc/hosts"))
+EOF
+
+cat <<EOF > .gitconfig
+[user]
+	name = Lang Martin
+	email = lang.martin@gmail.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[include]
+	path = code/dot-file/.gitconfig
+EOF
+
+cd
+mkdir -p bin tmp
