@@ -2,7 +2,6 @@
 set -ex
 
 cd
-
 dir=langmartin/dot-file
 [ -d "$dir" ] || dir=code/dot-file
 [ -d "$dir" ] || { echo "$dir doesn't exist" 1>&2; exit 2; }
@@ -51,5 +50,26 @@ cat <<EOF > .gitconfig
 	path = code/dot-file/.gitconfig
 EOF
 
-cd
 mkdir -p bin tmp
+cd bin
+ln -sn \
+   ../$dir/bin/brightness \
+   ../$dir/bin/git-backup-purge \
+   ../$dir/bin/lsof-listen \
+   ../$dir/bin/run-offlineimap \
+   ../$dir/bin/yta \
+   ../$dir/bin/ytv \
+   .
+
+cat <<EOF > biff-gmail && chmod +x biff-gmail
+#!/bin/sh
+# set -a
+# MAILUSER=lang.martin@gmail.com
+# MAILPASS=<redacted>
+# $dir/bin/gmail-biff
+
+set -a
+MAILDIR=~/Maildir/gmail
+MU_HOME=~/.cache/mu/gmail
+$dir/bin/new-email-delivered
+EOF
