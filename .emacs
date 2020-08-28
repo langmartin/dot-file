@@ -295,6 +295,16 @@ packages: 'foo 'bar"
   (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
   (add-to-list 'auto-mode-alist '("\\.lhs$" . haskell-mode)))
 
+(defun go-ent ()
+  (interactive)
+  (set-face-background 'mode-line "goldenrod")
+  (set-face-background 'mode-line-inactive "goldenrod4")
+  (setq server-socket-dir (format "%s/emacs-ent%d" (or (getenv "TMPDIR") "/tmp") (user-uid)))
+  (setenv "EDITOR" (concat "/usr/local/bin/emacsclient -s " server-socket-dir))
+  (setenv "GOPATH" "/Users/lang/go-ent")
+  (setenv "GOFLAGS" "-tags=consulent -tags=ent")
+  (magit-status "/Users/lang/go-ent/src/github.com/hashicorp/nomad"))
+
 (defun go-insert-lambda ()
   (interactive)
   (let ((before "func () {")
