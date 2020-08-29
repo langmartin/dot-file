@@ -346,6 +346,11 @@ packages: 'foo 'bar"
   (package-install 'lsp-mode t)
   (package-install 'go-mode)
   (package-install 'gotest)
+
+  (eval-after-load "lsp-mode"
+    '(progn
+       (define-key lsp-mode-map (kbd "C-M-,") 'lsp-find-references)))
+
   (eval-after-load "go-mode"
     '(progn
        (require 'yasnippet)
