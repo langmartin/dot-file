@@ -2,17 +2,16 @@
 accounts = gmail
 
 [Account gmail]
-localrepository = Local
-remoterepository = Remote
+localrepository = local
+remoterepository = remote
 synclabels = yes
 labelsheader = X-Keywords
-postsynchook = ~/bin/biff-gmail
 
-[Repository Local]
+[Repository local]
 type = GmailMaildir
 localfolders = ~/Maildir
 
-[Repository Remote]
+[Repository remote]
 type = Gmail
 # brew install openssl
 sslcacertfile = /usr/local/etc/openssl/cert.pem 
