@@ -5,22 +5,20 @@
 # defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Quit Safari" "@^q"
 # defaults find NSUserKeyEquivalents
 
-defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.apple.Terminal"
-defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.apple.Safari"
-defaults write com.apple.universalaccess com.apple.custommenu.apps -array-add "com.google.Chrome"
+safari=~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
 
 defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Print..." '@$p'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Unpin Tab' '@^p'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Mute This Tab' '@^m'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add 'Mute Other Tabs' '@^$m'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Unpin Tab' '@^p'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Mute This Tab' '@^m'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Mute Other Tabs' '@^$m'
 defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
 defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Mute Site' '@^m'
 
 # delete goes back a page
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
-defaults write com.apple.Safari IncludeDebugMenu -bool YES
-defaults write com.apple.Safari WebKitShowsURLsInToolTips -bool YES
+defaults write "$safari" com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
+defaults write "$safari" IncludeDebugMenu -bool YES
+defaults write "$safari" WebKitShowsURLsInToolTips -bool YES
 
 # Turn off automatic text substitution
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -96,22 +94,22 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Safari & WebKit                                                             #
 ###############################################################################
 
-defaults write com.apple.Safari HomePage -string "about:blank"
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
-defaults write com.apple.Safari ShowFavoritesBar -bool false
+defaults write "$safari" HomePage -string "about:blank"
+defaults write "$safari" AutoOpenSafeDownloads -bool false
+defaults write "$safari" ShowFavoritesBar -bool false
 
 # Disable Safari’s thumbnail cache for History and Top Sites
-#defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+#defaults write "$safari" DebugSnapshotsUpdatePolicy -int 2
 
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+defaults write "$safari" IncludeInternalDebugMenu -bool true
 # Make Safari’s search banners default to Contains instead of Starts With
-defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+defaults write "$safari" FindOnPageMatchesWordStartsOnly -bool false
 # Remove useless icons from Safari’s bookmarks bar
-defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+defaults write "$safari" ProxiesInBookmarksBar "()"
 # Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+defaults write "$safari" IncludeDevelopMenu -bool true
+defaults write "$safari" WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write "$safari" com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 # Add a context menu item for showing the Web Inspector in web views
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
