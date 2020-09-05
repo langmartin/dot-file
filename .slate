@@ -50,8 +50,8 @@ alias messages 'Messages':REPEAT ${qtrTall}
 # alias air11 1366x768
 alias lgud68p 1920x1080
 alias mbpro19 2560x1600
-alias lg 1
-alias sm 0
+alias lg 0
+alias sm 1
 
 ## ----------------------------------------
 
