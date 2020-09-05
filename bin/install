@@ -9,7 +9,6 @@ dir=langmartin/dot-file
 ln -sn \
    "$dir/.ctags" \
    "$dir/.lein" \
-   "$dir/.lein" \
    "$dir/.slate" \
    "$dir/.slate.js" \
    "$dir/.zshenv" \
@@ -23,9 +22,9 @@ cp \
 
 cat <<EOF > .emacs
 (package-initialize)
-(load-file "code/dot-file/.emacs")
-(add-to-list 'load-path "~/code/dot-file/site-lisp")
-(let ((default-directory  "~/code/dot-file/site-lisp"))
+(load-file "$dir/.emacs")
+(add-to-list 'load-path "$dir/site-lisp")
+(let ((default-directory  "$dir/site-lisp"))
   (normal-top-level-add-subdirs-to-load-path))
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 ;; if you've got the elpa version, restart
