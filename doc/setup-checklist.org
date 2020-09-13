@@ -1,3 +1,7 @@
+* The Death of iTunes
+
+~/Library/Containers/com.apple.BKAgentService/Data/Documents/iBooks/Books
+
 * Install This
 
 1. =ssh-keygen -t rsa; ssh-add=
