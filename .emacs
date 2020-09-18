@@ -43,7 +43,8 @@ packages: 'foo 'bar"
          packages))
 
 (defun rc-melpa-packages ()
-  (package-install-with-melpa 'flycheck 'flymake-shellcheck))
+  (package-install-with-melpa 'flycheck 'flymake-shellcheck)
+  (package-install-with-melpa 'elixir-mode))
 
 (defun exec-path-setenv ()
   (interactive)
@@ -294,6 +295,14 @@ packages: 'foo 'bar"
        (add-hook 'haskell-mode-hook 'haskell-doc-mode)))
   (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
   (add-to-list 'auto-mode-alist '("\\.lhs$" . haskell-mode)))
+
+(defun rc-elixir ()
+  (use-package lsp-mode
+               :commands lsp
+               :ensure t
+               :diminish lsp-mode
+               :hook (elixir-mode . lsp)
+               :init (add-to-list 'exec-path "~/contrib/elixir-ls")))
 
 (defun go-ent ()
   (interactive)
@@ -561,10 +570,6 @@ packages: 'foo 'bar"
    '(ido-enable-flex-matching t)
    '(ido-everywhere t)
    '(ido-mode 'both))
-  (custom-set-faces
-   '(ido-incomplete-regexp ((t (:foreground "grey40"))))
-   '(ido-indicator ((t (:foreground "yellow4"))))
-   '(ido-subdir ((t (:foreground "blue3")))))
   ;; (global-set-key (kbd "M-.") 'or-find-tag-imenu)
   (global-set-key (kbd "H-i") 'or-find-tag-imenu)
   (package-require 'find-file-in-repository)
