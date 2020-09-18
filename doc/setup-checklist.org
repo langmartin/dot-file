@@ -35,8 +35,21 @@ so manually add
 6. Configure Touch Bar, remove siri button
 
 * Applications
-** Restart Slate
-1. automator system shell script past bin/restart-slate export as application
+** Elixir
+
+1. brew install asdf
+2. echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> ~/.zshrc
+3. Add ~/.asdf/shims to path
+4. Get https://github.com/elixir-lsp/elixir-ls
+5. Download a build
+6. Edit launch.sh to include the correct asdf.sh from above
+7. package-install elixir-mode from melpa (not melpa stable)
+8. https://github.com/langmartin/dot-file/blob/master/.emacs#L299
+
+** Restart Slate is Not Necessary
+1. automator system shell script past bin/restart-slate export as
+   application
+
 
 ** Emacs Mailto
 1. open applescript/emacs-mailto
