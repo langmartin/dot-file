@@ -35,4 +35,9 @@ make () {
     env make $@ && anybar green || anybar red
 }
 
-. ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+for inc in \
+    ~/.opam/opam-init/init.zsh \
+	/usr/local/opt/asdf/asdf.sh \
+    ; do
+    . "$inc" > /dev/null 2> /dev/null || true
+done
