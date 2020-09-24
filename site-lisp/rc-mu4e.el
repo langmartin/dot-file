@@ -183,9 +183,9 @@
   ;; (mu4e)
   )
 
-(defun mail-hashi ()
+(defun mail-subspace ()
   (interactive)
-  (mail-select-account "hashi" "lang@hashicorp.com"))
+  (mail-select-account "subspace" "lmartin@subspace.com"))
 
 (defun mail-gmail ()
   (interactive)
