@@ -8,12 +8,12 @@
 safari=~/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari
 
 defaults write com.apple.Terminal NSUserKeyEquivalents -dict-add "Print..." '@$p'
-defaults write "$safari" NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
-defaults write "$safari" NSUserKeyEquivalents -dict-add 'Unpin Tab' '@^p'
-defaults write "$safari" NSUserKeyEquivalents -dict-add 'Mute This Tab' '@^m'
-defaults write "$safari" NSUserKeyEquivalents -dict-add 'Mute Other Tabs' '@^$m'
-defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Pin Tab' '@^p'
-defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Mute Site' '@^m'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Pin Tab' '@$p'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Unpin Tab' '@$p'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Mute This Tab' '@$m'
+defaults write "$safari" NSUserKeyEquivalents -dict-add 'Mute Other Tabs' '@$$m'
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Pin Tab' '@$p'
+defaults write com.google.Chrome NSUserKeyEquivalents -dict-add 'Mute Site' '@$m'
 
 # delete goes back a page
 defaults write "$safari" com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool YES
