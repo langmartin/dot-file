@@ -38,9 +38,10 @@ alias emacs 'Emacs':REPEAT ${full}
 alias safari 'Safari':REPEAT ${full}
 alias chrome23 'Google Chrome':REPEAT ${center23}
 alias chrome 'Google Chrome':REPEAT ${full}
-alias terminal 'Terminal':REPEAT ${full}
+alias terminal 'Terminal':REPEAT
 alias preview 'Preview':REPEAT ${full}
 alias slack 'Slack':REPEAT ${full}
+alias discord 'Discord':REPEAT ${full}
 alias activityMon 'Activity Monitor':REPEAT ${top}
 alias calendar 'Calendar':REPEAT ${full}
 alias signal 'Signal':REPEAT ${qtlTall}
@@ -50,8 +51,8 @@ alias messages 'Messages':REPEAT ${qtrTall}
 # alias air11 1366x768
 alias lgud68p 1920x1080
 alias mbpro19 2560x1600
-alias lg 0
-alias sm 1
+alias lg 1
+alias sm 0
 
 ## ----------------------------------------
 
@@ -60,9 +61,10 @@ layout slack2 ${safari} ${lg}
 layout slack2 ${chrome} ${lg}
 layout slack2 ${preview} ${lg}
 layout slack2 ${activityMon} ${lg}
-layout slack2 ${terminal} ${lg}
+layout slack2 ${terminal} ${top} ${lg}
 layout slack2 ${calendar} ${lg}
 layout slack2 ${slack} ${sm}
+layout slack2 ${discord} ${sm}
 layout slack2 'Signal':REPEAT ${full} ${sm}
 layout slack2 'Messages':REPEAT ${full} ${sm}
 
@@ -72,10 +74,11 @@ layout term2 ${chrome} ${lg}
 layout term2 ${preview} ${lg}
 layout term2 ${messages} ${lg}
 layout term2 ${slack} ${lg}
+layout term2 ${discord} ${lg}
 layout term2 ${signal} ${lg}
 layout term2 ${calendar} ${lg}
 layout term2 ${activityMon} ${sm}
-layout term2 ${terminal} ${sm}
+layout term2 ${terminal} ${bottom} ${sm}
 
 layout deep2 ${emacs} ${lg}
 layout deep2 ${safari} ${lg}
@@ -83,9 +86,10 @@ layout deep2 ${chrome} ${lg}
 layout deep2 ${preview} ${lg}
 layout deep2 ${messages} ${lg}
 layout deep2 ${slack} ${lg}
+layout deep2 ${discord} ${lg}
 layout deep2 ${signal} ${lg}
 layout deep2 ${activityMon} ${lg}
-layout deep2 ${terminal} ${lg}
+layout deep2 ${terminal} ${top} ${lg}
 layout deep2 ${calendar} ${sm}
 
 default deep2 count:2
