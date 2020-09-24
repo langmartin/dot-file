@@ -42,6 +42,7 @@
  '(org-adapt-indentation nil)
  '(org-hierarchical-checkbox-statistics nil)
  '(org-hierarchical-todo-statistics nil)
+ '(org-cycle-include-plain-lists 'integrate)
  '(org-latex-default-packages-alist
    (quote
     (("AUTO" "inputenc" t
