@@ -6,7 +6,7 @@ while true; do
     # mu4e runs mu server while you're looking at mail, which holds an mu lock. Killing it seems fine?
     pkill -f 'mu server'
     offlineimap
-    ~/bin/biff-gmail
+    ~/bin/biff
     SINCE=`date +%s`
     sleep 300
 done
