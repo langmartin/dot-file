@@ -38,6 +38,7 @@ alias emacs 'Emacs':REPEAT ${full}
 alias safari 'Safari':REPEAT ${full}
 alias chrome23 'Google Chrome':REPEAT ${center23}
 alias chrome 'Google Chrome':REPEAT ${full}
+alias firefox 'Firefox':REPEAT ${full}
 alias terminal 'Terminal':REPEAT
 alias preview 'Preview':REPEAT ${full}
 alias slack 'Slack':REPEAT ${full}
@@ -71,6 +72,7 @@ layout slack2 'Messages':REPEAT ${full} ${sm}
 layout term2 ${emacs} ${lg}
 layout term2 ${safari} ${lg}
 layout term2 ${chrome} ${lg}
+layout term2 ${firefox} ${lg}
 layout term2 ${preview} ${lg}
 layout term2 ${messages} ${lg}
 layout term2 ${slack} ${lg}
@@ -83,6 +85,7 @@ layout term2 ${terminal} ${bottom} ${sm}
 layout deep2 ${emacs} ${lg}
 layout deep2 ${safari} ${lg}
 layout deep2 ${chrome} ${lg}
+layout deep2 ${firefox} ${lg}
 layout deep2 ${preview} ${lg}
 layout deep2 ${messages} ${lg}
 layout deep2 ${slack} ${lg}
@@ -105,7 +108,7 @@ layout read 'Preview':REPEAT ${right}
 layout hack 'Emacs':REPEAT ${full}
 layout hack 'Safari':REPEAT ${full}
 layout hack ${chrome}
-layout hack 'Firefox':REPEAT ${right}
+layout hack 'Firefox':REPEAT ${full}
 layout hack 'Preview':REPEAT ${full}
 
 layout build 'Emacs':REPEAT ${bottom14}
@@ -122,6 +125,7 @@ layout build 'Preview':REPEAT ${top34}
 layout pape 'Emacs':REPEAT ${left37}
 layout pape 'Safari':REPEAT ${right47}
 layout pape 'Google Chrome':REPEAT ${right47}
+layout pape 'Firefox':REPEAT ${right47}
 layout pape 'Preview':REPEAT ${right47}
 
 bind r:ctrl,alt,cmd layout read
