@@ -38,6 +38,7 @@ make () {
 for inc in \
     ~/.opam/opam-init/init.zsh \
 	/usr/local/opt/asdf/asdf.sh \
+	~/.secret/sh \
     ; do
     . "$inc" > /dev/null 2> /dev/null || true
 done

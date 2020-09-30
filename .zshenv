@@ -12,6 +12,7 @@ if [ -z "$INSIDE_EMACS" ]; then
     PATH="$PATH":~/.cargo/bin
     PATH="$PATH":/usr/local/go/bin
     PATH="$PATH":~/go/bin
+    PATH="$PATH":/Users/lang/.gem/ruby/2.6.0/bin
     PATH="$PATH:/usr/local/bin"
     PATH="$PATH:/usr/local/sbin"
     PATH="$PATH:$SYS_PATH:/sbin:/usr/sbin"
