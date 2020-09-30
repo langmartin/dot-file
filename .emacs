@@ -60,6 +60,7 @@ packages: 'foo 'bar"
 (maybe-add-to-exec-path "/usr/local/go/bin")
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
 (maybe-add-to-exec-path "/usr/local/texlive/2019/bin/x86_64-darwin")
+(maybe-add-to-exec-path "~/.gem/ruby/2.6.0/bin")
 (maybe-add-to-exec-path "~/.cargo/bin")
 (maybe-add-to-exec-path "~/go/bin")
 (maybe-add-to-exec-path "~/bin")
@@ -302,7 +303,11 @@ packages: 'foo 'bar"
                :ensure t
                :diminish lsp-mode
                :hook (elixir-mode . lsp)
-               :init (add-to-list 'exec-path "~/contrib/elixir-ls")))
+               :init (add-to-list 'exec-path "~/contrib/elixir-ls"))
+
+  (eval-after-load "elixir-mode"
+    '(progn
+       (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-save))))
 
 (defun go-ent ()
   (interactive)
@@ -845,6 +850,7 @@ exit 0
   (rc-haskell)
   (rc-go)
   (rc-r-mode)
+  (rc-elixir)
   (rc-magit)
   (rc-git))
 
