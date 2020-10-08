@@ -1,3 +1,6 @@
+* Cool Video Stuff
+- [[https://github.com/capnmidnight/Calla][calla]] jitsi meet + rpg with distance
+
 * Clojure
 
 - [[https://github.com/adambard/failjure][failjure]] :: error values like maybe
@@ -7,6 +10,9 @@
 * Distributed Systems
 
 - Pigpaxos fast paxos implementation :: http://pigpaxos.charap.co
+- wave guy :: https://josephg.com/blog/crdts-are-the-future/
+
+** TODO contact wave guy <2020-09-30 Wed>
 
 * Emacs
 ** go
@@ -27,9 +33,12 @@
 
 - manim animated 3d graphing library :: https://github.com/3b1b/manim#using-manim
 - big library :: https://matplotlib.org/gallery/index.html#event-handling
+- arch :: https://diagrams.mingrammer.com/docs/getting-started/examples
 
-* Languages
+* Elixir
+- list concat ++, string concat <>
 
+* Language Design
 - [[https://www.infoq.com/presentations/language-design-process/][Three Things I Wish I Knew When I Started Designing Languages]] ::
      Peter Alvaro
 
