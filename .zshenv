@@ -22,6 +22,7 @@ if [ -z "$SSH_CLIENT" ]; then
     EDITOR="/usr/local/bin/emacsclient"
 fi
 
+export VERITAS_HOME=~/subspace/veritas
 export QPVERBOSE=true
 export QPOPT="-V"
 

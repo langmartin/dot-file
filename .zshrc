@@ -42,3 +42,17 @@ for inc in \
     ; do
     . "$inc" > /dev/null 2> /dev/null || true
 done
+
+if `which kubectx`; then
+    KUBECTX=`kubectx -c`
+    alias kubectx () {
+	/usr/local/bin/kubectx "$@"
+	KUBECTX=`/usr/local/bin/kubectx -c`
+    }
+    setopt prompt_subst
+    PROMPT='$KUBECTX '"$PROMPT"
+fi
+
+netstat-lpn () {
+    sudo lsof -nP -iTCP -sTCP:LISTEN
+}
