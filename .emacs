@@ -79,28 +79,29 @@ packages: 'foo 'bar"
   (setenv "GIT_PAGER" "")
   (setenv "MANPAGER" "cat")
 
-  (defun rc-font-lg ()
-    (interactive)
-    (set-frame-font "Monaco-14"))
-
-  (defun rc-font-xl ()
-    (interactive)
-    (set-frame-font "Monaco-24"))
-
-  (defun rc-font-sm ()
-    (interactive)
-    (set-frame-font "Monaco-12"))
-
   (custom-set-variables
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote hyper))
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
 
-  (defun switch-to-last-buffer ()
-    (interactive)
-    (switch-to-buffer nil))
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
+
+(defun rc-font-lg ()
+  (interactive)
+  (set-frame-font "Monaco-14"))
+
+(defun rc-font-xl ()
+  (interactive)
+  (set-frame-font "Monaco-24"))
+
+(defun rc-font-sm ()
+  (interactive)
+  (set-frame-font "Monaco-12"))
+
+(defun switch-to-last-buffer ()
+  (interactive)
+  (switch-to-buffer nil))
 
 (defun transparency (&optional opacity)
   (interactive "p")
@@ -307,6 +308,7 @@ packages: 'foo 'bar"
 
   (eval-after-load "elixir-mode"
     '(progn
+       (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-save))))
 
 (defun go-ent ()
