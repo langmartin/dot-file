@@ -63,6 +63,7 @@ packages: 'foo 'bar"
 (maybe-add-to-exec-path "~/.gem/ruby/2.6.0/bin")
 (maybe-add-to-exec-path "~/.cargo/bin")
 (maybe-add-to-exec-path "~/go/bin")
+(maybe-add-to-exec-path "~/.asdf/shims")
 (maybe-add-to-exec-path "~/bin")
 (exec-path-setenv)
 

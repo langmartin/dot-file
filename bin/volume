@@ -1,0 +1,3 @@
+#!/bin/sh
+# git@github.com:kfix/ddcctl.git
+~/contrib/ddcctl/ddcctl -d 1 -v "$@"

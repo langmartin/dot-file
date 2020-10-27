@@ -1,4 +1,4 @@
-* Cool Video Stuff
+* Video Conferencing
 - [[https://github.com/capnmidnight/Calla][calla]] jitsi meet + rpg with distance
 
 * Clojure
