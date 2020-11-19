@@ -1,8 +1,8 @@
 set -a
 PROMPT='%* %? %m%# '
 WORDCHARS="*?[]~=&;!#$%^(){}<>"
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=700000
+SAVEHIST=500000
 HISTFILE=~/.zhistory
 
 alias ll='ls -l'
@@ -11,8 +11,9 @@ alias b='git branch -v'
 alias ba='git branch -av'
 alias grunt='grunt --no-color'
 
-setopt HIST_IGNORE_ALL_DUPS
-setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
 [ "$TERM" = dumb ] && unsetopt zle
 
 dockerize () {
