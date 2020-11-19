@@ -82,7 +82,7 @@ packages: 'foo 'bar"
 
   (custom-set-variables
    '(dired-listing-switches "-alh")
-   '(ns-alternate-modifier (quote hyper))
+   '(ns-alternate-modifier (quote super))
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
 
@@ -147,9 +147,9 @@ packages: 'foo 'bar"
   (add-hook 'clojure-mode-hook 'flycheck-mode)
 
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
-  (define-key clojure-mode-map (kbd "H-l") 'clojure-insert-lambda)
-  (define-key clojure-mode-map (kbd "H-t") 'clojure-insert-trace)
-  (define-key clojure-mode-map (kbd "H-c") 'clojure-insert-clear-ns)
+  (define-key clojure-mode-map (kbd "s-l") 'clojure-insert-lambda)
+  (define-key clojure-mode-map (kbd "s-t") 'clojure-insert-trace)
+  (define-key clojure-mode-map (kbd "s-c") 'clojure-insert-clear-ns)
 
   ;; (package-require 'clj-refactor)
   (defun clojure-refactor-mode-hook ()
@@ -247,7 +247,7 @@ packages: 'foo 'bar"
       (insert after)
       (backward-char (length after))))
 
-  (define-key js2-mode-map (kbd "H-l") 'javascript-insert-lambda)
+  (define-key js2-mode-map (kbd "s-f") 'javascript-insert-lambda)
   (define-key js2-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
   (define-key js2-mode-map (kbd "C-x `") 'js2-next-error)
   (add-hook 'js2-mode-hook 'turn-off-tabs)
@@ -310,7 +310,8 @@ packages: 'foo 'bar"
   (eval-after-load "elixir-mode"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
-       (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-save))))
+       (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
+       (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save))))
 
 (defun go-ent ()
   (interactive)
@@ -372,8 +373,7 @@ packages: 'foo 'bar"
     '(progn
        (require 'yasnippet)
        (require 'lsp-mode)
-       (define-key go-mode-map (kbd "H-l") 'go-insert-lambda)
-       (define-key go-mode-map (kbd "H-e") 'go-insert-err)
+       (define-key go-mode-map (kbd "s-e") 'go-insert-err)
        (define-key go-mode-map (kbd "C-c C-t n") 'go-test-current-test)
        (add-hook 'go-mode-hook 'lsp-go-install-save-hooks)
        (add-hook 'go-mode-hook 'set-fill-column-92)
@@ -466,16 +466,14 @@ packages: 'foo 'bar"
        ))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
-  (global-set-key (kbd "H-SPC") 'just-one-space)
-  (global-set-key (kbd "H-e") 'eshell)
-  (global-set-key (kbd "H-i") 'imenu)
-  (global-set-key (kbd "H-s") (interactive-partial 'focus-shell "*shell*"))
-  (global-set-key (kbd "H-a") (interactive-partial 'focus-shell "*shell admin*"))
-  (global-set-key (kbd "H-d") (interactive-partial 'focus-shell "*shell dee*"))
-  (global-set-key (kbd "H-f") (interactive-partial 'focus-shell "*shell eff*"))
-  (global-set-key (kbd "H-g") (interactive-partial 'focus-shell "*shell gee*"))
-  (global-set-key (kbd "H-v") (interactive-partial 'focus-shell "*shell vagrant*"))
-  (global-set-key (kbd "H-r") 'revert-buffer))
+  (global-set-key (kbd "s-SPC") 'just-one-space)
+  (global-set-key (kbd "s-s") (interactive-partial 'focus-shell "*shell*"))
+  (global-set-key (kbd "s-a") (interactive-partial 'focus-shell "*shell admin*"))
+  (global-set-key (kbd "s-d") (interactive-partial 'focus-shell "*shell dee*"))
+  (global-set-key (kbd "s-f") (interactive-partial 'focus-shell "*shell eff*"))
+  (global-set-key (kbd "s-g") (interactive-partial 'focus-shell "*shell gee*"))
+  (global-set-key (kbd "s-v") (interactive-partial 'focus-shell "*shell vagrant*"))
+  (global-set-key (kbd "s-r") 'revert-buffer))
 
 (defun yyyymmdd ()
   (interactive)
@@ -579,7 +577,7 @@ packages: 'foo 'bar"
    '(ido-everywhere t)
    '(ido-mode 'both))
   ;; (global-set-key (kbd "M-.") 'or-find-tag-imenu)
-  (global-set-key (kbd "H-i") 'or-find-tag-imenu)
+  (global-set-key (kbd "s-i") 'or-find-tag-imenu)
   (package-require 'find-file-in-repository)
   (global-set-key (kbd "C-x f") 'find-file-in-repository)
   )
@@ -595,10 +593,10 @@ packages: 'foo 'bar"
   (define-key winner-mode-map (kbd "C-c <C-right>") 'winner-undo)
   (define-key winner-mode-map (kbd "C-c <C-left>") 'winner-undo)
   (winner-mode 1)
-  (global-set-key (kbd "H-<left>") 'windmove-left)
-  (global-set-key (kbd "H-<right>") 'windmove-right)
-  (global-set-key (kbd "H-<up>") 'windmove-up)
-  (global-set-key (kbd "H-<down>") 'windmove-down))
+  (global-set-key (kbd "s-<left>") 'windmove-left)
+  (global-set-key (kbd "s-<right>") 'windmove-right)
+  (global-set-key (kbd "s-<up>") 'windmove-up)
+  (global-set-key (kbd "s-<down>") 'windmove-down))
 
 (defun backup-buffer-force ()
   (let ((buffer-backed-up nil))
@@ -689,7 +687,7 @@ the working directory"
       (vi-goto-insert-state)))
 
   ;; (defalias 'switch-to-buffer 'switch-to-insert-mode-buffer)
-  (global-set-key (kbd "H-z") 'vi-mode))
+  (global-set-key (kbd "s-z") 'vi-mode))
 
 
 ;;;; Git
