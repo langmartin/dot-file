@@ -1,42 +1,17 @@
 * Video Conferencing
 - [[https://github.com/capnmidnight/Calla][calla]] jitsi meet + rpg with distance
-
-* Clojure
-
-- [[https://github.com/adambard/failjure][failjure]] :: error values like maybe
-- [[https://github.com/binaryage/cljs-oops][cljs-oops]] :: object access
-- [[https://github.com/uwcpdx/bean-dip][bean-dip]] :: bidirectional reflection-free map <-> java bean macros
+- https://dev.to/lazerwalker/using-game-design-to-make-virtual-events-more-social-24o
 
 * Distributed Systems
-
 - Pigpaxos fast paxos implementation :: http://pigpaxos.charap.co
 - wave guy :: https://josephg.com/blog/crdts-are-the-future/
 
 ** TODO contact wave guy <2020-09-30 Wed>
 
-* Emacs
-** go
-*** lsp-mode
-
-- =M-x lsp-find-implementation=
-- =M-x lsp-find-references=
-- =M-x lsp-find-type-definition=
-- receiver name with pointer
-- interface name
-
-*** go-gen-test
-
-- =M-x go-gen-test-dwim=
-- =M-x go-gen-test-exported=
-
 * Graphing and Visualization
-
 - manim animated 3d graphing library :: https://github.com/3b1b/manim#using-manim
 - big library :: https://matplotlib.org/gallery/index.html#event-handling
 - arch :: https://diagrams.mingrammer.com/docs/getting-started/examples
-
-* Elixir
-- list concat ++, string concat <>
 
 * Language Design
 - [[https://www.infoq.com/presentations/language-design-process/][Three Things I Wish I Knew When I Started Designing Languages]] ::
@@ -45,3 +20,37 @@
 * Book Wish List
 - signal processing, fourier :: http://www.dspguide.com
   - https://en.wikipedia.org/wiki/Cepstrum
+
+* Languages
+** Elixir
+#+begin_src elixir
+:observer.start
+#+end_src
+
+** TLA+
+- https://www.hillelwayne.com/post/tla-golang/
+- https://github.com/GabrielaMafra/tla-transmutation generate elixir
+  from specs
+
+** Emacs
+*** org
+- =C-c C-,= insert source template
+
+*** go
+**** lsp-mode
+
+- =M-x lsp-find-implementation=
+- =M-x lsp-find-references=
+- =M-x lsp-find-type-definition=
+- receiver name with pointer
+- interface name
+
+**** go-gen-test
+
+- =M-x go-gen-test-dwim=
+- =M-x go-gen-test-exported=
+
+** Clojure
+- [[https://github.com/adambard/failjure][failjure]] :: error values like maybe
+- [[https://github.com/binaryage/cljs-oops][cljs-oops]] :: object access
+- [[https://github.com/uwcpdx/bean-dip][bean-dip]] :: bidirectional reflection-free map <-> java bean macros
