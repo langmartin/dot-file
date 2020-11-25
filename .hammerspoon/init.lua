@@ -148,12 +148,12 @@ end
 local function default()
    if (hs.screen.allScreens()[2] ~= nil)
    then
-      chat(external)
       cal(laptop)
+      slackterm(external)
+      chat(external)
       hack(external)
    else
       chat(laptop)
-      cal(laptop)
       hack(laptop)
    end
 end
@@ -171,8 +171,9 @@ end
 local function alt()
    if (hs.screen.allScreens()[2] ~= nil) then
       cal(external)
-      build(external)
+      chat(external)
       slackterm(laptop)
+      build(external)
    else
       build(laptop)
    end
