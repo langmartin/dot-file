@@ -27,3 +27,4 @@ export VERITAS_HOME=~/subspace/veritas
 export QPVERBOSE=true
 export QPOPT="-V"
 
+source "$HOME/.cargo/env"

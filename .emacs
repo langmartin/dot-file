@@ -313,6 +313,14 @@ packages: 'foo 'bar"
        (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
        (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save))))
 
+(defun rc-rust ()
+  (use-package lsp-mode
+               :commands lsp
+               :ensure t
+               :diminish lsp-mode
+               :hook (rust-mode . lsp)
+               :init (add-to-list 'exec-path "~/.cargo/bin/rls")))
+
 (defun go-ent ()
   (interactive)
   (set-face-background 'mode-line "goldenrod")
@@ -402,6 +410,9 @@ packages: 'foo 'bar"
    '(lsp-file-watch-ignored
      (quote
       ("[/\\\\]\\.git$" "[/\\\\]\\.hg$" "[/\\\\]\\.bzr$" "[/\\\\]_darcs$" "[/\\\\]\\.svn$" "[/\\\\]_FOSSIL_$" "[/\\\\]\\.idea$" "[/\\\\]\\.ensime_cache$" "[/\\\\]\\.eunit$" "[/\\\\]node_modules$" "[/\\\\]\\.fslckout$" "[/\\\\]\\.tox$" "[/\\\\]\\.stack-work$" "[/\\\\]\\.bloop$" "[/\\\\]\\.metals$" "[/\\\\]target$" "[/\\\\]\\.deps$" "[/\\\\]build-aux$" "[/\\\\]autom4te.cache$" "[/\\\\]\\.reference$" "[/\\\\]vendor$")))))
+
+(defun rc-lua ()
+  (define-key lua-mode-map (kbd "M-.") 'imenu))
 
 
 ;;;; Miscellaneous emacs settings
