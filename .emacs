@@ -412,7 +412,9 @@ packages: 'foo 'bar"
       ("[/\\\\]\\.git$" "[/\\\\]\\.hg$" "[/\\\\]\\.bzr$" "[/\\\\]_darcs$" "[/\\\\]\\.svn$" "[/\\\\]_FOSSIL_$" "[/\\\\]\\.idea$" "[/\\\\]\\.ensime_cache$" "[/\\\\]\\.eunit$" "[/\\\\]node_modules$" "[/\\\\]\\.fslckout$" "[/\\\\]\\.tox$" "[/\\\\]\\.stack-work$" "[/\\\\]\\.bloop$" "[/\\\\]\\.metals$" "[/\\\\]target$" "[/\\\\]\\.deps$" "[/\\\\]build-aux$" "[/\\\\]autom4te.cache$" "[/\\\\]\\.reference$" "[/\\\\]vendor$")))))
 
 (defun rc-lua ()
-  (define-key lua-mode-map (kbd "M-.") 'imenu))
+  (eval-after-load "lua-mode"
+    '(progn
+       (define-key lua-mode-map (kbd "M-.") 'imenu))))
 
 
 ;;;; Miscellaneous emacs settings
@@ -861,6 +863,7 @@ exit 0
   (rc-prolog)
   (rc-haskell)
   (rc-go)
+  (rc-lua)
   (rc-r-mode)
   (rc-elixir)
   (rc-magit)
