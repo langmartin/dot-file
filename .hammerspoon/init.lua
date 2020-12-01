@@ -85,30 +85,36 @@ local function twoQuieter()
    twoSet('v', two.v)
 end
 
-local function chat(screen)
+local function chatOnImpl(screen, slack)
    local lv = {x=0, y=0, w=0.5, h=0.5}
    local rv = {x=0.5, y=0, w=0.5, h=0.5}
-   local h1 = {x=0, y=0.5, w=1, h=0.5}
 
-   screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Signal", nil, screen, lv, nil, nil},
 	 {"Messages", nil, screen, rv, nil, nil},
-	 {"Slack", nil, screen, bottom50, nil, nil},
+	 {"Slack", nil, screen, slack, nil, nil},
 	 {"Discord", nil, screen, maximized, nil, nil},
    })
 
    focusSome({"Discord", "Messages", "Signal", "Slack"}, 4)
 end
 
-local function cal(screen)
+local function chatOn(screen)
+   chatOnImpl(screen, maximized)
+end
+
+local function chatTileOn(screen)
+   chatOnImpl(screen, bottom50)
+end
+
+local function calOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Calendar", nil, screen, maximized, nil, nil},
    })
 end
 
-local function hack(screen)
+local function hackOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, maximized, nil, nil},
@@ -118,7 +124,7 @@ local function hack(screen)
    focusSome({browser, "Emacs"}, 2)
 end
 
-local function read(screen)
+local function readOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, left40, nil, nil},
@@ -128,7 +134,7 @@ local function read(screen)
    focusSome({browser, "Emacs"}, 2)
 end
 
-local function build(screen)
+local function buildOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, bottom20, nil, nil},
@@ -138,7 +144,7 @@ local function build(screen)
    focusSome({browser, "Emacs"},  2)
 end
 
-local function slackterm(screen)
+local function slacktermOn(screen)
    hs.layout.apply({
 	 {"Terminal", nil, screen, top50, nil, nil},
 	 {"Slack", nil, screen, bottom50, nil, nil},
@@ -148,34 +154,34 @@ end
 local function default()
    if (hs.screen.allScreens()[2] ~= nil)
    then
-      cal(laptop)
-      slackterm(external)
-      chat(external)
-      hack(external)
+      calOn(laptop)
+      slacktermOn(external)
+      chatOn(external)
+      hackOn(external)
    else
-      chat(laptop)
-      hack(laptop)
+      chatOn(laptop)
+      hackOn(laptop)
    end
 end
 
-local function slack()
+local function chat()
    if (hs.screen.allScreens()[2] ~= nil) then
-      cal(external)
-      hack(external)
-      chat(laptop)
+      calOn(external)
+      hackOn(external)
+      chatTileOn(laptop)
    else
-      chat(laptop)
+      chatTileOn(laptop)
    end
 end
 
-local function alt()
+local function build()
    if (hs.screen.allScreens()[2] ~= nil) then
-      cal(external)
-      chat(external)
-      slackterm(laptop)
-      build(external)
+      calOn(external)
+      chatOn(external)
+      slacktermOn(laptop)
+      buildOn(external)
    else
-      build(laptop)
+      buildOn(laptop)
    end
 end
 
@@ -191,11 +197,9 @@ spoon.MiroWindowsManager:bindHotkeys({
 })
 
 hs.hotkey.bind(hyper, "d", default)
-hs.hotkey.bind(hyper, "s", slack)
-hs.hotkey.bind(hyper, "a", alt)
 hs.hotkey.bind(hyper, "c", chat)
-hs.hotkey.bind(hyper, "h", hack)
-hs.hotkey.bind(hyper, "r", read)
+hs.hotkey.bind(hyper, "h", hackOn)
+hs.hotkey.bind(hyper, "r", readOn)
 hs.hotkey.bind(hyper, "b", build)
 hs.hotkey.bind(hyper, "tab", throw)
 hs.hotkey.bind(hyper, "0", hs.reload)
