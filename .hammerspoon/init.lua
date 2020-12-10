@@ -19,6 +19,14 @@ local bottom50 = {x=0, y=0.5, w=1, h=0.5}
 local bottom20 = {x=0, y=0.8, w=1, h=0.2}
 local top80 = {x=0, y=0, w=1, h=0.8}
 
+local function twoScreens()
+   return hs.screen.find(external) ~= nil
+end
+
+local function sideScreen()
+   return twoScreens() and laptop or external
+end
+
 local function focusSome(apps, size)
    for i = 1,size do
       local app = hs.application.get(apps[i])
@@ -107,10 +115,23 @@ local function chatTileOn(screen)
    chatOnImpl(screen, bottom50)
 end
 
-local function calOn(screen)
+function calOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Calendar", nil, screen, maximized, nil, nil},
+   })
+end
+
+function zoom()
+   local screen = sideScreen()
+   local zoom = hs.application.find("zoom")
+   local win zoom:findWindow("zoom")
+   if (win and win:title() == "Zoom") then
+      win:close()
+   end
+
+   hs.layout.apply({
+	 {"zoom.us", "Zoom Meeting", screen, maximized, nil, nil},
    })
 end
 
@@ -152,8 +173,7 @@ local function slacktermOn(screen)
 end
 
 local function default()
-   if (hs.screen.allScreens()[2] ~= nil)
-   then
+   if (twoScreens()) then
       calOn(laptop)
       slacktermOn(external)
       chatOn(external)
@@ -165,7 +185,7 @@ local function default()
 end
 
 local function chat()
-   if (hs.screen.allScreens()[2] ~= nil) then
+   if (twoScreens()) then
       calOn(external)
       hackOn(external)
       chatTileOn(laptop)
@@ -175,7 +195,7 @@ local function chat()
 end
 
 local function build()
-   if (hs.screen.allScreens()[2] ~= nil) then
+   if (hs.screen.find(external)) then
       calOn(external)
       chatOn(external)
       slacktermOn(laptop)
@@ -183,6 +203,18 @@ local function build()
    else
       buildOn(laptop)
    end
+end
+
+-- ----------------------------------------------------------------------
+-- hooks
+
+local function startWatchers()
+   hs.screen.watcher.new(default):start()
+   -- hs.application.watcher.new(function (appName, event, app)
+   -- 	 if (appName == "zoom.us" and event == "lauched") then
+   -- 	    zoom()
+   -- 	 end
+   -- end):start()
 end
 
 -- ----------------------------------------------------------------------
@@ -196,11 +228,14 @@ spoon.MiroWindowsManager:bindHotkeys({
       fullscreen = {hyper, "f"}
 })
 
+startWatchers()
+
 hs.hotkey.bind(hyper, "d", default)
 hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "h", hackOn)
 hs.hotkey.bind(hyper, "r", readOn)
 hs.hotkey.bind(hyper, "b", build)
+hs.hotkey.bind(hyper, "z", zoom)
 hs.hotkey.bind(hyper, "tab", throw)
 hs.hotkey.bind(hyper, "0", hs.reload)
 
