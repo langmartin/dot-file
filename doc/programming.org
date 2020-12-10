@@ -3,10 +3,10 @@
 - https://dev.to/lazerwalker/using-game-design-to-make-virtual-events-more-social-24o
 
 * Distributed Systems
+- https://github.com/sipa/minisketch/
+- https://en.wikipedia.org/wiki/BCH_code
 - Pigpaxos fast paxos implementation :: http://pigpaxos.charap.co
 - wave guy :: https://josephg.com/blog/crdts-are-the-future/
-
-** TODO contact wave guy <2020-09-30 Wed>
 
 * Graphing and Visualization
 - manim animated 3d graphing library :: https://github.com/3b1b/manim#using-manim
