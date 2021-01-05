@@ -55,7 +55,8 @@ end
 local two = {
    path = '/Users/lang/contrib/ddcctl/ddcctl',
    b = 0,
-   v = 0
+   v = 0,
+   v_def = false
 }
 
 function twoSet(attr, number)
@@ -91,6 +92,16 @@ local function twoQuieter()
    two.v = two.v - 1
    two.v = math.max(0, two.v)
    twoSet('v', two.v)
+end
+
+local function twoDefaultVolume()
+   if two.v_def then
+      twoSet('v', 0)
+      two.v_def = false
+   else
+      twoSet('v', 10)
+      two.v_def = true
+   end
 end
 
 local function chatOnImpl(screen, slack)
@@ -237,9 +248,10 @@ hs.hotkey.bind(hyper, "r", readOn)
 hs.hotkey.bind(hyper, "b", build)
 hs.hotkey.bind(hyper, "z", zoom)
 hs.hotkey.bind(hyper, "tab", throw)
-hs.hotkey.bind(hyper, "0", hs.reload)
+hs.hotkey.bind(hyper, ".", hs.reload)
 
 hs.hotkey.bind(hyper, "1", twoDimmer)
 hs.hotkey.bind(hyper, "2", twoBrighter)
 hs.hotkey.bind(hyper, "-", twoQuieter)
 hs.hotkey.bind(hyper, "=", twoLouder)
+hs.hotkey.bind(hyper, "0", twoDefaultVolume)
