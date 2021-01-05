@@ -55,8 +55,7 @@ end
 local two = {
    path = '/Users/lang/contrib/ddcctl/ddcctl',
    b = 0,
-   v = 0,
-   v_def = false
+   v = 0
 }
 
 function twoSet(attr, number)
@@ -95,12 +94,12 @@ local function twoQuieter()
 end
 
 local function twoDefaultVolume()
-   if two.v_def then
+   if two.v > 0 then
       twoSet('v', 0)
-      two.v_def = false
+      two.v = 0
    else
       twoSet('v', 10)
-      two.v_def = true
+      two.v = 10
    end
 end
 
