@@ -14,7 +14,7 @@ alias grunt='grunt --no-color'
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt SHARE_HISTORY
 setopt HIST_REDUCE_BLANKS
-[ "$TERM" = dumb ] && unsetopt zle
+# [ "$TERM" = dumb ] && unsetopt zle
 
 dockerize () {
     eval `docker-machine env default`

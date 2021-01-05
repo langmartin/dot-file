@@ -299,6 +299,10 @@ packages: 'foo 'bar"
   (add-to-list 'auto-mode-alist '("\\.hs$" . haskell-mode))
   (add-to-list 'auto-mode-alist '("\\.lhs$" . haskell-mode)))
 
+(defun lsp-enable-on-type-formatting-nil ()
+  (make-local-variable 'lsp-enable-on-type-formatting)
+  (set 'lsp-enable-on-type-formatting nil))
+
 (defun rc-elixir ()
   (use-package lsp-mode
                :commands lsp
@@ -310,16 +314,17 @@ packages: 'foo 'bar"
   (eval-after-load "elixir-mode"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
+       (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
        (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
        (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save))))
 
 (defun rc-rust ()
   (use-package lsp-mode
-               :commands lsp
-               :ensure t
-               :diminish lsp-mode
-               :hook (rust-mode . lsp)
-               :init (add-to-list 'exec-path "~/.cargo/bin/rls")))
+    :commands lsp
+    :ensure t
+    :diminish lsp-mode
+    :hook (rust-mode . lsp)
+    :init (add-to-list 'exec-path "~/.cargo/bin/rls")))
 
 (defun go-ent ()
   (interactive)
@@ -480,6 +485,12 @@ packages: 'foo 'bar"
        ;; (add-to-list 'ac-modes 'shell-mode)
        ;; (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
        ))
+
+  (defun comint-send-tab ()
+    "Send a tab to the current buffer's process."
+    (interactive)
+    (comint-send-input t t)
+    (process-send-string nil "  "))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "s-SPC") 'just-one-space)
