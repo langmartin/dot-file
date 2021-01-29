@@ -112,9 +112,10 @@ local function chatOnImpl(screen, slack)
 	 {"Messages", nil, screen, rv, nil, nil},
 	 {"Slack", nil, screen, slack, nil, nil},
 	 {"Discord", nil, screen, maximized, nil, nil},
+	 {"Keybase", nil, screen, rv, nil, nil},	 
    })
 
-   focusSome({"Discord", "Messages", "Signal", "Slack"}, 4)
+   focusSome({"Discord", "Keybase", "Messages", "Signal", "Slack"}, 4)
 end
 
 local function chatOn(screen)
@@ -183,9 +184,10 @@ local function slacktermOn(screen)
 end
 
 local function default()
+   hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
       calOn(laptop)
-      slacktermOn(external)
+      -- slacktermOn(external)
       chatOn(external)
       hackOn(external)
    else
@@ -218,14 +220,15 @@ end
 -- ----------------------------------------------------------------------
 -- hooks
 
-local function startWatchers()
-   hs.screen.watcher.new(default):start()
-   -- hs.application.watcher.new(function (appName, event, app)
-   -- 	 if (appName == "zoom.us" and event == "lauched") then
-   -- 	    zoom()
-   -- 	 end
-   -- end):start()
-end
+hs.screen.watcher.new(function ()
+      default()
+):start()
+
+-- hs.application.watcher.new(function (appName, event, app)
+--       if (appName == "zoom.us" and event == "lauched") then
+-- 	 zoom()
+--       end
+-- end):start()
 
 -- ----------------------------------------------------------------------
 -- bindings
@@ -237,8 +240,6 @@ spoon.MiroWindowsManager:bindHotkeys({
       left = {hyper, "left"},
       fullscreen = {hyper, "f"}
 })
-
-startWatchers()
 
 hs.hotkey.bind(hyper, "d", default)
 hs.hotkey.bind(hyper, "c", chat)
