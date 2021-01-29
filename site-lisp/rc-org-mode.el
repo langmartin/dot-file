@@ -35,6 +35,7 @@
 (custom-set-variables
  '(org-enforce-todo-dependencies t)
  '(org-log-done nil)
+ '(org-special-ctrl-o nil)
  '(org-clock-modeline-total (quote current))
  '(org-cycle-include-plain-lists nil)
  '(org-clock-into-drawer "LOGBOOK")
