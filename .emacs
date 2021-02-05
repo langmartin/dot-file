@@ -59,7 +59,7 @@ packages: 'foo 'bar"
 (maybe-add-to-exec-path "/usr/local/bin")
 (maybe-add-to-exec-path "/usr/local/go/bin")
 (maybe-add-to-exec-path "~/code/contrib/google-cloud-sdk/bin")
-(maybe-add-to-exec-path "/usr/local/texlive/2019/bin/x86_64-darwin")
+(maybe-add-to-exec-path "/usr/local/texlive/2020/bin/x86_64-darwin")
 (maybe-add-to-exec-path "~/.gem/ruby/2.6.0/bin")
 (maybe-add-to-exec-path "~/.cargo/bin")
 (maybe-add-to-exec-path "~/go/bin")

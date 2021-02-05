@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -x
+
+name="`git config --global --get user.name`"
+email="`git config --global --get user.email`"
+
+git commit --amend --author "$name <$email>" --date="`date`" --no-edit 

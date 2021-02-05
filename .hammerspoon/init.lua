@@ -15,6 +15,8 @@ local right = hs.layout.right50
 local left40 = {x=0, y=0, w=0.4, h=1}
 local right60 = {x=0.4, y=0, w=0.6, h=1}
 local top50 = {x=0, y=0, w=1, h=0.5}
+local top30 = {x=0, y=0, w=1, h=0.3}
+local bottom70 = {x=0, y=0.3, w=1, h=0.7}
 local bottom50 = {x=0, y=0.5, w=1, h=0.5}
 local bottom20 = {x=0, y=0.8, w=1, h=0.2}
 local top80 = {x=0, y=0, w=1, h=0.8}
@@ -112,7 +114,7 @@ local function chatOnImpl(screen, slack)
 	 {"Messages", nil, screen, rv, nil, nil},
 	 {"Slack", nil, screen, slack, nil, nil},
 	 {"Discord", nil, screen, maximized, nil, nil},
-	 {"Keybase", nil, screen, rv, nil, nil},	 
+	 {"Keybase", nil, screen, rv, nil, nil},
    })
 
    focusSome({"Discord", "Keybase", "Messages", "Signal", "Slack"}, 4)
@@ -176,18 +178,25 @@ local function buildOn(screen)
    focusSome({browser, "Emacs"},  2)
 end
 
-local function slacktermOn(screen)
+local function termOn(screen)
    hs.layout.apply({
 	 {"Terminal", nil, screen, top50, nil, nil},
-	 {"Slack", nil, screen, bottom50, nil, nil},
+	 {"iTerm2", nil, screen, top50, nil, nil},
+   })
+end
+
+local function slacktermOn(screen)
+   hs.layout.apply({
+	 {"Terminal", nil, screen, top30, nil, nil},
+	 {"Slack", nil, screen, bottom70, nil, nil},
    })
 end
 
 local function default()
-   hs.alert("default: " .. hs.screen.find(external):name())
+   -- hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
       calOn(laptop)
-      -- slacktermOn(external)
+      termOn(external)
       chatOn(external)
       hackOn(external)
    else
@@ -222,7 +231,7 @@ end
 
 hs.screen.watcher.new(function ()
       default()
-):start()
+end):start()
 
 -- hs.application.watcher.new(function (appName, event, app)
 --       if (appName == "zoom.us" and event == "lauched") then

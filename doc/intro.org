@@ -1,4 +1,16 @@
 * PPWL
+** Palvaro
+
+Lang is a distributed systems engineer at Subspace, where he counts
+milliseconds and lists facts about networks. He's currently also a
+school teacher, so recent skill acquisitions include Elixir and
+remembering long division.
+
+This paper describes MOLLY, a system for automatically exploring the
+state space of fault toleration bugs and deriving partial formal
+models from production systems.
+
+** Stonebraker's Salty
 
 Lang is a Senior Engineer at Hashicorp where he orchestrates
 containers and sometimes tries to float rafts. Reluctant gopher,
