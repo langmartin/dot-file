@@ -265,10 +265,10 @@ packages: 'foo 'bar"
   (skewer-setup))
 
 (defun rc-html-css-mode ()
-  ;; (eval-after-load "sgml-mode"
-  ;;   '(progn
-  ;;      (package-require 'zencoding-mode)
-  ;;      (add-to-list 'html-mode-hook 'zencoding-mode)))
+  (eval-after-load "mhtml-mode"
+    '(progn
+       (package-require 'emmet-mode)
+       (add-to-list 'mhtml-mode-hook 'emmet-mode)))
 
   (require 'sql)
   (add-to-list 'sql-mode-hook 'turn-off-tabs)
