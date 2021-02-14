@@ -148,6 +148,12 @@ function zoom()
    })
 end
 
+local function maxSide()
+   local win = hs.window.focusedWindow()
+   win:moveToScreen(sideScreen())
+   win:maximize()
+end
+
 local function hackOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
@@ -255,7 +261,7 @@ hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "h", hackOn)
 hs.hotkey.bind(hyper, "r", readOn)
 hs.hotkey.bind(hyper, "b", build)
-hs.hotkey.bind(hyper, "z", zoom)
+hs.hotkey.bind(hyper, "z", maxSide)
 hs.hotkey.bind(hyper, "tab", throw)
 hs.hotkey.bind(hyper, ".", hs.reload)
 
