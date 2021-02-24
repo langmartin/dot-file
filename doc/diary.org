@@ -1,8 +1,10 @@
 * Reading List
 
+- How to Avoid Programming Yourself into a Corner https://www.amazon.com/gp/product/B089423GC6
+- Wittgenstein vs. Popper https://www.amazon.com/dp/0060936649/?coliid=IPBDY1VSCIGFP&colid=3CT8N10UO3AEB
 - https://old.reddit.com/r/books/comments/kvm0na/which_contemporary_book_written_in_the_last_20/
 - https://github.com/inkandswitch/farm
-- https://allthatsinteresting.com/serrania-de-la-lindosa
+- Ancient Amazon Paintings https://allthatsinteresting.com/serrania-de-la-lindosa
 
 * Memes
 - [[https://www.reddit.com/r/WTF/comments/otkq4/smoked_chicken/][chickenfish]]
