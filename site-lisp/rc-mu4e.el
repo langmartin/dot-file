@@ -134,8 +134,11 @@
            :prompt      "trash"
            :show-target (lambda (target) "trash")
            :action      (lambda (docid msg target)
-                          (mu4e-action-retag-message msg (concat "+recycle," gmail-y-tags))
-                          (mu4e~proc-move docid nil "+T-N"))))
+                          (if (string-equal (mu4e-message-field msg ':maildir) "/drafts")
+                              (mu4e~proc-remove docid)
+                            (progn
+                              (mu4e-action-retag-message msg (concat "+recycle," gmail-y-tags))
+                              (mu4e~proc-move docid nil "+T-N"))))))
         mu4e-marks))
 
   ;; unset these, so they can be added fresh
@@ -156,7 +159,7 @@
      (,"tag:on-first" "on The First" ?f)
      (,"tag:on-occasion" "on Occasion" ?o)
      (,"tag:\\\\Starred OR flag:flagged" "Flagged" ?s)
-     (,"tag:\\\\Draft OR maildir:\"/[Gmail].Drafts\"" "Drafts" ?d)
+     (,(concat "tag:\\\\Draft OR maildir:" mu4e-drafts-folder) "Drafts" ?d)
      ;; (,(concat "from:" user-mail-address " AND date:30d..now")
      ;;  "Last 30 days sent" 116)
      ("tag:\\\\Sent AND date:30d..now" "Last 30 days sent" ?t)
@@ -217,7 +220,7 @@
  '(mu4e-compose-signature-auto-include nil)
  '(mu4e-date-format-long "%Y-%m-%d")
  '(mu4e-headers-date-format "%y-%m-%d")
- '(mu4e-drafts-folder "/[Gmail].Drafts")
+ ;; '(mu4e-drafts-folder "/[Gmail].Drafts")
  ;; '(mu4e-get-mail-command "isync INBOX Archive Drafts 'Deleted Items'")
  '(mu4e-get-mail-command "offlineimap")
  '(mu4e-headers-fields (quote ((:human-date . 12) (:flags . 6) (:from . 22) (:subject))))
