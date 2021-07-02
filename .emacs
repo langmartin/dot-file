@@ -86,6 +86,7 @@ packages: 'foo 'bar"
    '(ns-command-modifier (quote meta))
    '(Info-additional-directory-list (quote ("/usr/share/info"))))
 
+  (global-unset-key (kbd "s-h"))        ; ns-do-hide-emacs
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
 
 (defun rc-font-lg ()
@@ -132,6 +133,10 @@ packages: 'foo 'bar"
 
 
 ;;;; Modes
+
+(defun rc-ocaml-mode ()
+  (package-require 'tuareg)
+  (add-hook 'tuareg-mode-hook 'cleanup-untabify-save))
 
 (defun rc-r-mode ()
   (package-require 'ess))
@@ -454,11 +459,14 @@ packages: 'foo 'bar"
   (mode-line-bell-mode)
   (package-require 'git-link)
 
+  (set-default 'epa-file-encrypt-to "lang.martin@gmail.com")
+
   (custom-set-variables
    '(column-number-mode t)
    '(font-lock-maximum-decoration nil)
    '(line-number-mode t)
    '(sentence-end-double-space nil)
+   '(indent-tabs-mode nil)
    '(hippie-expand-try-functions-list
      (quote
       (try-expand-all-abbrevs
@@ -723,6 +731,13 @@ the working directory"
 
   ;; (defalias 'switch-to-buffer 'switch-to-insert-mode-buffer)
   (global-set-key (kbd "s-z") 'vi-mode))
+
+(defun align-spaces (beg end)
+  "Align non-space columns in region BEG END."
+  (interactive "r")
+  (let ((align-to-tab-stop nil)
+        (indent-tabs-mode nil))
+    (align-regexp beg end "\\(\\s-*\\)\\S-+" 1 1 t)))
 
 
 ;;;; Git

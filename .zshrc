@@ -10,6 +10,8 @@ alias s='git status'
 alias b='git branch -v'
 alias ba='git branch -av'
 alias grunt='grunt --no-color'
+alias firefox="TZ=America/Los_Angeles open /Applications/Firefox.app"
+alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt SHARE_HISTORY
@@ -30,6 +32,10 @@ anybar () {
 make () {
     anybar
     env make $@ && anybar green || anybar red
+}
+
+fs () {
+    awk "{print \$$1;}"
 }
 
 for inc in \

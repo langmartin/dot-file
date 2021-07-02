@@ -1,6 +1,6 @@
 {:user
  {:plugins [;; [cider/cider-nrepl "0.24.0"]
-            [lein-ancient "0.6.15" :exclusions [org.clojure/clojure]]
+            [lein-ancient "0.7.0" :exclusions [org.clojure/clojure]]
 
             ;; 1. jack in to a jvm repl
             ;; 2. (require '[figwheel-sidecar.repl-api :refer :all])
@@ -8,7 +8,7 @@
             ;; 4. (cljs-repl)
             ;; [lein-figwheel "0.5.19" :exclusions [org.clojure/clojure]]
 
-            [jonase/eastwood "0.3.11" :exclusions [org.clojure/clojure]]
+            [jonase/eastwood "0.4.3" :exclusions [org.clojure/clojure]]
             [venantius/yagni "0.1.7"]
             [lein-kibit "0.1.8"]
             [lein-bikeshed "0.5.2"]
@@ -16,13 +16,13 @@
             ]
 
   :dependencies [
-                 [org.clojure/clojure "1.10.1"]
+                 [org.clojure/clojure "1.10.3"]
                  ;; [org.clojure/tools.trace "0.7.10"]
                  ;; [pjstadig/humane-test-output "0.10.0"]
                  ;; [org.clojure/tools.namespace "1.0.0"]
                  ;; need these for figwheel
                  ;; [figwheel-sidecar "0.5.19"]
-                 [cider/piggieback "0.4.2"]
+                 [cider/piggieback "0.5.2"]
                  ]
 
   ;; :injections [(require 'pjstadig.humane-test-output)

@@ -1,10 +1,21 @@
 * Reading List
 
-- How to Avoid Programming Yourself into a Corner https://www.amazon.com/gp/product/B089423GC6
 - Wittgenstein vs. Popper https://www.amazon.com/dp/0060936649/?coliid=IPBDY1VSCIGFP&colid=3CT8N10UO3AEB
 - https://old.reddit.com/r/books/comments/kvm0na/which_contemporary_book_written_in_the_last_20/
 - https://github.com/inkandswitch/farm
 - Ancient Amazon Paintings https://allthatsinteresting.com/serrania-de-la-lindosa
+
+- [[http://www.csl.mtu.edu/cs6461/www/Reading/Birman99.pdf][Bi-Modal Multicast]] :: bounded command push through a distributed
+  system
+- [[https://nmlab.korea.ac.kr/publication/published.papers/2013/2013.03-NetCube_A_Comprehensive_Network_Traffic_Analysis_Model_based_on_Multidimensional_OLAP_Data_Cube-IJNM.pdf][NetCube]] :: traffic analysis
+- [[https://arxiv.org/pdf/1709.06604.pdf][Network Reprogramming with Z3]]
+
+- [[https://github.com/hundredrabbits/Orca][Orca]] synthesizer programming language
+
+** Watching
+
+- Invincible
+- Wearing the Cape
 
 * Memes
 - [[https://www.reddit.com/r/WTF/comments/otkq4/smoked_chicken/][chickenfish]]
@@ -13,6 +24,7 @@
 - [[https://imgur.com/hagCe52][horrifying molten rod construction]]
 - [[https://ichef.bbci.co.uk/news/800/cpsprodpb/13274/production/_113025487_frescopic.gif][ftfy]]
 - [[https://twitter.com/CSMFHT/status/1293044891900026881][wap]] odysseus
+- http://www.scs.stanford.edu/%7Edm/home/papers/remove.pdf mailing list
 
 ** science
 - [[https://twitter.com/scienceshitpost/status/1219704196318056448/photo/1][bird louder]]
@@ -82,3 +94,17 @@ file:cooking/mushroom-bourguignon.png
 2 pounds boneless skinless chicken breasts - or thighs
 
 8 minutes
+
+*** Peanut Butter Curry
+
+1 onion – red or brown, either works
+2-3 tbsp curry paste – adjust depending on how spicy you want it. See notes below for curry paste suggestions
+400 mL coconut milk – one standard can of coconut milk
+200 grams tinned chopped tomatoes – half a standard tin of tomatoes
+4 tbsp peanut butter
+400 grams 4 bean mix or other tinned beans – one standard tin of beans
+3-4 cups mixed vegetables – I used frozen vegetables but you can use fresh
+300 grams extra firm tofu or other protein of choice e.g. chicken, prawns, tempeh
+3 tbsp soy sauce or tamari – you may need more or less than this, to adjust taste. I used gluten free soy sauce
+3 tbsp coconut sugar, brown sugar or white sugar – you may need more or less than this, to adjust taste
+extra virgin olive oil or other oil, for cooking

@@ -5,9 +5,18 @@ hs.loadSpoon("MiroWindowsManager")
 hs.window.animationDuration = 0
 
 local browser = "Firefox"
+local browser2 = "Safari"
 
-local laptop = 'Color LCD'
-local external = 'LG HDR 4K'
+local laptop_name = 'Built%-in'
+local external_name = 'LG HDR 4K'
+
+local function laptop()
+   return hs.screen.find(laptop_name)
+end
+
+local function external()
+   return hs.screen.find(external_name)
+end
 
 local maximized = hs.layout.maximized
 local left = hs.layout.left50
@@ -22,14 +31,15 @@ local bottom20 = {x=0, y=0.8, w=1, h=0.2}
 local top80 = {x=0, y=0, w=1, h=0.8}
 
 local function twoScreens()
-   return hs.screen.find(external) ~= nil
+   return external() ~= nil
 end
 
 local function sideScreen()
-   return twoScreens() and laptop or external
+   return twoScreens() and laptop() or external()
 end
 
-local function focusSome(apps, size)
+local function focusSome(apps)
+   size = #(apps)
    for i = 1,size do
       local app = hs.application.get(apps[i])
       if (app)
@@ -106,18 +116,20 @@ local function twoDefaultVolume()
 end
 
 local function chatOnImpl(screen, slack)
-   local lv = {x=0, y=0, w=0.5, h=0.5}
-   local rv = {x=0.5, y=0, w=0.5, h=0.5}
+   local lt = {x=0, y=0, w=0.5, h=0.5}
+   local rt = {x=0.5, y=0, w=0.5, h=0.5}
+   local lb = {x=0, y=0.5, w=0.5, h=0.5}
+   local rb = {x=0.5, y=0.5, w=0.5, h=0.5}
 
    hs.layout.apply({
-	 {"Signal", nil, screen, lv, nil, nil},
-	 {"Messages", nil, screen, rv, nil, nil},
-	 {"Slack", nil, screen, slack, nil, nil},
-	 {"Discord", nil, screen, maximized, nil, nil},
-	 {"Keybase", nil, screen, rv, nil, nil},
+	 {"Signal", nil, screen, lt, nil, nil},
+	 {"Messages", nil, screen, rt, nil, nil},
+	 {"Slack", nil, screen, lb, nil, nil},
+	 {"Keybase", nil, screen, rt, nil, nil},
+	 {"Discord", nil, screen, rb, nil, nil},
    })
 
-   focusSome({"Discord", "Keybase", "Messages", "Signal", "Slack"}, 4)
+   focusSome({"Keybase", "Discord", "Messages", "Signal", "Slack"})
 end
 
 local function chatOn(screen)
@@ -159,9 +171,10 @@ local function hackOn(screen)
    hs.layout.apply({
 	 {"Emacs", nil, screen, maximized, nil, nil},
 	 {browser, nil, screen, maximized, nil, nil},
+	 {browser2, nil, screen, maximized, nil, nil},	 
 	 {"Preview", nil, screen, maximized, nil, nil},
    })
-   focusSome({browser, "Emacs"}, 2)
+   focusSome({browser, "Emacs"})
 end
 
 local function readOn(screen)
@@ -169,9 +182,10 @@ local function readOn(screen)
    hs.layout.apply({
 	 {"Emacs", nil, screen, left40, nil, nil},
 	 {browser, nil, screen, right60, nil, nil},
+	 {browser2, nil, screen, right60, nil, nil},
 	 {"Preview", nil, screen, right60, nil, nil},
    })
-   focusSome({browser, "Emacs"}, 2)
+   focusSome({browser, "Emacs"})
 end
 
 local function buildOn(screen)
@@ -179,9 +193,10 @@ local function buildOn(screen)
    hs.layout.apply({
 	 {"Emacs", nil, screen, bottom20, nil, nil},
 	 {browser, nil, screen, top80, nil, nil},
+	 {browser2, nil, screen, top80, nil, nil},
 	 {"Preview", nil, screen, top80, nil, nil},
    })
-   focusSome({browser, "Emacs"},  2)
+   focusSome({browser, "Emacs"})
 end
 
 local function termOn(screen)
@@ -201,34 +216,34 @@ end
 local function default()
    -- hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
-      calOn(laptop)
-      termOn(external)
-      chatOn(external)
-      hackOn(external)
+      calOn(laptop())
+      termOn(external())
+      chatOn(external())
+      hackOn(external())
    else
-      chatOn(laptop)
-      hackOn(laptop)
+      chatOn(laptop())
+      hackOn(laptop())
    end
 end
 
 local function chat()
    if (twoScreens()) then
-      calOn(external)
-      hackOn(external)
-      chatTileOn(laptop)
+      calOn(external())
+      hackOn(external())
+      chatTileOn(laptop())
    else
-      chatTileOn(laptop)
+      chatTileOn(laptop())
    end
 end
 
 local function build()
-   if (hs.screen.find(external)) then
-      calOn(external)
-      chatOn(external)
-      slacktermOn(laptop)
-      buildOn(external)
+   if (hs.screen.find(external())) then
+      calOn(external())
+      chatOn(external())
+      slacktermOn(laptop())
+      buildOn(external())
    else
-      buildOn(laptop)
+      buildOn(laptop())
    end
 end
 
@@ -263,7 +278,6 @@ hs.hotkey.bind(hyper, "r", readOn)
 hs.hotkey.bind(hyper, "b", build)
 hs.hotkey.bind(hyper, "z", maxSide)
 hs.hotkey.bind(hyper, "tab", throw)
-hs.hotkey.bind(hyper, ".", hs.reload)
 
 hs.hotkey.bind(hyper, "1", twoDimmer)
 hs.hotkey.bind(hyper, "2", twoBrighter)
