@@ -30,6 +30,11 @@ local bottom50 = {x=0, y=0.5, w=1, h=0.5}
 local bottom20 = {x=0, y=0.8, w=1, h=0.2}
 local top80 = {x=0, y=0, w=1, h=0.8}
 
+local topLeft = {x=0, y=0, w=0.5, h=0.5}
+local topRight = {x=0.5, y=0, w=0.5, h=0.5}
+local bottomLeft = {x=0, y=0.5, w=0.5, h=0.5}
+local bottomRight = {x=0.5, y=0.5, w=0.5, h=0.5}
+
 local function twoScreens()
    return external() ~= nil
 end
@@ -116,17 +121,12 @@ local function twoDefaultVolume()
 end
 
 local function chatOnImpl(screen, slack)
-   local lt = {x=0, y=0, w=0.5, h=0.5}
-   local rt = {x=0.5, y=0, w=0.5, h=0.5}
-   local lb = {x=0, y=0.5, w=0.5, h=0.5}
-   local rb = {x=0.5, y=0.5, w=0.5, h=0.5}
-
    hs.layout.apply({
-	 {"Signal", nil, screen, lt, nil, nil},
-	 {"Messages", nil, screen, rt, nil, nil},
-	 {"Slack", nil, screen, lb, nil, nil},
-	 {"Keybase", nil, screen, rt, nil, nil},
-	 {"Discord", nil, screen, rb, nil, nil},
+	 {"Signal", nil, screen, topLeft, nil, nil},
+	 {"Messages", nil, screen, topRight, nil, nil},
+	 {"Slack", nil, screen, slack, nil, nil},
+	 {"Keybase", nil, screen, topRight, nil, nil},
+	 {"Discord", nil, screen, bottomRight, nil, nil},
    })
 
    focusSome({"Keybase", "Discord", "Messages", "Signal", "Slack"})
@@ -137,7 +137,7 @@ local function chatOn(screen)
 end
 
 local function chatTileOn(screen)
-   chatOnImpl(screen, bottom50)
+   chatOnImpl(screen, bottomLeft)
 end
 
 function calOn(screen)
