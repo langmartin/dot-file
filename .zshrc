@@ -14,7 +14,7 @@ alias firefox="TZ=America/Los_Angeles open /Applications/Firefox.app"
 alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 
 setopt HIST_EXPIRE_DUPS_FIRST
-setopt SHARE_HISTORY
+# setopt SHARE_HISTORY
 setopt HIST_REDUCE_BLANKS
 # [ "$TERM" = dumb ] && unsetopt zle
 
@@ -38,6 +38,14 @@ fs () {
     awk "{print \$$1;}"
 }
 
+function jwt() {
+    jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1"
+}
+
+netstat-lpn () {
+    sudo lsof -nP -iTCP -sTCP:LISTEN
+}
+
 for inc in \
     ~/.opam/opam-init/init.zsh \
 	/usr/local/opt/asdf/asdf.sh \
@@ -48,19 +56,15 @@ done
 
 setopt prompt_subst
 
+git-current-branch () {
+    v=`git rev-parse --abbrev-ref HEAD 2>/dev/null` && echo "$v "
+}
+
+PROMPT='$(git-current-branch)'"$PROMPT"
+
 if [ -x /usr/local/bin/kubectx ]; then
     kubectx-current () {
 	v=`/usr/local/bin/kubectx -c 2>/dev/null` && echo "$v "
     }
     PROMPT='$(kubectx-current)'"$PROMPT"
 fi
-
-git-current-branch () {
-    v=`git rev-parse --abbrev-ref HEAD 2>/dev/null` && echo "$v "
-}
-
-# PROMPT='$(git-current-branch)'"$PROMPT"
-
-netstat-lpn () {
-    sudo lsof -nP -iTCP -sTCP:LISTEN
-}
