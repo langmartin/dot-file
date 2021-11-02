@@ -126,7 +126,7 @@ local function chatOnImpl(screen, slack)
 	 {"Messages", nil, screen, topRight, nil, nil},
 	 {"Slack", nil, screen, slack, nil, nil},
 	 {"Keybase", nil, screen, topRight, nil, nil},
-	 {"Discord", nil, screen, bottomRight, nil, nil},
+	 {"Discord", nil, screen, maximized, nil, nil},
    })
 
    focusSome({"Keybase", "Discord", "Messages", "Signal", "Slack"})

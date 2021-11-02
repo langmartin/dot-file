@@ -12,7 +12,7 @@ $c = "mu find --muhome '$ENV{MU_HOME}' '$q' $a -f 't|f|s'";
 print "debug: $c\n";
 open(FH, "$c|");
 while (<FH>) {
-    ($to, $from, $subj) = split /\|/, $_;
+    ($to, $from, $subj) = split /\|/, $_, 3;
 
     $orig = $from;
 

@@ -8,5 +8,5 @@ while true; do
     offlineimap
     ~/bin/biff
     SINCE=`date +%s`
-    sleep 300
+    sleep 60
 done
