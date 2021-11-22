@@ -1,0 +1,6 @@
+#!/bin/sh
+open -a Signal
+open -a Messages
+open -a Slack
+open -a Keybase
+open -a Discord
