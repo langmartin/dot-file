@@ -4,8 +4,28 @@
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (remove-from-list 'package-archives "melpa-stable")
+;; (remove-from-list 'package-archives "gnu")
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
+(setq package-pinned-packages
+      '((clj-refactor . "melpa-stable")
+        (cider . "melpa-stable")
+        (clojure-mode . "melpa-stable")
+        (elixir-mode . "melpa-stable")
+        (company . "melpa-stable")
+        (magit . "melpa-stable")
+        (magit-popup . "melpa-stable")
+        (markdown-mode . "melpa-stable")
+        (tide . "melpa-stable")))
+
 (package-initialize)
+
+(defun remove-from-list (list-var name)
+  (set list-var
+       (filter (lambda (x)
+                 (not (string= (car x) name)))
+               (symbol-value list-var))))
 
 (defun package-require (package)
   (unless (package-installed-p package)
@@ -64,6 +84,7 @@ packages: 'foo 'bar"
 (maybe-add-to-exec-path "~/.cargo/bin")
 (maybe-add-to-exec-path "~/go/bin")
 (maybe-add-to-exec-path "~/.asdf/shims")
+(maybe-add-to-exec-path "~/langmartin/dot-file/bin")
 (maybe-add-to-exec-path "~/bin")
 (exec-path-setenv)
 
@@ -109,7 +130,7 @@ packages: 'foo 'bar"
   (interactive "p")
   (let* ((n (->> (selected-frame) frame-parameters (assoc 'alpha) cdr))
          (m (if (= 1 opacity)
-                (if (or (not n) (= 100 n)) 90 100)
+                (if (or (not n) (= 100 n)) 95 100)
               opacity)))
     (set-frame-parameter (selected-frame) 'alpha m)))
 
@@ -439,11 +460,15 @@ packages: 'foo 'bar"
   (flycheck-add-mode 'typescript-tslint 'web-mode)
   (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
-  )
+
+  (custom-set-variables
+   '(web-mode-auto-quote-style 3)
+   '(web-mode-enable-auto-quoting nil)))
 
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
+  (setq font-lock-maximum-decoration t)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode +1)
