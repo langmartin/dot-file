@@ -7,7 +7,7 @@ fi
 if [ -z "$INSIDE_EMACS" ]; then
     SYS_PATH="$PATH"
     PATH=~/bin
-    PATH="$PATH":~/langmartin/dot-files/bin
+    PATH="$PATH":~/langmartin/dot-file/bin
     PATH="$PATH":~/subspace/effitas/federations/holodeck/dev-scripts
     PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
     PATH="$PATH":~/code/contrib/google-cloud-sdk/bin

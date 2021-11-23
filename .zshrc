@@ -14,6 +14,7 @@ alias firefox="TZ=America/Los_Angeles open /Applications/Firefox.app"
 alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 
 setopt HIST_EXPIRE_DUPS_FIRST
+setopt INC_APPEND_HISTORY
 # setopt SHARE_HISTORY
 setopt HIST_REDUCE_BLANKS
 # [ "$TERM" = dumb ] && unsetopt zle
