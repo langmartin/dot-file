@@ -12,6 +12,15 @@
 
 - [[https://github.com/hundredrabbits/Orca][Orca]] synthesizer programming language
 
+** Blogs
+
+- https://www.netmeister.org/blog/ :: via Joe
+- https://okmij.org/ftp/ :: Oleg
+- http://mumble.net/~campbell/blag.txt :: Riastradh
+- https://blog.acolyer.org/ :: the Morning Paper
+- https://danluu.com/ :: Dan Luu
+- http://lambda-the-ultimate.org/
+
 ** Watching
 
 - Invincible
@@ -23,10 +32,11 @@
 - [[https://www.youtube.com/watch?v=aXP3C5Kg-7w&feature=youtu.be][chaindrite bug spray commercial]]
 - [[https://imgur.com/hagCe52][horrifying molten rod construction]]
 - [[https://ichef.bbci.co.uk/news/800/cpsprodpb/13274/production/_113025487_frescopic.gif][ftfy]]
-- [[https://twitter.com/CSMFHT/status/1293044891900026881][wap]] odysseus
+- tweet [[https://twitter.com/CSMFHT/status/1293044891900026881][wap]] odysseus
 - [[http://www.scs.stanford.edu/%7Edm/home/papers/remove.pdf][get me off your mailing list]] paper
 - tweet [[https://twitter.com/psmith/status/486612460112470019][schadenfreude]]
 - tweet [[https://twitter.com/daisyowl/status/841802094361235456][rock into thinking]]
+- [[https://www.youtube.com/watch?v=7LGTEI1RMoQ][screaming cowboy]]
 
 ** science
 - [[https://twitter.com/scienceshitpost/status/1219704196318056448/photo/1][bird louder]]
