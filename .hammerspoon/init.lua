@@ -7,8 +7,8 @@ hs.window.animationDuration = 0
 local browser = "Firefox"
 local browser2 = "Safari"
 
-local laptop_name = 'Built%-in'
-local external_name = 'LG HDR 4K'
+local laptop_name = 'built'
+local external_name = 'lg'
 
 local function laptop()
    return hs.screen.find(laptop_name)
