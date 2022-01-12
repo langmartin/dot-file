@@ -22,7 +22,7 @@ while (<FH>) {
 	s/\s+$//;
     }
 
-    # print qq(debug: $orig => $from\n);
-    # print qq(debug: terminal-notifier ... -title "$from" -subtitle "$to" -message "$subj"\n);
-    `terminal-notifier -sender com.apple.Mail -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"`;
+    print qq(debug: $orig => $from\n);
+    print qq(debug: terminal-notifier ... -title "$from" -subtitle "$to" -message "$subj"\n);
+    `terminal-notifier -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"`;
 }
