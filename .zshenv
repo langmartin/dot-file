@@ -10,14 +10,16 @@ if [ -z "$INSIDE_EMACS" ]; then
     PATH="$PATH":~/langmartin/dot-file/bin
     PATH="$PATH":~/subspace/effitas/federations/holodeck/dev-scripts
     PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
+    PATH="$PATH":/opt/homebrew/texlive/2018/bin/x86_64-darwin
     PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
     PATH="$PATH":~/.cargo/bin
     PATH="$PATH":/usr/local/go/bin
     PATH="$PATH":~/go/bin
     PATH="$PATH":/Users/lang/.gem/ruby/2.6.0/bin
-    PATH="$PATH:/usr/local/bin"
-    PATH="$PATH:/usr/local/sbin"
-    PATH="$PATH:$SYS_PATH:/sbin:/usr/sbin"
+    PATH="$PATH":/usr/local/bin
+    PATH="$PATH":/opt/homebrew/bin
+    PATH="$PATH":/usr/local/sbin
+    PATH="$PATH:$SYS_PATH":/sbin:/usr/sbin
 fi
 
 if [ -z "$SSH_CLIENT" ]; then
@@ -29,4 +31,5 @@ export QPVERBOSE=true
 export QPOPT="-V"
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-source "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && \
+    source "$HOME/.cargo/env"

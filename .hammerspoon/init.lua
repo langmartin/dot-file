@@ -4,8 +4,8 @@ hs.loadSpoon("MiroWindowsManager")
 
 hs.window.animationDuration = 0
 
-local browser = "Firefox"
-local browser2 = "Safari"
+local browser = "Safari"
+local browser2 = "Firefox"
 
 local laptop_name = 'built'
 local external_name = 'lg'
