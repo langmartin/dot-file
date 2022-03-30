@@ -12,9 +12,12 @@ if [ -z "$INSIDE_EMACS" ]; then
     PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
     PATH="$PATH":/opt/homebrew/texlive/2018/bin/x86_64-darwin
     PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
+    PATH="$PATH":~/.asdf/shims
     PATH="$PATH":~/.cargo/bin
-    PATH="$PATH":/usr/local/go/bin
     PATH="$PATH":~/go/bin
+    PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
+    PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
+    PATH="$PATH":/usr/local/opt/openjdk/bin
     PATH="$PATH":/Users/lang/.gem/ruby/2.6.0/bin
     PATH="$PATH":/usr/local/bin
     PATH="$PATH":/opt/homebrew/bin

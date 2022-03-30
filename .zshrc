@@ -5,6 +5,7 @@ HISTSIZE=700000
 SAVEHIST=500000
 HISTFILE=~/.zhistory
 
+alias h='history -f -1000 | grep'
 alias ll='ls -l'
 alias s='git status'
 alias b='git branch -v'
@@ -15,7 +16,7 @@ alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt INC_APPEND_HISTORY
-# setopt SHARE_HISTORY
+setopt SHARE_HISTORY
 setopt HIST_REDUCE_BLANKS
 # [ "$TERM" = dumb ] && unsetopt zle
 
@@ -69,3 +70,6 @@ if [ -x /usr/local/bin/kubectx ]; then
     }
     PROMPT='$(kubectx-current)'"$PROMPT"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"

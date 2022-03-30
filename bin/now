@@ -1,0 +1,23 @@
+#!/bin/sh
+
+row='| %-19s | %-5s |\n'
+sep='|-----------------------------|\n'
+
+read -d'' -r tzs <<EOF
+Europe/Zagreb
+America/Sao_Paulo
+America/New_York
+America/Los_Angeles
+EOF
+
+printf "$row" TZ Time
+
+hours="${1:-3}"; shift
+
+for t in `seq 0 $hours`; do
+    t="+${t}H"
+    printf "$sep"
+    for tz in $tzs; do
+        printf "$row" "$tz" "`TZ=$tz date -v$t +%H:%M`"
+    done
+done
