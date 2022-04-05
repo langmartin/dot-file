@@ -86,14 +86,26 @@ function twoSet(attr, number)
    ):start()
 end
 
+local function brightBy(current)
+   by = 10
+   if (current <= 10) then
+      if (current > 3) then
+         by = 2
+      else
+         by = 1
+      end
+   end
+   return by
+end
+
 local function twoBrighter()
-   two.b = two.b + 10
+   two.b = two.b + brightBy(two.b)
    two.b = math.min(100, two.b)
    twoSet('b', two.b)
 end
 
 local function twoDimmer()
-   two.b = two.b - 10
+   two.b = two.b - brightBy(two.b)
    two.b = math.max(0, two.b)
    twoSet('b', two.b)
 end
