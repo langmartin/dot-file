@@ -13,6 +13,8 @@
         (cider . "melpa-stable")
         (clojure-mode . "melpa-stable")
         (elixir-mode . "melpa-stable")
+        ;; (go-mode . "melpa-stable")
+        ;; (lsp-mode . "melpa-stable")
         (company . "melpa-stable")
         (magit . "melpa-stable")
         (magit-popup . "melpa-stable")

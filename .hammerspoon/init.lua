@@ -88,12 +88,15 @@ end
 
 local function brightBy(current)
    by = 10
-   if (current <= 10) then
-      if (current > 3) then
+   if (current <= 3)
+   then
+      by = 1
+   elseif (current <= 10)
+   then
          by = 2
-      else
-         by = 1
-      end
+   elseif (current <= 20)
+   then
+         by = 4
    end
    return by
 end
