@@ -8,7 +8,7 @@
             ;; 4. (cljs-repl)
             ;; [lein-figwheel "0.5.19" :exclusions [org.clojure/clojure]]
 
-            [jonase/eastwood "0.4.3" :exclusions [org.clojure/clojure]]
+            [jonase/eastwood "1.2.3" :exclusions [org.clojure/clojure]]
             [venantius/yagni "0.1.7"]
             [lein-kibit "0.1.8"]
             [lein-bikeshed "0.5.2"]
@@ -16,13 +16,13 @@
             ]
 
   :dependencies [
-                 [org.clojure/clojure "1.10.3"]
+                 [org.clojure/clojure "1.11.0"]
                  ;; [org.clojure/tools.trace "0.7.10"]
                  ;; [pjstadig/humane-test-output "0.10.0"]
                  ;; [org.clojure/tools.namespace "1.0.0"]
                  ;; need these for figwheel
                  ;; [figwheel-sidecar "0.5.19"]
-                 [cider/piggieback "0.5.2"]
+                 [cider/piggieback "0.5.3"]
                  ]
 
   ;; :injections [(require 'pjstadig.humane-test-output)
