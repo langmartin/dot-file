@@ -14,7 +14,8 @@ localfolders = ~/Maildir
 [Repository remote]
 type = Gmail
 # brew install openssl
-sslcacertfile = /usr/local/etc/openssl/cert.pem 
+# sslcacertfile = /usr/local/etc/openssl/cert.pem
+sslcacertfile = /opt/homebrew/etc/openssl@1.1/cert.pem
 ssl = yes
 ssl_version = tls1_2
 remoteuser =
