@@ -358,6 +358,14 @@ packages: 'foo 'bar"
     :hook (rust-mode . lsp)
     :init (add-to-list 'exec-path "~/.cargo/bin/rls")))
 
+(defun rc-c ()
+  (use-package lsp-mode
+    :commands lsp
+    :ensure t
+    :diminish lsp-mode
+    :hook (c-mode . lsp))
+  (custom-set-variables '(lsp-clangd-binary-path "/usr/bin/clangd")))
+
 (defun go-ent ()
   (interactive)
   (set-face-background 'mode-line "goldenrod")
@@ -973,7 +981,8 @@ exit 0
   (rc-elixir)
   (rc-rust)
   (rc-magit)
-  (rc-git))
+  (rc-git)
+  (rc-c))
 
 (defun rc-init-site-lisp ()
   ;; (require 'rc-clojure)
