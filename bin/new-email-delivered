@@ -24,5 +24,5 @@ while (<FH>) {
 
     print qq(debug: $orig => $from\n);
     print qq(debug: terminal-notifier ... -title "$from" -subtitle "$to" -message "$subj"\n);
-    `terminal-notifier -activate org.gnu.Emacs -title "$from" -subtitle "$to" -message "$subj"`;
+    `terminal-notifier -sender com.apple.Mail -title "$from" -subtitle "$to" -message "$subj"`;
 }

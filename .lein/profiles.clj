@@ -16,7 +16,7 @@
             ]
 
   :dependencies [
-                 [org.clojure/clojure "1.11.0"]
+                 [org.clojure/clojure "1.11.1"]
                  ;; [org.clojure/tools.trace "0.7.10"]
                  ;; [pjstadig/humane-test-output "0.10.0"]
                  ;; [org.clojure/tools.namespace "1.0.0"]
