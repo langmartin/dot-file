@@ -1,0 +1,8 @@
+#!/bin/sh
+db=~/tmp/postgres
+set -ex
+
+[ -d $db ] || \
+  initdb -D $db
+
+createdb -E utf8 lang
