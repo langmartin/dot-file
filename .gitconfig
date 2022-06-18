@@ -14,6 +14,7 @@
 	tags = log --tags --simplify-by-decoration --pretty='format:%ai %d'
 	fetch-pulls = "!f(){ set -x; git fetch \"$1\" \"+refs/pull/*/head:refs/remotes/$1/pull/*\";};f"
 	fetch-backups = "!f(){ b=${2:-${GIT_USER:-$USER}}; set -x; git fetch \"$1\" \"+refs/remotes/$b/*:refs/remotes/$1/$b/*\";};f"
+        push-backups = "!f(){ b=${2:-${GIT_USER:-$USER}}; set -x; git push \"$1\" \"+refs/he/$b/*:refs/remotes/$1/$b/*\";};f"
 	branch-clean = "!f(){ set -x; git branch -d \"$1\" && git push origin :\"$1\";};f"
 	unadded = ls-files -o --exclude-standard
 
