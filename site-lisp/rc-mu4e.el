@@ -215,6 +215,10 @@
      (rc-mu4e-send-longcuts)))
 
 (custom-set-variables
+ '(message-sendmail-extra-arguments '("--read-envelope-from"))
+ '(message-sendmail-f-is-evil t)
+ '(send-mail-function 'sendmail-send-it)
+ '(sendmail-program "/opt/homebrew/bin/msmtp")
  '(mu4e-headers-skip-duplicates t)
  '(mu4e-attachment-dir "~/Downloads")
  '(mu4e-compose-signature-auto-include nil)
