@@ -16,4 +16,5 @@ EOF
 fi
 
 set -ex
-gpg --quick-gen-key "Lang Martin <$1>" future-default future-default 1y
+gpg --quick-gen-key "Lang Martin <$1>" future-default default 3m
+gpg --keyserver pgp.mit.edu --send-keys "$1"

@@ -1,0 +1,18 @@
+#!/bin/sh
+if [ -z "$1" ]; then
+    cat 1>&2 <<EOF
+usage: $0 email
+EOF
+   exit 1
+fi
+
+set -ex
+
+cat <<EOF | gpg --batch --command-fd 0 --status-fd 2 --edit-key "$1"
+expire
+key 1
+3m
+save
+EOF
+
+gpg --keyserver pgp.mit.edu --send-keys "$1"
