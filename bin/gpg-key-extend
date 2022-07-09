@@ -15,4 +15,4 @@ key 1
 save
 EOF
 
-gpg --keyserver pgp.mit.edu --send-keys "$1"
+gpg-key-send "$1"
