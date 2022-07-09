@@ -118,7 +118,7 @@ packages: 'foo 'bar"
 
 (defun rc-font-lg ()
   (interactive)
-  (set-frame-font "Monaco-14"))
+  (set-frame-font "Monaco-15"))
 
 (defun rc-font-xl ()
   (interactive)
@@ -126,7 +126,7 @@ packages: 'foo 'bar"
 
 (defun rc-font-sm ()
   (interactive)
-  (set-frame-font "Monaco-12"))
+  (set-frame-font "Monaco-13"))
 
 (defun switch-to-last-buffer ()
   (interactive)
@@ -163,7 +163,10 @@ packages: 'foo 'bar"
 
 (defun rc-ocaml-mode ()
   (package-require 'tuareg)
-  (add-hook 'tuareg-mode-hook 'cleanup-untabify-save))
+  (add-hook 'tuareg-mode-hook 'cleanup-untabify-save)
+  (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp")
+  (add-to-list 'exec-path "/Users/lang/.opam/default/bin")
+  (require 'ocp-indent))
 
 (defun rc-r-mode ()
   (package-require 'ess))
@@ -219,6 +222,11 @@ packages: 'foo 'bar"
 
 (defun rc-paredit ()
   (package-require 'paredit)
+
+  (defadvice he-substitute-string (after he-paredit-fix)
+    "remove extra paren when expanding line in paredit"
+    (if (and paredit-mode (member (substring str -1) '(")" "]" "}")))
+        (progn (backward-delete-char 1) (forward-char))))
 
   (define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
   (define-key paredit-mode-map (kbd "M-]") 'paredit-close-square-and-newline)
