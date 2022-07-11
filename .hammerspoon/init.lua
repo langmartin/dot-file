@@ -18,18 +18,27 @@ local function external()
    return hs.screen.find(external_name)
 end
 
+function verticalp()
+   s = external()
+   f = s:frame()
+   return f.h > f.w
+end
+
 local maximized = hs.layout.maximized
 local left = hs.layout.left50
 local right = hs.layout.right50
 local left40 = {x=0, y=0, w=0.4, h=1}
 local right60 = {x=0.4, y=0, w=0.6, h=1}
+local top80 = {x=0, y=0, w=1, h=0.8}
 local top50 = {x=0, y=0, w=1, h=0.5}
+local top40 = {x=0, y=0, w=1, h=0.4}
 local top30 = {x=0, y=0, w=1, h=0.3}
+local mid80 = {x=0, y=0.1, w=1, h=0.8}
 local bottom70 = {x=0, y=0.3, w=1, h=0.7}
+local bottom60 = {x=0, y=0.4, w=1, h=0.6}
 local bottom50 = {x=0, y=0.5, w=1, h=0.5}
 local bottom20 = {x=0, y=0.8, w=1, h=0.2}
-local top80 = {x=0, y=0, w=1, h=0.8}
-
+local bottom10 = {x=0, y=0.9, w=1, h=0.1}
 local topLeft = {x=0, y=0, w=0.5, h=0.5}
 local topRight = {x=0.5, y=0, w=0.5, h=0.5}
 local bottomLeft = {x=0, y=0.5, w=0.5, h=0.5}
@@ -186,13 +195,24 @@ local function hackOn(screen)
    hs.layout.apply({
 	 {"Emacs", nil, screen, maximized, nil, nil},
 	 {browser, nil, screen, maximized, nil, nil},
-	 {browser2, nil, screen, maximized, nil, nil},	 
+	 {browser2, nil, screen, maximized, nil, nil},
 	 {"Preview", nil, screen, maximized, nil, nil},
    })
    focusSome({browser, "Emacs"})
 end
 
-local function readOn(screen)
+local function hackOnV(screen)
+   screen = screen or hs.screen.mainScreen()
+   hs.layout.apply({
+	 {"Emacs", nil, screen, mid80, nil, nil},
+	 {browser, nil, screen, mid80, nil, nil},
+	 {browser2, nil, screen, mid80, nil, nil},
+	 {"Preview", nil, screen, mid80, nil, nil},
+   })
+   focusSome({browser, "Emacs"})
+end
+
+local function readOnH(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, left40, nil, nil},
@@ -201,6 +221,25 @@ local function readOn(screen)
 	 {"Preview", nil, screen, right60, nil, nil},
    })
    focusSome({browser, "Emacs"})
+end
+
+local function readOnV(screen)
+   screen = screen or hs.screen.mainScreen()
+   hs.layout.apply({
+	 {"Emacs", nil, screen, top40, nil, nil},
+	 {browser, nil, screen, bottom60, nil, nil},
+	 {browser2, nil, screen, bottom60, nil, nil},
+	 {"Preview", nil, screen, bottom60, nil, nil},
+   })
+   focusSome({browser, "Emacs"})
+end
+
+local function readOn()
+   if (verticalp()) then
+      readOnV()
+   else
+      readOnH()
+   end
 end
 
 local function buildOn(screen)
@@ -221,6 +260,14 @@ local function termOn(screen)
    })
 end
 
+local function termOnV(screen)
+   hs.layout.apply({
+	 {"Terminal", nil, screen, bottom10, nil, nil},
+         {"Activity Monitor", nil, screen, top30, nil, nil},
+   })
+   focusSome({"Activity Monitor", "Terminal"})
+end
+
 local function slacktermOn(screen)
    hs.layout.apply({
 	 {"Terminal", nil, screen, top30, nil, nil},
@@ -228,26 +275,33 @@ local function slacktermOn(screen)
    })
 end
 
-local function default()
-   -- hs.alert("default: " .. hs.screen.find(external):name())
-   if (twoScreens()) then
-      calOn(laptop())
-      termOn(external())
-      chatOn(external())
-      hackOn(external())
-   else
-      chatOn(laptop())
-      hackOn(laptop())
-   end
-end
-
-local function chat()
+local function chatH()
    if (twoScreens()) then
       calOn(external())
       hackOn(external())
       chatTileOn(laptop())
    else
       chatTileOn(laptop())
+   end
+end
+
+local function chatV(screen)
+   hs.layout.apply({
+	 {"Keybase", nil, screen, {x=0, y=0, w=1, h=0.2}, nil, nil},
+	 {"Signal", nil, screen, {x=0, y=0, w=1, h=0.2}, nil, nil},
+	 {"Messages", nil, screen, {x=0, y=0.2, w=1, h=0.1}, nil, nil},
+	 {"Slack", nil, screen, {x=0, y=0.3, w=1, h=0.5}, nil, nil},
+	 {"Discord", nil, screen, {x=0, y=0.7, w=1, h=0.3}, nil, nil},
+   })
+
+   focusSome({"Keybase", "Discord", "Messages", "Signal", "Slack"})
+end
+
+local function chat()
+   if (verticalp()) then
+      chatV()
+   else
+      chatH()
    end
 end
 
@@ -259,6 +313,39 @@ local function build()
       buildOn(external())
    else
       buildOn(laptop())
+   end
+end
+
+local function defaultH()
+   -- hs.alert("default: " .. hs.screen.find(external):name())
+   if (twoScreens()) then
+      calOn(laptop())
+      termOnV(external())
+      chatOn(external())
+      hackOn(external())
+   else
+      chatOn(laptop())
+      hackOn(laptop())
+   end
+end
+
+local function defaultV()
+   if (twoScreens()) then
+      calOn(laptop())
+      chatV(external())
+      termOnV(external())
+      hackOnV(external())
+   else
+      chatOn(laptop())
+      hackOn(laptop())
+   end
+end
+
+local function default()
+   if (verticalp()) then
+      defaultV()
+   else
+      defaultH()
    end
 end
 
@@ -299,3 +386,4 @@ hs.hotkey.bind(hyper, "tab", throw)
 hs.hotkey.bind(hyper, "-", twoQuieter)
 hs.hotkey.bind(hyper, "=", twoLouder)
 hs.hotkey.bind(hyper, "0", twoDefaultVolume)
+hs.hotkey.bind(hyper, ".", hs.reload)
