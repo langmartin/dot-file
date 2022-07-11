@@ -567,10 +567,10 @@ packages: 'foo 'bar"
 
   (eval-after-load "shell"
     '(progn
-       (defun set-shell-dirstack-query-dirs ()
-         (setq shell-dirstack-query "dirs"))
        (define-key shell-mode-map (kbd "C-c M-o") 'erase-buffer)
-       (define-key shell-mode-map (kbd "M-\r") 'shell-resync-dirs)
+       ;; (define-key shell-mode-map (kbd "M-\r") 'shell-resync-dirs)
+       ;; (defun set-shell-dirstack-query-dirs ()
+       ;;   (setq shell-dirstack-query "dirs"))
        ;; (add-to-list 'shell-mode-hook 'set-shell-dirstack-query-dirs)
        (setq comint-process-echoes t)
        ;; (add-to-list 'ac-modes 'shell-mode)
