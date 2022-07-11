@@ -108,14 +108,14 @@
            :show-target (lambda (target) "starred")
            :action      (lambda (docid msg target)
                           (mu4e-action-retag-message msg "+\\Starred")
-                          (mu4e~proc-move docid nil "+F+S")))
+                          (mu4e--server-move docid nil "+F+S")))
           (unflag
            :char        "-"
            :prompt      "unstarred"
            :show-target (lambda (target) "unstarred")
            :action      (lambda (docid msg target)
                           (mu4e-action-retag-message msg "-\\Starred")
-                          (mu4e~proc-move docid nil "-F+S")))
+                          (mu4e--server-move docid nil "-F+S")))
           (archive
            :char       "y"
            :prompt     "archive"
@@ -128,7 +128,7 @@
                                 (mu4e-action-retag-message msg gmail-y-tags)
                               (progn
                                 (mu4e-action-retag-message msg (concat gmail-y-tags ",-\\Starred"))
-                                (mu4e~proc-move docid nil "+S-F"))))))
+                                (mu4e--server-move docid nil "+S-F"))))))
           (trash
            :char        "D"
            :prompt      "trash"
@@ -138,7 +138,7 @@
                               (mu4e~proc-remove docid)
                             (progn
                               (mu4e-action-retag-message msg (concat "+recycle," gmail-y-tags))
-                              (mu4e~proc-move docid nil "+T-N"))))))
+                              (mu4e--server-move docid nil "+T-N"))))))
         mu4e-marks))
 
   ;; unset these, so they can be added fresh
