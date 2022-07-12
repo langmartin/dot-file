@@ -18,9 +18,20 @@ local function external()
    return hs.screen.find(external_name)
 end
 
+local function twoScreens()
+   return external() ~= nil
+end
+
+local function sideScreen()
+   return twoScreens() and laptop() or external()
+end
+
 function verticalp()
-   s = external()
-   f = s:frame()
+   if (not(twoScreens())) then
+      return false
+   end
+   local s = external()
+   local f = s:frame()
    return f.h > f.w
 end
 
@@ -33,6 +44,7 @@ local top80 = {x=0, y=0, w=1, h=0.8}
 local top50 = {x=0, y=0, w=1, h=0.5}
 local top40 = {x=0, y=0, w=1, h=0.4}
 local top30 = {x=0, y=0, w=1, h=0.3}
+local top10 = {x=0, y=0, w=1, h=0.1}
 local mid80 = {x=0, y=0.1, w=1, h=0.8}
 local bottom70 = {x=0, y=0.3, w=1, h=0.7}
 local bottom60 = {x=0, y=0.4, w=1, h=0.6}
@@ -43,14 +55,6 @@ local topLeft = {x=0, y=0, w=0.5, h=0.5}
 local topRight = {x=0.5, y=0, w=0.5, h=0.5}
 local bottomLeft = {x=0, y=0.5, w=0.5, h=0.5}
 local bottomRight = {x=0.5, y=0.5, w=0.5, h=0.5}
-
-local function twoScreens()
-   return external() ~= nil
-end
-
-local function sideScreen()
-   return twoScreens() and laptop() or external()
-end
 
 local function focusSome(apps)
    size = #(apps)
@@ -262,8 +266,8 @@ end
 
 local function termOnV(screen)
    hs.layout.apply({
-	 {"Terminal", nil, screen, bottom10, nil, nil},
-         {"Activity Monitor", nil, screen, top30, nil, nil},
+	 {"Terminal", nil, screen, top10, nil, nil},
+         {"Activity Monitor", nil, screen, bottom20, nil, nil},
    })
    focusSome({"Activity Monitor", "Terminal"})
 end
@@ -346,6 +350,16 @@ local function default()
       defaultV()
    else
       defaultH()
+   end
+end
+
+local function scr(vertical, horizontal, laptop)
+   if (verticalp()) then
+      vertical()
+   elseif (twoScreens()) then
+      horizontal()
+   else
+      laptop()
    end
 end
 
