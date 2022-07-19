@@ -171,7 +171,7 @@ end
 function calOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
-	 {"Calendar", nil, screen, maximized, nil, nil},
+	 {"Calendar", nil, screen, left, nil, nil},
    })
 end
 
@@ -283,7 +283,7 @@ local function chatH()
    if (twoScreens()) then
       calOn(external())
       hackOn(external())
-      chatTileOn(laptop())
+      chatTileOn(external())
    else
       chatTileOn(laptop())
    end
@@ -298,7 +298,7 @@ local function chatV(screen)
 	 {"Discord", nil, screen, {x=0, y=0.7, w=1, h=0.3}, nil, nil},
    })
 
-   focusSome({"Keybase", "Discord", "Messages", "Signal", "Slack"})
+   focusSome({"Keybase", "Discord", "Slack", "Messages", "Signal"})
 end
 
 local function chat()
