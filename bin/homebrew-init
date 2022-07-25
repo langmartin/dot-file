@@ -1,6 +1,8 @@
 #!/bin/sh
-if [ ! -x /usr/local/bin/brew ]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+path=/opt/homebrew/bin
+
+if [ ! -x $path/brew ]; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 brew install \
@@ -9,7 +11,7 @@ brew install \
      jq \
      msmtp \
      npm \
-     offline-imap \
+     offlineimap \
      pandoc \
      terminal-notifier \
      tmux \
@@ -21,13 +23,13 @@ brew install \
      youtube-dl \
      ntfs-3g
 
-brew cask install \
+brew install --cask \
      emacs \
      anybar \
-     mactex \
-     racket
+     hammerspoon \
+     mactex-no-gui
 
-EMACS=/usr/local/bin/emacs brew install mu
+EMACS=$path/emacs brew install mu
 
 # mostly crypto
 brew install \
@@ -36,7 +38,7 @@ brew install \
      age \
      signify-osx \
      tarsnap \
-     magic-wormhole \
+     magic-wormhole
 
 # programming
 brew install \
@@ -45,9 +47,5 @@ brew install \
      joker \
      jsonlint \
      guile \
-     ctags
-
-# ui utils
-brew install \
-     yabai \
-     skhd
+     ctags \
+     asdf

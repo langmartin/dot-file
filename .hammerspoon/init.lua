@@ -4,8 +4,8 @@ hs.loadSpoon("MiroWindowsManager")
 
 hs.window.animationDuration = 0
 
-local browser = "Safari"
-local browser2 = "Firefox"
+local browser = "Firefox"
+local browser2 = "Safari"
 
 local laptop_name = 'built'
 local external_name = 'lg'
@@ -324,7 +324,7 @@ local function defaultH()
    -- hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
       calOn(laptop())
-      termOnV(external())
+      termOn(external())
       chatOn(external())
       hackOn(external())
    else

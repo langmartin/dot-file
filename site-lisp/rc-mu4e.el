@@ -186,10 +186,6 @@
   ;; (mu4e)
   )
 
-(defun mail-subspace ()
-  (interactive)
-  (mail-select-account "subspace" "lmartin@subspace.com"))
-
 (defun mail-gmail ()
   (interactive)
   (mail-select-account "gmail" "lang.martin@gmail.com"))
