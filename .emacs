@@ -21,8 +21,6 @@
         (markdown-mode . "melpa-stable")
         (tide . "melpa-stable")))
 
-(package-initialize)
-
 (defun remove-from-list (list-var name)
   (set list-var
        (filter (lambda (x)
@@ -343,20 +341,28 @@ packages: 'foo 'bar"
   (make-local-variable 'lsp-enable-on-type-formatting)
   (set 'lsp-enable-on-type-formatting nil))
 
+(defun mix-format ()
+  (interactive)
+  (save-buffer)
+  (projectile-run-shell-command-in-root
+   (concat "mix format "
+           (buffer-file-name)))
+  (revert-buffer t t t))
+
 (defun rc-elixir ()
   (use-package lsp-mode
-               :commands lsp
-               :ensure t
-               :diminish lsp-mode
-               :hook (elixir-mode . lsp)
-               :init (add-to-list 'exec-path "~/contrib/elixir-ls"))
+    :commands lsp
+    :ensure t
+    :diminish lsp-mode
+    :hook (elixir-mode . lsp)
+    :init (add-to-list 'exec-path "~/contrib/elixir-ls"))
 
   (eval-after-load "elixir-mode"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
-       (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
-       (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save))))
+       (define-key elixir-mode-map (kbd "C-x C-s") 'mix-format)
+       (define-key elixir-mode-map (kbd "C-c C-c d") 'lsp-describe-thing-at-point))))
 
 (defun rc-rust ()
   (use-package lsp-mode
@@ -420,15 +426,22 @@ packages: 'foo 'bar"
          (replace-regexp-in-string (regexp-quote "vendor/github.com/hashicorp/nomad/") "")
          (find-file-existing)))
 
-(defun rc-go ()
-  (package-install 'yasnippet t)
-  (package-install 'lsp-mode t)
-  (package-install 'go-mode)
-  (package-install 'gotest)
+(defun rc-lsp ()
+  (package-install 'yasnippet)
+  (package-install 'lsp-mode)
+  (package-install 'projectile)
+
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
   (eval-after-load "lsp-mode"
     '(progn
-       (define-key lsp-mode-map (kbd "C-M-,") 'lsp-find-references)))
+       (define-key lsp-mode-map (kbd "C-M-,") 'lsp-find-references))))
+
+(defun rc-go ()
+  (package-install 'go-mode)
+  (package-install 'gotest)
 
   (eval-after-load "go-mode"
     '(progn
@@ -975,6 +988,7 @@ exit 0
   (rc-show-paren-expression)
   (rc-ido)
   (rc-winner)
+  (rc-lsp)
   (rc-paredit)
   (rc-shell-mode)
   (rc-clojure-mode)
