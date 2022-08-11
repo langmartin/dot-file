@@ -97,8 +97,8 @@ packages: 'foo 'bar"
 (defun rc-osx ()
   (fringe-mode '(1 . 1))
 
-  (setenv "EMACS" "/Application/Emacs.app/Contents/MacOS/Emacs")
-  (setenv "EDITOR" "/Application/Emacs.app/Contents/MacOS/bin/emacsclient")
+  (setenv "EMACS" "/Applications/Emacs.app/Contents/MacOS/Emacs")
+  (setenv "EDITOR" "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
   (setenv "GIT_EDITOR" (getenv "EDITOR"))
   (setenv "PAGER" "head -n100")
   (setenv "GIT_PAGER" "")
@@ -774,10 +774,9 @@ the working directory"
           create-lockfiles nil))
   (add-hook 'before-save-hook 'backup-buffer-force))
 
-(defun rc-look-and-feel ()
+;;; deprecated, use themes
+(defun rc-set-faces ()
   (interactive)
-  (rc-font-sm)
-
   (custom-set-variables
    '(vc-annotate-background nil)
    '(vc-annotate-background-mode nil)
@@ -806,6 +805,19 @@ the working directory"
    '(show-paren-mismatch ((t (:background "MediumPurple2" :foreground "white"))))
    '(whitespace-line ((t (:background "gray90"))))
    '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick"))))))
+
+(defun dark-mode ()
+  (interactive)
+  (load-theme 'zenburn))
+
+(defun light-mode ()
+  (interactive)
+  (load-theme 'tango))
+
+(defun rc-look-and-feel ()
+  (interactive)
+  (rc-font-sm)
+  (light-mode))
 
 (defun set-tab-width-vars (n)
   (setq tab-width n
