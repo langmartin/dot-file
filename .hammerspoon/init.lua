@@ -55,6 +55,7 @@ local topLeft = {x=0, y=0, w=0.5, h=0.5}
 local topRight = {x=0.5, y=0, w=0.5, h=0.5}
 local bottomLeft = {x=0, y=0.5, w=0.5, h=0.5}
 local bottomRight = {x=0.5, y=0.5, w=0.5, h=0.5}
+local bottomRightDiscord = {x=0.5, y=0.4, w=0.5, h=0.6}
 
 local function focusSome(apps)
    size = #(apps)
@@ -152,12 +153,12 @@ local function chatOnImpl(screen, slack)
    hs.layout.apply({
 	 {"Signal", nil, screen, topLeft, nil, nil},
 	 {"Messages", nil, screen, topRight, nil, nil},
-	 {"Slack", nil, screen, slack, nil, nil},
+	 {"Slack", nil, screen, maximized, nil, nil},
 	 {"Keybase", nil, screen, topRight, nil, nil},
-	 {"Discord", nil, screen, maximized, nil, nil},
+	 {"Discord", nil, screen, bottomRightDiscord, nil, nil},
    })
 
-   focusSome({"Keybase", "Discord", "Messages", "Signal", "Slack"})
+   focusSome({"Keybase", "Slack", "Discord", "Messages", "Signal"})
 end
 
 local function chatOn(screen)
