@@ -812,7 +812,7 @@ the working directory"
 
 (defun light-mode ()
   (interactive)
-  (load-theme 'tango))
+  (load-theme 'two-to-tango))
 
 (defun rc-look-and-feel ()
   (interactive)
@@ -1054,12 +1054,13 @@ exit 0
   (require 'tla-pcal-mode))
 
 ;;;; .emacs looks something like this:
-;; (load-file "~/code/dot-file/.emacs")
-;; (add-to-list 'load-path "~/code/dot-file/site-lisp")
-;; (let ((default-directory  "~/code/dot-file/site-lisp")) (normal-top-level-add-subdirs-to-load-path))
+;; (load-file "~/langmartin/dot-file/.emacs")
+;; (add-to-list 'load-path "~/langmartin/dot-file/site-lisp")
+;; (add-to-list 'custom-theme-load-path "~/langmartin/dot-file/site-themes")
+;; (let ((default-directory  "~/langmartin/dot-file/site-lisp")) (normal-top-level-add-subdirs-to-load-path))
 ;; (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 ;; ;; lsp-mode 6.2.1 for gopls 0.4.1
-;; (add-to-list 'load-path "~/code/contrib/lsp-mode")
+;; (add-to-list 'load-path "~/langmartin/contrib/lsp-mode")
 ;; (rc-init-emacs)
 ;; (rc-look-and-feel)
 ;; (rc-init-site-lisp)
