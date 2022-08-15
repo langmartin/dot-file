@@ -711,6 +711,7 @@ packages: 'foo 'bar"
   (package-require 'ido-load-library)
   (package-require 'idomenu)
   (custom-set-variables
+   '(ido-auto-merge-delay-time 1)
    '(ido-enable-flex-matching t)
    '(ido-everywhere t)
    '(ido-mode 'both))
