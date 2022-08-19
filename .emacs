@@ -76,20 +76,23 @@ packages: 'foo 'bar"
   (concat "/opt/homebrew" path))
 
 ;; reverse order, all add to the beginning
-(maybe-add-to-exec-path "/sbin")
-(maybe-add-to-exec-path "/usr/sbin")
-(maybe-add-to-exec-path (homebrew "/sbin"))
-(maybe-add-to-exec-path (homebrew "/bin"))
-(maybe-add-to-exec-path "/usr/local/go/bin")
-(maybe-add-to-exec-path "/usr/local/texlive/2022/bin/universal-darwin")
-(maybe-add-to-exec-path (homebrew "/opt/java/bin"))
-(maybe-add-to-exec-path "~/.gem/ruby/2.6.0/bin")
-(maybe-add-to-exec-path "~/.cargo/bin")
-(maybe-add-to-exec-path "~/go/bin")
-(maybe-add-to-exec-path "~/.asdf/shims")
-(maybe-add-to-exec-path "~/langmartin/dot-file/bin")
-(maybe-add-to-exec-path "~/bin")
-(exec-path-setenv)
+(progn
+  (maybe-add-to-exec-path "/sbin")
+  (maybe-add-to-exec-path "/usr/sbin")
+  (maybe-add-to-exec-path "/opt/homebrew/sbin")
+  (maybe-add-to-exec-path "/opt/homebrew/bin")
+  (maybe-add-to-exec-path "/usr/local/sbin")
+  (maybe-add-to-exec-path "/usr/local/bin")
+  (maybe-add-to-exec-path "/usr/local/go/bin")
+  (maybe-add-to-exec-path "/usr/local/texlive/2022/bin/universal-darwin")
+  (maybe-add-to-exec-path "/opt/homebrew/opt/java/bin")
+  (maybe-add-to-exec-path "~/.cabal/bin")
+  (maybe-add-to-exec-path "~/.cargo/bin")
+  (maybe-add-to-exec-path "~/go/bin")
+  (maybe-add-to-exec-path "~/.asdf/shims")
+  (maybe-add-to-exec-path "~/langmartin/dot-file/bin")
+  (maybe-add-to-exec-path "~/bin")
+  (exec-path-setenv))
 
 
 ;;;; Osx
@@ -361,7 +364,14 @@ packages: 'foo 'bar"
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
        (define-key elixir-mode-map (kbd "C-x C-s") 'mix-format)
-       (define-key elixir-mode-map (kbd "C-c C-c d") 'lsp-describe-thing-at-point))))
+       (define-key elixir-mode-map (kbd "C-c C-c d") 'lsp-describe-thing-at-point)))
+
+  (eval-after-load "lsp-mode"
+    '(progn
+       (->> '("_build" ".elixir_ls")
+            (mapcar (lambda (x)
+                   (add-to-list 'lsp-file-watch-ignored-directories
+                                (concat "[/\\\\]" x "$"))))))))
 
 (defun rc-rust ()
   (use-package lsp-mode
@@ -441,6 +451,7 @@ packages: 'foo 'bar"
 (defun rc-go ()
   (package-install 'go-mode)
   (package-install 'gotest)
+  (package-install 'yaml-mode)
 
   (eval-after-load "go-mode"
     '(progn
@@ -558,6 +569,7 @@ packages: 'foo 'bar"
 
   (custom-set-variables
    '(column-number-mode t)
+   '(confirm-kill-processes nil)
    '(font-lock-maximum-decoration nil)
    '(line-number-mode t)
    '(sentence-end-double-space nil)
@@ -1007,7 +1019,7 @@ exit 0
   (rc-backups-and-autosave-directory "~/.emacs.d/backup")
   (rc-emacs-miscellany)
   (rc-anybar)
-  (rc-disable-mouse)
+  ;; (rc-disable-mouse)
   (rc-emacs-slides)
   (rc-show-paren-expression)
   ;; (rc-ido)

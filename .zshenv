@@ -4,24 +4,33 @@ if [ "$TERM" = dumb ]; then
     export MANPAGER="cat"
 fi
 
+add_path () {
+    for p in "$@"; do
+        [ -d "$p" ] && PATH="$PATH:$p"
+    done
+}
+
 if [ -z "$INSIDE_EMACS" ]; then
     SYS_PATH="$PATH"
-    PATH=~/bin
-    PATH="$PATH":~/langmartin/dot-file/bin
-    PATH="$PATH":~/subspace/effitas/federations/holodeck/dev-scripts
-    PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
-    PATH="$PATH":/opt/homebrew/texlive/2018/bin/x86_64-darwin
-    PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
-    PATH="$PATH":~/.asdf/shims
-    PATH="$PATH":~/.cargo/bin
-    PATH="$PATH":~/go/bin
-    PATH="$PATH":~/code/contrib/google-cloud-sdk/bin
-    PATH="$PATH":/usr/local/texlive/2018/bin/x86_64-darwin
-    PATH="$PATH":/usr/local/opt/openjdk/bin
-    PATH="$PATH":/Users/lang/.gem/ruby/2.6.0/bin
-    PATH="$PATH":/usr/local/bin
-    PATH="$PATH":/opt/homebrew/bin
-    PATH="$PATH":/usr/local/sbin
+
+    add_path \
+        ~/bin \
+        ~/langmartin/dot-file/bin \
+        ~/.asdf/shims \
+        ~/.cargo/bin \
+        ~/.cabal/bin \
+        ~/go/bin
+
+    add_path \
+        /opt/homebrew/bin \
+        /opt/homebrew/sbin \
+        /opt/homebrew/opt/java/bin \
+        /usr/local/bin \
+        /usr/local/sbin
+
+    add_path \
+        /usr/local/texlive/2022/bin/universal-darwin
+
     PATH="$PATH:$SYS_PATH":/sbin:/usr/sbin
 fi
 
