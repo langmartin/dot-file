@@ -364,7 +364,7 @@ packages: 'foo 'bar"
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
        (define-key elixir-mode-map (kbd "C-x C-s") 'mix-format)
-       (define-key elixir-mode-map (kbd "C-c C-c d") 'lsp-describe-thing-at-point)))
+       (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)))
 
   (eval-after-load "lsp-mode"
     '(progn
@@ -1069,12 +1069,14 @@ exit 0
 ;;;; .emacs looks something like this:
 ;; (load-file "~/langmartin/dot-file/.emacs")
 ;; (add-to-list 'load-path "~/langmartin/dot-file/site-lisp")
+;; (let ((default-directory  "~/langmartin/dot-file/site-lisp"))
+;;   (normal-top-level-add-subdirs-to-load-path))
 ;; (add-to-list 'custom-theme-load-path "~/langmartin/dot-file/site-themes")
-;; (let ((default-directory  "~/langmartin/dot-file/site-lisp")) (normal-top-level-add-subdirs-to-load-path))
-;; (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
-;; ;; lsp-mode 6.2.1 for gopls 0.4.1
-;; (add-to-list 'load-path "~/langmartin/contrib/lsp-mode")
+;; (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e")
+;; (add-to-list 'Info-directory-list "/opt/homebrew/share/info")
 ;; (rc-init-emacs)
 ;; (rc-look-and-feel)
 ;; (rc-init-site-lisp)
 ;; (rc-emacs-master)
+;; (find-file "~/.emacs")
+;; (find-file "~/langmartin/dot-file/.emacs")
