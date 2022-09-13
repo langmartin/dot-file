@@ -135,7 +135,7 @@
            :show-target (lambda (target) "trash")
            :action      (lambda (docid msg target)
                           (if (string-equal (mu4e-message-field msg ':maildir) "/drafts")
-                              (mu4e~proc-remove docid)
+                              (mu4e--server-remove docid)
                             (progn
                               (mu4e-action-retag-message msg (concat "+recycle," gmail-y-tags))
                               (mu4e--server-move docid nil "+T-N"))))))
@@ -151,7 +151,8 @@
   (define-key mu4e-headers-mode-map (kbd "y") 'mu4e-headers-mark-for-archive)
   (define-key mu4e-view-mode-map (kbd "y") 'mu4e-view-mark-for-archive)
 
-  (setq
+  ;; This was for an organization system that I don't use anymore
+  (prog0
    mu4e-bookmarks
    `(("tag:\\\\Inbox" "Inbox" ?i)
      (,"tag:hero" "Hero" ?h)
@@ -159,6 +160,20 @@
      (,"tag:on-first" "on The First" ?f)
      (,"tag:on-occasion" "on Occasion" ?o)
      (,"tag:\\\\Starred OR flag:flagged" "Flagged" ?s)
+     (,(concat "tag:\\\\Draft OR maildir:" mu4e-drafts-folder) "Drafts" ?d)
+     ;; (,(concat "from:" user-mail-address " AND date:30d..now")
+     ;;  "Last 30 days sent" 116)
+     ("tag:\\\\Sent AND date:30d..now" "Last 30 days sent" ?t)
+     ("date:7d..now" "Last 7 days" ?a)))
+
+  (setq
+   mu4e-bookmarks
+   `(("tag:\\\\Inbox" "Inbox" ?i)
+     (,"flag:unread" "All Unread" ?u)
+     (,"flag:list" "Lists" ?l)
+     (,"flag:attach" "Attached" ?a)
+     (,"flag:replied" "Replied" ?r)
+     (,"tag:\\\\Starred OR flag:flagged" "Starred" ?s)
      (,(concat "tag:\\\\Draft OR maildir:" mu4e-drafts-folder) "Drafts" ?d)
      ;; (,(concat "from:" user-mail-address " AND date:30d..now")
      ;;  "Last 30 days sent" 116)
