@@ -14,6 +14,8 @@ alias grunt='grunt --no-color'
 alias firefox="TZ=America/Los_Angeles open /Applications/Firefox.app"
 alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 
+ulimit -n 12288
+
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
