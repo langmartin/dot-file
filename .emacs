@@ -124,9 +124,21 @@ packages: 'foo 'bar"
   (interactive)
   (set-frame-font "Monaco-24"))
 
+(defun install-sf-mono ()
+  (interactive)
+  (message "Select all and cmd-o the font files")
+  (shell-command "open /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts"))
+
+(defun install-dejavu ()
+  (interactive)
+  (browse-url "https://dejavu-fonts.github.io/Download.html"))
+
 (defun rc-font-sm ()
   (interactive)
-  (set-frame-font "Monaco-12"))
+  ;; (set-frame-font "Monaco-12")
+  ;; (set-frame-font "Andale Mono-14")
+  ;; (set-frame-font "SF Mono-13")
+  (set-frame-font "DejaVu Sans Mono-14"))
 
 (defun switch-to-last-buffer ()
   (interactive)

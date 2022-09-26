@@ -97,6 +97,8 @@ Semantic, and Ansi-Color faces are included.")
    `(message-header-to ((,class (:weight bold :foreground ,butter-3))))
    `(message-cited-text ((,class (:foreground ,alum-5))))
    `(message-separator ((,class (:weight bold :foreground ,cham-3))))
+   ;; Org
+   `(org-todo ((,class (:weight bold :foreground ,red-2))))
    ;; SMerge
    `(smerge-refined-change ((,class (:background ,plum-1))))
    ;; Ediff
