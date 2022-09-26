@@ -1,3 +1,5 @@
 #!/bin/sh
 set -x
-postgres -D ~/tmp/postgres
+postgres -D ~/tmp/postgres \
+         -c log_connections=on \
+	 -c log_statement=all
