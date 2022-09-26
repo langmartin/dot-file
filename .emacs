@@ -126,7 +126,7 @@ packages: 'foo 'bar"
 
 (defun rc-font-sm ()
   (interactive)
-  (set-frame-font "Monaco-13"))
+  (set-frame-font "Monaco-12"))
 
 (defun switch-to-last-buffer ()
   (interactive)
@@ -139,6 +139,15 @@ packages: 'foo 'bar"
                 (if (or (not n) (= 100 n)) 95 100)
               opacity)))
     (set-frame-parameter (selected-frame) 'alpha m)))
+
+(defun long-lines ()
+  (interactive)
+  (let ((fill-column 2048))
+    (if (eql 'org-mode major-mode)
+        (org-fill-paragraph nil t)
+      (if (region-active-p)
+          (fill-region (region-beginning) (region-end))
+        (fill-paragraph)))))
 
 (defun rc-anybar ()
   (defun anybar-color (color &optional port)
@@ -356,7 +365,7 @@ packages: 'foo 'bar"
     :commands lsp
     :ensure t
     :diminish lsp-mode
-    :hook (elixir-mode . lsp)
+    :hook (elixir-mode . lsp-deferred)
     :init (add-to-list 'exec-path "~/contrib/elixir-ls"))
 
   (eval-after-load "elixir-mode"
@@ -378,7 +387,7 @@ packages: 'foo 'bar"
     :commands lsp
     :ensure t
     :diminish lsp-mode
-    :hook (rust-mode . lsp)
+    :hook (rust-mode . lsp-deferred)
     :init (add-to-list 'exec-path "~/.cargo/bin/rls")))
 
 (defun rc-c ()
@@ -386,7 +395,7 @@ packages: 'foo 'bar"
     :commands lsp
     :ensure t
     :diminish lsp-mode
-    :hook (c-mode . lsp))
+    :hook (c-mode . lsp-deferred))
   (custom-set-variables '(lsp-clangd-binary-path "/usr/bin/clangd")))
 
 (defun go-ent ()
