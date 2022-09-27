@@ -628,6 +628,9 @@ packages: 'foo 'bar"
     (comint-send-input t t)
     (process-send-string nil "  "))
 
+  (when (< emacs-major-version 29)
+    (load-library "shell-resync-dirs-hack"))
+
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "s-SPC") 'just-one-space)
   (global-set-key (kbd "s-s") (interactive-partial 'focus-shell "*shell*"))
