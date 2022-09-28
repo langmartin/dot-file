@@ -843,12 +843,18 @@ the working directory"
    '(whitespace-line ((t (:background "gray90"))))
    '(whitespace-space-after-tab ((t (:background "lightyellow" :foreground "firebrick"))))))
 
+(defun default-theme ()
+  (interactive)
+  (mapcar #'disable-theme custom-enabled-themes))
+
 (defun dark-mode ()
   (interactive)
+  (default-theme)
   (load-theme 'zenburn))
 
 (defun light-mode ()
   (interactive)
+  (default-theme)
   (load-theme 'two-to-tango))
 
 (defun rc-look-and-feel ()
