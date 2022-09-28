@@ -23,6 +23,6 @@ while (<FH>) {
     }
 
     print qq(debug: $orig => $from\n);
-    print qq(debug: terminal-notifier ... -title "$from" -subtitle "$to" -message "$subj"\n);
-    `terminal-notifier -sender com.apple.Mail -title "$from" -subtitle "$to" -message "$subj"`;
+    print qq(debug: terminal-notifier -title "$from" -subtitle "$to" -message "$subj"\n);
+    `terminal-notifier -title "$from" -subtitle "$to" -message "$subj"`;
 }
