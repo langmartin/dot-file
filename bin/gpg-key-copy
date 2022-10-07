@@ -1,0 +1,15 @@
+#!/bin/sh
+if [ -z "$1" ]; then
+    cat 1>&2 <<EOF
+usage: $0 email
+EOF
+    exit 1
+fi
+
+set -ex
+id=`gpg --with-colons --list-secret-keys "$1" | \
+    grep '^fpr' | \
+    head -n1 | \
+    awk -F: '{print $10};'`
+
+gpg --armor --export --export-options export-minimal "$id" | pbcopy
