@@ -5,6 +5,15 @@
 [core]
 	whitespace = trailing-space,space-before-tab
 
+[commit]
+        gpgsign = true
+
+[init]
+	defaultBranch = main
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
 [alias]
 	assume   = update-index --assume-unchanged
 	unassume = update-index --no-assume-unchanged
@@ -24,3 +33,6 @@
 
 [push]
 	default = simple
+
+[pull]
+	rebase = true
