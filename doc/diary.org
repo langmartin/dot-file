@@ -28,6 +28,20 @@
 - https://danluu.com/ :: Dan Luu
 - http://lambda-the-ultimate.org/
 
+** Kid Stuff
+
+- https://www.youtube.com/c/ArtforKidsHub
+- https://drawabox.com/lesson/0 :: challenging
+- [[https://www.amazon.com/Constructive-Anatomy-Dover-Artists/dp/0486211045/ref=pd_bxgy_img_sccl_1/140-9380028-5286559?pd_rd_w=ncrdO&content-id=amzn1.sym.7757a8b5-874e-4a67-9d85-54ed32f01737&pf_rd_p=7757a8b5-874e-4a67-9d85-54ed32f01737&pf_rd_r=XG1KC60PGPBYJ5CYBFN9&pd_rd_wg=hHrhx&pd_rd_r=516fb671-a918-4d97-8649-b9ae4a930618&pd_rd_i=0486211045&psc=1][constructive anatomy]] :: 70s, inaccessible
+- [[https://www.amazon.com/Books-Andrew-Loomis-Fun-Pencil-ebook/dp/B0B9FPL124/ref=sr_1_4?crid=2V5VJPLUBXR3K&keywords=loomis&qid=1666368188&qu=eyJxc2MiOiIzLjI0IiwicXNhIjoiMi44MSIsInFzcCI6IjIuODMifQ%3D%3D&s=digital-text&sprefix=loomis%2Cdigital-text%2C81&sr=1-4][andrew loomis]] :: comics
+
+
+** Talks
+
+- [[https://www.youtube.com/watch?v=RwEKg5cjkKQ][Levin intelligence beyond the brain]]
+- [[https://www.youtube.com/watch?v=5Dnw46eC-0o][Rauser statistics without the agonizing pain]]
+- [[https://youtu.be/ShEez0JkOFw?t=1921][Ewald programming with hand tools]]
+
 * Memes
 - [[https://www.reddit.com/r/WTF/comments/otkq4/smoked_chicken/][chickenfish]]
 - [[https://twitter.com/gosamv/status/1076288568518049792?s=20][collective nouns]]
@@ -39,6 +53,8 @@
 - tweet [[https://twitter.com/psmith/status/486612460112470019][schadenfreude]]
 - tweet [[https://twitter.com/daisyowl/status/841802094361235456][rock into thinking]]
 - [[https://www.youtube.com/watch?v=7LGTEI1RMoQ][screaming cowboy]]
+- [[https://www.smbc-comics.com/index.php?id=1741][smbc dick boob]]
+- https://kottke.org/22/03/russian-bear-steps-on-ukrainian-lego
 
 ** science
 - [[https://twitter.com/scienceshitpost/status/1219704196318056448/photo/1][bird louder]]
