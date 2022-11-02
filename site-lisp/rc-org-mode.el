@@ -134,4 +134,6 @@
   (setq org-latex-pdf-process
         '("xelatex -shell-escape -interaction nonstopmode -8bit -output-directory %o %f")))
 
+(rc-org-latex-code)
+
 (provide 'rc-org-mode)
