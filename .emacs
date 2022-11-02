@@ -372,6 +372,11 @@ packages: 'foo 'bar"
            (buffer-file-name)))
   (revert-buffer t t t))
 
+(defun exact-regexp (&rest xs)
+  (mapcar (lambda (x)
+            (concat "[/\\\\]" x "$"))
+          xs))
+
 (defun rc-elixir ()
   (use-package lsp-mode
     :commands lsp
@@ -384,15 +389,22 @@ packages: 'foo 'bar"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
-       (define-key elixir-mode-map (kbd "C-x C-s") 'mix-format)
+       (elixir-save-do-format)
        (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)))
 
   (eval-after-load "lsp-mode"
     '(progn
-       (->> '("_build" ".elixir_ls")
+       (->> '("_build" ".elixir_ls" "deps")
             (mapcar (lambda (x)
-                   (add-to-list 'lsp-file-watch-ignored-directories
-                                (concat "[/\\\\]" x "$"))))))))
+                      (add-to-list 'lsp-file-watch-ignored-directories x)))))))
+
+(defun elixir-save-do-format ()
+  (interactive)
+  (define-key elixir-mode-map (kbd "C-x C-s") 'mix-format))
+
+(defun elixir-save-do-spaces ()
+  (interactive)
+  (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save))
 
 (defun rc-rust ()
   (use-package lsp-mode
@@ -660,6 +672,12 @@ packages: 'foo 'bar"
 (defun yyyymmddhhmmss ()
   (interactive)
   (insert (format-time-string "%Y%m%d%H%M%S")))
+
+(defun too-many-open-files ()
+  (interactive)
+  ;; https://en.liujiacai.net/2022/09/03/emacs-maxopenfiles/
+  ;; emacs needs to be compiled with ./configure "CFLAGS=-DFD_SETSIZE=10000 -DDARWIN_UNLIMITED_SELECT"
+  )
 
 (defun rc-emacs-slides ()
   (defun slides-start ()
