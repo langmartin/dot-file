@@ -10,7 +10,7 @@ set -ex
 
 cat <<EOF | gpg --batch --command-fd 0 --status-fd 2 --edit-key "$1"
 expire
-key 1
+key 0
 3m
 save
 EOF
