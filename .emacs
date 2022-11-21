@@ -389,7 +389,7 @@ packages: 'foo 'bar"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
-       (elixir-save-do-format)
+       (define-key elixir-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
        (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)))
 
   (eval-after-load "lsp-mode"
@@ -398,13 +398,11 @@ packages: 'foo 'bar"
             (mapcar (lambda (x)
                       (add-to-list 'lsp-file-watch-ignored-directories x)))))))
 
-(defun elixir-save-do-format ()
-  (interactive)
-  (define-key elixir-mode-map (kbd "C-x C-s") 'mix-format))
-
-(defun elixir-save-do-spaces ()
-  (interactive)
-  (define-key elixir-mode-map (kbd "C-x C-s") 'cleanup-untabify-save))
+(defun elixir-save-cleanup (&optional try-harder)
+  (interactive "P")
+  (if try-harder
+      (mix-format)
+    (cleanup-untabify-save)))
 
 (defun rc-rust ()
   (use-package lsp-mode
