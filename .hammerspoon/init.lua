@@ -364,6 +364,15 @@ local function scr(vertical, horizontal, laptop)
    end
 end
 
+local function restartMiddleClick()
+   kill = hs.task.new("/usr/bin/pkill", nil, {"MiddleClick"})
+   kill:start()
+   hs.timer.doAfter(1, function ()
+                       open = hs.task.new("/usr/bin/open", nil, {"/Applications/MiddleClick.app"})
+                       open:start()
+   end)
+end
+
 -- ----------------------------------------------------------------------
 -- hooks
 
@@ -402,3 +411,4 @@ hs.hotkey.bind(hyper, "-", twoQuieter)
 hs.hotkey.bind(hyper, "=", twoLouder)
 hs.hotkey.bind(hyper, "0", twoDefaultVolume)
 hs.hotkey.bind(hyper, ".", hs.reload)
+hs.hotkey.bind(hyper, "m", restartMiddleClick)
