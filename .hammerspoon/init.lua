@@ -172,7 +172,7 @@ end
 function calOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
-	 {"Calendar", nil, screen, left, nil, nil},
+	 {"Calendar", nil, screen, maximized, nil, nil},
    })
 end
 
