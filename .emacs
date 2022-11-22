@@ -783,6 +783,15 @@ packages: 'foo 'bar"
   (require 'vertico-directory)
   (require 'projectile)
   (global-set-key (kbd "C-x f") 'projectile-find-file-dwim)
+
+  (use-package orderless
+  :init
+  ;; Configure a custom style dispatcher (see the Consult wiki)
+  ;; (setq orderless-style-dispatchers '(+orderless-dispatch)
+  ;;       orderless-component-separator #'orderless-escapable-split-on-space)
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
   )
 
 (defun rc-recentf ()
