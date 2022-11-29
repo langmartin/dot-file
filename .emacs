@@ -623,23 +623,27 @@ packages: 'foo 'bar"
   (eval-after-load "shell"
     '(progn
        (define-key shell-mode-map (kbd "C-c M-o") 'erase-buffer)
+       (define-key shell-mode-map (kbd "C-c C-q") 'comint-send-quoted)
        ;; (define-key shell-mode-map (kbd "M-\r") 'shell-resync-dirs)
-       ;; (defun set-shell-dirstack-query-dirs ()
-       ;;   (setq shell-dirstack-query "dirs"))
-       ;; (add-to-list 'shell-mode-hook 'set-shell-dirstack-query-dirs)
        (setq comint-process-echoes t)
        ;; (add-to-list 'ac-modes 'shell-mode)
        ;; (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
-       ))
+       (when (< emacs-major-version 29)
+         (load-library "shell-resync-dirs-hack"))))
 
-  (defun comint-send-tab ()
+  (defun comint-send-quoted (char)
     "Send a tab to the current buffer's process."
-    (interactive)
-    (comint-send-input t t)
-    (process-send-string nil "  "))
-
-  (when (< emacs-major-version 29)
-    (load-library "shell-resync-dirs-hack"))
+    (interactive "*p")
+    (let ((char
+           ;; copied from the definition of quoted-insert
+           (with-no-warnings
+             (let (translation-table-for-input input-method-function)
+               (if (or (not overwrite-mode)
+                       (eq overwrite-mode 'overwrite-mode-binary))
+                   (read-quoted-char)
+                 (read-char))))))
+      (comint-send-input t t)
+      (process-send-string nil (char-to-string char))))
 
   (global-set-key (kbd "M-/") 'hippie-expand)
   (global-set-key (kbd "s-SPC") 'just-one-space)
@@ -648,7 +652,6 @@ packages: 'foo 'bar"
   (global-set-key (kbd "s-d") (interactive-partial 'focus-shell "*shell dee*"))
   (global-set-key (kbd "s-f") (interactive-partial 'focus-shell "*shell eff*"))
   (global-set-key (kbd "s-g") (interactive-partial 'focus-shell "*shell gee*"))
-  (global-set-key (kbd "s-v") (interactive-partial 'focus-shell "*shell vagrant*"))
   (global-set-key (kbd "s-r") 'revert-buffer))
 
 (defun yyyymmdd ()
