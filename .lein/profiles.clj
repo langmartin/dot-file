@@ -8,7 +8,7 @@
             ;; 4. (cljs-repl)
             ;; [lein-figwheel "0.5.19" :exclusions [org.clojure/clojure]]
 
-            [jonase/eastwood "1.2.5" :exclusions [org.clojure/clojure]]
+            [jonase/eastwood "1.3.0" :exclusions [org.clojure/clojure]]
             [venantius/yagni "0.1.7"]
             [lein-kibit "0.1.8"]
             [lein-bikeshed "0.5.2"]
