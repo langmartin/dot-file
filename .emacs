@@ -103,7 +103,8 @@ packages: 'foo 'bar"
   (setenv "EMACS" "/Applications/Emacs.app/Contents/MacOS/Emacs")
   (setenv "EDITOR" "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
   (setenv "GIT_EDITOR" (getenv "EDITOR"))
-  (setenv "PAGER" "head -n100")
+  ;; set in .zshenv instead, breaks man -k for M-x man completion table
+  ;; (setenv "PAGER" "head -n100")
   (setenv "GIT_PAGER" "")
   (setenv "MANPAGER" "cat")
 

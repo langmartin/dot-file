@@ -53,6 +53,7 @@ netstat-lpn () {
 for inc in \
     ~/.opam/opam-init/init.zsh \
 	/usr/local/opt/asdf/asdf.sh \
+        /opt/homebrew/opt/asdf/libexec/asdf.sh \
 	~/.secret/sh \
     ; do
     . "$inc" > /dev/null 2> /dev/null || true
