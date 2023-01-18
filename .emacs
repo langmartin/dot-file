@@ -109,6 +109,9 @@ packages: 'foo 'bar"
   (setenv "MANPAGER" "cat")
 
   (custom-set-variables
+   ;; https://github.com/minad/vertico/issues/297
+   ;; man is unindexed, brew install man-db && gmandb
+   '(manual-program "gman")
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote super))
    '(ns-command-modifier (quote meta))

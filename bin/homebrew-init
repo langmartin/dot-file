@@ -12,6 +12,7 @@ brew install \
      graphviz \
      html2text \
      jq \
+     man-db \
      msmtp \
      npm \
      ntfs-3g \
@@ -51,3 +52,6 @@ brew install \
      guile \
      joker \
      jsonlint
+
+# build/update the man index
+gmandb
