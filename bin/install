@@ -8,16 +8,15 @@ dir=langmartin/dot-file
 
 ln -sn \
    "$dir/.ctags" \
+   "$dir/.hammerspoon" \
    "$dir/.lein" \
-   "$dir/.slate" \
-   "$dir/.slate.js" \
    "$dir/.zshenv" \
    "$dir/.zshrc" \
    .
 
 cp \
-    "$dir/.offlineimaprc" \
     "$dir/.msmtprc" \
+    "$dir/.offlineimaprc" \
     .
 
 if [ ! -f .emacs ]; then

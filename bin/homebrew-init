@@ -7,45 +7,47 @@ fi
 
 brew install \
      aspell \
+     djbdns \
+     gnuplot \
+     graphviz \
      html2text \
      jq \
      msmtp \
      npm \
+     ntfs-3g \
      offlineimap \
      pandoc \
      terminal-notifier \
      tmux \
-     djbdns \
-     runit \
-     graphviz \
-     gnuplot \
      unison \
-     youtube-dl \
-     ntfs-3g
+     youtube-dl
 
 brew install --cask \
-     emacs \
      anybar \
      hammerspoon \
      mactex-no-gui
+
+brew tap d12frosted/emacs-plus
+brew install emacs-plus@29 --with-poll --with-retro-emacs-logo-icon
+# brew install emacs-plus@28 --with-poll --with-retro-emacs-logo-icon --with-no-titlebar
 
 EMACS=$path/emacs brew install mu
 
 # mostly crypto
 brew install \
-     pinentry-mac \
-     gpg2 \
      age \
+     gpg2 \
+     magic-wormhole \
+     pinentry-mac \
      signify-osx \
-     tarsnap \
-     magic-wormhole
+     tarsnap
 
 # programming
 brew install \
+     asdf \
      cloc \
      clojure \
-     joker \
-     jsonlint \
-     guile \
      ctags \
-     asdf
+     guile \
+     joker \
+     jsonlint
