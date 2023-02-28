@@ -1,0 +1,8 @@
+#!/bin/sh
+
+asdf latest --all \
+    | grep -v 'installed$' \
+    | while read pkg version; do
+    asdf install "$pkg" latest
+    asdf global "$pkg" latest
+done
