@@ -26,6 +26,8 @@
         push-backups = "!f(){ b=${2:-${GIT_USER:-$USER}}; set -x; git push \"$1\" \"+refs/he/$b/*:refs/remotes/$1/$b/*\";};f"
 	branch-clean = "!f(){ set -x; git branch -d \"$1\" && git push origin :\"$1\";};f"
 	unadded = ls-files -o --exclude-standard
+        rank = "shortlog -s -n -e --no-merges"
+        empty = "git commit --allow-empty"
 
 [diff]
 	renames = copies 	# detect copies as renames too
