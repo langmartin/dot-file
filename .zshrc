@@ -17,6 +17,7 @@ alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 ulimit -n 12288
 
 setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt HIST_REDUCE_BLANKS
