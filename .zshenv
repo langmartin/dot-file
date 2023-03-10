@@ -19,7 +19,8 @@ if [ -z "$INSIDE_EMACS" ]; then
         ~/.asdf/shims \
         ~/.cargo/bin \
         ~/.cabal/bin \
-        ~/go/bin
+        ~/go/bin \
+        ~/.local/bin
 
     add_path \
         /opt/homebrew/bin \

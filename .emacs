@@ -14,7 +14,7 @@
         (clojure-mode . "melpa-stable")
         (elixir-mode . "melpa-stable")
         ;; (go-mode . "melpa-stable")
-        ;; (lsp-mode . "melpa-stable")
+        (lsp-mode . "melpa-stable")
         (company . "melpa-stable")
         (magit . "melpa-stable")
         (magit-popup . "melpa-stable")
@@ -90,6 +90,7 @@ packages: 'foo 'bar"
   (maybe-add-to-exec-path "~/.cargo/bin")
   (maybe-add-to-exec-path "~/go/bin")
   (maybe-add-to-exec-path "~/.asdf/shims")
+  (maybe-add-to-exec-path "~/.local/bin")
   (maybe-add-to-exec-path "~/langmartin/dot-file/bin")
   (maybe-add-to-exec-path "~/bin")
   (exec-path-setenv))
@@ -160,7 +161,9 @@ packages: 'foo 'bar"
   (interactive)
   (let ((fill-column 2048))
     (if (eql 'org-mode major-mode)
-        (org-fill-paragraph nil t)
+        (progn
+          (org-fill-paragraph nil t)
+          (org-fill-paragraph nil nil))
       (if (region-active-p)
           (fill-region (region-beginning) (region-end))
         (fill-paragraph)))))
@@ -398,9 +401,10 @@ packages: 'foo 'bar"
 
   (eval-after-load "lsp-mode"
     '(progn
-       (->> '("_build" ".elixir_ls" "deps")
+       (->> '("_build" "\\.elixir_ls" "deps" "provision" "deploy" "log")
             (mapcar (lambda (x)
-                      (add-to-list 'lsp-file-watch-ignored-directories x)))))))
+                      (->> (concat "[/\\\\]" x "$")
+                           (add-to-list 'lsp-file-watch-ignored-directories))))))))
 
 (defun elixir-save-cleanup (&optional try-harder)
   (interactive "P")
