@@ -1,7 +1,7 @@
 #!/bin/sh
-path=/opt/homebrew/bin
+brew=/opt/homebrew/bin
 
-if [ ! -x $path/brew ]; then
+if [ ! -x $brew/brew ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
@@ -30,9 +30,8 @@ brew install --cask \
 
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@29 --with-poll --with-retro-emacs-logo-icon
-# brew install emacs-plus@28 --with-poll --with-retro-emacs-logo-icon --with-no-titlebar
 
-EMACS=$path/emacs brew install mu
+EMACS=$brew/emacs brew install mu
 
 # mostly crypto
 brew install \
@@ -54,4 +53,4 @@ brew install \
      jsonlint
 
 # build/update the man index
-gmandb
+brew-docs

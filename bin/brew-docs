@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd /opt/homebrew/share/info
+install-info make.info dir
+install-info mu4e.info.gz dir
+
+gmandb
