@@ -116,7 +116,7 @@ packages: 'foo 'bar"
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote super))
    '(ns-command-modifier (quote meta))
-   '(Info-additional-directory-list (quote ("/usr/share/info"))))
+   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info"))))
 
   (global-unset-key (kbd "s-h"))        ; ns-do-hide-emacs
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
@@ -896,6 +896,7 @@ the working directory"
 (defun rc-look-and-feel ()
   (interactive)
   (rc-font-sm)
+  (setq frame-resize-pixelwise t)
   (light-mode))
 
 (defun set-tab-width-vars (n)
