@@ -1,8 +1,8 @@
 set -a
 PROMPT='%* %? %m%# '
 WORDCHARS="*?[]~=&;!#$%^(){}<>"
-HISTSIZE=700000
-SAVEHIST=500000
+HISTSIZE=7000000
+SAVEHIST=5000000
 HISTFILE=~/.zhistory
 
 alias h='history -f -1000 | grep'
