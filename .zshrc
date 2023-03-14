@@ -1,11 +1,11 @@
 set -a
 PROMPT='%* %? %m%# '
 WORDCHARS="*?[]~=&;!#$%^(){}<>"
-HISTSIZE=7000000
-SAVEHIST=5000000
+HISTSIZE=700000
+SAVEHIST=500000
 HISTFILE=~/.zhistory
 
-alias h='history -f -1000 | grep'
+alias h='history -f -2000 | grep'
 alias ll='ls -l'
 alias s='git status'
 alias b='git branch -v'
