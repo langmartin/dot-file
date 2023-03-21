@@ -168,6 +168,12 @@ packages: 'foo 'bar"
           (fill-region (region-beginning) (region-end))
         (fill-paragraph)))))
 
+(defun pml-mode ()
+  (interactive)
+  (markdown-mode)
+  (visual-line-mode t)
+  (setq fill-column 4096))
+
 (defun rc-anybar ()
   (defun anybar-color (color &optional port)
     (interactive "s")
