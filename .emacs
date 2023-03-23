@@ -1052,16 +1052,16 @@ exit 0
 
 (defun rc-git ()
   (package-require 'wgrep)
-  (global-set-key (kbd "C-x g g") 'git-grep)
-  (global-set-key (kbd "C-x g a") 'git-add-edit)
-  (global-set-key (kbd "C-x g e") 'git-add-edit)
-  (global-set-key (kbd "C-x g c") 'git-commit)
+  ;; (global-set-key (kbd "C-x g g") 'git-grep)
+  ;; (global-set-key (kbd "C-x g a") 'git-add-edit)
+  ;; (global-set-key (kbd "C-x g e") 'git-add-edit)
+  ;; (global-set-key (kbd "C-x g c") 'git-commit)
   (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-unix-mode))
   (add-to-list 'auto-mode-alist '("\\.git/config$" . conf-unix-mode)))
 
 (defun rc-magit ()
   (package-require 'magit)
-  (global-set-key (kbd "C-x g s") 'magit-status)
+  ;; (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
    '(global-magit-file-mode nil))
