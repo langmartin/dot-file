@@ -147,7 +147,7 @@
   (mu4e~headers-defun-mark-for tag)
   (define-key mu4e-headers-mode-map (kbd "l") 'mu4e-headers-mark-for-tag)
   (mu4e~headers-defun-mark-for archive)
-  ;; (mu4e~view-defun-mark-for archive)
+  (mu4e--view-defun-mark-for archive)
   (define-key mu4e-headers-mode-map (kbd "y") 'mu4e-headers-mark-for-archive)
   (define-key mu4e-view-mode-map (kbd "y") 'mu4e-view-mark-for-archive)
 
@@ -207,7 +207,7 @@
 
 (defun mu-reindex ()
   (interactive)
-  (shell-command "mu init --muhome $MU_HOME --my-address $MU_ADDR && mu index --muhome $MU_HOME &"))
+  (shell-command "mu init --muhome $MU_HOME --my-address $MU_ADDR --maildir $MAILDIR && mu index --muhome $MU_HOME &"))
 
 (eval-after-load "mu4e"
   '(progn
