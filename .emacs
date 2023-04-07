@@ -642,7 +642,7 @@ packages: 'foo 'bar"
        (setq comint-process-echoes t)
        ;; (add-to-list 'ac-modes 'shell-mode)
        ;; (add-hook 'shell-mode-hook 'ac-rlc-setup-sources)
-       (when (< emacs-major-version 29)
+       (when (< emacs-major-version 30)
          (load-library "shell-resync-dirs-hack"))))
 
   (defun comint-send-quoted (char)
