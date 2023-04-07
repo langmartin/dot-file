@@ -36,7 +36,7 @@ if [ -z "$INSIDE_EMACS" ]; then
 fi
 
 if [ -z "$SSH_CLIENT" ]; then
-    EDITOR="/usr/local/bin/emacsclient"
+    EDITOR="emacsclient"
 fi
 
 export VERITAS_HOME=~/subspace/veritas

@@ -4,4 +4,13 @@ cd /opt/homebrew/share/info
 install-info make.info dir
 install-info mu4e.info.gz dir
 
-gmandb
+cd /usr/local/share/man
+
+for p in /Library/Apple/usr/share/man \
+             /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/share/man \
+             /Library/Developer/CommandLineTools/usr/share/man
+do
+    rsync -a "$p/" ./
+done
+
+gmandb -c

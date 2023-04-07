@@ -102,7 +102,7 @@ packages: 'foo 'bar"
   (fringe-mode '(1 . 1))
 
   (setenv "EMACS" "/Applications/Emacs.app/Contents/MacOS/Emacs")
-  (setenv "EDITOR" "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient")
+  (setenv "EDITOR" "emacsclient")
   (setenv "GIT_EDITOR" (getenv "EDITOR"))
   ;; set in .zshenv instead, breaks man -k for M-x man completion table
   ;; (setenv "PAGER" "head -n100")
