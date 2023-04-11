@@ -373,6 +373,11 @@ local function restartMiddleClick()
    end)
 end
 
+local function muteMeet()
+   app = hs.application.find("Google Chrome")
+   hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
+end
+
 -- ----------------------------------------------------------------------
 -- hooks
 
@@ -412,3 +417,4 @@ hs.hotkey.bind(hyper, "=", twoLouder)
 hs.hotkey.bind(hyper, "0", twoDefaultVolume)
 hs.hotkey.bind(hyper, ".", hs.reload)
 hs.hotkey.bind(hyper, "m", restartMiddleClick)
+hs.hotkey.bind({"shift", "cmd"}, "d", muteMeet)
