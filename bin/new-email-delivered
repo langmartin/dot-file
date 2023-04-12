@@ -2,7 +2,9 @@
 `mu index --muhome '$ENV{MU_HOME}'`;
 
 $s = $ENV{SINCE};
-$q = 'flag:unread tag:\\\\Inbox';
+$d = $ENV{DURATION};
+$q = 'flag:unread or tag:\\\\Inbox';
+$q = "date:$d.. and ($q)" if $d;
 # $q .= qq( date:"$s..") if $s;
 $a = "";
 $a .= "--after=$s" if $s;
