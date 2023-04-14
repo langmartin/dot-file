@@ -390,6 +390,12 @@ packages: 'foo 'bar"
             (concat "[/\\\\]" x "$"))
           xs))
 
+(defun lsp-add-ignored-directories (&rest dirs)
+  (mapcar (lambda (x)
+            (->> (concat "[/\\\\]" x "$")
+                 (add-to-list 'lsp-file-watch-ignored-directories)))
+          dirs))
+
 (defun rc-elixir ()
   (use-package lsp-mode
     :commands lsp
@@ -407,10 +413,8 @@ packages: 'foo 'bar"
 
   (eval-after-load "lsp-mode"
     '(progn
-       (->> '("_build" "\\.elixir_ls" "deps" "provision" "deploy" "log")
-            (mapcar (lambda (x)
-                      (->> (concat "[/\\\\]" x "$")
-                           (add-to-list 'lsp-file-watch-ignored-directories))))))))
+       (lsp-add-ignored-directories
+        "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log"))))
 
 (defun elixir-save-cleanup (&optional try-harder)
   (interactive "P")
@@ -521,16 +525,18 @@ packages: 'foo 'bar"
                          (lambda (_workspace)
                            '("/usr/local/go" "/home/vagrant/go/pkg/mod"))))))
 
+  (eval-after-load "lsp-mode"
+    '(progn
+       (lsp-add-ignored-directories
+        "vendor")))
+
   (package-install 'hcl-mode)
   (eval-after-load "hcl-mode"
     '(progn
        (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode))))
 
   (custom-set-variables
-   '(lsp-prefer-flymake :none)
-   '(lsp-file-watch-ignored
-     (quote
-      ("[/\\\\]\\.git$" "[/\\\\]\\.hg$" "[/\\\\]\\.bzr$" "[/\\\\]_darcs$" "[/\\\\]\\.svn$" "[/\\\\]_FOSSIL_$" "[/\\\\]\\.idea$" "[/\\\\]\\.ensime_cache$" "[/\\\\]\\.eunit$" "[/\\\\]node_modules$" "[/\\\\]\\.fslckout$" "[/\\\\]\\.tox$" "[/\\\\]\\.stack-work$" "[/\\\\]\\.bloop$" "[/\\\\]\\.metals$" "[/\\\\]target$" "[/\\\\]\\.deps$" "[/\\\\]build-aux$" "[/\\\\]autom4te.cache$" "[/\\\\]\\.reference$" "[/\\\\]vendor$")))))
+   '(lsp-prefer-flymake :none)))
 
 (defun rc-lua ()
   (eval-after-load "lua-mode"
