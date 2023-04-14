@@ -375,7 +375,14 @@ end
 
 local function muteMeet()
    app = hs.application.find("Google Chrome")
-   hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
+   if app ~= nil then
+      hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
+   end
+
+   app = hs.application.find("zoom.us")
+   if app ~= nil then
+      hs.eventtap.keyStroke({"cmd", "shift"}, "a", 10, app)
+   end
 end
 
 -- ----------------------------------------------------------------------
@@ -416,5 +423,5 @@ hs.hotkey.bind(hyper, "-", twoQuieter)
 hs.hotkey.bind(hyper, "=", twoLouder)
 hs.hotkey.bind(hyper, "0", twoDefaultVolume)
 hs.hotkey.bind(hyper, ".", hs.reload)
-hs.hotkey.bind(hyper, "m", restartMiddleClick)
-hs.hotkey.bind({"shift", "cmd"}, "d", muteMeet)
+hs.hotkey.bind(hyper, ",", restartMiddleClick)
+hs.hotkey.bind(hyper, "m", muteMeet)
