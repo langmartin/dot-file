@@ -6,6 +6,8 @@ hs.window.animationDuration = 0
 
 local browser = "Firefox"
 local browser2 = "Safari"
+local calendar = "Calendar"
+local calendar = "Google Chrome"
 
 local laptop_name = 'built'
 local external_name = 'lg'
@@ -172,7 +174,7 @@ end
 function calOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
-	 {"Calendar", nil, screen, maximized, nil, nil},
+	 {calendar, nil, screen, maximized, nil, nil},
    })
 end
 
