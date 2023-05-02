@@ -9,8 +9,13 @@ fi
 set -ex
 
 cat <<EOF | gpg --batch --command-fd 0 --status-fd 2 --edit-key "$1"
-expire
 key 0
+expire
+3m
+save
+key 1
+key 2
+expire
 3m
 save
 EOF
