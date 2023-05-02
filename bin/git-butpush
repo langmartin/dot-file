@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -ex
+
+branch=`git rev-parse --abbrev-ref HEAD`
+remote=`git config --get branch."$branch".remote`
+merge=`git config --get branch."$branch".merge`
+
+git push "$@" "$remote" HEAD^:"$merge"

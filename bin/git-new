@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+git fetch
+git checkout origin/main
+git checkout -b "$@"
