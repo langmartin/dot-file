@@ -86,6 +86,7 @@ packages: 'foo 'bar"
   (maybe-add-to-exec-path "/usr/local/go/bin")
   (maybe-add-to-exec-path "/usr/local/texlive/2022/bin/universal-darwin")
   (maybe-add-to-exec-path "/opt/homebrew/opt/java/bin")
+  (maybe-add-to-exec-path "/Applications/OrbStack.app/Contents/MacOS/xbin")
   (maybe-add-to-exec-path "~/.cabal/bin")
   (maybe-add-to-exec-path "~/.cargo/bin")
   (maybe-add-to-exec-path "~/go/bin")

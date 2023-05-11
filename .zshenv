@@ -23,6 +23,7 @@ if [ -z "$INSIDE_EMACS" ]; then
         ~/.local/bin
 
     add_path \
+        /Applications/OrbStack.app/Contents/MacOS/xbin \
         /opt/homebrew/bin \
         /opt/homebrew/sbin \
         /opt/homebrew/opt/java/bin \
