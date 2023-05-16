@@ -651,6 +651,7 @@ packages: 'foo 'bar"
        try-complete-file-name
        try-complete-lisp-symbol-partially
        try-complete-lisp-symbol)))
+   '(require-final-newline t)
    '(uniquify-buffer-name-style 'forward)
    '(uniquify-strip-common-suffix t))
 
