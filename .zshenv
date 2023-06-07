@@ -6,34 +6,34 @@ fi
 
 add_path () {
     for p in "$@"; do
-        [ -d "$p" ] && PATH="$PATH:$p"
+        case ":$PATH:" in
+            *:"$d":*) ;;
+            *) [ -d "$p" ] && PATH="$p:$PATH" ;;
+        esac
     done
 }
 
 if [ -z "$INSIDE_EMACS" ]; then
-    SYS_PATH="$PATH"
+    add_path \
+        /sbin \
+        /usr/sbin \
+        /usr/local/texlive/2022/bin/universal-darwin \
 
     add_path \
-        ~/bin \
-        ~/langmartin/dot-file/bin \
+        /usr/local/bin \
+        /usr/local/sbin \
+        /opt/homebrew/opt/java/bin \
+        /opt/homebrew/bin \
+        /opt/homebrew/sbin \
+
+    add_path \
         ~/.asdf/shims \
         ~/.cargo/bin \
         ~/.cabal/bin \
         ~/go/bin \
-        ~/.local/bin
-
-    add_path \
-        /Applications/OrbStack.app/Contents/MacOS/xbin \
-        /opt/homebrew/bin \
-        /opt/homebrew/sbin \
-        /opt/homebrew/opt/java/bin \
-        /usr/local/bin \
-        /usr/local/sbin
-
-    add_path \
-        /usr/local/texlive/2022/bin/universal-darwin
-
-    PATH="$PATH:$SYS_PATH":/sbin:/usr/sbin
+        ~/.local/bin \
+        ~/langmartin/dot-file/bin \
+        ~/bin
 fi
 
 if [ -z "$SSH_CLIENT" ]; then

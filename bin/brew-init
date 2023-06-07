@@ -25,6 +25,10 @@ brew install \
 
 brew install --cask hammerspoon
 
+# clipboard manager
+brew install maccy
+brew install middleclick
+
 # tectonic is a lazy loading xetex wrapper
 brew install tectonic
 # brew install --cask mactex-no-gui
@@ -34,7 +38,7 @@ brew install tectonic
 
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@29 --with-poll --with-retro-emacs-logo-icon
-cp -r $brew/opt/homebrew/emacs-plus@29/Emacs.app /Applications
+rsync -a --delete $brew/opt/homebrew/emacs-plus@29/Emacs.app /Applications
 
 EMACS=$brew/emacs brew install mu
 
