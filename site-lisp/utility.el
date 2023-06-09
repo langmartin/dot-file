@@ -1,3 +1,5 @@
+(eval-when-compile (require 'cl-lib))
+
 (defun with-output-file (path thunk)
   (save-excursion
     (set-buffer (create-file-buffer path))
@@ -80,7 +82,7 @@
         (setq lst (cdr lst))))
     result))
 
-(assert
+(cl-assert
  (equal (generalized-member 'eql 'a '(b c a d))
         '(a d)))
 
@@ -124,8 +126,8 @@
                  string
                  ""))))
 
-(assert (equal "foo+bar+%28baz%29" (urlencode "foo bar (baz)")))
-(assert (equal "foo bar (baz)" (urldecode (urlencode "foo bar (baz)"))))
+(cl-assert (equal "foo+bar+%28baz%29" (urlencode "foo bar (baz)")))
+(cl-assert (equal "foo bar (baz)" (urldecode (urlencode "foo bar (baz)"))))
 
 (defun global-set-keys (alist &rest hooks)
   "Set an alist of '(\"kbd\" . function) pairs globally. Locally

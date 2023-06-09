@@ -54,8 +54,8 @@ the binding is true. Use and-let* instead."
        (if-let* ,(cdr bindings) ,body ,else)
        ,else)))
 
-(if (fboundp 'assert)
-    (assert
+(if (fboundp 'cl-assert)
+    (cl-assert
      (and
       (eq (if-let* ((foo 1)) 'true 'false)            'true)
       (eq (if-let* ((foo nil)) nil 'false)            'false)
@@ -71,8 +71,8 @@ the binding is true. Use and-let* instead."
   (declare (indent 1))
   `(if-let* ,bindings (progn ,@body)))
 
-(if (fboundp 'assert)
-    (assert
+(if (cl-fboundp 'assert)
+    (cl-assert
      (and
       (= 3 (and-let* ((foo 1) (bar 2)) (+ foo bar)))
       (null (and-let* ((foo nil) (error "shouldn't reach this line"))))

@@ -6,7 +6,7 @@
           seq)
     acc))
 
-(assert (eql 6 (fold '+ 0 '(1 2 3)))
+(cl-assert (eql 6 (fold '+ 0 '(1 2 3)))
         (let* ((test '(1 2 3))
                (ref test))
           (fold '+0 ref)
@@ -20,7 +20,7 @@
              (car lst)
              (fold-right proc nil-value (cdr lst)))))
 
-(assert (eql 6 (fold-right '+ 0 '(1 2 3)))
+(cl-assert (eql 6 (fold-right '+ 0 '(1 2 3)))
         (let* ((test '(1 2 3))
                (ref test))
           (fold-right '+0 ref)
@@ -35,7 +35,7 @@
                     '()
                     (cdr lst))))
 
-(assert (equal (intersperse '(1 2 3) 8)
+(cl-assert (equal (intersperse '(1 2 3) 8)
                '(1 8 2 8 3)))
 
 
