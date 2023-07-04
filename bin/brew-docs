@@ -4,6 +4,9 @@ cd /opt/homebrew/share/info
 install-info make.info dir
 install-info mu4e.info.gz dir
 
+cd /opt/homebrew/share/info/emacs
+for f in *.info; do; install-info "$f" dir; done
+
 cd /usr/local/share/man
 
 for p in /Library/Apple/usr/share/man \
