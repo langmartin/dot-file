@@ -86,7 +86,7 @@ packages: 'foo 'bar"
   (maybe-add-to-exec-path "/usr/local/go/bin")
   (maybe-add-to-exec-path "/usr/local/texlive/2022/bin/universal-darwin")
   (maybe-add-to-exec-path "/opt/homebrew/opt/java/bin")
-  (maybe-add-to-exec-path "/Applications/OrbStack.app/Contents/MacOS/xbin")
+  (maybe-add-to-exec-path "~/.orbstack/bin")
   (maybe-add-to-exec-path "~/.cabal/bin")
   (maybe-add-to-exec-path "~/.cargo/bin")
   (maybe-add-to-exec-path "~/go/bin")
@@ -145,6 +145,11 @@ packages: 'foo 'bar"
   ;; (set-frame-font "Andale Mono-14")
   ;; (set-frame-font "SF Mono-13")
   (set-frame-font "DejaVu Sans Mono-14"))
+
+(defun rc-font-sm-comic ()
+  (interactive)
+  ;; https://dtinth.github.io/comic-mono-font/
+  (set-frame-font "Comic Mono-14"))
 
 (defun switch-to-last-buffer ()
   (interactive)
@@ -609,7 +614,7 @@ packages: 'foo 'bar"
   (other-window 2)
   (switch-to-buffer "*scratch*")
   (other-window 2)
-  (find-file "~/langmartin/mkelixir/Book/InfoWeNeed/BookInfo.txt")
+  (find-file "~/langmartin/mkelixir/Book/BroadcastingMessages.pml")
   (pml-mode))
 
 (defun rc-emacs-miscellany ()

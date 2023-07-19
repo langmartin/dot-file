@@ -33,7 +33,8 @@ if [ -z "$INSIDE_EMACS" ]; then
         ~/go/bin \
         ~/.local/bin \
         ~/langmartin/dot-file/bin \
-        ~/bin
+        ~/bin \
+
 fi
 
 if [ -z "$SSH_CLIENT" ]; then
