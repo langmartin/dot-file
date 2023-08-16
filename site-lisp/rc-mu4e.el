@@ -242,7 +242,7 @@
  ;; mu4e-shr2text seems to be working, this seems not to be
  ;; '(mu4e-html2text-command "textutil -convert txt -stdin -stdout")
  '(mu4e-view-show-addresses t)
- '(mu4e-headers-include-related t)
+ '(mu4e-search-include-related nil)
  '(mu4e-headers-leave-behavior (quote apply))
  '(mu4e-confirm-quit nil)
  '(mail-specify-envelope-from t))
