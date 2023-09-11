@@ -51,6 +51,8 @@ netstat-lpn () {
     sudo lsof -nP -iTCP -sTCP:LISTEN
 }
 
+alias nocolor='echo "\e[0m"'
+
 for inc in \
     ~/.opam/opam-init/init.zsh \
 	/usr/local/opt/asdf/asdf.sh \

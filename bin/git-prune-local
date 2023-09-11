@@ -1,5 +1,4 @@
 #!/bin/sh
-set -x
-git branch --merged origin/master \
-    | grep -v '^ *master$' \
-    | xargs git branch -d
+set -ex
+git remote prune origin
+git branch -v|grep -v -e ' main ' -e ' master '|awk '{print $1}'|xargs git branch -d

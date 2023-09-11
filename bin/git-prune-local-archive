@@ -1,0 +1,6 @@
+#!/bin/sh
+set -ex
+git branch -v|grep -v -e ' main ' -e ' master ' -e 'zarchive/'|awk '{print $1}'|while read f; do
+    git update-ref refs/zarchive/"$f" "refs/heads/$f"
+    git branch -D "$f"
+done
