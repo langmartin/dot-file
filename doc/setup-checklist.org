@@ -40,11 +40,16 @@ so manually add
 1. brew install asdf
 2. echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> ~/.zshrc
 3. Add ~/.asdf/shims to path
-4. Get https://github.com/elixir-lsp/elixir-ls
-5. Download a build
-6. Edit launch.sh to include the correct asdf.sh from above
-7. package-install elixir-mode from melpa (not melpa stable)
-8. https://github.com/langmartin/dot-file/blob/master/.emacs#L299
+4. Install elixir and erlang compatible with elixir-ls
+   #+begin_src sh
+     brew install wxwidets
+     asdf install erlang 22.3.4.26
+     asdf global erlang 22.3.4.26
+     asdf install elixir 1.13.4-otp-22
+     asdf global elixir 1.13.4-otp-22
+   #+end_src
+
+5. package-install elixir-mode from melpa (not melpa stable)
 
 ** Restart Slate is Not Necessary
 1. automator system shell script past bin/restart-slate export as

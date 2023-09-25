@@ -6,8 +6,8 @@ hs.window.animationDuration = 0
 
 local browser = "Firefox"
 local browser2 = "Safari"
-local calendar = "Calendar"
 local calendar = "Google Chrome"
+local calendar = "Calendar"
 
 local laptop_name = 'built'
 local external_name = 'lg'
