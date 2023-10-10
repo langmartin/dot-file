@@ -42,7 +42,8 @@ so manually add
 3. Add ~/.asdf/shims to path
 4. Install elixir and erlang compatible with elixir-ls
    #+begin_src sh
-     brew install wxwidets
+     brew install -s wxwidets
+     brew install openjdk fop
      asdf install erlang 22.3.4.26
      asdf global erlang 22.3.4.26
      asdf install elixir 1.13.4-otp-22
