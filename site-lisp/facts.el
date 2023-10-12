@@ -26,8 +26,8 @@ are given as an argument."
   (setq pi (* 2.0 (asin 1.0)))
   (setq degree (/ pi 180.0))
   (setq kg (cond ((eq units1 'mks) 1.0)
-		 ((eq units1 'cgs) 1000.0)
-		 ((eq units1 'english) 2.2)))
+                 ((eq units1 'cgs) 1000.0)
+                 ((eq units1 'english) 2.2)))
   (setq kg* kg)
   (setq g (* 0.001 kg))
   (setq sec 1.0)
@@ -37,8 +37,8 @@ are given as an argument."
   (setq year (* 365.2425 day))    ; calendar year
   (setq day* 1.0)
   (setq m (cond ((eq units1 'mks) 1.0)
-		 ((eq units1 'cgs) 100.0)
-		 ((eq units1 'english) (/ 1.0 0.3048))))
+                 ((eq units1 'cgs) 100.0)
+                 ((eq units1 'english) (/ 1.0 0.3048))))
   (setq km (* m 1000.0))
   (setq cm (* m 0.01))
   (setq foot (* 0.3048 m))
@@ -178,29 +178,29 @@ are given as an argument."
 
 
   (setq insea '((oxygen . 8.57e5) (hydrogen . 1.08e5) (chlorine . 1.90e4)
-		(sodium . 1.05e4) (magnesium . 1.35e3) (sulfur . 8.85e2)
-		(calcium . 4.00e3) (potassium . 3.80e2) (bromine . 6.5e1)
-		(carbon . 2.8e1) (strontium . 8.1e0) (boron . 4.6e0)
-		(silicon . 3e0) (fluorine . 1.3e0) (argon . 6e-1)
-		(nitrogen . 5e-1) (lithium . 1.8e-1) (rubidium . 1.2e-1)
-		(phosphorus . 7e-2) (iodine . 6e-2) (barium . 3e-2)
-		(aluminum . 1e-2) (iron . 1e-2) (indium . 2e-2) ; < 2e-2
-		(molybdenum . 1e-2) (zinc . 1e-2) (nickel . 5.4e-3)
-		(arsenic . 3e-3) (copper . 3e-3) (tin . 3e-3)
-		(uranium . 3e-3) (krypton . 2.5e-3) (manganese . 2e-3)
-		(vanadium . 2e-3) (titanium . 1e-3) (cesium . 5e-4)
-		(cerium . 4e-4) (antimony . 3.3e-4) (silver . 3e-4)
-		(yttrium . 3e-4) (cobalt . 2.7e-4) (neon . 1.4e-4)
-		(cadmium . 1.1e-4) (tungsten . 1e-4) (selenium . 9e-5)
-		(germanium . 7e-5) (xenon . 5.2e-5) (chromium . 5e-5)
-		(thorium . 5e-5) (gallium . 3e-5) (mercury . 3e-5)
-		(lead . 3e-5) (zirconium . 2.2e-5) (bismuth . 1.7e-5)
-		(lanthanum . 1.2e-5) (gold . 1.1e-5) (niobium . 1e-5)
-		(thallium . 1e-5) ; < 
-		(hafnium . 8e-6) ; <
-		(helium . 6.9e-6) (tantalum . 2.5e-6) ; <
-		(beryllium . 6e-7) (protoactinium . 2e-9) (radium . 6e-11)
-		(radon . 6e-16)))
+                (sodium . 1.05e4) (magnesium . 1.35e3) (sulfur . 8.85e2)
+                (calcium . 4.00e3) (potassium . 3.80e2) (bromine . 6.5e1)
+                (carbon . 2.8e1) (strontium . 8.1e0) (boron . 4.6e0)
+                (silicon . 3e0) (fluorine . 1.3e0) (argon . 6e-1)
+                (nitrogen . 5e-1) (lithium . 1.8e-1) (rubidium . 1.2e-1)
+                (phosphorus . 7e-2) (iodine . 6e-2) (barium . 3e-2)
+                (aluminum . 1e-2) (iron . 1e-2) (indium . 2e-2) ; < 2e-2
+                (molybdenum . 1e-2) (zinc . 1e-2) (nickel . 5.4e-3)
+                (arsenic . 3e-3) (copper . 3e-3) (tin . 3e-3)
+                (uranium . 3e-3) (krypton . 2.5e-3) (manganese . 2e-3)
+                (vanadium . 2e-3) (titanium . 1e-3) (cesium . 5e-4)
+                (cerium . 4e-4) (antimony . 3.3e-4) (silver . 3e-4)
+                (yttrium . 3e-4) (cobalt . 2.7e-4) (neon . 1.4e-4)
+                (cadmium . 1.1e-4) (tungsten . 1e-4) (selenium . 9e-5)
+                (germanium . 7e-5) (xenon . 5.2e-5) (chromium . 5e-5)
+                (thorium . 5e-5) (gallium . 3e-5) (mercury . 3e-5)
+                (lead . 3e-5) (zirconium . 2.2e-5) (bismuth . 1.7e-5)
+                (lanthanum . 1.2e-5) (gold . 1.1e-5) (niobium . 1e-5)
+                (thallium . 1e-5) ; <
+                (hafnium . 8e-6) ; <
+                (helium . 6.9e-6) (tantalum . 2.5e-6) ; <
+                (beryllium . 6e-7) (protoactinium . 2e-9) (radium . 6e-11)
+                (radon . 6e-16)))
 ;;; The above are in mg/liter.
 ;;; See 14-7 for earth's crust. mg/kg
 ;;; thermal gradient 30 degrees C/km
@@ -210,14 +210,14 @@ are given as an argument."
   (uranium . 2.7e0)))
 
 (setq weights '((iron . 55.847) (copper . 63.546) (chromium . 51.9961)
-	       (nickel . 58.6934) (tin . 118.710) (tungsten . 183.85)
-	       (uranium . 238.0289) (hydrogen . 1.00794) (helium . 4.002602)
-	       (lithium . 6.941) (beryllium . 9.012182) (boron . 10.811)
-	       (carbon . 12.011) (nitrogen . 14.00674) (oxygen . 15.9994)
-	       (fluorine . 18.9984032) (neon . 20.1797) (sodium 22.9897)
-	       (magnesium . 24.3050) (aluminum . 26.9815) (silicon . 28.0855)
-	       (phosphorus . 30.973762) (sulfur . 32.066) (chlorine . 35.4527)
-	       ))
+               (nickel . 58.6934) (tin . 118.710) (tungsten . 183.85)
+               (uranium . 238.0289) (hydrogen . 1.00794) (helium . 4.002602)
+               (lithium . 6.941) (beryllium . 9.012182) (boron . 10.811)
+               (carbon . 12.011) (nitrogen . 14.00674) (oxygen . 15.9994)
+               (fluorine . 18.9984032) (neon . 20.1797) (sodium 22.9897)
+               (magnesium . 24.3050) (aluminum . 26.9815) (silicon . 28.0855)
+               (phosphorus . 30.973762) (sulfur . 32.066) (chlorine . 35.4527)
+               ))
 ;;; River flows from statistical abstract, 1991 table 353 p.206
 (setq mississippi-flow (* 593e3 (/ (expt foot 3) sec)))
 ; comes to (/ mississippi-flow (/ acre-foot year))  ; =>4.298e+08
@@ -239,7 +239,7 @@ are given as an argument."
 ;;; the rotation matrix through an angle delta
 (defun rot (delta)
   (list (list (cos delta) (sin delta))
-	(list (- (sin delta)) (cos delta))))
+        (list (- (sin delta)) (cos delta))))
 
 ;;; multiplying a matrix by a column vector
 (defun mvmult (matrix vector)
@@ -247,15 +247,15 @@ are given as an argument."
 
 ;;; sum of two vectors
 (defun vplus (vec1 vec2) (list (+ (nth 0 vec1) (nth 0 vec2))
-			       (+ (nth 1 vec1) (nth 1 vec2))))
+                               (+ (nth 1 vec1) (nth 1 vec2))))
 
 ;;; difference of two vectors
 (defun vminus (vec1 vec2) (list (- (nth 0 vec1) (nth 0 vec2))
-			       (- (nth 1 vec1) (nth 1 vec2))))
+                               (- (nth 1 vec1) (nth 1 vec2))))
 
 ;;; scalar product of two vectors
 (defun scap (vec1 vec2) (+ (* (nth 0 vec1) (nth 0 vec2))
-			   (* (nth 1 vec1) (nth 1 vec2))))
+                           (* (nth 1 vec1) (nth 1 vec2))))
 
 ;;; product of scalar and vector
 (defun svmult (sca vec) (list (* sca (nth 0 vec)) (* sca (nth 1 vec))))
@@ -267,7 +267,7 @@ are given as an argument."
     (vplus (car veclist) (addup (cdr veclist)))))
 
 
-(defconst zerovec '(0 0) "zero vector with two components"1)
+(defconst zerovec '(0 0) "zero vector with two components")
 
 ;;; length of a vector
 (defun length (x) (sqrt (+ (expt (nth 0 x) 2) (expt (nth 1 x) 2))))
@@ -275,39 +275,39 @@ are given as an argument."
 (defconst Imatrix '((1.0 0.0) (0.0 1.0)) "unit 2x2 matrix")
 
 (defun smmult (sca matrix) (list (svmult sca (nth 0 matrix))
-				 (svmult sca (nth 1 matrix))))
+                                 (svmult sca (nth 1 matrix))))
 
 (defun mplus (mat1 mat2) (list (vplus (nth 0 mat1) (nth 0 mat2))
-			       (vplus (nth 1 mat1) (nth 1 mat2))))
+                               (vplus (nth 1 mat1) (nth 1 mat2))))
 
 (defun mminus (mat1 mat2) (list (vminus (nth 0 mat1) (nth 0 mat2))
-			       (vminus (nth 1 mat1) (nth 1 mat2))))
+                               (vminus (nth 1 mat1) (nth 1 mat2))))
 
 (defun mmult (mat1 mat2)
   (list
    (list (scap (nth 0 mat1) (col 0 mat1)) (scap (nth 0 mat1) (col 1 mat1)))
    (list (scap (nth 1 mat1) (col 0 mat1)) (scap (nth 1 mat1) (col 1 mat1)))))
-	 
+
 (defun multiplyup (matlist)
   (if (null matlist)
       Imatrix
     (mmult (car matlist) (multiplyup (car matlist)
-				     (multiplyup (cdr (matlist)))))))
+                                     (multiplyup (cdr (matlist)))))))
 ;Energy content of fuels
-;   fuel		Kjoule/g	Kjoule/cc
-;Hydrogen	124.7		8.7
-;Methanol	 20.1		15.9
-;Gasoline	 44.3		30.9
-;Hydride	VH3	  4.7		28.4
-;Coal C28H42	 32.2		41.8
-;Wood C.32H.40O.22 17.5		14.2
-;H2 gas		124.7		  .0010
-;methane gas	 61.1		  .0044
+;   fuel                Kjoule/g        Kjoule/cc
+;Hydrogen       124.7           8.7
+;Methanol        20.1           15.9
+;Gasoline        44.3           30.9
+;Hydride        VH3       4.7           28.4
+;Coal C28H42     32.2           41.8
+;Wood C.32H.40O.22 17.5         14.2
+;H2 gas         124.7             .0010
+;methane gas     61.1             .0044
 
-(setq Hydrogen	(* 124.7e6 (/ J kg)))
-(setq Gasoline1	(* 30.9e6 (/ J liter)))   ; => 3.090e+10
+(setq Hydrogen  (* 124.7e6 (/ J kg)))
+(setq Gasoline1 (* 30.9e6 (/ J liter)))   ; => 3.090e+10
 
-(setq Gasoline	(* 44.3e6 (/ J kg)))
+(setq Gasoline  (* 44.3e6 (/ J kg)))
 
 ;(facts)
 
