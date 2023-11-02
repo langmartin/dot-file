@@ -32,11 +32,6 @@
     (package-install package))
   (require package))
 
-(defun maybe-add-to-exec-path (filename)
-  (let ((f (expand-file-name filename)))
-    (when (file-exists-p f)
-      (add-to-list 'exec-path f))))
-
 (when (not (package-installed-p 'dash))
   (package-refresh-contents)
   (package-install 'dash))
@@ -66,35 +61,41 @@ packages: 'foo 'bar"
   (package-install-with-melpa 'flycheck 'flymake-shellcheck)
   (package-install-with-melpa 'elixir-mode))
 
-(defun exec-path-setenv ()
-  (interactive)
-  (let* ((env (split-string (getenv "PATH") ":"))
-         (new (-remove (lambda (x) (member x env)) exec-path)))
-    (setenv "PATH" (string-join (append new env) ":"))))
+(defun rc-deprecated-path-crap ()
+  (defun maybe-add-to-exec-path (filename)
+    (let ((f (expand-file-name filename)))
+      (when (file-exists-p f)
+        (add-to-list 'exec-path f))))
 
-(defun homebrew (path)
-  (concat "/opt/homebrew" path))
+  (defun exec-path-setenv ()
+    (interactive)
+    (let* ((env (split-string (getenv "PATH") ":"))
+           (new (-remove (lambda (x) (member x env)) exec-path)))
+      (setenv "PATH" (string-join (append new env) ":"))))
 
-;; reverse order, all add to the beginning
-(progn
-  (maybe-add-to-exec-path "/sbin")
-  (maybe-add-to-exec-path "/usr/sbin")
-  (maybe-add-to-exec-path "/opt/homebrew/sbin")
-  (maybe-add-to-exec-path "/opt/homebrew/bin")
-  (maybe-add-to-exec-path "/usr/local/sbin")
-  (maybe-add-to-exec-path "/usr/local/bin")
-  (maybe-add-to-exec-path "/usr/local/go/bin")
-  (maybe-add-to-exec-path "/usr/local/texlive/2022/bin/universal-darwin")
-  (maybe-add-to-exec-path "/opt/homebrew/opt/java/bin")
-  (maybe-add-to-exec-path "~/.orbstack/bin")
-  (maybe-add-to-exec-path "~/.cabal/bin")
-  (maybe-add-to-exec-path "~/.cargo/bin")
-  (maybe-add-to-exec-path "~/go/bin")
-  (maybe-add-to-exec-path "~/.asdf/shims")
-  (maybe-add-to-exec-path "~/.local/bin")
-  (maybe-add-to-exec-path "~/langmartin/dot-file/bin")
-  (maybe-add-to-exec-path "~/bin")
-  (exec-path-setenv))
+  (defun homebrew (path)
+    (concat "/opt/homebrew" path))
+
+  ;; reverse order, all add to the beginning
+  (progn
+    (maybe-add-to-exec-path "/sbin")
+    (maybe-add-to-exec-path "/usr/sbin")
+    (maybe-add-to-exec-path "/opt/homebrew/sbin")
+    (maybe-add-to-exec-path "/opt/homebrew/bin")
+    (maybe-add-to-exec-path "/usr/local/sbin")
+    (maybe-add-to-exec-path "/usr/local/bin")
+    (maybe-add-to-exec-path "/usr/local/go/bin")
+    (maybe-add-to-exec-path "/usr/local/texlive/2022/bin/universal-darwin")
+    (maybe-add-to-exec-path "/opt/homebrew/opt/java/bin")
+    (maybe-add-to-exec-path "~/.orbstack/bin")
+    (maybe-add-to-exec-path "~/.cabal/bin")
+    (maybe-add-to-exec-path "~/.cargo/bin")
+    (maybe-add-to-exec-path "~/go/bin")
+    (maybe-add-to-exec-path "~/.asdf/shims")
+    (maybe-add-to-exec-path "~/.local/bin")
+    (maybe-add-to-exec-path "~/langmartin/dot-file/bin")
+    (maybe-add-to-exec-path "~/bin")
+    (exec-path-setenv)))
 
 
 ;;;; Osx
@@ -117,7 +118,26 @@ packages: 'foo 'bar"
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote super))
    '(ns-command-modifier (quote meta))
-   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info"))))
+   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info")))
+   '(exec-path
+     '("/Users/lang/bin"
+       "/Users/lang/langmartin/dot-file/bin"
+       "/Users/lang/.asdf/shims"
+       "/Users/lang/.orbstack/bin"
+       "/Users/lang/.cargo/bin"
+       "/Users/lang/.cabal/bin"
+       "/Users/lang/.local/bin"
+       "/opt/homebrew/opt/grep/libexec/gnubin"
+       "/opt/homebrew/opt/emacs-plus/bin"
+       "/opt/homebrew/opt/asdf/libexec/bin"
+       "/opt/homebrew/bin"
+       "/opt/homebrew/sbin"
+       "/opt/homebrew/opt/java/bin"
+       "/usr/local/bin"
+       "/usr/bin"
+       "/bin"
+       "/usr/sbin"
+       "/sbin")))
 
   (global-unset-key (kbd "s-h"))        ; ns-do-hide-emacs
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
