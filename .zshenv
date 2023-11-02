@@ -4,47 +4,30 @@ if [ "$TERM" = dumb ]; then
     export MANPAGER="cat"
 fi
 
-add_path () {
-    for p in "$@"; do
-        case ":$PATH:" in
-            *:"$d":*) ;;
-            *) [ -d "$p" ] && PATH="$p:$PATH" ;;
-        esac
-    done
-}
-
-if [ -z "$INSIDE_EMACS" ]; then
-    add_path \
-        /sbin \
-        /usr/sbin \
-        /usr/local/texlive/2022/bin/universal-darwin \
-
-    add_path \
-        /usr/local/bin \
-        /usr/local/sbin \
-        /opt/homebrew/opt/java/bin \
-        /opt/homebrew/bin \
-        /opt/homebrew/sbin \
-
-    add_path \
-        ~/.asdf/shims \
-        ~/.cargo/bin \
-        ~/.cabal/bin \
-        ~/go/bin \
-        ~/.local/bin \
-        ~/langmartin/dot-file/bin \
-        ~/bin \
-
-fi
+export PATH=\
+~/bin:\
+~/langmartin/dot-file/bin:\
+~/.asdf/shims:\
+~/.orbstack/bin:\
+~/.cargo/bin:\
+~/.cabal/bin:\
+~/.local/bin:\
+/opt/homebrew/opt/asdf/libexec/bin:\
+/opt/homebrew/opt/emacs-plus/bin:\
+/opt/homebrew/opt/grep/libexec/gnubin:\
+/opt/homebrew/bin:\
+/opt/homebrew/sbin:\
+/opt/homebrew/opt/java/bin:\
+/usr/local/bin:\
+/usr/bin:\
+/bin:\
+/usr/sbin:\
+/sbin
 
 if [ -z "$SSH_CLIENT" ]; then
     EDITOR="emacsclient"
 fi
 
-export VERITAS_HOME=~/subspace/veritas
 export QPVERBOSE=true
 export QPOPT="-V"
 export HOMEBREW_NO_AUTO_UPDATE=1
-
-[ -f "$HOME/.cargo/env" ] && \
-    source "$HOME/.cargo/env"
