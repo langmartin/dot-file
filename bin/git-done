@@ -4,6 +4,8 @@ set -ex
 
 branch=`git rev-parse --abbrev-ref HEAD`
 
-git checkout main
-git pull
-git branch -d "$branch"
+{
+    git checkout main
+    git pull
+    git branch -d "$branch"
+} || git checkout "$branch"
