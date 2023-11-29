@@ -31,3 +31,4 @@ fi
 export QPVERBOSE=true
 export QPOPT="-V"
 export HOMEBREW_NO_AUTO_UPDATE=1
+# export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions-local
