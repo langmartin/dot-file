@@ -194,11 +194,12 @@ packages: 'foo 'bar"
           (fill-region (region-beginning) (region-end))
         (fill-paragraph)))))
 
-(defun pml-mode ()
-  (interactive)
-  (markdown-mode)
-  (visual-line-mode t)
-  (setq fill-column 4096))
+(defun rc-pml ()
+  (define-derived-mode pml-mode markdown-mode "PML"
+    (visual-line-mode t)
+    (setq fill-column 4096))
+
+  (add-to-list 'auto-mode-alist '("\\.pml\\'" . pml-mode)))
 
 (defun rc-anybar ()
   (defun anybar-color (color &optional port)
@@ -1162,7 +1163,8 @@ exit 0
   (rc-rust)
   (rc-magit)
   (rc-git)
-  (rc-c))
+  (rc-c)
+  (rc-pml))
 
 (defun rc-init-site-lisp ()
   ;; (require 'rc-clojure)
