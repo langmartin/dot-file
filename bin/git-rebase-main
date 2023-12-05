@@ -2,12 +2,18 @@
 
 set -ex
 
-up=`git name-rev '@{u}'|cut -f2 -d' '`
+# This is an attempt to rebase -i to the root of the branch first, and
+# then to rebase on main to avoid repetatively fixing the same areas
+# as different commits are rebased. Git doesn't seem to really have
+# this concept explicitly maybe
+# https://stackoverflow.com/questions/4477765/how-to-get-information-where-branch-starts
+# so I guess I just have to keep doing it manually.
 
-if [ -n "$up" ]; then
-    [ `git rev-list --count "$up"..HEAD` -gt 0 ] && \
-        git rebase -i "$up"
-fi
+# up=`git name-rev '@{u}'|cut -f2 -d' '`
+# if [ -n "$up" ]; then
+#     [ `git rev-list --count "$up"..HEAD` -gt 0 ] && \
+#         git rebase -i "$up"
+# fi
 
 git fetch
-git rebase origin/main
+git rebase -i origin/main
