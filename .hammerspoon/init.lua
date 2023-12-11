@@ -387,12 +387,22 @@ local function muteMeet()
    end
 end
 
+local function sleepyBluetooth(eventType)
+   if eventType == hs.caffeinate.watcher.systemWillSleep then
+      hs.execute("/opt/homebrew/bin/blueutil --power 0 &", false)
+   else
+      hs.execute("/opt/homebrew/bin/blueutil --power 1 &", false)
+   end
+end
+
 -- ----------------------------------------------------------------------
 -- hooks
 
 hs.screen.watcher.new(function ()
       default()
 end):start()
+
+hs.caffeinate.watcher.new(sleepyBluetooth):start()
 
 -- hs.application.watcher.new(function (appName, event, app)
 --       if (appName == "zoom.us" and event == "lauched") then
