@@ -1,4 +1,4 @@
 #!/bin/sh
 set -ex
-git remote prune origin
-git branch -v|grep -v -e ' main ' -e ' master '|awk '{print $1}'|xargs git branch -d
+# maybe https://github.com/not-an-aardvark/git-delete-squashed ?
+git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs git branch -D
