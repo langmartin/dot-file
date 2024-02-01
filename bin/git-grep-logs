@@ -1,0 +1,9 @@
+#!/bin/sh
+set -ex
+pattern="$1"; shift
+path="$1"; shift
+
+git log -G "$pattern" -- "$path"
+
+# old way
+# git grep "$pattern" `git rev-list --all "$path"` "$path"
