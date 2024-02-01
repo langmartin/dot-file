@@ -62,9 +62,9 @@ Only meaningful for consecutive chops.")
 (defun chop-next (dir)
   "Make the next chop."
   (setq chop-size (/ chop-size 2))
-  (incf chop-current-line (* dir chop-size))
+  (setq chop-current-line (+ chop-current-line (* dir chop-size)))
   (move-to-window-line (min (chop-last-line-number)
-			    (round chop-current-line))))
+                            (round chop-current-line))))
 
 (defun chop-last-line-number ()
   "Window height, minus 1 to index from 0, minus 1 to account for modeline."
