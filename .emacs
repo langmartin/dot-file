@@ -265,6 +265,11 @@ packages: 'foo 'bar"
      (quote
       (and-let testing match wcar unless unless-let prop/for-all)))))
 
+(defun rc-lisp-mode ()
+  (load (expand-file-name "~/.quicklisp/slime-helper.el"))
+  ;; Replace "sbcl" with the path to your implementation
+  (setq inferior-lisp-program "sbcl"))
+
 (defun clojure-insert-lambda ()
   (interactive)
   (let ((before "(fn []")
@@ -1149,6 +1154,7 @@ exit 0
   (rc-paredit)
   (rc-shell-mode)
   (rc-clojure-mode)
+  (rc-lisp-mode)
   (rc-java-mode)
   (rc-javascript-mode)
   (rc-html-css-mode)
