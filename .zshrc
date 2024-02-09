@@ -13,6 +13,7 @@ alias ba='git branch -av'
 alias grunt='grunt --no-color'
 alias firefox="TZ=America/Los_Angeles open /Applications/Firefox.app"
 alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
+alias book='cd ~/langmartin/mkelixir/Book && JAVA_HOME=/opt/homebrew/opt/openjdk@11 rake book.pdf'
 
 ulimit -n 12288
 

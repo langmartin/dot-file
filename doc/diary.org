@@ -63,12 +63,32 @@
 
 * Recipes
 ** Grilling
-- turkey:
-  https://meatsmokinghq.com/smoked-turkey-on-a-weber-kettle-a-step-by-step-guide/
-- goose:
+
+*** Turkey
+
+- [[https://meatsmokinghq.com/smoked-turkey-on-a-weber-kettle-a-step-by-step-guide/][dead link now]]
+- 325, because it doesn't have the ribs connective stuff
+- briquets and wood chips, light 20 and one side
+- slow and sear w/ water
+- drip pan
+- butter under the skin
+  - thyme
+  - fresh rosemary
+  - black pepper
+  - citrus juice
+
+- 1/2 of 24lbs minus spine ~10.5
+- 2:35pm 41 360 fire 277 over the bird through the vent
+- 3:30pm 88 375 fire
+- 4:30pm 130 375 increase temp and tinfoil
+- 5:30pm 145 550
+- 5:50pm 150
+
+** Staples
+
 - https://www.allrecipes.com/recipe/81548/roasted-chickpeas/
 - https://www.tasteofhome.com/recipes/vegan-potato-leek-soup/
-** Staples
+
 *** Pickled Red Onions
 
 1/2 cup water
