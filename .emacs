@@ -446,7 +446,9 @@ packages: 'foo 'bar"
   (eval-after-load "lsp-mode"
     '(progn
        (lsp-add-ignored-directories
-        "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp"))))
+        "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp")))
+
+  (custom-set-variables '(lsp-elixir-suggest-specs nil)))
 
 (defun elixir-save-cleanup (&optional try-harder)
   (interactive "P")
