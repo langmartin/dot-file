@@ -1,0 +1,5 @@
+#!/bin/sh
+set -x
+first=`git log --pretty=%H "${main:-origin/main}"..HEAD | tail -n 1`
+parent=`git log --pretty=%H -n 2 "${first}" | tail -n 1`
+git rebase -i $parent
