@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 ;;;; Bootstrapping
+(require 'transient)
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
