@@ -268,6 +268,7 @@ packages: 'foo 'bar"
       (and-let testing match wcar unless unless-let prop/for-all)))))
 
 (defun rc-lisp-mode ()
+  (package-require 'slime)
   (load (expand-file-name "~/.quicklisp/slime-helper.el"))
   ;; Replace "sbcl" with the path to your implementation
   (setq inferior-lisp-program "sbcl"))
@@ -1159,6 +1160,7 @@ exit 0
   (rc-shell-mode)
   (rc-clojure-mode)
   (rc-lisp-mode)
+  (rc-ocaml-mode)
   (rc-java-mode)
   (rc-javascript-mode)
   (rc-html-css-mode)
