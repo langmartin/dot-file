@@ -1,0 +1,3 @@
+#!/bin/sh
+set -x
+pip3 install semgrep --user --break-system-packages
