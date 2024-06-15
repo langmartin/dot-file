@@ -94,6 +94,7 @@ packages: 'foo 'bar"
     (maybe-add-to-exec-path "~/.cargo/bin")
     (maybe-add-to-exec-path "~/go/bin")
     (maybe-add-to-exec-path "~/.asdf/shims")
+    (maybe-add-to-exec-path "~/.opam/default/bin")
     (maybe-add-to-exec-path "~/.local/bin")
     (maybe-add-to-exec-path "~/langmartin/dot-file/bin")
     (maybe-add-to-exec-path "~/bin")
@@ -103,6 +104,10 @@ packages: 'foo 'bar"
 ;;;; Osx
 
 (defun rc-osx ()
+  (package-require 'exec-path-from-shell)
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+
   (fringe-mode '(1 . 1))
 
   (setenv "EMACS" "/Applications/Emacs.app/Contents/MacOS/Emacs")
@@ -120,26 +125,7 @@ packages: 'foo 'bar"
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote super))
    '(ns-command-modifier (quote meta))
-   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info")))
-   '(exec-path
-     '("/Users/lang/bin"
-       "/Users/lang/langmartin/dot-file/bin"
-       "/Users/lang/.asdf/shims"
-       "/Users/lang/.orbstack/bin"
-       "/Users/lang/.cargo/bin"
-       "/Users/lang/.cabal/bin"
-       "/Users/lang/.local/bin"
-       "/opt/homebrew/opt/grep/libexec/gnubin"
-       "/opt/homebrew/opt/emacs-plus/bin"
-       "/opt/homebrew/opt/asdf/libexec/bin"
-       "/opt/homebrew/bin"
-       "/opt/homebrew/sbin"
-       "/opt/homebrew/opt/java/bin"
-       "/usr/local/bin"
-       "/usr/bin"
-       "/bin"
-       "/usr/sbin"
-       "/sbin")))
+   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info"))))
 
   (global-unset-key (kbd "s-h"))        ; ns-do-hide-emacs
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
@@ -227,8 +213,8 @@ packages: 'foo 'bar"
 (defun rc-ocaml-mode ()
   (package-require 'tuareg)
   (add-hook 'tuareg-mode-hook 'cleanup-untabify-save)
+  (add-hook 'tuareg-mode-hook 'merlin-mode t)
   (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp")
-  (add-to-list 'exec-path "/Users/lang/.opam/default/bin")
   (require 'ocp-indent))
 
 (defun rc-r-mode ()
@@ -436,8 +422,7 @@ packages: 'foo 'bar"
     :commands lsp
     :ensure t
     :diminish lsp-mode
-    :hook (elixir-mode . lsp-deferred)
-    :init (add-to-list 'exec-path "~/contrib/elixir-ls"))
+    :hook (elixir-mode . lsp-deferred))
 
   (eval-after-load "elixir-mode"
     '(progn
@@ -1149,7 +1134,7 @@ exit 0
   (rc-backups-and-autosave-directory "~/.emacs.d/backup")
   (rc-emacs-miscellany)
   (rc-anybar)
-  ;; (rc-disable-mouse)
+  (rc-disable-mouse)
   (rc-emacs-slides)
   (rc-show-paren-expression)
   ;; (rc-ido)
