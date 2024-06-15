@@ -630,7 +630,7 @@ packages: 'foo 'bar"
   (other-window 2)
   (switch-to-buffer "*scratch*")
   (other-window 2)
-  (find-file "~/langmartin/mkelixir/Book/BroadcastingMessages.pml")
+  (find-file "~/langmartin/mkelixir/Book/CountingThings.pml")
   (pml-mode))
 
 (defun rc-emacs-miscellany ()
