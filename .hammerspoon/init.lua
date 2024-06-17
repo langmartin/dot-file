@@ -205,7 +205,6 @@ local function hackOn(screen)
 	 {browser2, nil, screen, maximized, nil, nil},
 	 {"Preview", nil, screen, maximized, nil, nil},
    })
-   focusSome({browser, "Emacs"})
 end
 
 local function hackOnV(screen)
@@ -216,7 +215,6 @@ local function hackOnV(screen)
 	 {browser2, nil, screen, mid80, nil, nil},
 	 {"Preview", nil, screen, mid80, nil, nil},
    })
-   focusSome({browser, "Emacs"})
 end
 
 local function readOnH(screen)
@@ -227,7 +225,6 @@ local function readOnH(screen)
 	 {browser2, nil, screen, right60, nil, nil},
 	 {"Preview", nil, screen, right60, nil, nil},
    })
-   focusSome({browser, "Emacs"})
 end
 
 local function readOnV(screen)
@@ -238,7 +235,6 @@ local function readOnV(screen)
 	 {browser2, nil, screen, bottom60, nil, nil},
 	 {"Preview", nil, screen, bottom60, nil, nil},
    })
-   focusSome({browser, "Emacs"})
 end
 
 local function readOn()
@@ -334,6 +330,7 @@ local function defaultH()
       chatOn(laptop())
       hackOn(laptop())
    end
+   focusSome({browser, "Emacs"})
 end
 
 local function defaultV()
@@ -346,6 +343,7 @@ local function defaultV()
       chatOn(laptop())
       hackOn(laptop())
    end
+   focusSome({browser, "Emacs"})
 end
 
 local function default()
@@ -376,7 +374,7 @@ local function restartMiddleClick()
 end
 
 local function muteMeet()
-   app = hs.application.find("Google Chrome")
+   app = hs.application.find("Safari")
    if app ~= nil then
       hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
    end
