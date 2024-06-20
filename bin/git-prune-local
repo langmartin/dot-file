@@ -2,3 +2,4 @@
 set -ex
 # maybe https://github.com/not-an-aardvark/git-delete-squashed ?
 git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs git branch -D
+git branch --merged main | grep -v main | xargs git branch -d

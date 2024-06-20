@@ -212,10 +212,10 @@ packages: 'foo 'bar"
 
 (defun rc-ocaml-mode ()
   (package-require 'tuareg)
+  (package-require 'ocp-indent)
   (add-hook 'tuareg-mode-hook 'cleanup-untabify-save)
   (add-hook 'tuareg-mode-hook 'merlin-mode t)
-  (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp")
-  (require 'ocp-indent))
+  (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp"))
 
 (defun rc-r-mode ()
   (package-require 'ess))

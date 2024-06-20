@@ -1,0 +1,7 @@
+#!/bin/sh
+set -ex
+prefix="${GIT_MOVE_Z:-z/}
+
+for branch in "$@"; do
+    git branch -m "$branch" "${GIT_MOVE_Z}$branch"
+done
