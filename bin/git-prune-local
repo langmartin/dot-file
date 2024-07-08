@@ -1,5 +1,21 @@
 #!/bin/sh
-set -ex
-# maybe https://github.com/not-an-aardvark/git-delete-squashed ?
-git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs git branch -D
-git branch --merged main | grep -v main | xargs git branch -d
+function mine () {
+    set -ex
+    git remote prune origin
+    git branch -v | grep '\[gone\]' | awk '{print $1}' | xargs git branch -D
+    git branch --merged main | grep -v main | xargs git branch -d
+}
+
+# https://github.com/not-an-aardvark/git-delete-squashed
+# Change $TARGET_BRANCH to your targeted branch, e.g. change from `master` to `main` to delete branches squashed into `main`.
+function naaa () {
+    set -ex
+    TARGET_BRANCH=main
+    git checkout -q $TARGET_BRANCH
+    git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do
+        mergeBase=$(git merge-base $TARGET_BRANCH $branch)
+        [[ $(git cherry $TARGET_BRANCH $(git commit-tree $(git rev-parse $branch\^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch;
+    done
+}
+
+mine "$@"
