@@ -1,0 +1,248 @@
+* Cooking
+** Grilling
+
+*** Ham
+
+- Slow and sear w/ water, wood and mostly briquets, also some leftover lump
+- Paprika, cocoa, salt, cinnamon
+- Grill surface is meat thermometer just in the air near the meat 1-2"
+  off the grill. At 4:15, I started just closing it in the lid. I wait
+  for the temp to either stop moving or go back down
+
+| Time | Lid | Surface |   Avg | Meat | Adjustment |
+|------+-----+---------+-------+------+------------|
+| 3:45 | 295 |     162 | 228.5 |  82? | up         |
+| 4:00 | 320 |     205 | 262.5 |   50 | up         |
+| 4:15 | 330 |     244 |   287 |   48 | up         |
+| 4:30 | 330 |     262 |   296 |   64 |            |
+| 5:00 | 360 |     272 |   316 |   74 |            |
+| 5:30 | 370 |     273 | 321.5 |   93 |            |
+| 6:00 | 400 |     295 | 347.5 |  120 | down       |
+#+tblfm: $4=($2+$3)/2
+
+*** Turkey
+
+- [[https://meatsmokinghq.com/smoked-turkey-on-a-weber-kettle-a-step-by-step-guide/][link]]
+- 325, because it doesn't have the ribs connective stuff
+- briquets and wood chips, light 20 and one side
+- slow and sear w/ water
+- drip pan
+- butter under the skin
+  - thyme
+  - fresh rosemary
+  - black pepper
+  - citrus juice
+
+- 1/2 of 24lbs minus spine ~10.5
+- 2:35pm 41 360 fire 277 over the bird through the vent
+- 3:30pm 88 375 fire
+- 4:30pm 130 375 increase temp and tinfoil
+- 5:30pm 145 550
+- 5:50pm 150
+
+** Staples
+
+- https://www.allrecipes.com/recipe/81548/roasted-chickpeas/
+- https://www.tasteofhome.com/recipes/vegan-potato-leek-soup/
+
+*** Pickled Red Onions
+
+1/2 cup water
+1/2 cup rice vinegar
+1 red onion
+
+*** Black Bean Hummus
+
+1 clove garlic
+1 (15 ounce) can black beans; drain and reserve liquid
+2 tablespoons lemon juice
+1 1/2 tablespoons tahini
+3/4 teaspoon ground cumin
+1/2 teaspoon salt
+1/2 teaspoon cayenne pepper
+1/2 teaspoon paprika
+10 Greek olives
+
+*** Pizza Dough
+
+4 cups flour
+1 scant Tablespoon yeast (or 1 package)
+1 1/2 cups warm water
+1 teaspoon salt
+
+In mixing bowl, warm water, 1 cup flour, yeast...stir.....let sit for 15 minutes til it bubbles.
+Add 2 cups flour, 1 tsp. salt, beat with beater for about 10 minutes, til dough is eslastic.
+Change to dough hook, add last cup of flour, knead with dough hook til dough is elastic, and doesn't stick to sides of bowl.  Should be tacky but not sticky.
+If necessary, add up to another 1/2 cup flour.  About 15 minutes.
+
+Let dough rest with cover (or clean dish towel) for about 1 hour.
+Form into small individual dough balls, or roll out into large pizza pans.  Let rest again for about 15 to 30 minutes.
+Add toppings.
+Bake in hot oven, depending on thickness of crust.....thin crust about 450 degrees.  Thick crust about 350 degrees.
+
+*** Instapot Pulled Pork Coke & Soy Sauce
+
+dry rub salt paprika red pepper (pretty red or its too salty)
+onion
+1 1/2 coke
+1/2 soy
+ginger garlic
+1/2 vinegar (rice, used white)
+forgot sesame oil
+
+sautee, set aside
+deglase
+1h high pressure
+
+https://www.myrecipes.com/recipe/soy-cola-braised-pork-shoulder
+
+** Ambitions
+
+- [[https://thetakeout.com/watermelon-burgers-with-goat-cheese-and-gremolata-a-gr-1844471871][Grilled Watermelon]]
+- [[https://getpocket.com/explore/item/the-no-brainer-meals-chefs-make-when-they-re-too-tired-to-cook?utm_source=pocket-newtab][Cook collection]]
+- [[https://www.seriouseats.com/recipes/2013/05/sardines-in-spicy-tomato-sauce-from-the-adobo-road-cookbook-recipe.html][Sardines]]
+- https://giveitsomethyme.com/red-wine-braised-lentils-spinach/
+
+*** Mushrooms Bourguignon
+
+file:cooking/mushroom-bourguignon.png
+
+*** Chicken Mole
+
+1/2 tablespoon extra-virgin olive oil
+1 small yellow onion - chopped
+2 cloves garlic - roughly chopped
+1 can fire-roasted diced tomatoes - (14.5 ounces)
+2 chipotle peppers in adobo sauce - NOT two cans, just 2 peppers
+1 tablespoon adobo sauce from the can of chipotle peppers
+1/4 cup toasted pepitas - or toasted sliced almonds
+1/4 cup raisins
+2 tablespoons unsweetened cocoa powder
+1 teaspoon kosher salt
+1 teaspoon ground cumin
+1/2 teaspoon ground cinnamon
+2 pounds boneless skinless chicken breasts - or thighs
+
+8 minutes
+
+*** Peanut Butter Curry
+
+1 onion – red or brown, either works
+2-3 tbsp curry paste – adjust depending on how spicy you want it. See notes below for curry paste suggestions
+400 mL coconut milk – one standard can of coconut milk
+200 grams tinned chopped tomatoes – half a standard tin of tomatoes
+4 tbsp peanut butter
+400 grams 4 bean mix or other tinned beans – one standard tin of beans
+3-4 cups mixed vegetables – I used frozen vegetables but you can use fresh
+300 grams extra firm tofu or other protein of choice e.g. chicken, prawns, tempeh
+3 tbsp soy sauce or tamari – you may need more or less than this, to adjust taste. I used gluten free soy sauce
+3 tbsp coconut sugar, brown sugar or white sugar – you may need more or less than this, to adjust taste
+extra virgin olive oil or other oil, for cooking
+
+*** Butternut Squash Hummus-like
+
+http://www.twoofakindcooks.com/butternut-squash-and-tahini-dip/
+
+1 small butternut squash (about 1 pound), halved lengthwise and seeds removed
+3 garlic cloves, unpeeled
+3 tablespoons olive oil, divided, plus more for finish
+1 teaspoon ground cumin
+3 shallots, minced
+¼ teaspoon kosher salt
+3 tablespoons tahini
+1 teaspoon Aleppo pepper, plus more for finish
+toasted sesame seeds (optional, for garnish)
+
+Preheat oven to 350 degrees. Line a baking sheet with foil. Brush cut
+sides of butternut squash and outside of garlic cloves with 1
+tablespoon olive oil. Arrange squash, cut side down, and garlic cloves
+on the baking sheet and bake for 40 minutes or until fork tender.
+Remove from the oven. When the squash is cool enough to handle, scoop
+out flesh and transfer to a medium bowl.
+
+While the squash and garlic are roasting, heat remaining 2 tablespoons
+olive oil in a small fry pan over medium heat. Add cumin and cook,
+stirring often, until fragrant, about 1 minute. Add shallots and salt
+and cook, stirring occasionally, until translucent, about 6 minutes.
+Let cool slightly and then transfer to a food processor.
+
+Squeeze out roasted garlic and add to the food processor. Add 1⅓ cups
+prepared squash, tahini and Aleppo pepper and process until smooth.
+Add 1-2 tablespoons of water to thin out the dip, if desired.
+
+** Good
+*** Thai Peanut Sauce
+https://www.yummly.com/recipe/Easy-Thai-Peanut-Sauce-9619818?prm-v1
+
+1/4 cup creamy peanut butter (use ½ cup for more peanut flavor)
+2 Tbsp. Thai red curry paste (or use your favorite chili-garlic paste)
+2 Tbsp. soy sauce
+2 Tbsp. chili garlic sauce
+2 Tbsp. roasted peanuts (crumbled)
+1 Tbsp. rice wine vinegar
+1 Tbsp. sesame oil
+1 Tbsp. honey
+1 Tbsp. water (or more as needed for thinning)
+1 tsp. lime juice
+1 tsp. cayenne powder (or use paprika for a milder heat)
+1 tsp. garlic powder (or use 1 clove garlic, finely minced or grated)
+1 tsp. ginger powder
+1 tsp. fresh grated ginger
+
+Mix it.
+
+*** tahini dressing
+
+- tahini
+- water
+- lime
+- ginger
+- garlic
+- sesame oil
+
+*** Smoked Salmon Tomato
+
+https://www.washingtonpost.com/recipes/tomato-and-smoked-salmon-pasta/12883/
+
+8 ounces dried pasta, such as perciatelli
+1 tablespoon olive oil, preferably a fruity variety
+1/2 Vidalia onion, chopped
+2 cloves garlic, put through a garlic press or very finely chopped and pressed with the side of a knife blade
+2 medium to large ripe tomatoes (12 to 16 ounces), coarsely chopped, with their juices
+1 ounce cream cheese
+8 ounces smoked salmon, coarsely chopped
+Freshly ground black pepper
+1/4 cup torn or chopped basil leaves, packed
+Parmesan cheese, for garnish
+
+First time served over baby potatoes instead of pasta.
+
+*** Cabbage Pancakes
+
+https://www.allrecipes.com/recipe/284179/cabbage-pancakes/
+
+1 bunch scallions, some for garnish
+4 large eggs
+⅓ cup all-purpose flour
+2 tablespoons water
+1 tablespoon soy sauce
+4 tablespoons sesame oil
+1 ½ teaspoons salt
+½ teaspoon pepper
+1 pound finely shredded cabbage
+1 large carrot, grated
+
+Mix eggs, flour, sauces first then add the veggies. Cook them in a pan
+
+** Experimental
+*** Carrot Cake
+
+- 190g carrots
+- 100g sugar
+- 40g pecans
+- 40g apricots
+- 5g vanilla
+- 1g salt
+- 113g butter
+- nutmeg
+- cinnamon

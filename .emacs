@@ -184,9 +184,8 @@ packages: 'foo 'bar"
 
 (defun rc-pml ()
   (define-derived-mode pml-mode markdown-mode "PML"
-    (visual-line-mode t)
-    (setq fill-column 4096))
-
+    (toggle-word-wrap 1)
+    (auto-fill-mode 1))
   (add-to-list 'auto-mode-alist '("\\.pml\\'" . pml-mode)))
 
 (defun rc-anybar ()
@@ -1124,6 +1123,23 @@ exit 0
     (apply 'magit-run-git-async
            (split-string
             (read-from-minibuffer "git " "push -v origin")))))
+
+(defun rc-quelpa ()
+  (package-require 'quelpa)
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git"))
+  (require 'quelpa-use-package))
+
+(defun rc-copilot ()
+  (rc-quelpa)
+  (use-package copilot
+    :quelpa (copilot :fetcher github
+                     :repo "copilot-emacs/copilot.el"
+                     :branch "main"
+                     :files ("*.el")))
+  )
 
 
 ;;;; Start everything up
