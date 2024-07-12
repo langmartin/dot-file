@@ -1124,22 +1124,14 @@ exit 0
            (split-string
             (read-from-minibuffer "git " "push -v origin")))))
 
-(defun rc-quelpa ()
+(defun install-copilot ()
   (package-require 'quelpa)
   (quelpa
-   '(quelpa-use-package
-     :fetcher git
-     :url "https://github.com/quelpa/quelpa-use-package.git"))
-  (require 'quelpa-use-package))
-
-(defun rc-copilot ()
-  (rc-quelpa)
-  (use-package copilot
-    :quelpa (copilot :fetcher github
-                     :repo "copilot-emacs/copilot.el"
-                     :branch "main"
-                     :files ("*.el")))
-  )
+   '(copilot
+     :fetcher github
+     :repo "copilot-emacs/copilot.el"
+     :branch "main"
+     :files ("*.el"))))
 
 
 ;;;; Start everything up
