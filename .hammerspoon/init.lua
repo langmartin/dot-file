@@ -280,9 +280,9 @@ end
 
 local function chatH()
    if (twoScreens()) then
-      calOn(external())
       hackOn(external())
       chatTileOn(external())
+      calOn(external())
    else
       chatTileOn(laptop())
    end
@@ -310,10 +310,10 @@ end
 
 local function build()
    if (hs.screen.find(external())) then
-      calOn(external())
       chatOn(external())
       slacktermOn(laptop())
       buildOn(external())
+      calOn(external())
    else
       buildOn(laptop())
    end
@@ -322,10 +322,10 @@ end
 local function defaultH()
    -- hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
-      calOn(laptop())
       termOn(external())
       chatOn(external())
       hackOn(external())
+      calOn(laptop())
    else
       chatOn(laptop())
       hackOn(laptop())
@@ -335,13 +335,13 @@ end
 
 local function defaultV()
    if (twoScreens()) then
-      calOn(laptop())
       chatV(external())
       termOnV(external())
       hackOnV(external())
+      calOn(laptop())
    else
-      chatOn(laptop())
       hackOn(laptop())
+      chatOn(laptop())
    end
    focusSome({browser, "Emacs"})
 end
