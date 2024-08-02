@@ -14,7 +14,9 @@ expire
 3m
 save
 key 1
+key 2
 expire
+y
 3m
 save
 EOF

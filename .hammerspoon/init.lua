@@ -374,7 +374,7 @@ local function restartMiddleClick()
 end
 
 local function muteMeet()
-   app = hs.application.find("Safari")
+   app = hs.application.find("Google Meet")
    if app ~= nil then
       hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
    end
