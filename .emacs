@@ -17,9 +17,9 @@
         ;; (go-mode . "melpa-stable")
         ;; (lsp-mode . "melpa-stable")
         (company . "melpa-stable")
-        (magit . "melpa-stable")
-        (magit-popup . "melpa-stable")
-        (magit-section . "melpa-stable")
+        ;; (magit . "melpa-stable")
+        ;; (magit-popup . "melpa-stable")
+        ;; (magit-section . "melpa-stable")
         (markdown-mode . "melpa-stable")
         (tide . "melpa-stable")))
 
