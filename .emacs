@@ -212,8 +212,12 @@ packages: 'foo 'bar"
 (defun rc-ocaml-mode ()
   (package-require 'tuareg)
   (package-require 'ocp-indent)
+  (package-require 'utop)
   (add-hook 'tuareg-mode-hook 'cleanup-untabify-save)
   (add-hook 'tuareg-mode-hook 'merlin-mode t)
+  (setq utop-command "opam exec -- dune utop . -- -emacs")
+  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+  (add-hook 'tuareg-mode-hook 'utop-minor-mode)
   (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp"))
 
 (defun rc-r-mode ()
