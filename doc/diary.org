@@ -12,6 +12,7 @@
 - [[https://github.com/hundredrabbits/Orca][Orca]] synthesizer programming language
 - [[https://penrose.ink/siggraph20.html][diagrams from math notation]]
 - [[https://www.inkandswitch.com/peritext/][peritext rich text CRDT]] ink and switch
+- https://www.kroneckerwallis.com/product/euclids-elements-completing-oliver-byrnes-work/
 
 ** Talks
 
