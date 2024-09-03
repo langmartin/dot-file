@@ -20,13 +20,12 @@ brew install \
      pandoc \
      terminal-notifier \
      tmux \
-     unison \
-     youtube-dl
+     unison
 
 brew install --cask hammerspoon
 
 # clipboard manager
-brew install maccy
+# brew install maccy
 brew install middleclick
 
 # tectonic is a lazy loading xetex wrapper
@@ -60,7 +59,21 @@ brew install \
      guile \
      joker \
      jsonlint \
-     leiningen
+     leiningen \
+     opam \
+     sbcl \
+     wxwidgets
+
+brew install \
+     alfred \
+     font-dejavu \
+     hammerspoon \
+     monitorcontrol
+
+defaults write com.rouge41.middleClick fingers 4
+open /Applications/MiddleClick.app
+open /Applications/Hammerspoon.app
+open "/Applications/Alfred 5.app"
 
 # build/update the man index
 brew-docs
