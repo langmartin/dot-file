@@ -421,6 +421,8 @@ packages: 'foo 'bar"
           dirs))
 
 (defun rc-elixir ()
+  (package-install 'lsp-mode)
+  (package-install 'elixir-mode)
   (use-package lsp-mode
     :commands lsp
     :ensure t
@@ -840,6 +842,9 @@ packages: 'foo 'bar"
    '(ido-enable-flex-matching t)
    '(ido-everywhere nil)
    '(ido-mode nil))
+  (package-install 'vertico)
+  (package-install 'savehist)
+  (package-install 'orderless)
   (use-package vertico :init (vertico-mode))
   (use-package savehist :init (savehist-mode))
   (require 'vertico-directory)
