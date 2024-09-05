@@ -1,13 +1,9 @@
+local config = require("local")
 local hyper = {"ctrl", "alt", "cmd"}
 
 hs.loadSpoon("MiroWindowsManager")
 
 hs.window.animationDuration = 0
-
-local browser = "Firefox"
-local browser2 = "Safari"
-local calendar = "Google Chrome"
-local calendar = "Calendar"
 
 local laptop_name = 'built'
 local external_name = 'lg'
@@ -174,7 +170,7 @@ end
 function calOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
-	 {calendar, nil, screen, maximized, nil, nil},
+	 {config.calendar, nil, screen, maximized, nil, nil},
    })
 end
 
@@ -201,8 +197,8 @@ local function hackOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, maximized, nil, nil},
-	 {browser, nil, screen, maximized, nil, nil},
-	 {browser2, nil, screen, maximized, nil, nil},
+	 {config.browser, nil, screen, maximized, nil, nil},
+	 {config.browser2, nil, screen, maximized, nil, nil},
 	 {"Preview", nil, screen, maximized, nil, nil},
    })
 end
@@ -211,8 +207,8 @@ local function hackOnV(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, mid80, nil, nil},
-	 {browser, nil, screen, mid80, nil, nil},
-	 {browser2, nil, screen, mid80, nil, nil},
+	 {config.browser, nil, screen, mid80, nil, nil},
+	 {config.browser2, nil, screen, mid80, nil, nil},
 	 {"Preview", nil, screen, mid80, nil, nil},
    })
 end
@@ -221,8 +217,8 @@ local function readOnH(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, left40, nil, nil},
-	 {browser, nil, screen, right60, nil, nil},
-	 {browser2, nil, screen, right60, nil, nil},
+	 {config.browser, nil, screen, right60, nil, nil},
+	 {config.browser2, nil, screen, right60, nil, nil},
 	 {"Preview", nil, screen, right60, nil, nil},
    })
 end
@@ -231,8 +227,8 @@ local function readOnV(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, top40, nil, nil},
-	 {browser, nil, screen, bottom60, nil, nil},
-	 {browser2, nil, screen, bottom60, nil, nil},
+	 {config.browser, nil, screen, bottom60, nil, nil},
+	 {config.browser2, nil, screen, bottom60, nil, nil},
 	 {"Preview", nil, screen, bottom60, nil, nil},
    })
 end
@@ -249,11 +245,11 @@ local function buildOn(screen)
    screen = screen or hs.screen.mainScreen()
    hs.layout.apply({
 	 {"Emacs", nil, screen, bottom20, nil, nil},
-	 {browser, nil, screen, top80, nil, nil},
-	 {browser2, nil, screen, top80, nil, nil},
+	 {config.browser, nil, screen, top80, nil, nil},
+	 {config.browser2, nil, screen, top80, nil, nil},
 	 {"Preview", nil, screen, top80, nil, nil},
    })
-   focusSome({browser, "Emacs"})
+   focusSome({config.browser, "Emacs"})
 end
 
 local function termOn(screen)
@@ -330,7 +326,7 @@ local function defaultH()
       chatOn(laptop())
       hackOn(laptop())
    end
-   focusSome({browser, "Emacs"})
+   focusSome({config.browser, "Emacs"})
 end
 
 local function defaultV()
@@ -343,7 +339,7 @@ local function defaultV()
       hackOn(laptop())
       chatOn(laptop())
    end
-   focusSome({browser, "Emacs"})
+   focusSome({config.browser, "Emacs"})
 end
 
 local function default()
