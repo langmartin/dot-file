@@ -6,14 +6,13 @@ hs.loadSpoon("MiroWindowsManager")
 hs.window.animationDuration = 0
 
 local laptop_name = 'built'
-local external_name = 'lg'
 
 local function laptop()
    return hs.screen.find(laptop_name)
 end
 
 local function external()
-   return hs.screen.find(external_name)
+   return hs.screen.find(config.external)
 end
 
 local function twoScreens()
@@ -370,7 +369,7 @@ local function restartMiddleClick()
 end
 
 local function muteMeet()
-   app = hs.application.find("Google Meet")
+   app = hs.application.find(config.meet)
    if app ~= nil then
       hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
    end
