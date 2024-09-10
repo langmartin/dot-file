@@ -9,6 +9,8 @@ for f in *.info; do
     install-info "$f" dir
 done
 
+sudo mkdir -p /usr/local/share/man
+sudo chown $USER /usr/local/share/man
 cd /usr/local/share/man
 
 for p in /Library/Apple/usr/share/man \
