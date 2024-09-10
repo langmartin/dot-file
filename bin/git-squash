@@ -1,5 +1,10 @@
 #!/bin/sh
-set -x
-first=`git log --pretty=%H "${main:-origin/main}"..HEAD | tail -n 1`
+branch=`git rev-parse --abbrev-ref HEAD`
+main=`git config branch."$branch".feature || echo main`
+origin=`git config branch."$branch".remote || echo origin`
+
+set -ex
+
+first=`git log --pretty=%H "${origin}/${main}"..HEAD | tail -n 1`
 parent=`git log --pretty=%H -n 2 "${first}" | tail -n 1`
 git rebase -i $parent
