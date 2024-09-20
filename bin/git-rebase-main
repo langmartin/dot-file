@@ -1,5 +1,9 @@
 #!/bin/sh
 
+branch=`git rev-parse --abbrev-ref HEAD`
+main=`git config branch."$branch".feature || echo main`
+origin=`git config branch."$branch".remote || echo origin`
+
 set -ex
 
 # This is an attempt to rebase -i to the root of the branch first, and
@@ -16,4 +20,4 @@ set -ex
 # fi
 
 git fetch
-git rebase -i origin/main
+git rebase -i "$origin/$main"
