@@ -443,6 +443,10 @@ packages: 'foo 'bar"
 
   (custom-set-variables '(lsp-elixir-suggest-specs nil)))
 
+(defun elixir-genserver-boilerplate ()
+  (interactive)
+  (insert-file-contents "~/langmartin/dot-file/site-lisp/genserver_boilerplate.ex"))
+
 (defun elixir-save-cleanup (&optional try-harder)
   (interactive "P")
   (if try-harder
