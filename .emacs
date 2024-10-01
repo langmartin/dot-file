@@ -441,7 +441,9 @@ packages: 'foo 'bar"
        (lsp-add-ignored-directories
         "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp")))
 
-  (custom-set-variables '(lsp-elixir-suggest-specs nil)))
+  (custom-set-variables
+   '(lsp-elixir-suggest-specs nil)
+   '(flycheck-check-syntax-automatically '(save mode-enabled))))
 
 (defun elixir-genserver-boilerplate ()
   (interactive)
