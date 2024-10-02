@@ -25,6 +25,8 @@ export PATH=\
 /usr/sbin:\
 /sbin
 
+eval "$(/usr/libexec/path_helper)"
+
 if [ -z "$SSH_CLIENT" ]; then
     EDITOR="emacsclient"
 fi
