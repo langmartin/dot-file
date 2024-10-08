@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# kill_from="$1"; shift
+# kill_to="$1"; shift
+# editor="$1"; shift
+
+set -ex
+
+file="$1"
+
+for hash in `git log --pretty=%h "$kill_from" "$kill_to"`; do
+    sed -E -i '' "s/pick $hash/drop $hash/" "$file"
+done
+
+exec "$editor" "$@"

@@ -1,0 +1,13 @@
+#!/bin/sh
+set -ex
+branch=`git rev-parse --abbrev-ref HEAD`
+feature=`git config branch."$branch".feature`
+origin=`git config branch."$branch".remote || echo origin`
+
+export kill_from="$origin/main"
+export kill_to="$feature"
+export editor="${GIT_EDITOR:-$EDITOR}"
+export GIT_EDITOR=.git-rebase-editor
+
+git config --unset branch."$branch".feature
+git-rebase-main
