@@ -218,7 +218,12 @@ packages: 'foo 'bar"
   (setq utop-command "opam exec -- dune utop . -- -emacs")
   (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
   (add-hook 'tuareg-mode-hook 'utop-minor-mode)
+  (define-key utop-minor-mode-map (kbd "C-c C-k") 'utop-reload)
   (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp"))
+
+(defun utop-reload ()
+  (interactive)
+  (utop-eval-string "Topfind.reset()"))
 
 (defun rc-r-mode ()
   (package-require 'ess))
@@ -234,7 +239,7 @@ packages: 'foo 'bar"
   (add-hook 'clojure-mode-hook 'flycheck-mode)
 
   (define-key clojure-mode-map (kbd "C-x `") 'cider-jump-to-compilation-error)
-  (define-key clojure-mode-map (kbd "s-l") 'clojure-insert-lambda)
+  (define-key clojure-mode-map (kbd "s-;") 'clojure-insert-lambda)
   (define-key clojure-mode-map (kbd "s-t") 'clojure-insert-trace)
   (define-key clojure-mode-map (kbd "s-c") 'clojure-insert-clear-ns)
 
@@ -429,12 +434,17 @@ packages: 'foo 'bar"
     :diminish lsp-mode
     :hook (elixir-mode . lsp-deferred))
 
+  (defun elixir-insert-lambda ()
+    (interactive)
+    (insert "fn x -> end"))
+
   (eval-after-load "elixir-mode"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
        (define-key elixir-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
-       (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)))
+       (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)
+       (define-key elixir-mode-map (kbd "s-;") 'elixir-insert-lambda)))
 
   (eval-after-load "lsp-mode"
     '(progn
