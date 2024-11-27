@@ -283,6 +283,12 @@ packages: 'foo 'bar"
   (interactive)
   (insert "(doseq [[x _] (ns-map *ns*)] (ns-unmap *ns* x))"))
 
+(defun safer-elisp-mode ()
+  ;; See https://eshelyaron.com/posts/2024-11-27-emacs-aritrary-code-execution-and-how-to-avoid-it.html
+  (interactive)
+  (flycheck-mode 0)
+  (flymake-mode 0))
+
 (defun rc-paredit ()
   (package-require 'paredit)
 
@@ -301,6 +307,7 @@ packages: 'foo 'bar"
   (add-hook 'lisp-mode-hook 'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
   (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
+  (add-hook 'emacs-lisp-mode-hook 'safer-elisp-mode)
   (add-hook 'clojure-mode-hook 'paredit-mode)
   (add-hook 'scheme-mode-hook 'paredit-mode))
 
@@ -1215,7 +1222,8 @@ exit 0
   (global-set-key (kbd "C-x C-/") 'goto-last-change)
 
   (package-require 'polymode)
-  (require 'tla-pcal-mode))
+  (require 'tla-pcal-mode)
+  (require 'alloy-mode))
 
 ;;;; .emacs looks something like this:
 ;; (load-file "~/langmartin/dot-file/.emacs")
