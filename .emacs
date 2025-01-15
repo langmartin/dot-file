@@ -218,8 +218,9 @@ packages: 'foo 'bar"
   (setq utop-command "opam exec -- dune utop . -- -emacs")
   (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
   (add-hook 'tuareg-mode-hook 'utop-minor-mode)
-  (define-key utop-minor-mode-map (kbd "C-c C-k") 'utop-reload)
-  (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp"))
+  ;; (define-key utop-minor-mode-map (kbd "C-c C-k") 'utop-reload)
+  ;; (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp")
+  (setenv "OCAMLRUNPARAM" "b"))
 
 (defun utop-reload ()
   (interactive)
