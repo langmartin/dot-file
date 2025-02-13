@@ -369,14 +369,29 @@ local function restartMiddleClick()
 end
 
 local function muteMeet()
+   -- This is keyStroke's default delay
+   delay = 200000
+
    app = hs.application.find(config.meet)
    if app ~= nil then
-      hs.eventtap.keyStroke({"cmd"}, "d", 10, app)
+      hs.eventtap.keyStroke({"cmd"}, "d", delay, app)
    end
 
    app = hs.application.find("zoom.us")
    if app ~= nil then
-      hs.eventtap.keyStroke({"cmd", "shift"}, "a", 10, app)
+      hs.eventtap.keyStroke({"cmd", "shift"}, "a", delay, app)
+   end
+
+   app = hs.application.find("com.microsoft.teams2")
+   if app ~= nil then
+      current = hs.window.focusedWindow()
+
+      for k, w in ipairs(app:visibleWindows()) do
+         w:focus()
+         hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
+      end
+
+      current:focus()
    end
 end
 
