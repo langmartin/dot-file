@@ -1104,16 +1104,9 @@ the working directory"
           (when (not (file-exists-p "pre-push"))
             (append-to-file
              "#!/bin/sh
-while read local_ref local_sha remote_ref remote_sha
-do
-    if [ \"$remote_ref\" = \"refs/heads/master\" ]; then
-        echo \"pre-push hook: Can not push to remote master branch.\"
-        exit 1
-    fi
-done
-exit 0
+exec ~/bin/git-hook-pre-push
 "
-             nil
+             'end-position-ignored
              "pre-push")
             (set-file-modes "pre-push" #o755)))
       (cd ppwd))))
@@ -1206,7 +1199,7 @@ exit 0
 
 (defun rc-init-site-lisp ()
   ;; (require 'rc-clojure)
-  (require 'rc-mu4e)
+  ;; (require 'rc-mu4e)
   (require 'rc-erc)
   (require 'rc-org-mode)
   (require 'tiling)
