@@ -17,7 +17,7 @@ for p in /Library/Apple/usr/share/man \
              /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/share/man \
              /Library/Developer/CommandLineTools/usr/share/man
 do
-    rsync -a "$p/" ./
+    [ -d "$p" ] && rsync -a --delete "$p/" ./
 done
 
 gmandb -c

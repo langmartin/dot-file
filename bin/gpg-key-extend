@@ -8,6 +8,7 @@ fi
 
 set -ex
 
+# gpg --edit-key interactively
 cat <<EOF | gpg --batch --command-fd 0 --status-fd 2 --edit-key "$1"
 key 0
 expire
