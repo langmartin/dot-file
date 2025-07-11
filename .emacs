@@ -4,24 +4,24 @@
 (require 'package)
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;; FIXME https://glyph.twistedmatrix.com/2015/11/editor-malware.html
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (remove-from-list 'package-archives "melpa-stable")
 ;; (remove-from-list 'package-archives "gnu")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (setq package-pinned-packages
-      '((clj-refactor . "melpa-stable")
-        (cider . "melpa-stable")
-        (clojure-mode . "melpa-stable")
-        (elixir-mode . "melpa-stable")
-        ;; (go-mode . "melpa-stable")
-        ;; (lsp-mode . "melpa-stable")
-        (company . "melpa-stable")
-        ;; (magit . "melpa-stable")
-        ;; (magit-popup . "melpa-stable")
-        ;; (magit-section . "melpa-stable")
-        (markdown-mode . "melpa-stable")
-        (tide . "melpa-stable")))
+      '((clj-refactor . "gnu")
+        (cider . "gnu")
+        (clojure-mode . "gnu")
+        (elixir-mode . "gnu")
+        ;; (go-mode . "gnu")
+        ;; (lsp-mode . "gnu")
+        (company . "gnu")
+        ;; (magit . "gnu")
+        ;; (magit-popup . "gnu")
+        ;; (magit-section . "gnu")
+        (markdown-mode . "gnu")
+        (tide . "gnu")))
 
 (defun remove-from-list (list-var name)
   (set list-var
@@ -167,7 +167,7 @@ packages: 'foo 'bar"
   (interactive "p")
   (let* ((n (->> (selected-frame) frame-parameters (assoc 'alpha) cdr))
          (m (if (= 1 opacity)
-                (if (or (not n) (= 100 n)) 95 100)
+                (if (or (not n) (= 100 n)) 80 100)
               opacity)))
     (set-frame-parameter (selected-frame) 'alpha m)))
 
@@ -544,6 +544,9 @@ packages: 'foo 'bar"
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024))
+
   (eval-after-load "lsp-mode"
     '(progn
        (define-key lsp-mode-map (kbd "C-M-,") 'lsp-find-references))))
@@ -674,7 +677,7 @@ packages: 'foo 'bar"
   (blink-cursor-mode -1)
 
   (setq inhibit-trace nil)              ; trace needs this in emacs 24
-  (global-auto-revert-mode 1)
+  (global-auto-revert-mode nil)
   (require 'uniquify nil t)
   (package-require 'mode-line-bell)
   (mode-line-bell-mode)
