@@ -435,7 +435,7 @@ spoon.MiroWindowsManager:bindHotkeys({
 })
 
 hs.hotkey.bind(hyper, "d", default)
-hs.hotkey.bind(hyper, "c", chat)
+-- hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "h", hackOn)
 hs.hotkey.bind(hyper, "r", readOn)
 hs.hotkey.bind(hyper, "b", build)
