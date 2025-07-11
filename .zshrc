@@ -5,7 +5,7 @@ HISTSIZE=700000
 SAVEHIST=500000
 HISTFILE=~/.zhistory
 
-function h () {history -f -20000 | grep "$@" | tail -n 5;}
+function h () {grep "$@" ~/.zhistory | tail;}
 alias ll='ls -l'
 alias s='git status'
 alias b='git branch -v'
@@ -14,6 +14,7 @@ alias grunt='grunt --no-color'
 alias firefox="TZ=America/Los_Angeles open /Applications/Firefox.app"
 alias slack="TZ=America/Los_Angeles open /Applications/Slack.app"
 alias book='(cd ~/langmartin/mkelixir/Book && JAVA_HOME=/opt/homebrew/opt/openjdk@11 rake book.pdf && open book.pdf)'
+alias dotenv='set -a; . ./.env; set +a'
 
 ulimit -n 12288
 
@@ -21,6 +22,8 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY_TIME
 setopt HIST_REDUCE_BLANKS
+# command with a leading space won't be recorded in the history
+setopt HIST_IGNORE_SPACE
 # [ "$TERM" = dumb ] && unsetopt zle
 
 dockerize () {
