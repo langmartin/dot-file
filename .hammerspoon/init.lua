@@ -408,6 +408,12 @@ local function sleepyBluetooth(eventType)
    end
 end
 
+local function launch(appname)
+   return function ()
+      hs.application.launchOrFocus(appname)
+   end
+end
+
 -- ----------------------------------------------------------------------
 -- hooks
 
@@ -434,19 +440,33 @@ spoon.MiroWindowsManager:bindHotkeys({
       fullscreen = {hyper, "f"}
 })
 
-hs.hotkey.bind(hyper, "d", default)
+local emacs = "/opt/homebrew/Cellar/emacs-plus@30/30.1/Emacs.app"
+
+
 -- hs.hotkey.bind(hyper, "c", chat)
-hs.hotkey.bind(hyper, "h", hackOn)
-hs.hotkey.bind(hyper, "r", readOn)
-hs.hotkey.bind(hyper, "b", build)
-hs.hotkey.bind(hyper, "z", maxSide)
+hs.hotkey.bind(hyper, "d", launch("Dash"))
+hs.hotkey.bind(hyper, "f", launch("Finder"))
+hs.hotkey.bind(hyper, "s", launch("Slack"))
+hs.hotkey.bind(hyper, "t", launch("Microsoft Teams"))
+hs.hotkey.bind(hyper, "m", launch("Messages"))
+
+hs.hotkey.bind(hyper, "k", launch(config.browser))
+hs.hotkey.bind(hyper, "l", launch(emacs))
+hs.hotkey.bind(hyper, "j", launch(emacs))
+
+hs.hotkey.bind(hyper, "=", default)
+hs.hotkey.bind(hyper, "-", readOn)
+hs.hotkey.bind(hyper, "0", hackOn)
+hs.hotkey.bind(hyper, "9", build)
+
+-- hs.hotkey.bind(hyper, "z", maxSide)
 hs.hotkey.bind(hyper, "tab", throw)
 
 -- hs.hotkey.bind(hyper, "1", twoDimmer)
 -- hs.hotkey.bind(hyper, "2", twoBrighter)
-hs.hotkey.bind(hyper, "-", twoQuieter)
-hs.hotkey.bind(hyper, "=", twoLouder)
-hs.hotkey.bind(hyper, "0", twoDefaultVolume)
+-- hs.hotkey.bind(hyper, "-", twoQuieter)
+-- hs.hotkey.bind(hyper, "=", twoLouder)
+-- hs.hotkey.bind(hyper, "0", twoDefaultVolume)
 hs.hotkey.bind(hyper, ".", hs.reload)
-hs.hotkey.bind(hyper, ",", restartMiddleClick)
-hs.hotkey.bind(hyper, "m", muteMeet)
+-- hs.hotkey.bind(hyper, ",", restartMiddleClick)
+hs.hotkey.bind(hyper, ",", muteMeet)
