@@ -40,6 +40,29 @@
 - 5:30pm 145 550
 - 5:50pm 150
 
+**** 2024
+
+- Brine salt + rosemary + coriander (a bit)
+- 16.5 lbs
+
+| Time | Lid | Surface |   Avg | Meat | Adjustment |
+|------+-----+---------+-------+------+------------|
+| 2:30 | 405 |     240 | 322.5 |   30 | up         |
+| 3:00 | 415 |     230 |       |   90 | up         |
+| 3:30 | 420 |         |       |  135 | down       |
+| 4:00 | 360 |         |       |  145 | down       |
+| 4:15 |     |         |       |      | swap       |
+#+tblfm: $4=($2+$3)/2
+
+| Time | Lid | Surface | Avg | Meat | Adjustment |
+|------+-----+---------+-----+------+------------|
+| 2:30 | 350 |     230 | 290 |   40 | up         |
+| 3:00 | 320 |     235 |     |   60 | up         |
+| 3:30 | 270 |         |     |  125 |            |
+| 4:00 |     |         |     |  125 | up         |
+| 4:15 |     |         |     |      | swap       |
+#+tblfm: $4=($2+$3)/2
+
 ** Staples
 
 - https://www.allrecipes.com/recipe/81548/roasted-chickpeas/
@@ -233,6 +256,30 @@ https://www.allrecipes.com/recipe/284179/cabbage-pancakes/
 1 large carrot, grated
 
 Mix eggs, flour, sauces first then add the veggies. Cook them in a pan
+
+*** Pasta e Cavolfiore
+
+https://www.beryl.nyc/index.php/2024/11/12/pasta-e-cavolfiore/
+
+300 g shells pasta or another short pasta shape
+1½ cups water or just enough to cook the pasta
+1 medium cauliflower head roughly chopped into small/medium pieces
+1 clove garlic minced
+3 Tbsp olive oil
+¼ cup white wine or broth
+1 small carrot minced
+1 small onion minced
+1 celery rib minced
+salt & pepper to taste
+cheese of choice small cubes if scamorza/provolone; grated if pecorino/parmigiano
+chili flakes for garnish, optional
+
+1. mirepoix in the pot
+2. deglaze with wine, add a little water
+3. cauliflower until soft not mushy, salt & pepper
+4. more water & pasta
+5. cook until aldente, stirring to get creamy
+6. heat off, add cheese cubes
 
 ** Experimental
 *** Carrot Cake
