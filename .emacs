@@ -210,21 +210,17 @@ packages: 'foo 'bar"
 ;;;; Modes
 
 (defun rc-ocaml-mode ()
-  (package-require 'tuareg)
-  (package-require 'ocp-indent)
-  (package-require 'utop)
-  (add-hook 'tuareg-mode-hook 'cleanup-untabify-save)
-  (add-hook 'tuareg-mode-hook 'merlin-mode t)
-  (setq utop-command "opam exec -- dune utop . -- -emacs")
-  (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
-  (add-hook 'tuareg-mode-hook 'utop-minor-mode)
-  ;; (define-key utop-minor-mode-map (kbd "C-c C-k") 'utop-reload)
-  ;; (add-to-list 'load-path "/Users/lang/.opam/default/share/emacs/site-lisp")
+  (if (not (file-exists-p "~/.emacs.d/opam-user-setup.el"))
+      (message "See https://ocaml.org/docs/configuring-your-editor#vim-and-emacs")
+    (progn
+      (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
+      (eval-after-load "tuareg"
+        '(progn
+           (define-key tuareg-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)))
+      (eval-after-load "utop"
+        '(progn
+           (setq utop-command "opam exec -- dune utop . -- -emacs")))))
   (setenv "OCAMLRUNPARAM" "b"))
-
-(defun utop-reload ()
-  (interactive)
-  (utop-eval-string "Topfind.reset()"))
 
 (defun rc-r-mode ()
   (package-require 'ess))
