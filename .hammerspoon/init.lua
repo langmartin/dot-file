@@ -375,11 +375,13 @@ local function muteMeet()
    app = hs.application.find(config.meet)
    if app ~= nil then
       hs.eventtap.keyStroke({"cmd"}, "d", delay, app)
+      return
    end
 
    app = hs.application.find("zoom.us")
    if app ~= nil then
       hs.eventtap.keyStroke({"cmd", "shift"}, "a", delay, app)
+      return
    end
 
    app = hs.application.find("com.microsoft.teams2")
@@ -445,14 +447,16 @@ local emacs = "/opt/homebrew/Cellar/emacs-plus@30/30.1/Emacs.app"
 
 -- hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "d", launch("Dash"))
-hs.hotkey.bind(hyper, "f", launch("Finder"))
+-- "f" is miro fullscreen
+hs.hotkey.bind(hyper, "i", launch("Finder"))
 hs.hotkey.bind(hyper, "s", launch("Slack"))
 hs.hotkey.bind(hyper, "t", launch("Microsoft Teams"))
-hs.hotkey.bind(hyper, "m", launch("Messages"))
+-- "m" is mute which is muscle memory
+-- hs.hotkey.bind(hyper, "m", launch("Messages"))
 
-hs.hotkey.bind(hyper, "k", launch(config.browser))
-hs.hotkey.bind(hyper, "l", launch(emacs))
 hs.hotkey.bind(hyper, "j", launch(emacs))
+hs.hotkey.bind(hyper, "k", launch(config.browser))
+hs.hotkey.bind(hyper, "l", launch("Messages"))
 
 hs.hotkey.bind(hyper, "=", default)
 hs.hotkey.bind(hyper, "-", readOn)
@@ -469,4 +473,4 @@ hs.hotkey.bind(hyper, "tab", throw)
 -- hs.hotkey.bind(hyper, "0", twoDefaultVolume)
 hs.hotkey.bind(hyper, ".", hs.reload)
 -- hs.hotkey.bind(hyper, ",", restartMiddleClick)
-hs.hotkey.bind(hyper, ",", muteMeet)
+hs.hotkey.bind(hyper, "m", muteMeet)
