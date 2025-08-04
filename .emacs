@@ -1226,6 +1226,7 @@ exec ~/bin/git-hook-pre-push
 ;; (add-to-list 'custom-theme-load-path "~/langmartin/dot-file/site-themes")
 ;; (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e")
 ;; (add-to-list 'Info-directory-list "/opt/homebrew/share/info")
+;; (add-to-list 'Info-directory-list "~/langmartin/dot-file/site-info")
 ;; (rc-init-emacs)
 ;; (rc-look-and-feel)
 ;; (rc-init-site-lisp)

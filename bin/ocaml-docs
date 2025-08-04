@@ -1,0 +1,12 @@
+#!/bin/sh
+v=5.3
+f=ocaml-$v-refman.info.tar.gz
+
+set -ex
+
+cd ~/langmartin/dot-file/site-info
+wget https://ocaml.org/releases/$v/$f && tar xzf $f && rm $f
+
+mv infoman/* . && rmdir infoman
+install-info ocaml.info.gz dir
+
