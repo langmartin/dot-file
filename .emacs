@@ -429,9 +429,16 @@ packages: 'foo 'bar"
                  (add-to-list 'lsp-file-watch-ignored-directories)))
           dirs))
 
+(defun inf-elixir-send-dwim ()
+  (interactive)
+  (if (region-active-p)
+      (inf-elixir-send-region)
+    (inf-elixir-send-line)))
+
 (defun rc-elixir ()
   (package-install 'lsp-mode)
   (package-install 'elixir-mode)
+  (package-install 'inf-elixir)
   (use-package lsp-mode
     :commands lsp
     :ensure t
@@ -446,9 +453,18 @@ packages: 'foo 'bar"
     '(progn
        (add-to-list 'elixir-mode-hook 'yas-minor-mode)
        (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
+
        (define-key elixir-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
        (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)
-       (define-key elixir-mode-map (kbd "s-;") 'elixir-insert-lambda)))
+       (define-key elixir-mode-map (kbd "s-;") 'elixir-insert-lambda)
+
+       (use-package inf-elixir
+         :bind (:map
+                elixir-mode-map
+                ("C-c C-z" . inf-elixir-project)
+                ("C-x C-e" . inf-elixir-send-dwim)
+                ("C-c C-l" . inf-elixir-send-buffer)
+                ("C-c C-k" . inf-elixir-reload-module)))))
 
   (eval-after-load "lsp-mode"
     '(progn
@@ -457,7 +473,8 @@ packages: 'foo 'bar"
 
   (custom-set-variables
    '(lsp-elixir-suggest-specs nil)
-   '(flycheck-check-syntax-automatically '(save mode-enabled))))
+   '(flycheck-check-syntax-automatically '(save mode-enabled))
+   '(inf-elixir-switch-to-repl-on-send nil)))
 
 (defun elixir-genserver-boilerplate ()
   (interactive)
