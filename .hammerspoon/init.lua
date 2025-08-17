@@ -439,7 +439,7 @@ spoon.MiroWindowsManager:bindHotkeys({
       right = {hyper, "right"},
       down = {hyper, "down"},
       left = {hyper, "left"},
-      fullscreen = {hyper, "f"}
+      fullscreen = {hyper, "1"}
 })
 
 local emacs = "/opt/homebrew/Cellar/emacs-plus@30/30.1/Emacs.app"
@@ -448,11 +448,11 @@ local emacs = "/opt/homebrew/Cellar/emacs-plus@30/30.1/Emacs.app"
 -- hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "d", launch("Dash"))
 -- "f" is miro fullscreen
-hs.hotkey.bind(hyper, "i", launch("Finder"))
+hs.hotkey.bind(hyper, "f", launch("Finder"))
 hs.hotkey.bind(hyper, "s", launch("Slack"))
 hs.hotkey.bind(hyper, "t", launch("Microsoft Teams"))
 -- "m" is mute which is muscle memory
--- hs.hotkey.bind(hyper, "m", launch("Messages"))
+hs.hotkey.bind(hyper, "m", launch("Messages"))
 
 hs.hotkey.bind(hyper, "j", launch(emacs))
 hs.hotkey.bind(hyper, "k", launch(config.browser))
@@ -473,4 +473,4 @@ hs.hotkey.bind(hyper, "tab", throw)
 -- hs.hotkey.bind(hyper, "0", twoDefaultVolume)
 hs.hotkey.bind(hyper, ".", hs.reload)
 -- hs.hotkey.bind(hyper, ",", restartMiddleClick)
-hs.hotkey.bind(hyper, "m", muteMeet)
+hs.hotkey.bind(hyper, "space", muteMeet)

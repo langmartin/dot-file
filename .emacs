@@ -220,6 +220,11 @@ packages: 'foo 'bar"
       (eval-after-load "utop"
         '(progn
            (setq utop-command "opam exec -- dune utop . -- -emacs")))))
+
+  (add-to-list 'auto-mode-alist '("/dune'" . lisp-mode))
+  (add-to-list 'auto-mode-alist '("/dune-project'" . lisp-mode))
+  (add-to-list 'auto-mode-alist '("/dune-workspace'" . lisp-mode))
+
   (setenv "OCAMLRUNPARAM" "b"))
 
 (defun rc-r-mode ()
