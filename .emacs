@@ -434,6 +434,14 @@ packages: 'foo 'bar"
                  (add-to-list 'lsp-file-watch-ignored-directories)))
           dirs))
 
+(defun inf-elixir-focus-or-start ()
+  (interactive)
+  (if-let ((dir (inf-elixir--find-project-root)))
+      (if (inf-elixir--get-project-process dir)
+          (switch-to-buffer-other-window (inf-elixir--get-project-buffer dir))
+        (inf-elixir-project))
+    (message "Could not find project root!")))
+
 (defun inf-elixir-send-dwim ()
   (interactive)
   (if (region-active-p)
@@ -443,7 +451,8 @@ packages: 'foo 'bar"
 (defun rc-elixir ()
   (package-install 'lsp-mode)
   (package-install 'elixir-mode)
-  (package-install 'inf-elixir)
+  (use-package inf-elixir)
+
   (use-package lsp-mode
     :commands lsp
     :ensure t
@@ -466,7 +475,7 @@ packages: 'foo 'bar"
        (use-package inf-elixir
          :bind (:map
                 elixir-mode-map
-                ("C-c C-z" . inf-elixir-project)
+                ("C-c C-z" . inf-elixir-focus-or-start)
                 ("C-x C-e" . inf-elixir-send-dwim)
                 ("C-c C-l" . inf-elixir-send-buffer)
                 ("C-c C-k" . inf-elixir-reload-module)))))
