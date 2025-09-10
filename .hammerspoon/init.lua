@@ -449,13 +449,16 @@ hs.hotkey.bind(hyper, "d", launch("Discord"))
 -- "f" is miro fullscreen
 hs.hotkey.bind(hyper, "f", launch("Finder"))
 hs.hotkey.bind(hyper, "s", launch("Slack"))
+hs.hotkey.bind(hyper, "i", launch("Signal"))
 hs.hotkey.bind(hyper, "t", launch("Microsoft Teams"))
 -- "m" is mute which is muscle memory
 hs.hotkey.bind(hyper, "m", launch("Messages"))
 
+hs.hotkey.bind(hyper, "e", launch(emacs))
 hs.hotkey.bind(hyper, "j", launch(emacs))
 hs.hotkey.bind(hyper, "k", launch(config.browser))
 hs.hotkey.bind(hyper, "l", launch("Messages"))
+hs.hotkey.bind(hyper, "p", launch("Preview"))
 
 hs.hotkey.bind(hyper, "=", default)
 hs.hotkey.bind(hyper, "-", readOn)
