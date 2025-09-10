@@ -125,7 +125,7 @@ packages: 'foo 'bar"
    '(dired-listing-switches "-alh")
    '(ns-alternate-modifier (quote super))
    '(ns-command-modifier (quote meta))
-   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info"))))
+   '(Info-additional-directory-list (quote ("/usr/share/info" "/opt/homebrew/share/info" "~/langmartin/dot-file/site-info"))))
 
   (global-unset-key (kbd "s-h"))        ; ns-do-hide-emacs
   (global-set-key (kbd "M-`") 'switch-to-last-buffer))
@@ -733,7 +733,8 @@ packages: 'foo 'bar"
        try-complete-lisp-symbol)))
    '(require-final-newline t)
    '(uniquify-buffer-name-style 'forward)
-   '(uniquify-strip-common-suffix t))
+   '(uniquify-strip-common-suffix t)
+   '(uniquify-min-dir-content 1))
 
   (eval-after-load "shell"
     '(progn
