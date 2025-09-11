@@ -485,6 +485,9 @@ packages: 'foo 'bar"
        (lsp-add-ignored-directories
         "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp")))
 
+  (add-to-list 'safe-local-variable-values
+               '(inf-elixir-project-command . "iex -S mix phx.server"))
+
   (custom-set-variables
    '(lsp-elixir-suggest-specs nil)
    '(flycheck-check-syntax-automatically '(save mode-enabled))
