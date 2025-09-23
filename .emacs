@@ -715,6 +715,9 @@ packages: 'foo 'bar"
 
   (set-default 'epa-file-encrypt-to "lang.martin@gmail.com")
 
+  (eval-after-load "evil"
+    '(define-key evil-normal-state-map (kbd "C-v") 'scroll-up-command))
+
   (custom-set-variables
    '(column-number-mode t)
    '(confirm-kill-processes nil)
