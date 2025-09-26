@@ -209,6 +209,10 @@ packages: 'foo 'bar"
 
 ;;;; Modes
 
+(defun ocaml-insert-pipe ()
+  (interactive)
+  (insert "|>"))
+
 (defun rc-ocaml-mode ()
   (if (not (file-exists-p "~/.emacs.d/opam-user-setup.el"))
       (message "See https://ocaml.org/docs/configuring-your-editor#vim-and-emacs")
@@ -216,7 +220,8 @@ packages: 'foo 'bar"
       (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
       (eval-after-load "tuareg"
         '(progn
-           (define-key tuareg-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)))
+           (define-key tuareg-mode-map (kbd "C-x C-s") 'cleanup-untabify-save)
+           (define-key tuareg-mode-map (kbd "s-i") 'ocaml-insert-pipe)))
       (eval-after-load "utop"
         '(progn
            (setq utop-command "opam exec -- dune utop . -- -emacs")))))

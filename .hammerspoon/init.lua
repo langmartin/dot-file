@@ -442,8 +442,7 @@ spoon.MiroWindowsManager:bindHotkeys({
       fullscreen = {hyper, "1"}
 })
 
-local emacs = "/opt/homebrew/Cellar/emacs-plus@30/30.2/Emacs.app"
-
+local emacs = "/opt/homebrew/opt/emacs-plus/Emacs.app"
 -- hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "d", launch("Discord"))
 -- "f" is miro fullscreen
