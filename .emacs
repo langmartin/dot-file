@@ -1008,18 +1008,21 @@ the working directory"
 (defun dark-mode ()
   (interactive)
   (default-theme)
-  (load-theme 'zenburn))
+  (load-theme 'almost-mono-gray))
 
 (defun light-mode ()
   (interactive)
   (default-theme)
-  (load-theme 'two-to-tango))
+  (load-theme 'almost-mono-white))
 
 (defun rc-look-and-feel ()
   (interactive)
   (rc-font-sm)
   (setq frame-resize-pixelwise t)
-  (light-mode))
+  (require 'almost-mono-themes)
+  (setcdr (assoc 'success (assoc 'white almost-mono-themes-colors)) "#33bb33")
+  (setcdr (assoc 'success (assoc 'cream almost-mono-themes-colors)) "#33bb33")
+  (dark-mode))
 
 (defun set-tab-width-vars (n)
   (setq tab-width n
