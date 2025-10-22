@@ -299,10 +299,10 @@ packages: 'foo 'bar"
 (defun rc-paredit ()
   (package-require 'paredit)
 
-  (defadvice he-substitute-string (after he-paredit-fix)
-    "remove extra paren when expanding line in paredit"
-    (if (and paredit-mode (member (substring str -1) '(")" "]" "}")))
-        (progn (backward-delete-char 1) (forward-char))))
+  ;; (defadvice he-substitute-string (after he-paredit-fix)
+  ;;   "remove extra paren when expanding line in paredit"
+  ;;   (if (and paredit-mode (member (substring str -1) '(")" "]" "}")))
+  ;;       (progn (backward-delete-char 1) (forward-char))))
 
   (define-key paredit-mode-map (kbd "M-[") 'paredit-wrap-square)
   (define-key paredit-mode-map (kbd "M-]") 'paredit-close-square-and-newline)
@@ -476,6 +476,7 @@ packages: 'foo 'bar"
        (define-key elixir-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
        (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)
        (define-key elixir-mode-map (kbd "s-;") 'elixir-insert-lambda)
+       (define-key elixir-mode-map (kbd "s-i") 'ocaml-insert-pipe)
 
        (use-package inf-elixir
          :bind (:map
