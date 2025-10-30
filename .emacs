@@ -492,7 +492,7 @@ packages: 'foo 'bar"
         "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp")))
 
   (add-to-list 'safe-local-variable-values
-               '(inf-elixir-project-command . "iex -S mix phx.server"))
+               '(inf-elixir-project-command . "dotexec iex -S mix phx.server"))
 
   (custom-set-variables
    '(lsp-elixir-suggest-specs nil)
