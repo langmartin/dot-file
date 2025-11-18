@@ -12,6 +12,7 @@ export PATH=\
 ~/.cargo/bin:\
 ~/.cabal/bin:\
 ~/.local/bin:\
+~/contrib/flutter/bin:\
 ~/Library/Python/3.12/bin:\
 /opt/homebrew/opt/asdf/libexec/bin:\
 /opt/homebrew/opt/emacs-plus/bin:\
