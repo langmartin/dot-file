@@ -200,6 +200,7 @@ local function hackOn(screen)
 	 {config.browser2, nil, screen, maximized, nil, nil},
 	 {"Preview", nil, screen, maximized, nil, nil},
    })
+   focusSome({config.browser, "Emacs"})
 end
 
 local function hackOnV(screen)
@@ -248,7 +249,7 @@ local function buildOn(screen)
 	 {config.browser2, nil, screen, top80, nil, nil},
 	 {"Preview", nil, screen, top80, nil, nil},
    })
-   focusSome({config.browser, "Emacs"})
+   focusSome({config.browser})
 end
 
 local function termOn(screen)
@@ -305,10 +306,7 @@ end
 
 local function build()
    if (hs.screen.find(external())) then
-      chatOn(external())
-      slacktermOn(laptop())
       buildOn(external())
-      calOn(external())
    else
       buildOn(laptop())
    end
@@ -386,21 +384,21 @@ local function muteMeet()
 
    app = hs.application.find("com.microsoft.teams2")
    if app ~= nil then
-      hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
-      return
+      -- hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
+      -- return
 
       -- This was a workaround for the application not receiving
       -- keyboard shortcuts normally, but that seems to have been
       -- fixed.
-      -- for k, w in ipairs(app:visibleWindows()) do
-      --    if not string.match(w:title(), "Chat |") then
-      --       -- print(w:title())
-      --       -- w:focus() here focuses the the chat window no matter which title matched (?!)
-      --    end
-      --    w:focus()
-      --    hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
-      -- end
-      -- current:focus()
+      for k, w in ipairs(app:visibleWindows()) do
+         if not string.match(w:title(), "Chat |") then
+            -- print(w:title())
+            -- w:focus() here focuses the the chat window no matter which title matched (?!)
+         end
+         w:focus()
+         hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
+      end
+      current:focus()
    end
 end
 
