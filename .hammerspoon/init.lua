@@ -384,19 +384,12 @@ local function muteMeet()
 
    app = hs.application.find("com.microsoft.teams2")
    if app ~= nil then
-      -- hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
-      -- return
-
-      -- This was a workaround for the application not receiving
-      -- keyboard shortcuts normally, but that seems to have been
-      -- fixed.
+      current = hs.window.focusedWindow()
       for k, w in ipairs(app:visibleWindows()) do
          if not string.match(w:title(), "Chat |") then
-            -- print(w:title())
-            -- w:focus() here focuses the the chat window no matter which title matched (?!)
+            w:focus()
+            hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
          end
-         w:focus()
-         hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
       end
       current:focus()
    end
