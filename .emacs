@@ -454,8 +454,8 @@ packages: 'foo 'bar"
     (inf-elixir-send-line)))
 
 (defun rc-elixir ()
-  (package-install 'lsp-mode)
-  (package-install 'elixir-mode)
+  (package-require 'lsp-mode)
+  (package-require 'elixir-mode)
   (use-package inf-elixir)
 
   (use-package lsp-mode
@@ -572,9 +572,9 @@ packages: 'foo 'bar"
          (find-file-existing)))
 
 (defun rc-lsp ()
-  (package-install 'yasnippet)
-  (package-install 'lsp-mode)
-  (package-install 'projectile)
+  (package-require 'yasnippet)
+  (package-require 'lsp-mode)
+  (package-require 'projectile)
 
   (projectile-mode +1)
   (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
@@ -588,9 +588,9 @@ packages: 'foo 'bar"
        (define-key lsp-mode-map (kbd "C-M-,") 'lsp-find-references))))
 
 (defun rc-go ()
-  (package-install 'go-mode)
-  (package-install 'gotest)
-  (package-install 'yaml-mode)
+  (package-require 'go-mode)
+  (package-require 'gotest)
+  (package-require 'yaml-mode)
 
   (eval-after-load "go-mode"
     '(progn
@@ -620,7 +620,7 @@ packages: 'foo 'bar"
        (lsp-add-ignored-directories
         "vendor")))
 
-  (package-install 'hcl-mode)
+  (package-require 'hcl-mode)
   (eval-after-load "hcl-mode"
     '(progn
        (add-to-list 'auto-mode-alist '("\\.tf\\'" . hcl-mode))))
@@ -909,9 +909,9 @@ packages: 'foo 'bar"
    '(ido-enable-flex-matching t)
    '(ido-everywhere nil)
    '(ido-mode nil))
-  (package-install 'vertico)
-  (package-install 'savehist)
-  (package-install 'orderless)
+  (package-require 'vertico)
+  (package-require 'savehist)
+  (package-require 'orderless)
   (use-package vertico :init (vertico-mode))
   (use-package savehist :init (savehist-mode))
   (require 'vertico-directory)
@@ -1174,6 +1174,7 @@ exec ~/bin/git-hook-pre-push
 
 (defun rc-magit ()
   (package-require 'magit)
+  (global-unset-key (kbd "C-x g"))
   (global-set-key (kbd "C-x g s") 'magit-status)
   (custom-set-variables
    '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))

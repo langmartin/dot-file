@@ -1,4 +1,4 @@
-;;; chop.el -- Interactive binary search for a line within a window.
+;;; chop.el -- Interactive binary search for a line within a window.  -*- lexical-binding: t; -*-
 ;;; Written by Luke Gorrie <luke@bluetail.com>. Version 1.0, May 2002.
 ;;; Probably only works in GNU Emacs 21.
 

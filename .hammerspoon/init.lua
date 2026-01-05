@@ -385,11 +385,12 @@ local function muteMeet()
    app = hs.application.find("com.microsoft.teams2")
    if app ~= nil then
       current = hs.window.focusedWindow()
+      app:activate()
       for k, w in ipairs(app:visibleWindows()) do
          if not string.match(w:title(), "Chat |") then
             -- print(w:title())
             w:focus()
-            hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay)
+            hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
          end
       end
       current:focus()
@@ -436,7 +437,7 @@ spoon.MiroWindowsManager:bindHotkeys({
       fullscreen = {hyper, "1"}
 })
 
-local emacs = "/opt/homebrew/opt/emacs-plus/Emacs.app"
+local emacs = "Emacs"
 -- hs.hotkey.bind(hyper, "c", chat)
 hs.hotkey.bind(hyper, "d", launch("Discord"))
 -- "f" is miro fullscreen
