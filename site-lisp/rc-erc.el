@@ -1,3 +1,4 @@
+;;  -*- lexical-binding: t; -*-
 (require 'erc)
 (define-key erc-mode-map "\C-c\C-x" (make-sparse-keymap))
 

@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; Bugs:
 
 ;;   Switching windows immediately after blessing the second window will

@@ -1,3 +1,4 @@
+;;  -*- lexical-binding: t; -*-
 (require 'utility)
 (require 'srfi-1)
 (require 'org)

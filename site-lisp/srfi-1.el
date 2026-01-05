@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (defun fold (proc nil-value seq)
   "The fundamental list iterator."
   (let ((acc nil-value))

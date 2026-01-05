@@ -1,3 +1,4 @@
+;;  -*- lexical-binding: t; -*-
 (eval-when-compile (require 'cl-lib))
 
 (defun with-output-file (path thunk)

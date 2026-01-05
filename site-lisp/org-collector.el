@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;;; org-collector --- collect properties into tables
 
 ;; Copyright (C) 2008 Free Software Foundation, Inc.
@@ -87,7 +88,7 @@
 ;; | run (50)  |                          0.116446 |
 ;; | run (100) |                          0.118863 |
 ;; #+END:
-;; 
+;;
 
 ;;; Code:
 (require 'org)
@@ -101,8 +102,8 @@ a column, or through the generation of an error.")
 (defun and-rest (list)
   (if (listp list)
       (if (> (length list) 1)
-	  (and (car list) (and-rest (cdr list)))
-	(car list))
+          (and (car list) (and-rest (cdr list)))
+        (car list))
     list))
 
 (put 'org-collector-error
@@ -116,14 +117,14 @@ Otherwise if prop looks like a list (meaning it starts with a
 string."
   (if (and (stringp prop) (not (equal prop "")))
       (let ((out (string-to-number prop)))
-	(if (equal out 0)
-	    (if (or (equal "(" (substring prop 0 1)) (equal "'" (substring prop 0 1)))
-		(read prop)
-	      (if (string-match "^\\(+0\\|-0\\|0\\)$" prop)
-		  0
-		(progn (set-text-properties 0 (length prop) nil prop)
-		       prop)))
-	  out))
+        (if (equal out 0)
+            (if (or (equal "(" (substring prop 0 1)) (equal "'" (substring prop 0 1)))
+                (read prop)
+              (if (string-match "^\\(+0\\|-0\\|0\\)$" prop)
+                  0
+                (progn (set-text-properties 0 (length prop) nil prop)
+                       prop)))
+          out))
     prop))
 
 (defun org-dblock-write:propview (params)
@@ -132,33 +133,33 @@ preceeding the dblock, then update the contents of the dblock."
   (interactive)
   (condition-case er
       (let ((cols (plist-get params :cols))
-	    (conds (plist-get params :conds))
-	    (match (plist-get params :match))
-	    (scope (plist-get params :scope))
-	    (content-lines (org-split-string (plist-get params :content) "\n"))
-	    id table line pos)
-	(save-excursion
-	  (when (setq id (plist-get params :id))
-	    (cond ((not id) nil)
-		  ((eq id 'global) (goto-char (point-min)))
-		  ((eq id 'local)  nil)
-		  ((setq idpos (org-find-entry-with-id id))
-		   (goto-char idpos))
-		  (t (error "Cannot find entry with :ID: %s" id))))
-	  (org-narrow-to-subtree)
-	  (setq table (org-propview-to-table (org-propview-collect cols conds match scope)))
-	  (widen))
-	(setq pos (point))
-	(when content-lines
-	  (while (string-match "^#" (car content-lines))
-	    (insert (pop content-lines) "\n")))
-	(insert table) (insert "\n|--") (org-cycle) (move-end-of-line 1)
-	(message (format "point-%d" pos))
-	(while (setq line (pop content-lines))
-	  (when (string-match "^#" line)
-	    (insert "\n" line)))
-	(goto-char pos)
-	(org-table-recalculate 'all))
+            (conds (plist-get params :conds))
+            (match (plist-get params :match))
+            (scope (plist-get params :scope))
+            (content-lines (org-split-string (plist-get params :content) "\n"))
+            id table line pos)
+        (save-excursion
+          (when (setq id (plist-get params :id))
+            (cond ((not id) nil)
+                  ((eq id 'global) (goto-char (point-min)))
+                  ((eq id 'local)  nil)
+                  ((setq idpos (org-find-entry-with-id id))
+                   (goto-char idpos))
+                  (t (error "Cannot find entry with :ID: %s" id))))
+          (org-narrow-to-subtree)
+          (setq table (org-propview-to-table (org-propview-collect cols conds match scope)))
+          (widen))
+        (setq pos (point))
+        (when content-lines
+          (while (string-match "^#" (car content-lines))
+            (insert (pop content-lines) "\n")))
+        (insert table) (insert "\n|--") (org-cycle) (move-end-of-line 1)
+        (message (format "point-%d" pos))
+        (while (setq line (pop content-lines))
+          (when (string-match "^#" line)
+            (insert "\n" line)))
+        (goto-char pos)
+        (org-table-recalculate 'all))
     (org-collector-error (widen) (error "%s" er))
     (error (widen) (error "%s" er))))
 
@@ -167,46 +168,46 @@ preceeding the dblock, then update the contents of the dblock."
 variables and values specified in props"
   (condition-case nil ;; catch any errors
       (eval `(let ,(mapcar
-		    (lambda (pair) (list (intern (car pair)) (cdr pair)))
-		    props)
-	       ,body))
+                    (lambda (pair) (list (intern (car pair)) (cdr pair)))
+                    props)
+               ,body))
     (error nil)))
 
 (defun org-propview-collect (cols &optional conds match scope)
   (interactive)
   ;; collect the properties from every header
   (let* ((header-props
-	  (let ((org-trust-scanner-tags t))
-	    (org-map-entries (quote (cons (cons "ITEM" (org-get-heading))
-					  (org-entry-properties)))
-			     match scope)))
-	 ;; read property values
-	 (header-props (mapcar (lambda (props)
-				 (mapcar (lambda (pair) (cons (car pair) (org-read-prop (cdr pair))))
-					 props))
-			       header-props))
-	 ;; collect all property names
-	 (prop-names (mapcar 'intern (delete-dups
-				      (apply 'append (mapcar (lambda (header)
-							       (mapcar 'car header))
-							     header-props))))))
+          (let ((org-trust-scanner-tags t))
+            (org-map-entries (quote (cons (cons "ITEM" (org-get-heading))
+                                          (org-entry-properties)))
+                             match scope)))
+         ;; read property values
+         (header-props (mapcar (lambda (props)
+                                 (mapcar (lambda (pair) (cons (car pair) (org-read-prop (cdr pair))))
+                                         props))
+                               header-props))
+         ;; collect all property names
+         (prop-names (mapcar 'intern (delete-dups
+                                      (apply 'append (mapcar (lambda (header)
+                                                               (mapcar 'car header))
+                                                             header-props))))))
     (append
      (list
       (mapcar (lambda (el) (format "%S" el)) cols) ;; output headers
       'hline) ;; ------------------------------------------------
      (mapcar ;; calculate the value of the column for each header
       (lambda (props) (mapcar (lambda (col) (let ((result (org-propview-eval-w-props props col)))
-					      (if result result org-propview-default-value)))
-			      cols))
+                                              (if result result org-propview-default-value)))
+                              cols))
       (if conds
-	  ;; eliminate the headers which don't satisfy the property
-	  (delq nil
-		(mapcar
-		 (lambda (props)
-		   (if (and-rest (mapcar (lambda (col) (org-propview-eval-w-props props col)) conds))
-		       props))
-		 header-props))
-	  header-props)))))
+          ;; eliminate the headers which don't satisfy the property
+          (delq nil
+                (mapcar
+                 (lambda (props)
+                   (if (and-rest (mapcar (lambda (col) (org-propview-eval-w-props props col)) conds))
+                       props))
+                 header-props))
+        header-props)))))
 
 (defun org-propview-to-table (results)
   ;; (message (format "cols:%S" cols))
@@ -214,8 +215,8 @@ variables and values specified in props"
    (mapcar
     (lambda (row)
       (if (equal row 'hline)
-	  'hline
-	(mapcar (lambda (el) (format "%S" el)) row)))
+          'hline
+        (mapcar (lambda (el) (format "%S" el)) row)))
     (delq nil results)) '()))
 
 (provide 'org-collector)
