@@ -104,10 +104,10 @@ local function brightBy(current)
       by = 1
    elseif (current <= 10)
    then
-         by = 2
+      by = 2
    elseif (current <= 20)
    then
-         by = 4
+      by = 4
    end
    return by
 end
@@ -370,12 +370,6 @@ local function muteMeet()
    -- This is keyStroke's default delay
    delay = 200000
 
-   app = hs.application.find(config.meet)
-   if app ~= nil then
-      hs.eventtap.keyStroke({"cmd"}, "d", delay, app)
-      return
-   end
-
    app = hs.application.find("zoom.us")
    if app ~= nil then
       hs.eventtap.keyStroke({"cmd", "shift"}, "a", delay, app)
@@ -388,12 +382,20 @@ local function muteMeet()
       app:activate()
       for k, w in ipairs(app:visibleWindows()) do
          if not string.match(w:title(), "Chat |") then
-            -- print(w:title())
+            print("teams", w:title())
             w:focus()
             hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
          end
       end
       current:focus()
+      return
+   end
+
+   -- If this is chrome, we prefer to try the others first
+   app = hs.application.find(config.meet)
+   if app ~= nil then
+      hs.eventtap.keyStroke({"cmd"}, "d", delay, app)
+      return
    end
 end
 
