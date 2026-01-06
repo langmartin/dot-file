@@ -79,6 +79,3 @@ if [ -x /usr/local/bin/kubectx ]; then
     }
     PROMPT='$(kubectx-current)'"$PROMPT"
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
