@@ -1,4 +1,4 @@
-;;; -*- lexical-binding: t -*-
+;; -*- lexical-binding: t -*-
 ;;;; Bootstrapping
 (require 'transient)
 (require 'package)
@@ -423,9 +423,8 @@ packages: 'foo 'bar"
 (defun mix-format ()
   (interactive)
   (save-buffer)
-  (projectile-run-shell-command-in-root
-   (concat "mix format "
-           (buffer-file-name)))
+  (let* ((default-directory (project-root (project-current t))))
+    (shell-command (concat "mix format " (buffer-file-name))))
   (revert-buffer t t t))
 
 (defun exact-regexp (&rest xs)
@@ -574,12 +573,6 @@ packages: 'foo 'bar"
 (defun rc-lsp ()
   (package-require 'yasnippet)
   (package-require 'lsp-mode)
-  (package-require 'projectile)
-
-  (projectile-mode +1)
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024))
 
@@ -915,8 +908,6 @@ packages: 'foo 'bar"
   (use-package vertico :init (vertico-mode))
   (use-package savehist :init (savehist-mode))
   (require 'vertico-directory)
-  (require 'projectile)
-  (global-set-key (kbd "C-x f") 'projectile-find-file-dwim)
 
   (use-package orderless
   :init
