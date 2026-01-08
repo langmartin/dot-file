@@ -1,0 +1,3 @@
+#!/bin/sh
+set -ex
+git ls-files -z | xargs -0 git-mtime

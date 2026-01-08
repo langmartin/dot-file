@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+for f in "$@"; do
+    touch -m $(git log -n1 --pretty=%at "$f") "$f"
+done
