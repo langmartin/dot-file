@@ -5,7 +5,7 @@ HISTSIZE=700000
 SAVEHIST=500000
 HISTFILE=~/.zhistory
 
-function h () {grep "$@" ~/.zhistory | tail;}
+function h () { fc -l 5000 | grep -e "$*" | tail; }
 alias ll='ls -l'
 alias s='git status'
 alias b='git branch -v'
