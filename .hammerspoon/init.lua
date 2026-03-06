@@ -315,7 +315,7 @@ end
 local function defaultH()
    -- hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
-      termOn(external())
+      termOn(laptop())
       chatOn(external())
       hackOn(external())
       calOn(laptop())
@@ -381,8 +381,8 @@ local function muteMeet()
       current = hs.window.focusedWindow()
       app:activate()
       for k, w in ipairs(app:visibleWindows()) do
+         print("teams", w:title())
          if not string.match(w:title(), "Chat |") then
-            print("teams", w:title())
             w:focus()
             hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
          end
@@ -447,6 +447,7 @@ hs.hotkey.bind(hyper, "f", launch("Finder"))
 hs.hotkey.bind(hyper, "s", launch("Slack"))
 hs.hotkey.bind(hyper, "i", launch("Signal"))
 hs.hotkey.bind(hyper, "t", launch("Microsoft Teams"))
+hs.hotkey.bind(hyper, "y", launch("Terminal"))
 -- "m" is mute which is muscle memory
 hs.hotkey.bind(hyper, "m", launch("Messages"))
 
