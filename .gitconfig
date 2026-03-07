@@ -8,6 +8,12 @@
 [commit]
         gpgSign = true
 
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	allowedSignersFile = ~/langmartin/dot-file/.config/git/allowed-signers
+
 [init]
 	defaultBranch = main
 
