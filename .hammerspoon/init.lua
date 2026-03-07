@@ -446,8 +446,8 @@ hs.hotkey.bind(hyper, "d", launch("Discord"))
 hs.hotkey.bind(hyper, "f", launch("Finder"))
 hs.hotkey.bind(hyper, "s", launch("Slack"))
 hs.hotkey.bind(hyper, "i", launch("Signal"))
-hs.hotkey.bind(hyper, "t", launch("Microsoft Teams"))
-hs.hotkey.bind(hyper, "y", launch("Terminal"))
+hs.hotkey.bind(hyper, "y", launch("Microsoft Teams"))
+hs.hotkey.bind(hyper, "t", launch("Terminal"))
 -- "m" is mute which is muscle memory
 hs.hotkey.bind(hyper, "m", launch("Messages"))
 
