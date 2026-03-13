@@ -368,7 +368,7 @@ end
 
 local function muteMeet()
    -- This is keyStroke's default delay
-   delay = 200000
+   delay = 300000
 
    app = hs.application.find("zoom.us")
    if app ~= nil then
@@ -381,8 +381,8 @@ local function muteMeet()
       current = hs.window.focusedWindow()
       app:activate()
       for k, w in ipairs(app:visibleWindows()) do
-         print("teams", w:title())
          if not string.match(w:title(), "Chat |") then
+            -- print("teams", w:title())
             w:focus()
             hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
          end
