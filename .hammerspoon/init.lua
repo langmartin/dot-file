@@ -254,8 +254,7 @@ end
 
 local function termOn(screen)
    hs.layout.apply({
-	 {"Terminal", nil, screen, top50, nil, nil},
-	 {"iTerm2", nil, screen, top50, nil, nil},
+	 {"Terminal", nil, screen, maximized, nil, nil}
    })
 end
 
@@ -318,7 +317,6 @@ local function defaultH()
       termOn(laptop())
       chatOn(external())
       hackOn(external())
-      calOn(laptop())
    else
       chatOn(laptop())
       hackOn(laptop())
