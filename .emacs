@@ -636,7 +636,7 @@ packages: 'foo 'bar"
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))
                 (setup-tide-mode))))
-  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  ;; (flycheck-add-mode 'typescript-tslint 'web-mode)
   (add-hook 'before-save-hook 'tide-format-before-save)
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
 

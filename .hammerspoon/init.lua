@@ -366,7 +366,7 @@ end
 
 local function muteMeet()
    -- This is keyStroke's default delay
-   delay = 300000
+   delay = 400000
 
    app = hs.application.find("zoom.us")
    if app ~= nil then
