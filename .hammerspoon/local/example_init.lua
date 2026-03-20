@@ -3,7 +3,8 @@ local obj = {
    browser2 = "Safari",
    calendar = "Calendar",
    meet = "Google Chrome",
-   external = "lg"
+   external = "lg",
+   terminal = "Ghostty"
 }
 
 return obj

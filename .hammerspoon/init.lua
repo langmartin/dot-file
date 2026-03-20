@@ -254,21 +254,21 @@ end
 
 local function termOn(screen)
    hs.layout.apply({
-	 {"Terminal", nil, screen, maximized, nil, nil}
+	 {config.terminal, nil, screen, maximized, nil, nil}
    })
 end
 
 local function termOnV(screen)
    hs.layout.apply({
-	 {"Terminal", nil, screen, top10, nil, nil},
+	 {config.terminal, nil, screen, top10, nil, nil},
          {"Activity Monitor", nil, screen, bottom20, nil, nil},
    })
-   focusSome({"Activity Monitor", "Terminal"})
+   focusSome({"Activity Monitor", config.terminal})
 end
 
 local function slacktermOn(screen)
    hs.layout.apply({
-	 {"Terminal", nil, screen, top30, nil, nil},
+	 {config.terminal, nil, screen, top30, nil, nil},
 	 {"Slack", nil, screen, bottom70, nil, nil},
    })
 end
@@ -445,7 +445,7 @@ hs.hotkey.bind(hyper, "f", launch("Finder"))
 hs.hotkey.bind(hyper, "s", launch("Slack"))
 hs.hotkey.bind(hyper, "i", launch("Signal"))
 hs.hotkey.bind(hyper, "y", launch("Microsoft Teams"))
-hs.hotkey.bind(hyper, "t", launch("Terminal"))
+hs.hotkey.bind(hyper, "t", launch(config.terminal))
 -- "m" is mute which is muscle memory
 hs.hotkey.bind(hyper, "m", launch("Messages"))
 

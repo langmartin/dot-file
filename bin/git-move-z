@@ -1,6 +1,6 @@
 #!/bin/sh
 set -ex
-prefix="${GIT_MOVE_Z:-z/}"
+prefix="${GIT_MOVE_Z:-z_____/}"
 
 for branch in "$@"; do
     git branch -m "$branch" "${prefix}$branch"
