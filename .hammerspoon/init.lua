@@ -365,8 +365,8 @@ local function restartMiddleClick()
 end
 
 local function muteMeet()
-   -- This is keyStroke's default delay
-   delay = 400000
+   -- keyStroke's default is 200ms, these are µs
+   delay = 200000
 
    app = hs.application.find("zoom.us")
    if app ~= nil then
@@ -382,7 +382,7 @@ local function muteMeet()
          if not string.match(w:title(), "Chat |") then
             -- print("teams", w:title())
             w:focus()
-            hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
+            hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay)
          end
       end
       current:focus()
