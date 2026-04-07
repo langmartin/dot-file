@@ -453,33 +453,40 @@ packages: 'foo 'bar"
     (inf-elixir-send-line)))
 
 (defun rc-elixir ()
+  ;; https://blog.digressed.net/2025-09-30-emacs-30-1-elixir.html
+  ;; (let ((treesit-language-source-alist
+  ;;        '((elixir "https://github.com/elixir-lang/tree-sitter-elixir" nil nil nil nil)
+  ;;          (heex "https://github.com/phoenixframework/tree-sitter-heex" nil nil nil nil))))
+  ;;   (treesit-install-language-grammar 'elixir)
+  ;;   (treesit-install-language-grammar 'heex))
+
   (package-require 'lsp-mode)
-  (package-require 'elixir-mode)
+  (require 'elixir-ts-mode)
   (use-package inf-elixir)
 
   (use-package lsp-mode
     :commands lsp
     :ensure t
     :diminish lsp-mode
-    :hook (elixir-mode . lsp-deferred))
+    :hook (elixir-ts-mode . lsp-deferred))
 
   (defun elixir-insert-lambda ()
     (interactive)
     (insert "fn x -> end"))
 
-  (eval-after-load "elixir-mode"
+  (eval-after-load "elixir-ts-mode"
     '(progn
-       (add-to-list 'elixir-mode-hook 'yas-minor-mode)
-       (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
+       (add-to-list 'elixir-ts-mode-hook 'yas-minor-mode)
+       (add-to-list 'elixir-ts-mode-hook 'lsp-enable-on-type-formatting-nil)
 
-       (define-key elixir-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
-       (define-key elixir-mode-map (kbd "C-c C-d C-d") 'lsp-describe-thing-at-point)
-       (define-key elixir-mode-map (kbd "s-;") 'elixir-insert-lambda)
-       (define-key elixir-mode-map (kbd "s-i") 'ocaml-insert-pipe)
+       (define-key elixir-ts-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
+       (define-key elixir-ts-mode-map (kbd "C-c C-d") 'lsp-describe-thing-at-point)
+       (define-key elixir-ts-mode-map (kbd "s-;") 'elixir-insert-lambda)
+       (define-key elixir-ts-mode-map (kbd "s-i") 'ocaml-insert-pipe)
 
        (use-package inf-elixir
          :bind (:map
-                elixir-mode-map
+                elixir-ts-mode-map
                 ("C-c C-z" . inf-elixir-focus-or-start)
                 ("C-x C-e" . inf-elixir-send-dwim)
                 ("C-c C-l" . inf-elixir-send-buffer)
@@ -496,7 +503,12 @@ packages: 'foo 'bar"
   (custom-set-variables
    '(lsp-elixir-suggest-specs nil)
    '(flycheck-check-syntax-automatically '(save mode-enabled))
-   '(inf-elixir-switch-to-repl-on-send nil)))
+   '(inf-elixir-switch-to-repl-on-send nil))
+
+  (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.heex\\'" . elixir-ts-mode))
+  )
 
 (defun elixir-genserver-boilerplate ()
   (interactive)
