@@ -376,17 +376,22 @@ local function muteMeet()
 
    app = hs.application.find("com.microsoft.teams2")
    if app ~= nil then
-      current = hs.window.focusedWindow()
-      app:activate()
-      for k, w in ipairs(app:visibleWindows()) do
-         if not string.match(w:title(), "Chat |") then
-            -- print("teams", w:title())
-            w:focus()
-            hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay)
-         end
-      end
-      current:focus()
+      -- This seems to work if the call is the last teams window
+      -- selected in the application, which I'll remember to do if I
+      -- put them both on the same screen.
+      hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay, app)
       return
+      -- current = hs.window.focusedWindow()
+      -- app:activate()
+      -- for k, w in ipairs(app:visibleWindows()) do
+      --    if not string.match(w:title(), "Chat |") then
+      --       print("teams", w:title())
+      --       w:focus()
+      --       hs.eventtap.keyStroke({"cmd", "shift"}, "m", delay)
+      --    end
+      -- end
+      -- current:focus()
+      -- return
    end
 
    -- If this is chrome, we prefer to try the others first
