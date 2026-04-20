@@ -153,9 +153,8 @@ local function chatOnImpl(screen, slack)
 	 {"Slack", nil, screen, maximized, nil, nil},
 	 {"Keybase", nil, screen, topRight, nil, nil},
 	 {"Discord", nil, screen, bottomRightDiscord, nil, nil},
+         {"com.microsoft.teams2", nil, screen, maximized, nil, nil}
    })
-
-   focusSome({"Keybase", "Slack", "Discord", "Messages", "Signal"})
 end
 
 local function chatOn(screen)
@@ -263,7 +262,6 @@ local function termOnV(screen)
 	 {config.terminal, nil, screen, top10, nil, nil},
          {"Activity Monitor", nil, screen, bottom20, nil, nil},
    })
-   focusSome({"Activity Monitor", config.terminal})
 end
 
 local function slacktermOn(screen)
@@ -291,8 +289,6 @@ local function chatV(screen)
 	 {"Slack", nil, screen, {x=0, y=0.3, w=1, h=0.5}, nil, nil},
 	 {"Discord", nil, screen, {x=0, y=0.7, w=1, h=0.3}, nil, nil},
    })
-
-   focusSome({"Keybase", "Discord", "Slack", "Messages", "Signal"})
 end
 
 local function chat()
