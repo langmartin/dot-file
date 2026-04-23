@@ -307,6 +307,13 @@ local function build()
    end
 end
 
+local function teamsCall()
+   hs.layout.apply({
+         {config.terminal, nil, external(), nil, nil, nil},
+         {"com.microsoft.teams2", nil, laptop(), maximized, nil, nil},
+   })
+end
+
 local function defaultH()
    -- hs.alert("default: " .. hs.screen.find(external):name())
    if (twoScreens()) then
@@ -459,7 +466,8 @@ hs.hotkey.bind(hyper, "p", launch("Preview"))
 hs.hotkey.bind(hyper, "=", default)
 hs.hotkey.bind(hyper, "-", readOn)
 hs.hotkey.bind(hyper, "0", hackOn)
-hs.hotkey.bind(hyper, "9", build)
+hs.hotkey.bind(hyper, "9", teamsCall)
+hs.hotkey.bind(hyper, "8", build)
 
 -- hs.hotkey.bind(hyper, "z", maxSide)
 hs.hotkey.bind(hyper, "tab", throw)
