@@ -37,4 +37,3 @@ export QPOPT="-V"
 export HOMEBREW_NO_AUTO_UPDATE=1
 # export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions-local
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
