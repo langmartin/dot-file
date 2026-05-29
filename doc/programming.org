@@ -21,6 +21,9 @@
 - signal processing, fourier :: http://www.dspguide.com
   - https://en.wikipedia.org/wiki/Cepstrum
 
+* Math
+- [[https://randomtechthoughts.blog/2017/05/19/statistics-without-the-agonising-pain-and-statistics-for-hackers/][statistics via algorithm]]
+
 * Languages
 ** Elixir
 #+begin_src elixir

@@ -1,3 +1,0 @@
-+ [[https://github.com/adambard/failjure][failjure]] error values like maybe
-+ [[https://github.com/binaryage/cljs-oops][cljs-oops]] object access
-+ [[https://github.com/uwcpdx/bean-dip][bean-dip]] bidirectional reflection-free map <-> java bean macros
