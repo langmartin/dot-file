@@ -1,1 +1,4 @@
 theme = dark:Belafonte Night,light:Belafonte Day
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
