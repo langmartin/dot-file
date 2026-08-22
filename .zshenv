@@ -38,9 +38,10 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=.tool-versions-local
 export NVM_DIR="$HOME/.nvm"
 
+whence opam >/dev/null && eval `opam env`
+
 for inc in \
-    ~/.opam/opam-init/init.zsh \
-	/usr/local/opt/asdf/asdf.sh \
+    /usr/local/opt/asdf/asdf.sh \
         /opt/homebrew/opt/asdf/libexec/asdf.sh \
         ~/.cargo/env \
         /opt/homebrew/opt/nvm/nvm.sh \
