@@ -413,6 +413,12 @@ local function sleepyBluetooth(eventType)
    end
 end
 
+local function reload()
+   delay = 200000
+   app = hs.application.find(config.browser)
+   hs.eventtap.keyStroke({"cmd"}, "r", delay, app)
+end
+
 local function launch(appname)
    return function ()
       hs.application.launchOrFocus(appname)
@@ -468,6 +474,7 @@ hs.hotkey.bind(hyper, "-", readOn)
 hs.hotkey.bind(hyper, "0", hackOn)
 hs.hotkey.bind(hyper, "9", teamsCall)
 hs.hotkey.bind(hyper, "8", build)
+hs.hotkey.bind(hyper, "5", reload)
 
 -- hs.hotkey.bind(hyper, "z", maxSide)
 hs.hotkey.bind(hyper, "tab", throw)
