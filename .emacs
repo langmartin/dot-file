@@ -13,7 +13,7 @@
       '((clj-refactor . "gnu")
         (cider . "gnu")
         (clojure-mode . "gnu")
-        (elixir-mode . "gnu")
+        ;; (elixir-mode . "gnu")
         ;; (go-mode . "gnu")
         ;; (lsp-mode . "gnu")
         (company . "gnu")
@@ -61,7 +61,8 @@ packages: 'foo 'bar"
 
 (defun rc-melpa-packages ()
   (package-install-with-melpa 'flycheck 'flymake-shellcheck)
-  (package-install-with-melpa 'elixir-mode))
+  ;; (package-install-with-melpa 'elixir-mode)
+  )
 
 (defun rc-deprecated-path-crap ()
   (defun maybe-add-to-exec-path (filename)
@@ -461,32 +462,32 @@ packages: 'foo 'bar"
   ;;   (treesit-install-language-grammar 'heex))
 
   (package-require 'lsp-mode)
-  (require 'elixir-mode)
+  (require 'elixir-ts-mode)
   (use-package inf-elixir)
 
   (use-package lsp-mode
     :commands lsp
     :ensure t
     :diminish lsp-mode
-    :hook (elixir-mode . lsp-deferred))
+    :hook (elixir-ts-mode . lsp-deferred))
 
   (defun elixir-insert-lambda ()
     (interactive)
     (insert "fn x -> end"))
 
-  (eval-after-load "elixir-mode"
+  (eval-after-load "elixir-ts-mode"
     '(progn
-       (add-to-list 'elixir-mode-hook 'yas-minor-mode)
-       (add-to-list 'elixir-mode-hook 'lsp-enable-on-type-formatting-nil)
+       (add-to-list 'elixir-ts-mode-hook 'yas-minor-mode)
+       (add-to-list 'elixir-ts-mode-hook 'lsp-enable-on-type-formatting-nil)
 
-       (define-key elixir-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
-       (define-key elixir-mode-map (kbd "C-c C-d") 'lsp-describe-thing-at-point)
-       (define-key elixir-mode-map (kbd "s-;") 'elixir-insert-lambda)
-       (define-key elixir-mode-map (kbd "s-i") 'ocaml-insert-pipe)
+       (define-key elixir-ts-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
+       (define-key elixir-ts-mode-map (kbd "C-c C-d") 'lsp-describe-thing-at-point)
+       (define-key elixir-ts-mode-map (kbd "s-;") 'elixir-insert-lambda)
+       (define-key elixir-ts-mode-map (kbd "s-i") 'ocaml-insert-pipe)
 
        (use-package inf-elixir
          :bind (:map
-                elixir-mode-map
+                elixir-ts-mode-map
                 ("C-c C-z" . inf-elixir-focus-or-start)
                 ("C-x C-e" . inf-elixir-send-dwim)
                 ("C-c C-l" . inf-elixir-send-buffer)
@@ -495,7 +496,7 @@ packages: 'foo 'bar"
   (eval-after-load "lsp-mode"
     '(progn
        (lsp-add-ignored-directories
-        "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp")))
+        "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp" "priv/static" "test/fixtures")))
 
   (add-to-list 'safe-local-variable-values
                '(inf-elixir-project-command . "dotexec iex -S mix phx.server"))
@@ -505,10 +506,9 @@ packages: 'foo 'bar"
    '(flycheck-check-syntax-automatically '(save mode-enabled))
    '(inf-elixir-switch-to-repl-on-send nil))
 
-  (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-mode))
-  (add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-mode))
-  (add-to-list 'auto-mode-alist '("\\.heex\\'" . elixir-mode))
-  )
+  (add-to-list 'auto-mode-alist '("\\.ex\\'" . elixir-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.exs\\'" . elixir-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.heex\\'" . elixir-ts-mode)))
 
 (defun elixir-genserver-boilerplate ()
   (interactive)
