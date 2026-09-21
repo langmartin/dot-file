@@ -151,7 +151,7 @@ local function chatOnImpl(screen, slack)
 	 {"Signal", nil, screen, topLeft, nil, nil},
 	 {"Messages", nil, screen, topRight, nil, nil},
 	 {"Slack", nil, screen, maximized, nil, nil},
-	 {"Keybase", nil, screen, topRight, nil, nil},
+	 -- {"Keybase", nil, screen, topRight, nil, nil},
 	 {"Discord", nil, screen, bottomRightDiscord, nil, nil},
          {"com.microsoft.teams2", nil, screen, maximized, nil, nil}
    })
@@ -283,7 +283,7 @@ end
 
 local function chatV(screen)
    hs.layout.apply({
-	 {"Keybase", nil, screen, {x=0, y=0, w=1, h=0.2}, nil, nil},
+	 -- {"Keybase", nil, screen, {x=0, y=0, w=1, h=0.2}, nil, nil},
 	 {"Signal", nil, screen, {x=0, y=0, w=1, h=0.2}, nil, nil},
 	 {"Messages", nil, screen, {x=0, y=0.2, w=1, h=0.1}, nil, nil},
 	 {"Slack", nil, screen, {x=0, y=0.3, w=1, h=0.5}, nil, nil},
@@ -370,6 +370,11 @@ end
 local function muteMeet()
    -- keyStroke's default is 200ms, these are µs
    delay = 200000
+
+   -- This got very slow because one answered slowly, which would be
+   -- hit when zoom was closed. It stopped after an OS update. If it
+   -- happens again, move zoom below teams.
+   -- hs.inspect(hs.window._timed_allWindows())
 
    app = hs.application.find("zoom.us")
    if app ~= nil then
