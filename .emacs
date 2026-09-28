@@ -486,7 +486,7 @@ packages: 'foo 'bar"
                 ("C-c C-l" . inf-elixir-send-buffer)
                 ("C-c C-k" . inf-elixir-reload-module)))))
 
-  '(add-to-list 'eglot-server-programs '(elixir-ts-mode "~/contrib/elixir-ls/release/language_server.sh"))
+  (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/contrib/elixir-ls/release/language_server.sh"))
 
   ;; (eval-after-load "lsp-mode"
   ;;   '(progn
