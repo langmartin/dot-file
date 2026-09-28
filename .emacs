@@ -461,15 +461,7 @@ packages: 'foo 'bar"
   ;;   (treesit-install-language-grammar 'elixir)
   ;;   (treesit-install-language-grammar 'heex))
 
-  (package-require 'lsp-mode)
-  (require 'elixir-ts-mode)
   (use-package inf-elixir)
-
-  (use-package lsp-mode
-    :commands lsp
-    :ensure t
-    :diminish lsp-mode
-    :hook (elixir-ts-mode . lsp-deferred))
 
   (defun elixir-insert-lambda ()
     (interactive)
@@ -478,10 +470,11 @@ packages: 'foo 'bar"
   (eval-after-load "elixir-ts-mode"
     '(progn
        (add-to-list 'elixir-ts-mode-hook 'yas-minor-mode)
-       (add-to-list 'elixir-ts-mode-hook 'lsp-enable-on-type-formatting-nil)
+       ;; (add-to-list 'elixir-ts-mode-hook 'lsp-enable-on-type-formatting-nil)
+       (add-to-list 'elixir-ts-mode-hook 'eglot-ensure)
 
        (define-key elixir-ts-mode-map (kbd "C-x C-s") 'elixir-save-cleanup)
-       (define-key elixir-ts-mode-map (kbd "C-c C-d") 'lsp-describe-thing-at-point)
+       (define-key elixir-ts-mode-map (kbd "C-c C-d") 'eldoc-doc-buffer)
        (define-key elixir-ts-mode-map (kbd "s-;") 'elixir-insert-lambda)
        (define-key elixir-ts-mode-map (kbd "s-i") 'ocaml-insert-pipe)
 
@@ -493,10 +486,12 @@ packages: 'foo 'bar"
                 ("C-c C-l" . inf-elixir-send-buffer)
                 ("C-c C-k" . inf-elixir-reload-module)))))
 
-  (eval-after-load "lsp-mode"
-    '(progn
-       (lsp-add-ignored-directories
-        "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp" "priv/static" "test/fixtures")))
+  '(add-to-list 'eglot-server-programs '(elixir-ts-mode "~/contrib/elixir-ls/release/language_server.sh"))
+
+  ;; (eval-after-load "lsp-mode"
+  ;;   '(progn
+  ;;      (lsp-add-ignored-directories
+  ;;       "_build" "\\.elixir_ls" "deps" "provision" "deploy" "log" "tmp" "priv/static" "test/fixtures")))
 
   (add-to-list 'safe-local-variable-values
                '(inf-elixir-project-command . "dotexec iex -S mix phx.server"))
@@ -520,7 +515,7 @@ packages: 'foo 'bar"
       (mix-format)
     (cleanup-untabify-save)))
 
-(defun rc-rust ()
+(defun rc-rust-lsp ()
   (use-package lsp-mode
     :commands lsp
     :ensure t
@@ -528,7 +523,7 @@ packages: 'foo 'bar"
     :hook (rust-mode . lsp-deferred)
     :init (add-to-list 'exec-path "~/.cargo/bin/rls")))
 
-(defun rc-c ()
+(defun rc-c-lsp ()
   (use-package lsp-mode
     :commands lsp
     :ensure t
@@ -592,7 +587,7 @@ packages: 'foo 'bar"
     '(progn
        (define-key lsp-mode-map (kbd "C-M-,") 'lsp-find-references))))
 
-(defun rc-go ()
+(defun rc-go-lsp ()
   (package-require 'go-mode)
   (package-require 'gotest)
   (package-require 'yaml-mode)
@@ -1222,7 +1217,7 @@ exec ~/bin/git-hook-pre-push
   ;; (rc-ido)
   (rc-vertico)
   (rc-winner)
-  (rc-lsp)
+  ;; (rc-lsp)
   (rc-paredit)
   (rc-shell-mode)
   (rc-clojure-mode)
@@ -1234,15 +1229,15 @@ exec ~/bin/git-hook-pre-push
   (rc-markdown-mode)
   (rc-prolog)
   (rc-haskell)
-  (rc-go)
+  ;; (rc-go)
   (rc-lua)
   (rc-typescript)
   (rc-r-mode)
   (rc-elixir)
-  (rc-rust)
+  ;; (rc-rust)
   (rc-magit)
   (rc-git)
-  (rc-c)
+  ;; (rc-c)
   (rc-pml))
 
 (defun rc-init-site-lisp ()
