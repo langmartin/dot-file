@@ -441,7 +441,7 @@ packages: 'foo 'bar"
 
 (defun inf-elixir-focus-or-start ()
   (interactive)
-  (if-let ((dir (inf-elixir--find-project-root)))
+  (if-let* ((dir (inf-elixir--find-project-root)))
       (if (inf-elixir--get-project-process dir)
           (switch-to-buffer-other-window (inf-elixir--get-project-buffer dir))
         (inf-elixir-project))
@@ -486,7 +486,8 @@ packages: 'foo 'bar"
                 ("C-c C-l" . inf-elixir-send-buffer)
                 ("C-c C-k" . inf-elixir-reload-module)))))
 
-  (add-to-list 'eglot-server-programs '(elixir-ts-mode "~/contrib/elixir-ls/release/language_server.sh"))
+  (eval-after-load "eglot"
+    '(add-to-list 'eglot-server-programs '(elixir-ts-mode "~/contrib/elixir-ls/release/language_server.sh")))
 
   ;; (eval-after-load "lsp-mode"
   ;;   '(progn
@@ -953,17 +954,21 @@ the working directory"
          (autosave (concat backup "auto-save/")))
     (make-directory backup t)
     (make-directory autosave t)
-    (setq backup-by-copying t
-          delete-old-versions t
-          kept-new-versions 10
-          kept-old-versions 2
-          version-control t
-          backup-directory-alist `(("." . ,backup))
-          tramp-backup-directory-alist backup-directory-alist
-          auto-save-list-file-prefix autosave
-          auto-save-file-name-transforms `(("\\`.*/\\([^/]*\\)\\'" ,(concat autosave "\\1") t))
-          vc-make-backup-files t
-          create-lockfiles nil))
+    (custom-set-variables
+     `(backup-directory-alist '(("." . ,backup)))
+     `(tramp-backup-directory-alist '(("." . ,backup)))
+     `(auto-save-list-file-prefix ,autosave)
+     `(auto-save-file-name-transforms '(("\\`.*/\\([^/]*\\)\\'" ,(concat autosave "\\1") t)))
+     '(backup-by-copying t)
+     '(delete-old-versions t)
+     '(kept-new-versions 10)
+     '(kept-old-versions 2)
+     '(version-control t)
+     '(vc-make-backup-files t)
+     ;; This does seem to be too slow, docstring not withstanding
+     ;; '(auto-revert-check-vc-info t)
+     '(create-lockfiles nil)
+     ))
   (add-hook 'before-save-hook 'backup-buffer-force))
 
 ;;; deprecated, use themes
